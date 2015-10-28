@@ -62,7 +62,7 @@
 
     <bean id="centuriaDAO" class="de.nak.ttmg.dao.CenturiaDAO"/>
 
-    <bean id="eventDAO" class="de.nak.ttmg.dao.EventDAO"/>
+    <bean id="eventDAO" class="de.nak.ttmg.dao.CourseDAO"/>
 
     <bean id="tutorDAO" class="de.nak.ttmg.dao.TutorDAO"/>
 
@@ -71,7 +71,7 @@
 
     <bean id="centuriaService" class="de.nak.ttmg.service.CenturiaServiceImpl"/>
 
-    <bean id="eventService" class="de.nak.ttmg.service.EventServiceImpl"/>
+    <bean id="eventService" class="de.nak.ttmg.service.CourseServiceImpl"/>
 
     <bean id="tutorService" class="de.nak.ttmg.service.TutorServiceImpl"/>
 
