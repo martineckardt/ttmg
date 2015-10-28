@@ -2,12 +2,13 @@ package de.nak.ttmg.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by felixb on 27/10/15.
  */
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"BUILDING", "ROOM_NUMBER"}))
+@Table(name = "room", uniqueConstraints = @UniqueConstraint(columnNames = {"BUILDING", "ROOM_NUMBER"}))
 public class Room implements Serializable {
 
     /**
@@ -32,8 +33,11 @@ public class Room implements Serializable {
 
     private RoomType type;
 
+    private Set<Course> courses;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "room_id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -73,5 +77,19 @@ public class Room implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     public RoomType getType() {
         return type;
+    }
+
+    public void setType(RoomType type) {
+        this.type = type;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="course_room", joinColumns=@JoinColumn(name="room_id"), inverseJoinColumns=@JoinColumn(name="course_id"))
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }

@@ -1,9 +1,6 @@
 package de.nak.ttmg.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -11,7 +8,10 @@ import java.util.Set;
  * Created by felixb on 28/10/15.
  */
 @Entity
+@Table(name = "course")
 public class Course implements Serializable {
+
+    private Long id;
 
     private EventType type;
 
@@ -19,11 +19,22 @@ public class Course implements Serializable {
 
     private Set<Room> rooms;
 
-    private Set<Participant> participants;
+    private Set<Centuria> participants;
 
     private Tutor tutor;
 
     private String name;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "course_id", nullable = false)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
@@ -35,6 +46,8 @@ public class Course implements Serializable {
         this.type = type;
     }
 
+    @Column(name = "events")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "course")
     public Set<Event> getEvents() {
         return events;
     }
@@ -43,6 +56,8 @@ public class Course implements Serializable {
         this.events = events;
     }
 
+    @Column(name = "rooms")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "courses")
     public Set<Room> getRooms() {
         return rooms;
     }
@@ -51,11 +66,13 @@ public class Course implements Serializable {
         this.rooms = rooms;
     }
 
-    public Set<Participant> getParticipants() {
+    @Column(name = "participants")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "courses")
+    public Set<Centuria> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(Set<Participant> participants) {
+    public void setParticipants(Set<Centuria> participants) {
         this.participants = participants;
     }
 

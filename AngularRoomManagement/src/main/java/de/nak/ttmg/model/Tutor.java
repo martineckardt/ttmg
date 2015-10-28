@@ -4,12 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by felixb on 28/10/15.
  */
 @Entity
-public class Tutor {
+public class Tutor implements Serializable{
     private String firstName;
     private String lastName;
     private String title;
