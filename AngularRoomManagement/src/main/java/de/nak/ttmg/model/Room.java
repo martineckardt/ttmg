@@ -1,7 +1,11 @@
 package de.nak.ttmg.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -33,7 +37,7 @@ public class Room implements Serializable {
 
     private RoomType type;
 
-    private Set<Course> courses;
+    private Set<Course> courses = new HashSet<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -85,11 +89,23 @@ public class Room implements Serializable {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="course_room", joinColumns=@JoinColumn(name="room_id"), inverseJoinColumns=@JoinColumn(name="course_id"))
+    @JsonBackReference
     public Set<Course> getCourses() {
         return courses;
     }
 
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomNumber='" + building + roomNumber + '\'' +
+                ", type=" + type +
+                ", seats=" + seats +
+                ", id=" + id +
+                '}';
     }
 }

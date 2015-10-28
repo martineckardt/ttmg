@@ -22,12 +22,14 @@ public class RoomDAO {
         return entityManager.find(Room.class, id);
     }
 
-    public void create(Room room) {
+    public Long create(Room room) {
         if (room.getId() == null) {
             entityManager.persist(room);
+            return room.getId();
         } else {
             //Already exist
         }
+        return null;
     }
 
     @PersistenceContext

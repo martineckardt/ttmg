@@ -2,8 +2,10 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.RoomDAO;
 import de.nak.ttmg.model.Room;
+import de.nak.ttmg.model.RoomType;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,7 +15,8 @@ public class RoomServiceImpl implements RoomService {
     private RoomDAO roomDAO;
 
     @Override
-    public List<Room> listRooms() {
+    public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) {
+        //TODO Sebastian
         return roomDAO.findAll();
     }
 
@@ -23,8 +26,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void createRoom(Room room) {
-        roomDAO.create(room);
+    public Long createRoom(Room room) {
+        return roomDAO.create(room);
     }
 
     @Inject

@@ -2,6 +2,7 @@ package de.nak.ttmg.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,11 +16,11 @@ public class Course implements Serializable {
 
     private EventType type;
 
-    private Set<Event> events;
+    private Set<Event> events = new HashSet<>();
 
-    private Set<Room> rooms;
+    private Set<Room> rooms = new HashSet<>();
 
-    private Set<Centuria> participants;
+    private Set<Centuria> participants = new HashSet<>();
 
     private Tutor tutor;
 

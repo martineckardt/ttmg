@@ -2,6 +2,7 @@ package de.nak.ttmg.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -20,7 +21,7 @@ public class Centuria implements Serializable {
 
     private Long id;
 
-    private Set<Course> courses;
+    private Set<Course> courses = new HashSet<>();
 
     private Integer changeTime;
 

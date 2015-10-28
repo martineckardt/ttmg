@@ -1,7 +1,9 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.model.Room;
+import de.nak.ttmg.model.RoomType;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,9 +11,9 @@ import java.util.List;
  */
 public interface RoomService {
 
-    void createRoom(Room room);
+    Long createRoom(Room room);
 
-    List<Room> listRooms();
+    List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd);
 
     Room loadRoom(Long id);
 }
