@@ -1,17 +1,14 @@
-package de.nordakademie.iaa.roommgmt.model;
+package de.nak.ttmg.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Room entity.
- *
- * @author Stephan Anft
+ * Created by felixb on 27/10/15.
  */
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"BUILDING", "ROOM_NUMBER"}))
 public class Room implements Serializable {
-    private static final long serialVersionUID = 6925248180274039273L;
 
     /**
      * The unique identifier.
@@ -26,17 +23,14 @@ public class Room implements Serializable {
     /**
      * The room's number.
      */
-    private Integer roomNumber;
+    private String roomNumber;
 
     /**
      * Number of seats in the room.
      */
     private Integer seats;
 
-    /**
-     * Indicates whether a beamer is present or not.
-     */
-    private Boolean beamerPresent;
+    private RoomType type;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -58,11 +52,11 @@ public class Room implements Serializable {
     }
 
     @Column(name = "room_number", nullable = false)
-    public Integer getRoomNumber() {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(Integer roomNumber) {
+    public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
     }
 
@@ -76,11 +70,8 @@ public class Room implements Serializable {
     }
 
     @Column(nullable = false)
-    public Boolean getBeamerPresent() {
-        return beamerPresent;
-    }
-
-    public void setBeamerPresent(Boolean beamerPresent) {
-        this.beamerPresent = beamerPresent;
+    @Enumerated(EnumType.ORDINAL)
+    public RoomType getType() {
+        return type;
     }
 }
