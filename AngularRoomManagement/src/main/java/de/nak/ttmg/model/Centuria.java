@@ -91,4 +91,13 @@ public class Centuria implements Serializable {
     public void setChangeTime(Integer changeTime) {
         this.changeTime = changeTime;
     }
+
+    @Override
+    public String toString() {
+        return "Centuria{" +
+                program + year + letter +
+                ", nbrOfStudents=" + nbrOfStudents +
+                ", changeTime=" + changeTime +
+                '}';
+    }
 }

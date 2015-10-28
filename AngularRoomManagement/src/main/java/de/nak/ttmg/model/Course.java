@@ -94,4 +94,16 @@ public class Course implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "type=" + type +
+                ", events=" + events +
+                ", rooms=" + rooms +
+                ", participants=" + participants +
+                ", tutor=" + tutor +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

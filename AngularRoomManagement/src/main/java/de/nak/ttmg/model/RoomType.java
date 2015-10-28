@@ -39,4 +39,9 @@ public enum RoomType {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        return getDisplayName();
+    }
 }

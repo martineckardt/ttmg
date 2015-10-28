@@ -59,4 +59,12 @@ public class Tutor implements Serializable{
     public void setChangeTime(Integer changeTime) {
         this.changeTime = changeTime;
     }
+
+    @Override
+    public String toString() {
+        return "Tutor{" +
+                title + " " + firstName + " " + lastName + 
+                ", changeTime=" + changeTime +
+                '}';
+    }
 }

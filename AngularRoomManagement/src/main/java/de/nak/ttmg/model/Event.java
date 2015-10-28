@@ -56,4 +56,12 @@ public class Event implements Serializable {
     public void setCourse(Course course) {
         this.course = course;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "begin=" + begin +
+                ", end=" + end +
+                '}';
+    }
 }
