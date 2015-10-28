@@ -1,6 +1,6 @@
 package de.nak.ttmg.model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,8 +10,37 @@ import java.util.Date;
 @Entity
 public class Event implements Serializable {
 
+    private Long id;
+
     private Date begin;
 
     private Date end;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Column(nullable = false)
+    public Date getBegin() {
+        return begin;
+    }
+
+    public void setBegin(Date begin) {
+        this.begin = begin;
+    }
+
+    @Column(nullable = false)
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
+    }
 }
