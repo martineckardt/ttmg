@@ -11,7 +11,9 @@ import java.util.Set;
  * Created by felixb on 28/10/15.
  */
 @Entity
-public class Tutor implements Serializable{
+public class Tutor implements Serializable, HasAvailability {
+    private static Integer defaultChangeTime = 15;
+
     private String firstName;
     private String lastName;
     private String title;
@@ -79,5 +81,14 @@ public class Tutor implements Serializable{
                 title + " " + firstName + " " + lastName +
                 ", changeTime=" + changeTime +
                 '}';
+    }
+
+    @Transient
+    @Override
+    public Integer getCustomChangeTime() {
+        if (getChangeTime() != null) {
+            return getChangeTime();
+        }
+        return defaultChangeTime;
     }
 }

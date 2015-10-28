@@ -13,7 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "room", uniqueConstraints = @UniqueConstraint(columnNames = {"BUILDING", "ROOM_NUMBER"}))
-public class Room implements Serializable {
+public class Room implements Serializable, HasAvailability {
 
     /**
      * The unique identifier.
@@ -107,5 +107,11 @@ public class Room implements Serializable {
                 ", seats=" + seats +
                 ", id=" + id +
                 '}';
+    }
+
+    @Transient
+    @Override
+    public Integer getCustomChangeTime() {
+        return type.getDefaultChangeTime();
     }
 }

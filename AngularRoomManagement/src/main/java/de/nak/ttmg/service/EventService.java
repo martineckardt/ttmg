@@ -1,6 +1,9 @@
 package de.nak.ttmg.service;
 
+import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.Event;
+import de.nak.ttmg.model.Room;
+import de.nak.ttmg.model.Tutor;
 
 import java.util.List;
 
@@ -14,6 +17,12 @@ public interface EventService {
     void updateEvent(Event event);
 
     List<Event> listEvents();
+
+    //List<Event> findEventsWithTutor(Tutor tutor);
+
+    //List<Event> findEventsWithCenturia(Centuria centuria);
+
+    //List<Event> findEventsWithRoom(Room room);
 
     Event loadEvent(Long id);
 

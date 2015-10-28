@@ -10,7 +10,9 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "centuria", uniqueConstraints = @UniqueConstraint(columnNames = {"LETTER", "PROGRAM", "YEAR"}))
-public class Centuria implements Serializable {
+public class Centuria implements Serializable, HasAvailability {
+    private static Integer defaultChangeTime = 15;
+
     private Character letter;
 
     private StudyProgram program;
@@ -99,5 +101,14 @@ public class Centuria implements Serializable {
                 ", nbrOfStudents=" + nbrOfStudents +
                 ", changeTime=" + changeTime +
                 '}';
+    }
+
+    @Transient
+    @Override
+    public Integer getCustomChangeTime() {
+        if (getChangeTime() != null) {
+            return getChangeTime();
+        }
+        return defaultChangeTime;
     }
 }

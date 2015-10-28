@@ -1,9 +1,13 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.EventDAO;
+import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.Event;
+import de.nak.ttmg.model.Room;
+import de.nak.ttmg.model.Tutor;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
