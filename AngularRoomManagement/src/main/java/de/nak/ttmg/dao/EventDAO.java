@@ -15,7 +15,6 @@ public class EventDAO {
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
     public List<Event> findAll() {
         return entityManager.createQuery("select event from Event event").getResultList();
-
     }
 
     public Event load(Long id) {
@@ -34,6 +33,4 @@ public class EventDAO {
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-}
-
 }
