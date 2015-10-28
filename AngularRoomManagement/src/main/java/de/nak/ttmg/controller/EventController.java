@@ -27,15 +27,14 @@ public class EventController {
 
     @RequestMapping(value = "/events", method = RequestMethod.POST)
     public Long createEvent(@RequestBody Event event) {
-        return eventService.saveEvent(event);
+        return eventService.createEvent(event);
     }
 
     @RequestMapping(value = "/events/{id}", method = RequestMethod.PUT)
-    public Long saveEvent(@PathVariable Long id, @RequestBody Event event) {
+    public void saveEvent(@PathVariable Long id, @RequestBody Event event) {
         if (event != null && event.getId() != null && event.getId().equals(id)) {
-            return eventService.saveEvent(event);
+            eventService.updateEvent(event);
         }
-        return null;
     }
 
     @RequestMapping(value = "/events/{id}", method = RequestMethod.DELETE)
