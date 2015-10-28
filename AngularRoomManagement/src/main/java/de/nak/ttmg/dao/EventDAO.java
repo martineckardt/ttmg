@@ -26,7 +26,7 @@ public class EventDAO {
         if (event.getId() == null) {
             entityManager.persist(event);
         } else {
-            // Logik einbauen
+            entityManager.merge(event);
         }
     }
 
