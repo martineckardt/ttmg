@@ -9,11 +9,11 @@ import java.util.List;
  */
 public interface EventService {
 
-    void saveEvent(Event event);
+    Long saveEvent(Event event);
 
     List<Event> listEvents();
 
     Event loadEvent(Long id);
 
-    void deleteEvent(Event event);
+    void deleteEvent(Long id);
 }

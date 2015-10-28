@@ -69,8 +69,10 @@
     <!-- Services -->
     <bean id="roomService" class="de.nak.ttmg.service.RoomServiceImpl"/>
 
-    <!--bean id="courseService" class="de.nordakademie.iaa.roommgmt.service.CourseServiceImpl"/>
+    <bean id="centuriaService" class="de.nak.ttmg.service.CenturiaServiceImpl"/>
 
-    <bean id="lectureService" class="de.nordakademie.iaa.roommgmt.service.LectureServiceImpl"/-->
+    <bean id="eventService" class="de.nak.ttmg.service.EventServiceImpl"/>
+
+    <bean id="tutorService" class="de.nak.ttmg.service.TutorServiceImpl"/>
 
 </beans>
