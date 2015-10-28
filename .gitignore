@@ -2,4 +2,3 @@
 *.idea/*
 db/*
 target/*
-roommgmt-orm.iml
