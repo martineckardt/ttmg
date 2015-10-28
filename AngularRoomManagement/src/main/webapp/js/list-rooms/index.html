@@ -1,20 +1,18 @@
-<section ng-controller="listRoomsController as listRoomsController">
-    <div class="panel-body">
-        <table class="table">
-            <tr>
-                <th>Building</th>
-                <th>Room Number</th>
-                <th>Seats</th>
-                <th>Projector present?</th>
-            </tr>
-            <tr ng-repeat="room in model.rooms">
-                <td>{{room.building}}</td>
-                <td>{{room.roomNumber}}</td>
-                <td>{{room.seats}}</td>
-                <td>{{room.beamerPresent}}</td>
-            </tr>
-        </table>
+<section ng-controller="listRoomsController as listRoomsController"></section>
+    <table class="table">
+        <tr>
+            <th>Building</th>
+            <th>Room Number</th>
+            <th>Seats</th>
+            <th>Projector present?</th>
+        </tr>
+        <tr ng-repeat="room in model.rooms">
+            <td>{{room.building}}</td>
+            <td>{{room.roomNumber}}</td>
+            <td>{{room.seats}}</td>
+            <td>{{room.beamerPresent}}</td>
+        </tr>
+    </table>
 
-        <a href="#/rooms/create" class="btn btn-default">Raum hinzufügen</a>
-    </div>
+    <a href="#/rooms/create" class="btn btn-default">Raum hinzufügen</a>
 </section>
