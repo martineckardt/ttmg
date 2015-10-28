@@ -29,6 +29,10 @@ public class EventDAO {
         }
     }
 
+    public void delete(Event event) {
+        entityManager.refresh(event);
+    }
+
     @PersistenceContext
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
