@@ -1,6 +1,7 @@
 package de.nak.ttmg.controller;
 
 import de.nak.ttmg.model.Centuria;
+import de.nak.ttmg.model.StudyProgram;
 import de.nak.ttmg.service.CenturiaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +17,10 @@ public class CenturiaController {
     private CenturiaService centuriaService;
 
     @RequestMapping(value = "/centurias", method = RequestMethod.GET)
-    public List<Centuria> listRooms() {
-        return centuriaService.listCenturias();
+    public List<Centuria> listRooms(@RequestParam(required = false, value = "year") Integer year,
+                                    @RequestParam(required = false, value = "program") String studyProgram) {
+        StudyProgram program = StudyProgram.programForString(studyProgram);
+        return centuriaService.listCenturias(year,program);
     }
 
     @RequestMapping(value = "/centurias/{id}", method = RequestMethod.GET)

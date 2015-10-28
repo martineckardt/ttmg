@@ -2,6 +2,7 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.CenturiaDAO;
 import de.nak.ttmg.model.Centuria;
+import de.nak.ttmg.model.StudyProgram;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -19,7 +20,8 @@ public class CenturiaServiceImpl implements CenturiaService {
     }
 
     @Override
-    public List<Centuria> listCenturias() {
+    public List<Centuria> listCenturias(Integer year, StudyProgram program) {
+        //TODO
         return centuriaDAO.findAll();
     }
 
