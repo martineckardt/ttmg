@@ -1,10 +1,13 @@
 package de.nak.ttmg.test;
 
 import de.nak.ttmg.model.*;
+import de.nak.ttmg.util.TimeConflictException;
+import de.nak.ttmg.util.TimeValidatior;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,8 +25,19 @@ public class TimeValidatiorTest {
     private Tutor tutor;
     private Centuria centuria;
 
+    private Date pastStart = new Date(2014, 05, 3);
+    private Date pastEnd = new Date(2014,7,10);
+    private Date futureStart = new Date(2015, 11, 15);
+    private Date futureEnd = new Date(2016, 6,20);
+
+    private Event past;
+    private Event future;
+
+    private TimeValidatior validator = new TimeValidatior();
+
     @Before
     public void setUp() throws Exception {
+
         roomA101 = new Room();
         roomA101.setBuilding("A");
         roomA101.setSeats(30);
@@ -66,6 +80,25 @@ public class TimeValidatiorTest {
         courseIAA.setTutor(tutor);
         courseIAA.setParticipants(participants);
         courseIAA.setType(EventType.COURSE);
+        centuria.getCourses().add(courseIAA);
+        roomA101.getCourses().add(courseIAA);
+        roomA102.getCourses().add(courseIAA);
+        tutor.getCourses().add(courseIAA);
+
+        past = new Event();
+        past.setBegin(pastStart);
+        past.setEnd(pastEnd);
+        past.setCourse(courseIAA);
+
+        future = new Event();
+        future.setBegin(futureStart);
+        future.setEnd(futureEnd);
+        future.setCourse(courseIAA);
+
+        Set<Event> events = new HashSet<>(2);
+        events.add(past);
+        events.add(future);
+        courseIAA.setEvents(events);
     }
 
     @After
@@ -75,8 +108,46 @@ public class TimeValidatiorTest {
 
     @Test
     public void testValidateTime() throws Exception {
+    assertNotNull(tutor);
+        assertNotNull(courseIAA);
+        assertNotNull(centuria);
+        assertNotNull(roomA101);
+        assertNotNull(roomA102);
+        assertNotNull(roomA103);
+        assertNotNull(courseIAA.getParticipants());
+        assertNotNull(centuria.getCourses());
+        assertTrue(centuria.getCourses().size() > 0);
+        assertTrue(roomA101.getCourses().size() > 0);
+        assertTrue(roomA102.getCourses().size() > 0);
+        assertTrue(roomA103.getCourses().size() == 0);
+        assertTrue(tutor.getCourses().size() > 0);
 
+        try {
+            validator.validateTime(courseIAA);
+        } catch (TimeConflictException e) {
+            assertTrue(false);
+        }
 
-
+        Course copy = new Course();
+        Set<Event> events = new HashSet<>(2);
+        events.add(past);
+        events.add(future);
+        copy.setEvents(events);
+        copy.setType(EventType.COURSE);
+        copy.setTutor(tutor);
+        Set<Room> rooms = new HashSet<>(2);
+        rooms.add(roomA101);
+        rooms.add(roomA102);
+        Set<Centuria> participants = new HashSet<>(1);
+        participants.add(centuria);
+        copy.setRooms(rooms);
+        copy.setParticipants(participants);
+        copy.setName("Copy");
+        try {
+            validator.validateTime(copy);
+            assertTrue(false);
+        } catch (TimeConflictException e) {
+            System.out.println("e.getFailures() = " + e.getFailures());
+        }
     }
 }
