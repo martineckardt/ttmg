@@ -21,12 +21,20 @@ public class EventDAO {
         return entityManager.find(Event.class, id);
     }
 
-    public void create(Event event) {
+    public Long create(Event event) {
         if (event.getId() == null) {
             entityManager.persist(event);
-        } else {
-            entityManager.merge(event);
+            return event.getId();
         }
+        return null;
+    }
+
+    public void update(Event event) {
+        entityManager.merge(event);
+    }
+
+    public void delete(Event event) {
+        entityManager.refresh(event);
     }
 
     @PersistenceContext

@@ -9,7 +9,9 @@ import java.util.List;
  */
 public interface EventService {
 
-    Long saveEvent(Event event);
+    Long createEvent (Event event);
+
+    void updateEvent(Event event);
 
     List<Event> listEvents();
 
