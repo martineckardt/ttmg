@@ -1,10 +1,11 @@
 package de.nak.ttmg.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by felixb on 28/10/15.
@@ -15,11 +16,13 @@ public class Tutor implements Serializable{
     private String lastName;
     private String title;
     private Integer changeTime;
+    private Set<Course> courses = new HashSet<>();
 
     private Long id;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "tutor_id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -60,10 +63,20 @@ public class Tutor implements Serializable{
         this.changeTime = changeTime;
     }
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutor")
+    @JsonBackReference
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
     @Override
     public String toString() {
         return "Tutor{" +
-                title + " " + firstName + " " + lastName + 
+                title + " " + firstName + " " + lastName +
                 ", changeTime=" + changeTime +
                 '}';
     }

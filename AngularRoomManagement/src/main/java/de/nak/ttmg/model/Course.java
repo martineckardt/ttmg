@@ -77,7 +77,8 @@ public class Course implements Serializable {
         this.participants = participants;
     }
 
-    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "tutor_id", nullable = false)
     public Tutor getTutor() {
         return tutor;
     }
