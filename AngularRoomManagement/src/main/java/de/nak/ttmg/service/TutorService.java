@@ -2,6 +2,7 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.model.Tutor;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,9 +10,9 @@ import java.util.List;
  */
 public interface TutorService {
 
-    void createTutor(Tutor tutor);
+    Long createTutor(Tutor tutor);
 
-    List<Tutor> listTutors();
+    List<Tutor> listTutors(Date freeStart, Date freeEnd);
 
     Tutor loadTutor(Long id);
 }

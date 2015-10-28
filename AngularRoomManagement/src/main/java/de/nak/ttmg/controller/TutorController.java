@@ -5,6 +5,7 @@ import de.nak.ttmg.service.TutorService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,8 +16,10 @@ public class TutorController {
     private TutorService tutorService;
 
     @RequestMapping(value = "/tutors", method = RequestMethod.GET)
-    public List<Tutor> listTutors() {
-        return  tutorService.listTutors();
+    public List<Tutor> listTutors(@RequestParam(required = false, value = "freeStart") Date freeStart,
+                                  @RequestParam(required = false, value = "freeEnd") Date freeEnd
+                                 ) {
+        return  tutorService.listTutors(freeStart,freeEnd);
     }
 
     @RequestMapping(value = "/tutors/{id}",method = RequestMethod.GET)
@@ -25,8 +28,8 @@ public class TutorController {
     }
 
     @RequestMapping(value = "/tutors", method = RequestMethod.POST)
-    public void createTutor(@RequestBody Tutor tutor) {
-        tutorService.createTutor(tutor);
+    public Long createTutor(@RequestBody Tutor tutor) {
+        return tutorService.createTutor(tutor);
     }
 
     @Inject

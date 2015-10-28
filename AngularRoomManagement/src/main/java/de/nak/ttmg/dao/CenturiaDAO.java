@@ -22,12 +22,14 @@ public class CenturiaDAO {
         return entityManager.find(Centuria.class, id);
     }
 
-    public void create(Centuria centuria) {
+    public Long create(Centuria centuria) {
         if (centuria.getId() == null) {
             entityManager.persist(centuria);
+            return centuria.getId();
         } else {
             // tutor already persistet
         }
+        return null;
     }
 
     @PersistenceContext

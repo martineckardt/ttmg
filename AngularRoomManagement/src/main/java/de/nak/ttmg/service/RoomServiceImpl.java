@@ -3,6 +3,8 @@ package de.nak.ttmg.service;
 import de.nak.ttmg.dao.RoomDAO;
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
+import de.nak.ttmg.util.DateRangeException;
+import de.nak.ttmg.util.DateRangeValidator;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -19,6 +21,12 @@ public class RoomServiceImpl implements RoomService {
         //TODO Sebastian
         return roomDAO.findAll();
     }
+
+    //try {
+    //    DateRangeValidator.validateDateRange(freeStart, freeEnd);
+    //} catch (DateRangeException e) {
+    //    e.printStackTrace();
+    //}
 
     @Override
     public Room loadRoom(Long id) {

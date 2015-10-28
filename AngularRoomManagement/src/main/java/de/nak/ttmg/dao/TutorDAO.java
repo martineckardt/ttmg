@@ -15,19 +15,20 @@ public class TutorDAO {
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
     public List<Tutor> findAll() {
         return entityManager.createQuery("select tutor from Tutor tutor").getResultList();
-
     }
 
     public Tutor load(Long id) {
         return entityManager.find(Tutor.class, id);
     }
 
-    public void create(Tutor tutor) {
+    public Long create(Tutor tutor) {
         if (tutor.getId() == null) {
             entityManager.persist(tutor);
+            return tutor.getId();
         } else {
             // tutor already persistet
         }
+        return null;
     }
 
     @PersistenceContext

@@ -14,8 +14,8 @@ public class CenturiaServiceImpl implements CenturiaService {
     private CenturiaDAO centuriaDAO;
 
     @Override
-    public void createCenturia(Centuria centuria) {
-        centuriaDAO.create(centuria);
+    public Long createCenturia(Centuria centuria) {
+        return centuriaDAO.create(centuria);
     }
 
     @Override

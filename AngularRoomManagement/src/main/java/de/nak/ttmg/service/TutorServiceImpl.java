@@ -2,8 +2,11 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.TutorDAO;
 import de.nak.ttmg.model.Tutor;
+import de.nak.ttmg.util.DateRangeException;
+import de.nak.ttmg.util.DateRangeValidator;
 
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,12 +16,17 @@ public class TutorServiceImpl implements TutorService {
 
     private TutorDAO tutorDAO;
     @Override
-    public void createTutor(Tutor tutor) {
-        tutorDAO.create(tutor);
+    public Long createTutor(Tutor tutor) {
+        return tutorDAO.create(tutor);
     }
 
     @Override
-    public List<Tutor> listTutors() {
+    public List<Tutor> listTutors(Date freeStart, Date freeEnd) {
+        try {
+            DateRangeValidator.validateDateRange(freeStart,freeEnd);
+        } catch (DateRangeException e) {
+            e.printStackTrace();
+        }
         return tutorDAO.findAll();
     }
 

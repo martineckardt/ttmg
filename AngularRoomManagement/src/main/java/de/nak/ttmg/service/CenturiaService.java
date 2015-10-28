@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface CenturiaService {
 
-    void createCenturia(Centuria centuria);
+    Long createCenturia(Centuria centuria);
 
     List<Centuria> listCenturias();
 

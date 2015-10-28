@@ -29,19 +29,14 @@ public class RoomController {
         return roomService.listRooms(building, roomNbr, roomType, minSeats, freeStart, freeEnd);
     }
 
-    public String foo(@RequestParam(required = false) final String name) {
-        return "name: " + (name == null ? "null" : name);
-    }
-
     @RequestMapping(value = "/rooms/{id}", method = RequestMethod.GET)
     public Room getRoom(@PathVariable Long id) throws Exception {
         return roomService.loadRoom(id);
     }
 
     @RequestMapping(value = "/rooms", method = RequestMethod.POST)
-    public void createRoom(@RequestBody Room room) {
-        System.out.println("Create Room: " + room);
-        roomService.createRoom(room);
+    public Long createRoom(@RequestBody Room room) {
+        return roomService.createRoom(room);
     }
 
     @Inject
