@@ -15,14 +15,14 @@ import java.util.List;
  */
 public class RoomServiceImpl implements RoomService {
     private RoomDAO roomDAO;
-    private TimeValidatior validatior = new TimeValidatior();
+    private TimeValidator validator = new TimeValidator();
 
     @Override
     public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) throws ValidationException{
         DateRangeValidator.validateDateRange(freeBegin, freeEnd);
         List<Room> allRooms = roomDAO.findAll(building, roomNbr, type, minSeats);
         if (freeBegin != null && freeEnd != null) {
-            allRooms.stream().filter(room -> validatior.hasTime(room, freeBegin, freeEnd));
+            allRooms.stream().filter(room -> validator.hasTime(room, freeBegin, freeEnd));
         }
         return allRooms;
     }

@@ -2,7 +2,7 @@ package de.nak.ttmg.test;
 
 import de.nak.ttmg.model.*;
 import de.nak.ttmg.util.TimeConflictException;
-import de.nak.ttmg.util.TimeValidatior;
+import de.nak.ttmg.util.TimeValidator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 /**
  * Created by felixb on 28/10/15.
  */
-public class TimeValidatiorTest {
+public class TimeValidatorTest {
 
     private Room roomA101;
     private Room roomA102;
@@ -33,7 +33,7 @@ public class TimeValidatiorTest {
     private Event past;
     private Event future;
 
-    private TimeValidatior validator = new TimeValidatior();
+    private TimeValidator validator = new TimeValidator();
 
     @Before
     public void setUp() throws Exception {

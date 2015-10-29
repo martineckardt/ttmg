@@ -3,7 +3,7 @@ package de.nak.ttmg.service;
 import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.model.Course;
 import de.nak.ttmg.util.CourseValidator;
-import de.nak.ttmg.util.TimeValidatior;
+import de.nak.ttmg.util.TimeValidator;
 import de.nak.ttmg.util.ValidationException;
 
 import javax.inject.Inject;
@@ -15,14 +15,14 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
 
     private CourseDAO courseDAO;
-    private TimeValidatior timeValidatior = new TimeValidatior();
+    private TimeValidator timeValidator = new TimeValidator();
     private CourseValidator courseValidator = new CourseValidator();
 
     @Override
     public Long createCourse(Course course, boolean force) throws ValidationException {
         courseValidator.validateCourse(course, force);
         if (!force) {
-            timeValidatior.validateTime(course);
+            timeValidator.validateTime(course);
         }
         return courseDAO.create(course);
     }
@@ -31,7 +31,7 @@ public class CourseServiceImpl implements CourseService {
     public Boolean updateCourse(Course course, boolean force) throws ValidationException {
         courseValidator.validateCourse(course, force);
         if (!force) {
-            timeValidatior.validateTime(course);
+            timeValidator.validateTime(course);
         }
         courseDAO.update(course);
         return true;
