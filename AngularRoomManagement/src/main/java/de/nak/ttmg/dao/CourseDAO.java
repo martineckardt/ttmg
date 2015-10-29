@@ -19,7 +19,7 @@ public class CourseDAO {
 
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
     public List<Course> findAll() {
-        return entityManager.createQuery("select event from Course course").getResultList();
+        return entityManager.createQuery("select course from Course course").getResultList();
     }
 
     public Course load(Long id) throws ValidationException {

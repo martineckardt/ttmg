@@ -47,7 +47,7 @@ public class Event implements Serializable, HasReadableString {
         this.end = end;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id", nullable = false)
     public Course getCourse() {
         return course;

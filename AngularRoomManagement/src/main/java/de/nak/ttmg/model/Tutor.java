@@ -65,7 +65,7 @@ public class Tutor implements Serializable, HasAvailability {
         this.changeTime = changeTime;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutor")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tutor")
     @JsonBackReference
     public Set<Course> getCourses() {
         return courses;

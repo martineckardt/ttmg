@@ -1,5 +1,7 @@
 package de.nak.ttmg.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -75,8 +77,9 @@ public class Centuria implements Serializable, HasAvailability {
         this.year = year;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="course_centuria", joinColumns=@JoinColumn(name="centuria_id"), inverseJoinColumns=@JoinColumn(name="course_id"))
+    @JsonBackReference
     public Set<Course> getCourses() {
         return courses;
     }

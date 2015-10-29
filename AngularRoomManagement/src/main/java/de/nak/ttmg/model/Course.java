@@ -1,5 +1,7 @@
 package de.nak.ttmg.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -49,6 +51,7 @@ public class Course implements Serializable {
 
     @Column(name = "events")
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "course")
+    @JsonBackReference
     public Set<Event> getEvents() {
         return events;
     }
