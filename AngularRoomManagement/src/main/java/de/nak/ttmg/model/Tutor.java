@@ -85,6 +85,12 @@ public class Tutor implements Serializable, HasAvailability {
 
     @Transient
     @Override
+    public String getReadableString() {
+        return title + " " + firstName + " " + lastName;
+    }
+
+    @Transient
+    @Override
     public String getObjectType() {
         return "Tutor";
     }

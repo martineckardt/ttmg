@@ -95,6 +95,12 @@ public class Room implements Serializable, HasAvailability {
 
     @Transient
     @Override
+    public String getReadableString() {
+        return building + roomNumber;
+    }
+
+    @Transient
+    @Override
     public String getObjectType() {
         return "Room";
     }

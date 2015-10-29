@@ -105,6 +105,12 @@ public class Centuria implements Serializable, HasAvailability {
 
     @Transient
     @Override
+    public String getReadableString() {
+        return "" + program + year + letter;
+    }
+
+    @Transient
+    @Override
     public String getObjectType() {
         return "Centuria";
     }

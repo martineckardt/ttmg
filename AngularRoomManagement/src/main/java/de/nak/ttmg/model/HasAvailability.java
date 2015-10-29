@@ -11,4 +11,6 @@ public interface HasAvailability {
     Set<Course> getCourses();
 
     String getObjectType();
+
+    String getReadableString();
 }
