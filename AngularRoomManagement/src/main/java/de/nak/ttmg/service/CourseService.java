@@ -15,7 +15,7 @@ public interface CourseService {
 
     void updateCourse(Course course, boolean force) throws ValidationException;
 
-    List<Course> listCourses();
+    List<Course> listCourses() throws ValidationException;
 
     Course loadCourse(Long id) throws ValidationException;
 

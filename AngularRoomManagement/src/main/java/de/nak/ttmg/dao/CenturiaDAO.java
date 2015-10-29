@@ -1,6 +1,10 @@
 package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Centuria;
+import de.nak.ttmg.util.EntityAlreadyExistsException;
+import de.nak.ttmg.util.InvalidParameterException;
+import de.nak.ttmg.util.ValidationException;
+import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,14 +26,19 @@ public class CenturiaDAO {
         return entityManager.find(Centuria.class, id);
     }
 
-    public Long create(Centuria centuria) {
+    public Long create(Centuria centuria) throws ValidationException{
         if (centuria.getId() == null) {
-            entityManager.persist(centuria);
-            return centuria.getId();
+            try {
+                entityManager.persist(centuria);
+                return centuria.getId();
+            } catch (ConstraintViolationException e) {
+                throw new EntityAlreadyExistsException();
+            } catch (Exception e) {
+                throw new ValidationException(e);
+            }
         } else {
-            // tutor already persistet
+            throw new InvalidParameterException("centuriaId", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
         }
-        return null;
     }
 
     @PersistenceContext

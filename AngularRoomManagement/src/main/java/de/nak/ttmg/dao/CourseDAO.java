@@ -34,8 +34,10 @@ public class CourseDAO {
         if (course.getId() == null) {
             try {
                 entityManager.persist(course);
-            }catch (ConstraintViolationException e) {
+            } catch (ConstraintViolationException e) {
                 throw new EntityAlreadyExistsException();
+            } catch (Exception e) {
+                throw new ValidationException(e);
             }
             return course.getId();
         } else {

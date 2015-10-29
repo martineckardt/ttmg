@@ -3,6 +3,7 @@ package de.nak.ttmg.service;
 import de.nak.ttmg.dao.CenturiaDAO;
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.StudyProgram;
+import de.nak.ttmg.util.ValidationException;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -15,7 +16,7 @@ public class CenturiaServiceImpl implements CenturiaService {
     private CenturiaDAO centuriaDAO;
 
     @Override
-    public Long createCenturia(Centuria centuria) {
+    public Long createCenturia(Centuria centuria) throws ValidationException {
         return centuriaDAO.create(centuria);
     }
 

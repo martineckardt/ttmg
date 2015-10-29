@@ -22,6 +22,10 @@ public class CourseValidator {
         if (events == null || events.isEmpty()) {
             throw new InvalidParameterException("events", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
+        boolean validDates = events.stream().allMatch(event -> event.getBegin().before(event.getEnd()));
+        if (!validDates) {
+            throw new InvalidParameterException("events", InvalidParameterException.InvalidParameterType.INCONSISTENT);
+        }
     }
 
     private void validateRooms(Set<Room> rooms, Set<Centuria> centurias, boolean force) throws ValidationException {
@@ -55,7 +59,8 @@ public class CourseValidator {
         if (name == null || name.isEmpty()) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        if (!name.chars().allMatch(x -> Character.isLetterOrDigit(x))) {
+        boolean validCharacters = name.chars().allMatch(x -> Character.isLetterOrDigit(x));
+        if (!validCharacters) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
         }
     }

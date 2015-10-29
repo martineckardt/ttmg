@@ -5,6 +5,7 @@ import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.util.DateRangeException;
 import de.nak.ttmg.util.DateRangeValidator;
+import de.nak.ttmg.util.ValidationException;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -34,8 +35,12 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Long createRoom(Room room) {
-        return roomDAO.create(room);
+    public Long createRoom(Room room) throws ValidationException {
+        try {
+            return roomDAO.create(room);
+        } catch (Exception e) {
+            throw new ValidationException(e);
+        }
     }
 
     @Inject

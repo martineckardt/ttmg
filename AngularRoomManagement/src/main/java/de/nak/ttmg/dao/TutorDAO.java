@@ -1,6 +1,10 @@
 package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Tutor;
+import de.nak.ttmg.util.EntityAlreadyExistsException;
+import de.nak.ttmg.util.InvalidParameterException;
+import de.nak.ttmg.util.ValidationException;
+import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,14 +25,19 @@ public class TutorDAO {
         return entityManager.find(Tutor.class, id);
     }
 
-    public Long create(Tutor tutor) {
+    public Long create(Tutor tutor) throws ValidationException {
         if (tutor.getId() == null) {
-            entityManager.persist(tutor);
-            return tutor.getId();
+            try {
+                entityManager.persist(tutor);
+                return tutor.getId();
+            } catch (ConstraintViolationException e) {
+                throw new EntityAlreadyExistsException();
+            } catch (Exception e) {
+                throw new ValidationException(e);
+            }
         } else {
-            // tutor already persistet
+            throw new InvalidParameterException("tutorId", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
         }
-        return null;
     }
 
     @PersistenceContext

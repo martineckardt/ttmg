@@ -4,6 +4,8 @@ import de.nak.ttmg.dao.TutorDAO;
 import de.nak.ttmg.model.Tutor;
 import de.nak.ttmg.util.DateRangeException;
 import de.nak.ttmg.util.DateRangeValidator;
+import de.nak.ttmg.util.TutorValidator;
+import de.nak.ttmg.util.ValidationException;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -15,23 +17,23 @@ import java.util.List;
 public class TutorServiceImpl implements TutorService {
 
     private TutorDAO tutorDAO;
+    private TutorValidator tutorValidator = new TutorValidator();
+
     @Override
-    public Long createTutor(Tutor tutor) {
+    public Long createTutor(Tutor tutor) throws ValidationException {
+        tutorValidator.validateTutor(tutor);
         return tutorDAO.create(tutor);
     }
 
     @Override
-    public List<Tutor> listTutors(Date freeStart, Date freeEnd) {
-        try {
-            DateRangeValidator.validateDateRange(freeStart,freeEnd);
-        } catch (DateRangeException e) {
-            e.printStackTrace();
-        }
+    public List<Tutor> listTutors(Date freeStart, Date freeEnd)  throws ValidationException{
+        DateRangeValidator.validateDateRange(freeStart,freeEnd);
+        //TODO
         return tutorDAO.findAll();
     }
 
     @Override
-    public Tutor loadTutor(Long id) {
+    public Tutor loadTutor(Long id) throws ValidationException {
        return tutorDAO.load(id);
     }
 

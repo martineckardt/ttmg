@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 /**
  * Created by felixb on 29/10/15.
  */
-public class ServerResponse<T extends Serializable> {
+public class ServerResponse<T> implements Serializable{
         private T payload;
     private ValidationException exception;
 

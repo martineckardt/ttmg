@@ -23,13 +23,18 @@ public class CourseController {
     private CourseService courseService;
 
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
-    public List<Course> listCourses(@RequestParam(required = false, value = "centuriaId") Long centuriaId,
+    public ServerResponse<List<Course>> listCourses(@RequestParam(required = false, value = "centuriaId") Long centuriaId,
                                   @RequestParam(required = false, value = "tutorId") Long tutorId,
                                   @RequestParam(required = false, value = "roomId") Long roomId,
                                   @RequestParam(required = false, value = "rangeStart") Date rangeStart,
                                   @RequestParam(required = false, value = "rangeEnd") Date rangeEnd) {
 
-        return courseService.listCourses();
+        try {
+            //TODO
+            return new ServerResponse<>(courseService.listCourses());
+        } catch (ValidationException e) {
+            return new ServerResponse<>(e);
+        }
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)

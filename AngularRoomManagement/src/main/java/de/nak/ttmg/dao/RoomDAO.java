@@ -1,6 +1,10 @@
 package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Room;
+import de.nak.ttmg.util.EntityAlreadyExistsException;
+import de.nak.ttmg.util.InvalidParameterException;
+import de.nak.ttmg.util.ValidationException;
+import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,14 +26,21 @@ public class RoomDAO {
         return entityManager.find(Room.class, id);
     }
 
-    public Long create(Room room) {
+    public Long create(Room room) throws ValidationException {
         if (room.getId() == null) {
-            entityManager.persist(room);
-            return room.getId();
+            try {
+                entityManager.persist(room);
+                return room.getId();
+            } catch (ConstraintViolationException e) {
+                throw new EntityAlreadyExistsException();
+            } catch (Exception e) {
+                throw new ValidationException(e);
+            } catch (Throwable t) {
+                throw new ValidationException("Error");
+            }
         } else {
-            //Already exist
+            throw new InvalidParameterException("roomId", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
         }
-        return null;
     }
 
     @PersistenceContext
