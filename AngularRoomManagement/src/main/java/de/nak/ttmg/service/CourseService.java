@@ -1,6 +1,8 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.model.*;
+import de.nak.ttmg.util.TimeConflictException;
+import de.nak.ttmg.util.ValidationException;
 
 import java.util.List;
 
@@ -9,13 +11,13 @@ import java.util.List;
  */
 public interface CourseService {
 
-    Long createCourse(Course course);
+    Long createCourse(Course course, boolean force) throws ValidationException;
 
-    void updateCourse(Course course);
+    void updateCourse(Course course, boolean force) throws ValidationException;
 
     List<Course> listCourses();
 
-    Course loadCourse(Long id);
+    Course loadCourse(Long id) throws ValidationException;
 
-    void deleteCourse(Long id);
+    void deleteCourse(Long id) throws ValidationException;
 }
