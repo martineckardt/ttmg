@@ -1,6 +1,7 @@
 package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Room;
+import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.util.ValidationException;
 
 import javax.persistence.EntityManager;
@@ -15,7 +16,8 @@ public class RoomDAO {
     private EntityManager entityManager;
 
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
-    public List<Room> findAll() {
+    public List<Room> findAll(String building, String roomNbr, RoomType type, Integer minSeats) {
+        //TODO Sebastian
         return entityManager.createQuery("select room from Room room").getResultList();
     }
 

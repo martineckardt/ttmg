@@ -15,18 +15,17 @@ import java.util.List;
  */
 public class RoomServiceImpl implements RoomService {
     private RoomDAO roomDAO;
+    private TimeValidatior validatior = new TimeValidatior();
 
     @Override
-    public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) {
-        //TODO Sebastian
-        return roomDAO.findAll();
+    public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) throws ValidationException{
+        DateRangeValidator.validateDateRange(freeBegin, freeEnd);
+        List<Room> allRooms = roomDAO.findAll(building, roomNbr, type, minSeats);
+        if (freeBegin != null && freeEnd != null) {
+            allRooms.stream().filter(room -> validatior.hasTime(room, freeBegin, freeEnd));
+        }
+        return allRooms;
     }
-
-    //try {
-    //    DateRangeValidator.validateDateRange(freeStart, freeEnd);
-    //} catch (DateRangeException e) {
-    //    e.printStackTrace();
-    //}
 
     @Override
     public Room loadRoom(Long id) {

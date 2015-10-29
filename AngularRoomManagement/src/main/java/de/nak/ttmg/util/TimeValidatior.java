@@ -74,6 +74,15 @@ public class TimeValidatior {
         checkAdjustedTime(object,newStart,newEnd,ignore);
     }
 
+    public boolean hasTime(HasAvailability object, Date start, Date end) {
+        try {
+            validateTime(object,start,end,null);
+            return true;
+        } catch (TimeConflictException e) {
+            return false;
+        }
+    }
+
     private void checkAdjustedTime(HasAvailability object, Date start, Date end, Course ignore) throws TimeConflictException {
         List<Event> failures = new ArrayList<>();
         object.getCourses().stream().filter(course -> course != ignore).forEach(course -> {
