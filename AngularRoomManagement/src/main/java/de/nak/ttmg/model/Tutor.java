@@ -86,7 +86,19 @@ public class Tutor implements Serializable, HasAvailability {
     @Transient
     @Override
     public String getReadableString() {
-        return title + " " + firstName + " " + lastName;
+        StringBuilder sb = new StringBuilder();
+        if (title != null && !title.isEmpty()) {
+            sb.append(title);
+            sb.append(" ");
+        }
+        if (firstName != null && !firstName.isEmpty()) {
+            sb.append(firstName);
+            sb.append(" ");
+        }
+        if (lastName != null && !lastName.isEmpty()) {
+            sb.append(lastName);
+        }
+        return sb.toString().trim();
     }
 
     @Transient
