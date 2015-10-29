@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  * Created by felixb on 28/10/15.
  */
-@ResponseStatus(value=HttpStatus.NOT_FOUND, reason="Test Bla Bla Fooooo")
 public class InvalidParameterException extends ValidationException {
 
     public enum InvalidParameterType{
@@ -34,5 +33,19 @@ public class InvalidParameterException extends ValidationException {
     public InvalidParameterException(String parameterName, InvalidParameterType type) {
         super("The parameter " + parameterName + " " + type.getDebugText());
         this.type = type;
+        this.parameterName = parameterName;
+    }
+
+    public String getParameterName() {
+        return parameterName;
+    }
+
+    public InvalidParameterType getType() {
+        return type;
+    }
+
+    @Override
+    public StackTraceElement[] getStackTrace() {
+        return null;
     }
 }

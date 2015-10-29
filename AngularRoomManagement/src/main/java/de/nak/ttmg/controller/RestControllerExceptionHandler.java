@@ -1,13 +1,11 @@
 package de.nak.ttmg.controller;
 
-import de.nak.ttmg.util.ExceptionInfo;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.util.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import sun.security.validator.ValidatorException;
 
 /**
  * Created by felixb on 29/10/15.
@@ -16,10 +14,45 @@ import sun.security.validator.ValidatorException;
 public class RestControllerExceptionHandler {
 
     @ResponseStatus(HttpStatus.CONFLICT)  // 409
-    @ExceptionHandler(ValidationException.class)
+    @ExceptionHandler(TimeConflictException.class)
     @ResponseBody
-    Exception handleException(Exception e) {
-        System.out.println("Catched Exception: " + e);
+    TimeConflictException handleTCException(TimeConflictException e) {
         return e;
     }
+
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    @ExceptionHandler(InvalidParameterException.class)
+    @ResponseBody
+    InvalidParameterException handleIPException(InvalidParameterException e) {
+        return e;
+    }
+
+    @ResponseStatus(HttpStatus.ALREADY_REPORTED)
+    @ExceptionHandler(EntityAlreadyExistsException.class)
+    @ResponseBody
+    EntityAlreadyExistsException handleEAEException(EntityAlreadyExistsException e) {
+        return e;
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseBody
+    EntityNotFoundException handleENFException(EntityNotFoundException e) {
+        return e;
+    }
+
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    @ExceptionHandler(DateRangeException.class)
+    @ResponseBody
+    DateRangeException handleENFException(DateRangeException e) {
+        return e;
+    }
+
+    /*@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(ValidationException.class)
+    @ResponseBody
+    ValidationException handleGeneralException(ValidationException e) {
+        return e;
+    }*/
+
 }
