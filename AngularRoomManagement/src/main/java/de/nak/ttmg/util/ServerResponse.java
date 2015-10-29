@@ -1,29 +1,51 @@
 package de.nak.ttmg.util;
 
 import java.io.Serializable;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * Created by felixb on 29/10/15.
  */
 public class ServerResponse<T> implements Serializable{
         private T payload;
-    private ValidationException exception;
+    private ValidationException generalException;
+    private TimeConflictException timeConflictException;
+    private EntityNotFoundException entityNotFoundException;
+    private DateRangeException dateRangeException;
+    private InvalidParameterException invalidParameterException;
+    private EntityAlreadyExistsException entityAlreadyExistsException;
 
     public ServerResponse() {
         payload = null;
-        exception = null;
+        this.generalException = null;
+        this.timeConflictException = null;
+        this.entityAlreadyExistsException = null;
+        this.entityNotFoundException = null;
+        this.dateRangeException = null;
+        this.invalidParameterException = null;
     }
 
-    public ServerResponse(T payload) {
-        this.payload = payload;
-        this.exception = null;
-    }
-
-    public ServerResponse(ValidationException exception) {
-        this.payload = null;
-        this.exception = exception;
+    public ServerResponse(ServerTask<T> callback) {
+        this.generalException = null;
+        this.timeConflictException = null;
+        this.entityAlreadyExistsException = null;
+        this.entityNotFoundException = null;
+        this.dateRangeException = null;
+        this.invalidParameterException = null;
+        try {
+            this.payload = callback.call();
+        } catch (TimeConflictException e) {
+            this.timeConflictException = e;
+        } catch (EntityAlreadyExistsException e) {
+            this.entityAlreadyExistsException = e;
+        } catch (DateRangeException e) {
+            this.dateRangeException = e;
+        } catch (InvalidParameterException e) {
+            this.invalidParameterException = e;
+        } catch (EntityNotFoundException e) {
+            this.entityNotFoundException = e;
+        } catch (ValidationException e) {
+            this.generalException = e;
+        }
     }
 
 
@@ -31,7 +53,27 @@ public class ServerResponse<T> implements Serializable{
         return payload;
     }
 
-    public ValidationException getException() {
-        return exception;
+    public ValidationException getGeneralException() {
+        return generalException;
+    }
+
+    public TimeConflictException getTimeConflictException() {
+        return timeConflictException;
+    }
+
+    public EntityNotFoundException getEntityNotFoundException() {
+        return entityNotFoundException;
+    }
+
+    public DateRangeException getDateRangeException() {
+        return dateRangeException;
+    }
+
+    public InvalidParameterException getInvalidParameterException() {
+        return invalidParameterException;
+    }
+
+    public EntityAlreadyExistsException getEntityAlreadyExistsException() {
+        return entityAlreadyExistsException;
     }
 }

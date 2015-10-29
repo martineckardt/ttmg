@@ -28,59 +28,38 @@ public class CourseController {
                                   @RequestParam(required = false, value = "roomId") Long roomId,
                                   @RequestParam(required = false, value = "rangeStart") Date rangeStart,
                                   @RequestParam(required = false, value = "rangeEnd") Date rangeEnd) {
-
-        try {
-            //TODO
-            return new ServerResponse<>(courseService.listCourses());
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        //TODO
+        return new ServerResponse<>(()->courseService.listCourses());
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)
     public ServerResponse<Course> getCourse(@PathVariable Long id) {
-        try {
-            Course course = courseService.loadCourse(id);
-            return new ServerResponse<>(course);
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        return new ServerResponse<>(()->courseService.loadCourse(id));
     }
 
     @RequestMapping(value = "/courses", method = RequestMethod.POST)
     public ServerResponse<Long> createCourse(@RequestBody Course course,
                             @RequestParam(required = false, value = "force") Boolean force) {
-        try {
-            Long result = courseService.createCourse(course, force);
-            return new ServerResponse<>(result);
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        return new ServerResponse<>(()->courseService.createCourse(course, force));
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.PUT)
     public ServerResponse<Boolean> saveCourse(@PathVariable Long id,
                           @RequestBody Course course,
                           @RequestParam(required = false, value = "force") Boolean force) {
-        if (course != null && course.getId() != null && course.getId().equals(id)) {
-            try {
-                courseService.updateCourse(course, force);
-                return new ServerResponse<>(true);
-            } catch (ValidationException e) {
-                return new ServerResponse<>(e);
+        return new ServerResponse<>(()->{
+            //TODO Move logic to Service
+            if (course != null && course.getId() != null && course.getId().equals(id)) {
+                return courseService.updateCourse(course, force);
+            } else {
+                throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
             }
-        }
-        return new ServerResponse<>(new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT));
+        });
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.DELETE)
     public ServerResponse<Boolean> deleteCourse(@PathVariable Long id) {
-        try {
-            courseService.deleteCourse(id);
-            return new ServerResponse<>(true);
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        return new ServerResponse<>(()->courseService.deleteCourse(id));
     }
 
     @Inject

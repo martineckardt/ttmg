@@ -3,11 +3,11 @@ package de.nak.ttmg.service;
 import de.nak.ttmg.dao.RoomDAO;
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
-import de.nak.ttmg.util.DateRangeException;
-import de.nak.ttmg.util.DateRangeValidator;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.util.*;
+import org.hibernate.exception.ConstraintViolationException;
 
 import javax.inject.Inject;
+import javax.persistence.RollbackException;
 import java.util.Date;
 import java.util.List;
 
@@ -36,10 +36,17 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Long createRoom(Room room) throws ValidationException {
-        try {
-            return roomDAO.create(room);
-        } catch (Exception e) {
-            throw new ValidationException(e);
+        if (room.getId() == null) {
+            try {
+                return roomDAO.create(room);
+            } catch (Exception e) {
+                if (e.getCause() instanceof ConstraintViolationException) {
+                    throw new EntityAlreadyExistsException();
+                }
+                throw new ValidationException(e.getCause());
+            }
+        } else {
+            throw new InvalidParameterException("roomId", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
         }
     }
 

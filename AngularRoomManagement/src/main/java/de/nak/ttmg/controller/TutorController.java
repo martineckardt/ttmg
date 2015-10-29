@@ -22,29 +22,17 @@ public class TutorController {
     public ServerResponse<List<Tutor>> listTutors(@RequestParam(required = false, value = "freeStart") Date freeStart,
                                   @RequestParam(required = false, value = "freeEnd") Date freeEnd
                                  ) {
-        try {
-            return new ServerResponse<>(tutorService.listTutors(freeStart, freeEnd));
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        return new ServerResponse<>(()->tutorService.listTutors(freeStart, freeEnd));
     }
 
     @RequestMapping(value = "/tutors/{id}",method = RequestMethod.GET)
     public ServerResponse<Tutor> getTutor(@PathVariable Long id) {
-        try {
-            return new ServerResponse<>(tutorService.loadTutor(id));
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        return new ServerResponse<>(()->tutorService.loadTutor(id));
     }
 
     @RequestMapping(value = "/tutors", method = RequestMethod.POST)
     public ServerResponse<Long> createTutor(@RequestBody Tutor tutor) {
-        try {
-            return new ServerResponse<>(tutorService.createTutor(tutor));
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        return new ServerResponse<>(()->tutorService.createTutor(tutor));
     }
 
     @Inject

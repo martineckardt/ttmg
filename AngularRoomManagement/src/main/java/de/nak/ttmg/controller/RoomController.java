@@ -27,33 +27,19 @@ public class RoomController {
                                 @RequestParam(required = false, value = "freeStart") Date freeStart,
                                 @RequestParam(required = false, value = "freeEnd") Date freeEnd
                                 ) {
-        try {
-            RoomType roomType = RoomType.typeForString(roomTypeString);
-            return new ServerResponse<>(roomService.listRooms(building, roomNbr, roomType, minSeats, freeStart, freeEnd));
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        return new ServerResponse<>(()-> {
+                RoomType roomType = RoomType.typeForString(roomTypeString);
+                return roomService.listRooms(building, roomNbr, roomType, minSeats, freeStart, freeEnd);});
     }
 
     @RequestMapping(value = "/rooms/{id}", method = RequestMethod.GET)
-    public ServerResponse<Room> getRoom(@PathVariable Long id) {
-        try {
-            return new ServerResponse<>(roomService.loadRoom(id));
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+    public ServerResponse<Room> getRoom(@PathVariable final Long id) {
+        return new ServerResponse<>(()-> roomService.loadRoom(id));
     }
 
     @RequestMapping(value = "/rooms", method = RequestMethod.POST)
     public ServerResponse<Long> createRoom(@RequestBody Room room) {
-        try {
-            Long result = roomService.createRoom(room);
-            return new ServerResponse<>(result);
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        } catch (Exception e) {
-            return new ServerResponse<>(new ValidationException("Foo: " + e.getClass().toString()));
-        }
+        return new ServerResponse<>(()-> roomService.createRoom(room));
     }
 
     @Inject

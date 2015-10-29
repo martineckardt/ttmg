@@ -21,30 +21,18 @@ public class CenturiaController {
     @RequestMapping(value = "/centurias", method = RequestMethod.GET)
     public ServerResponse<List<Centuria>> listRooms(@RequestParam(required = false, value = "year") Integer year,
                                     @RequestParam(required = false, value = "program") String studyProgram) {
-        try {
-            StudyProgram program = StudyProgram.programForString(studyProgram);
-            return new ServerResponse<>(centuriaService.listCenturias(year, program));
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        StudyProgram program = StudyProgram.programForString(studyProgram);
+        return new ServerResponse<>(()->centuriaService.listCenturias(year, program));
     }
 
     @RequestMapping(value = "/centurias/{id}", method = RequestMethod.GET)
     public ServerResponse<Centuria> getRoom(@PathVariable Long id) {
-        try {
-            return new ServerResponse<>(centuriaService.loadCenturia(id));
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        return new ServerResponse<>(()->centuriaService.loadCenturia(id));
     }
 
     @RequestMapping(value = "/centurias", method = RequestMethod.POST)
     public ServerResponse<Long> createCenturia(@RequestBody Centuria centuria) {
-        try {
-            return new ServerResponse<>(centuriaService.createCenturia(centuria));
-        } catch (ValidationException e) {
-            return new ServerResponse<>(e);
-        }
+        return new ServerResponse<>(()-> centuriaService.createCenturia(centuria));
     }
 
     @Inject

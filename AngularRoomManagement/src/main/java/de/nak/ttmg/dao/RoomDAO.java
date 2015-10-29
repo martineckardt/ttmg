@@ -27,20 +27,8 @@ public class RoomDAO {
     }
 
     public Long create(Room room) throws ValidationException {
-        if (room.getId() == null) {
-            try {
-                entityManager.persist(room);
-                return room.getId();
-            } catch (ConstraintViolationException e) {
-                throw new EntityAlreadyExistsException();
-            } catch (Exception e) {
-                throw new ValidationException(e);
-            } catch (Throwable t) {
-                throw new ValidationException("Error");
-            }
-        } else {
-            throw new InvalidParameterException("roomId", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
-        }
+        entityManager.persist(room);
+        return room.getId();
     }
 
     @PersistenceContext

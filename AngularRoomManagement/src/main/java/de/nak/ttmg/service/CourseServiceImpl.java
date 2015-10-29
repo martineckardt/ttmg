@@ -1,5 +1,6 @@
 package de.nak.ttmg.service;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import de.nak.ttmg.controller.CourseController;
 import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.model.Course;
@@ -31,12 +32,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void updateCourse(Course course, boolean force) throws ValidationException {
+    public Boolean updateCourse(Course course, boolean force) throws ValidationException {
         courseValidator.validateCourse(course, force);
         if (!force) {
             timeValidatior.validateTime(course);
         }
         courseDAO.update(course);
+        return true;
     }
 
     @Override
@@ -51,9 +53,10 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void deleteCourse(Long id) throws ValidationException{
+    public Boolean deleteCourse(Long id) throws ValidationException{
         Course course = loadCourse(id);
         courseDAO.delete(course);
+        return true;
     }
 
     @Inject
