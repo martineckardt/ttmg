@@ -49,7 +49,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Boolean deleteCourse(Long id) throws ValidationException{
+    public Boolean deleteCourse(Long id) throws ValidationException {
         Course course = loadCourse(id);
         courseDAO.delete(course);
         return true;

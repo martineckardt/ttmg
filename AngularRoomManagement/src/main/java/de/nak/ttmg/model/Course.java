@@ -58,7 +58,7 @@ public class Course implements Serializable {
     }
 
     @Column(name = "rooms")
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "courses")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "courses")
     public Set<Room> getRooms() {
         return rooms;
     }
@@ -68,7 +68,7 @@ public class Course implements Serializable {
     }
 
     @Column(name = "participants")
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "courses")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "courses")
     public Set<Centuria> getParticipants() {
         return participants;
     }

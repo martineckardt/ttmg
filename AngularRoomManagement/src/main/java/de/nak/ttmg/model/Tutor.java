@@ -92,7 +92,7 @@ public class Tutor implements Serializable, HasAvailability {
     @Transient
     @Override
     public String getObjectType() {
-        return "Tutor";
+        return "tutor";
     }
 
     @Transient

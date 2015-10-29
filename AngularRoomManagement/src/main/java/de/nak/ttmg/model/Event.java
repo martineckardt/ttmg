@@ -9,7 +9,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "event")
-public class Event implements Serializable {
+public class Event implements Serializable, HasReadableString {
 
     private Course course;
 
@@ -63,5 +63,13 @@ public class Event implements Serializable {
                 "begin=" + begin +
                 ", end=" + end +
                 '}';
+    }
+
+    @Transient
+    @Override
+    public String getReadableString() {
+        String date1 = begin.toString();
+        String date2 = begin.toString();
+        return date1 + " - " + date2;
     }
 }

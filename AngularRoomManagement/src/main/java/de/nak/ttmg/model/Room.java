@@ -86,7 +86,7 @@ public class Room implements Serializable, HasAvailability {
         this.type = type;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="course_room", joinColumns=@JoinColumn(name="room_id"), inverseJoinColumns=@JoinColumn(name="course_id"))
     @JsonBackReference
     public Set<Course> getCourses() {
@@ -102,7 +102,7 @@ public class Room implements Serializable, HasAvailability {
     @Transient
     @Override
     public String getObjectType() {
-        return "Room";
+        return "room";
     }
 
     public void setCourses(Set<Course> courses) {

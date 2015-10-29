@@ -4,11 +4,12 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import de.nak.ttmg.model.HasAvailability;
+import de.nak.ttmg.model.*;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
+import java.util.Set;
 
 /**
  * Created by felixb on 29/10/15.
@@ -27,6 +28,7 @@ public class PDFCreator {
             //special font sizes
             Font bfBold12 = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, new BaseColor(0, 0, 0));
             Font bf12 = new Font(Font.FontFamily.TIMES_ROMAN, 12);
+            Font bf20 = new Font(Font.FontFamily.TIMES_ROMAN, 20);
 
             docWriter = PdfWriter.getInstance(doc , stream);
 
@@ -41,72 +43,42 @@ public class PDFCreator {
             //open document
             doc.open();
 
-            //create a paragraph
-            Paragraph paragraph = new Paragraph("iText ® is a library that allows you to create and " +
-                    "manipulate PDF documents. It enables developers looking to enhance web and other " +
-                    "applications with dynamic PDF document generation and/or manipulation.");
 
+            Paragraph header = new Paragraph("Time Table for " + object.getObjectType() + " " + object.getReadableString(), bf20);
+            doc.add(header);
 
             //specify column widths
-            float[] columnWidths = {1.5f, 2f, 5f, 2f};
+            float[] columnWidths = {1.5f, 2f, 5f, 3f, 2f};
             //create PDF table with the given widths
             PdfPTable table = new PdfPTable(columnWidths);
             // set table width a percentage of the page width
             table.setWidthPercentage(90f);
 
             //insert column headings
-            insertCell(table, "Order No", Element.ALIGN_RIGHT, 1, bfBold12);
-            insertCell(table, "Account No", Element.ALIGN_LEFT, 1, bfBold12);
-            insertCell(table, "Account Name", Element.ALIGN_LEFT, 1, bfBold12);
-            insertCell(table, "Order Total", Element.ALIGN_RIGHT, 1, bfBold12);
+            insertCell(table, "Course Name", Element.ALIGN_CENTER, 1, bfBold12);
+            insertCell(table, "Centurias", Element.ALIGN_CENTER, 1, bfBold12);
+            insertCell(table, "Rooms", Element.ALIGN_CENTER, 1, bfBold12);
+            insertCell(table, "Tutor", Element.ALIGN_CENTER, 1, bfBold12);
+            insertCell(table, "Events", Element.ALIGN_CENTER, 1, bfBold12);
             table.setHeaderRows(1);
 
-            //insert an empty row
-            insertCell(table, "", Element.ALIGN_LEFT, 4, bfBold12);
-            //create section heading by cell merging
-            insertCell(table, "New York Orders ...", Element.ALIGN_LEFT, 4, bfBold12);
-            double orderTotal, total = 0;
-
             //just some random data to fill
-            for(int x=1; x<5; x++){
-
-                insertCell(table, "10010" + x, Element.ALIGN_RIGHT, 1, bf12);
-                insertCell(table, "ABC00" + x, Element.ALIGN_LEFT, 1, bf12);
-                insertCell(table, "This is Customer Number ABC00" + x, Element.ALIGN_LEFT, 1, bf12);
-
-                orderTotal = Double.valueOf(df.format(Math.random() * 1000));
-                total = total + orderTotal;
-                insertCell(table, df.format(orderTotal), Element.ALIGN_RIGHT, 1, bf12);
-
+            for(Course course : object.getCourses()){
+                insertCell(table, course.getName(), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, convertObjectToString(course.getParticipants()), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, convertObjectToString(course.getRooms()), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, course.getTutor().getReadableString(), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, convertObjectToString(course.getEvents()), Element.ALIGN_LEFT, 1, bf12);
             }
-            //merge the cells to create a footer for that section
-            insertCell(table, "New York Total...", Element.ALIGN_RIGHT, 3, bfBold12);
-            insertCell(table, df.format(total), Element.ALIGN_RIGHT, 1, bfBold12);
-
-            //repeat the same as above to display another location
-            insertCell(table, "", Element.ALIGN_LEFT, 4, bfBold12);
-            insertCell(table, "California Orders ...", Element.ALIGN_LEFT, 4, bfBold12);
-            orderTotal = 0;
-
-            for(int x=1; x<7; x++){
-
-                insertCell(table, "20020" + x, Element.ALIGN_RIGHT, 1, bf12);
-                insertCell(table, "XYZ00" + x, Element.ALIGN_LEFT, 1, bf12);
-                insertCell(table, "This is Customer Number XYZ00" + x, Element.ALIGN_LEFT, 1, bf12);
-
-                orderTotal = Double.valueOf(df.format(Math.random() * 1000));
-                total = total + orderTotal;
-                insertCell(table, df.format(orderTotal), Element.ALIGN_RIGHT, 1, bf12);
-
+            if (object.getCourses().isEmpty()) {
+                Paragraph emptyMessage = new Paragraph("This " + object.getObjectType() + " has no courses.");
+                doc.add(emptyMessage);
+            } else {
+                //add the PDF table to the paragraph
+                Paragraph paragraph = new Paragraph(" "); // Adds linebreak
+                paragraph.add(table);
+                doc.add(paragraph);
             }
-            insertCell(table, "California Total...", Element.ALIGN_RIGHT, 3, bfBold12);
-            insertCell(table, df.format(total), Element.ALIGN_RIGHT, 1, bfBold12);
-
-            //add the PDF table to the paragraph
-            paragraph.add(table);
-            // add the paragraph to the document
-            doc.add(paragraph);
-
         }
         catch (DocumentException dex)
         {
@@ -144,5 +116,16 @@ public class PDFCreator {
         //add the call to the table
         table.addCell(cell);
 
+    }
+
+    private String convertObjectToString(Set<? extends HasReadableString> objects) {
+        StringBuilder sb = new StringBuilder();
+        for (HasReadableString object: objects) {
+            sb.append(object.getReadableString());
+            sb.append(", ");
+        }
+        String string = sb.toString();
+        string = string.substring(0, string.length()-2);
+        return string;
     }
 }

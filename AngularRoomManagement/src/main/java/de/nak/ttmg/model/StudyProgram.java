@@ -38,4 +38,8 @@ public enum StudyProgram {
     public String toString() {
         return getDisplayName();
     }
+
+    public String getLetter() {
+        return letter.toString();
+    }
 }
