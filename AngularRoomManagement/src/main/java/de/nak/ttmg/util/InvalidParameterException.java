@@ -16,7 +16,7 @@ public class InvalidParameterException extends ValidationException {
         INVALID_NOT_NULL("must be null"),
         INCONSISTENT("is inconsistent with object");
 
-        private String debugText;
+        private final String debugText;
 
         InvalidParameterType(String debugText) {
             this.debugText = debugText;
@@ -27,8 +27,8 @@ public class InvalidParameterException extends ValidationException {
         }
     }
 
-    private String parameterName;
-    private InvalidParameterType type;
+    private final String parameterName;
+    private final InvalidParameterType type;
 
     public InvalidParameterException(String parameterName, InvalidParameterType type) {
         super("The parameter " + parameterName + " " + type.getDebugText());

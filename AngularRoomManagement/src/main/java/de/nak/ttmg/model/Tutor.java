@@ -12,7 +12,7 @@ import java.util.Set;
  */
 @Entity
 public class Tutor implements Serializable, HasAvailability {
-    private static Integer defaultChangeTime = 15;
+    private static final Integer defaultChangeTime = 15;
 
     private String firstName;
     private String lastName;

@@ -1,7 +1,6 @@
 package de.nak.ttmg.util;
 
 import de.nak.ttmg.model.Centuria;
-import de.nak.ttmg.model.StudyProgram;
 
 /**
  * Created by felixb on 30/10/15.
@@ -26,7 +25,7 @@ public class CenturiaValidator {
     private void validateLetter(Character letter) {
         char[] chars = "abcd".toCharArray();
         for (char aChar : chars) {
-            if (letter.charValue() == aChar) {
+            if (letter == aChar) {
                 return;
             }
         }

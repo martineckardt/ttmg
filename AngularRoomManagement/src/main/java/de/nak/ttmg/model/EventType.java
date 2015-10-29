@@ -6,21 +6,21 @@ package de.nak.ttmg.model;
 public enum EventType {
     COURSE(0, "Course", 15), EXAM(1, "Exam", 30), SEMINAR(2, "Seminar", 15), WPK(3, "WPK", 15);
 
-    private int minChangeTime;
+    private final int minChangeTime;
 
-    private int identifier;
+    private final int identifier;
 
-    private String diplayName;
+    private final String displayName;
 
     /**
      * Creates a new EventType
      *
      * @param identifier
-     * @param diplayName
+     * @param displayName
      * @param minChangeTime
      */
-    EventType(int identifier, String diplayName, int minChangeTime) {
-        this.diplayName = diplayName;
+    EventType(int identifier, String displayName, int minChangeTime) {
+        this.displayName = displayName;
         this.identifier = identifier;
         this.minChangeTime = minChangeTime;
     }
@@ -33,12 +33,12 @@ public enum EventType {
         return identifier;
     }
 
-    public String getDiplayName() {
-        return diplayName;
+    public String getDisplayName() {
+        return displayName;
     }
 
     @Override
     public String toString() {
-        return getDiplayName();
+        return getDisplayName();
     }
 }

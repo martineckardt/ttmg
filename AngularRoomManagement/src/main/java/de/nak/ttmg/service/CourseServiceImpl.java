@@ -3,6 +3,7 @@ package de.nak.ttmg.service;
 import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.model.Course;
 import de.nak.ttmg.util.CourseValidator;
+import de.nak.ttmg.util.EntityNotFoundException;
 import de.nak.ttmg.util.TimeValidator;
 import de.nak.ttmg.util.ValidationException;
 
@@ -15,8 +16,8 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
 
     private CourseDAO courseDAO;
-    private TimeValidator timeValidator = new TimeValidator();
-    private CourseValidator courseValidator = new CourseValidator();
+    private final TimeValidator timeValidator = new TimeValidator();
+    private final CourseValidator courseValidator = new CourseValidator();
 
     @Override
     public Long createCourse(Course course, boolean force) throws ValidationException {
@@ -28,13 +29,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Boolean updateCourse(Course course, boolean force) throws ValidationException {
+    public void updateCourse(Course course, boolean force) throws ValidationException {
         courseValidator.validateCourse(course, force);
         if (!force) {
             timeValidator.validateTime(course);
         }
         courseDAO.update(course);
-        return true;
     }
 
     @Override
@@ -45,14 +45,20 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course loadCourse(Long id) throws ValidationException {
-        return courseDAO.load(id);
+        Course course = courseDAO.load(id);
+        if (course == null) {
+            throw new EntityNotFoundException("course", id);
+        }
+        return course;
     }
 
     @Override
-    public Boolean deleteCourse(Long id) throws ValidationException {
+    public void deleteCourse(Long id) throws ValidationException {
         Course course = loadCourse(id);
+        if (course == null) {
+            throw new EntityNotFoundException("course", id);
+        }
         courseDAO.delete(course);
-        return true;
     }
 
     @Inject

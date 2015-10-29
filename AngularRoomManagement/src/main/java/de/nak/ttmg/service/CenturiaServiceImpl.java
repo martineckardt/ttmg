@@ -4,6 +4,7 @@ import de.nak.ttmg.dao.CenturiaDAO;
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.StudyProgram;
 import de.nak.ttmg.util.CenturiaValidator;
+import de.nak.ttmg.util.EntityNotFoundException;
 import de.nak.ttmg.util.ValidationException;
 
 import javax.inject.Inject;
@@ -15,7 +16,7 @@ import java.util.List;
 public class CenturiaServiceImpl implements CenturiaService {
 
     private CenturiaDAO centuriaDAO;
-    private CenturiaValidator centuriaValidator = new CenturiaValidator();
+    private final CenturiaValidator centuriaValidator = new CenturiaValidator();
 
     @Override
     public Long createCenturia(Centuria centuria) throws ValidationException {
@@ -30,7 +31,11 @@ public class CenturiaServiceImpl implements CenturiaService {
 
     @Override
     public Centuria loadCenturia(Long id) {
-        return centuriaDAO.load(id);
+        Centuria centuria = centuriaDAO.load(id);
+        if (centuria == null) {
+            throw new EntityNotFoundException("centuria", id);
+        }
+        return centuria;
     }
 
     @Inject

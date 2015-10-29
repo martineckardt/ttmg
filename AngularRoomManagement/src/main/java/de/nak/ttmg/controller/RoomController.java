@@ -4,9 +4,7 @@ import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.pdf.PDFCreator;
 import de.nak.ttmg.service.RoomService;
-import de.nak.ttmg.util.EntityNotFoundException;
 import de.nak.ttmg.util.ValidationException;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +43,12 @@ public class RoomController {
         try {
             PDFCreator pdf = new PDFCreator();
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            Room room = getRoom(id);
+            Room room;
+            try {
+                room = getRoom(id);
+            } catch (ValidationException e) {
+                room = null;
+            }
             if (room != null) {
                 pdf.createPDF(stream, room);
             } else {

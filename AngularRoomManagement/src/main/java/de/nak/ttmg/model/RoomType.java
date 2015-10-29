@@ -4,12 +4,12 @@ package de.nak.ttmg.model;
  * Created by felixb on 28/10/15.
  */
 public enum RoomType {
-    LECUTRE(0, "Lecture", 15), COMPUTER(1, "Computer", 15), LAB(2, "Lab", 15), AUDIMAX(3, "Audimax", 30);
+    LECTURE(0, "Lecture", 15), COMPUTER(1, "Computer", 15), LAB(2, "Lab", 15), AUDIMAX(3, "Audimax", 30);
 
 
-    private int identifier;
-    private String displayName;
-    private Integer defaultChangeTime;
+    private final int identifier;
+    private final String displayName;
+    private final Integer defaultChangeTime;
 
     RoomType(int identifier, String displayName, Integer defaultChangeTime) {
         this.defaultChangeTime = defaultChangeTime;

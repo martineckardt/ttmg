@@ -15,14 +15,14 @@ import java.util.List;
  */
 public class RoomServiceImpl implements RoomService {
     private RoomDAO roomDAO;
-    private TimeValidator validator = new TimeValidator();
-    private RoomValidator roomValidator = new RoomValidator();
+    private final TimeValidator validator = new TimeValidator();
+    private final RoomValidator roomValidator = new RoomValidator();
 
     @Override
     public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) throws ValidationException{
         DateRangeValidator.validateDateRange(freeBegin, freeEnd);
         List<Room> allRooms = roomDAO.findAll(building, roomNbr, type, minSeats);
-        if (freeBegin != null && freeEnd != null) {
+        if (freeBegin != null) {
             allRooms.stream().filter(room -> validator.hasTime(room, freeBegin, freeEnd));
         }
         return allRooms;
@@ -30,7 +30,11 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room loadRoom(Long id) {
-        return roomDAO.load(id);
+        Room room = roomDAO.load(id);
+        if (room == null) {
+            throw new EntityNotFoundException("room", id);
+        }
+        return room;
     }
 
     @Override

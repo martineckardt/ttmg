@@ -6,9 +6,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import de.nak.ttmg.model.*;
 
-import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.text.DecimalFormat;
 import java.util.Set;
 
 /**
@@ -16,14 +14,12 @@ import java.util.Set;
  */
 public class PDFCreator {
 
-    private static Font.FontFamily fontFamily = Font.FontFamily.TIMES_ROMAN;
+    private static final Font.FontFamily fontFamily = Font.FontFamily.TIMES_ROMAN;
 
     public void createPDF (OutputStream stream, HasAvailability object){
 
         Document doc = new Document();
         PdfWriter docWriter = null;
-
-        DecimalFormat df = new DecimalFormat("0.00");
 
         try {
 
@@ -81,21 +77,14 @@ public class PDFCreator {
                 paragraph.add(table);
                 doc.add(paragraph);
             }
-        }
-        catch (DocumentException dex)
-        {
-            dex.printStackTrace();
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             ex.printStackTrace();
         }
         finally
         {
-            if (doc != null){
-                //close the document
-                doc.close();
-            }
+            //close the document
+            doc.close();
             if (docWriter != null){
                 //close the writer
                 docWriter.close();
@@ -121,21 +110,15 @@ public class PDFCreator {
             doc.open();
             Paragraph header = new Paragraph("Error", bfBold12);
             doc.add(header);
-            Paragraph paragraph = new Paragraph(message);
+            Paragraph paragraph = new Paragraph(message, bf12);
             doc.add(paragraph);
-        }catch (DocumentException dex)
-        {
-            dex.printStackTrace();
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             ex.printStackTrace();
         }
         finally
         {
-            if (doc != null){
-                doc.close();
-            }
+            doc.close();
             if (docWriter != null){
                 docWriter.close();
             }
@@ -143,7 +126,7 @@ public class PDFCreator {
 
     }
 
-    private void insertCell(PdfPTable table, String text, int align, int colspan, Font font){
+    private void insertCell(PdfPTable table, String text, int align, @SuppressWarnings("SameParameterValue") int colspan, Font font){
 
         //create a new cell with the specified Text and Font
         PdfPCell cell = new PdfPCell(new Phrase(text.trim(), font));

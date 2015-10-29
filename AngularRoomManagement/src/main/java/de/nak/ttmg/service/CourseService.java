@@ -12,11 +12,11 @@ public interface CourseService {
 
     Long createCourse(Course course, boolean force) throws ValidationException;
 
-    Boolean updateCourse(Course course, boolean force) throws ValidationException;
+    void updateCourse(Course course, boolean force) throws ValidationException;
 
     List<Course> listCourses() throws ValidationException;
 
     Course loadCourse(Long id) throws ValidationException;
 
-    Boolean deleteCourse(Long id) throws ValidationException;
+    void deleteCourse(Long id) throws ValidationException;
 }

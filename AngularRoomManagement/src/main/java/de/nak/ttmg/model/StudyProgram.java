@@ -6,9 +6,9 @@ package de.nak.ttmg.model;
 public enum StudyProgram {
     AINF("AINF", "A".charAt(0)), BWL("BWL", "B".charAt(0)), WINF("WINF", "I".charAt(0)), WING("WING","W".charAt(0));
 
-    private String displayName;
+    private final String displayName;
 
-    private Character letter;
+    private final Character letter;
 
     StudyProgram(String displayName, Character letter) {
         this.displayName = displayName;

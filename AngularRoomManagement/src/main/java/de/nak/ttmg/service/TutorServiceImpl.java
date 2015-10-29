@@ -1,12 +1,8 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.TutorDAO;
-import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.Tutor;
-import de.nak.ttmg.util.DateRangeValidator;
-import de.nak.ttmg.util.TimeValidator;
-import de.nak.ttmg.util.TutorValidator;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.util.*;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -18,8 +14,8 @@ import java.util.List;
 public class TutorServiceImpl implements TutorService {
 
     private TutorDAO tutorDAO;
-    private TutorValidator tutorValidator = new TutorValidator();
-    private TimeValidator timeValidator = new TimeValidator();
+    private final TutorValidator tutorValidator = new TutorValidator();
+    private final TimeValidator timeValidator = new TimeValidator();
 
     @Override
     public Long createTutor(Tutor tutor) throws ValidationException {
@@ -31,7 +27,7 @@ public class TutorServiceImpl implements TutorService {
     public List<Tutor> listTutors(Date freeStart, Date freeEnd)  throws ValidationException{
         DateRangeValidator.validateDateRange(freeStart,freeEnd);
         List<Tutor> allTutors = tutorDAO.findAll();
-        if (freeStart != null && freeEnd != null) {
+        if (freeStart != null) {
             allTutors.stream().filter(tutor -> timeValidator.hasTime(tutor, freeStart, freeEnd));
         }
         return allTutors;
@@ -39,7 +35,11 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public Tutor loadTutor(Long id) throws ValidationException {
-       return tutorDAO.load(id);
+        Tutor tutor = tutorDAO.load(id);
+        if (tutor == null) {
+            throw new EntityNotFoundException("tutor", id);
+        }
+       return tutor;
     }
 
     @Inject
