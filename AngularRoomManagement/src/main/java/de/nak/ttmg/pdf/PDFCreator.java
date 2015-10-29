@@ -16,6 +16,8 @@ import java.util.Set;
  */
 public class PDFCreator {
 
+    private static Font.FontFamily fontFamily = Font.FontFamily.TIMES_ROMAN;
+
     public void createPDF (OutputStream stream, HasAvailability object){
 
         Document doc = new Document();
@@ -26,9 +28,9 @@ public class PDFCreator {
         try {
 
             //special font sizes
-            Font bfBold12 = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, new BaseColor(0, 0, 0));
-            Font bf12 = new Font(Font.FontFamily.TIMES_ROMAN, 12);
-            Font bf20 = new Font(Font.FontFamily.TIMES_ROMAN, 20);
+            Font bfBold12 = new Font(fontFamily, 12, Font.BOLD, new BaseColor(0, 0, 0));
+            Font bf12 = new Font(fontFamily, 12);
+            Font bf20 = new Font(fontFamily, 20);
 
             docWriter = PdfWriter.getInstance(doc , stream);
 
@@ -99,6 +101,46 @@ public class PDFCreator {
                 docWriter.close();
             }
         }
+    }
+
+    public void createErrorPDF(OutputStream stream, String message) {
+        Document doc = new Document();
+        PdfWriter docWriter = null;
+        try {
+            Font bfBold12 = new Font(fontFamily, 20, Font.BOLD, new BaseColor(255, 0, 0));
+            Font bf12 = new Font(fontFamily, 12);
+            docWriter = PdfWriter.getInstance(doc, stream);
+
+            doc.addAuthor("TimeTable Management");
+            doc.addCreationDate();
+            doc.addProducer();
+            doc.addCreator("Behrendt, Eckardt, Kampe");
+            doc.addTitle("Error Report");
+            doc.setPageSize(PageSize.A4);
+
+            doc.open();
+            Paragraph header = new Paragraph("Error", bfBold12);
+            doc.add(header);
+            Paragraph paragraph = new Paragraph(message);
+            doc.add(paragraph);
+        }catch (DocumentException dex)
+        {
+            dex.printStackTrace();
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        finally
+        {
+            if (doc != null){
+                doc.close();
+            }
+            if (docWriter != null){
+                docWriter.close();
+            }
+        }
+
     }
 
     private void insertCell(PdfPTable table, String text, int align, int colspan, Font font){

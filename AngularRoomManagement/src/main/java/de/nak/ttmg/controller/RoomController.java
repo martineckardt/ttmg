@@ -4,6 +4,7 @@ import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.pdf.PDFCreator;
 import de.nak.ttmg.service.RoomService;
+import de.nak.ttmg.util.EntityNotFoundException;
 import de.nak.ttmg.util.ValidationException;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
@@ -41,19 +42,23 @@ public class RoomController {
 
     @RequestMapping(value = "/rooms/{id}/pdf", method = RequestMethod.GET, produces="application/pdf")
     public InputStreamResource getTimeTablePDF(@PathVariable final Long id) {
-            try {
-                Room room = getRoom(id);
-                PDFCreator pdf = new PDFCreator();
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        try {
+            PDFCreator pdf = new PDFCreator();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            Room room = getRoom(id);
+            if (room != null) {
                 pdf.createPDF(stream, room);
-
-                stream.flush();
-                byte[] pdfContent = stream.toByteArray();
-                InputStream inputStream = new ByteArrayInputStream(pdfContent);
-                return new InputStreamResource(inputStream);
-            } catch (IOException ex) {
-                throw new RuntimeException("IOError writing file to output stream");
+            } else {
+                pdf.createErrorPDF(stream, "Room with id " + id + " could not be found!");
             }
+
+            stream.flush();
+            byte[] pdfContent = stream.toByteArray();
+            InputStream inputStream = new ByteArrayInputStream(pdfContent);
+            return new InputStreamResource(inputStream);
+        } catch (IOException ex) {
+            throw new RuntimeException("IOError writing file to output stream");
+        }
     }
 
     @RequestMapping(value = "/rooms", method = RequestMethod.POST)
