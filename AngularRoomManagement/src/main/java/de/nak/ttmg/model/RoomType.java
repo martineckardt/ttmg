@@ -28,4 +28,20 @@ public enum RoomType {
     public Integer getDefaultChangeTime() {
         return defaultChangeTime;
     }
+
+    public static RoomType typeForString(String toParse) {
+        if (toParse != null) {
+            for (RoomType t : RoomType.values()) {
+                if (t.getDisplayName().toLowerCase().equals(toParse.toLowerCase())) {
+                    return t;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return getDisplayName();
+    }
 }

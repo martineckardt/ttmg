@@ -1,14 +1,19 @@
 package de.nak.ttmg.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by felixb on 27/10/15.
  */
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"BUILDING", "ROOM_NUMBER"}))
-public class Room implements Serializable {
+@Table(name = "room", uniqueConstraints = @UniqueConstraint(columnNames = {"BUILDING", "ROOM_NUMBER"}))
+public class Room implements Serializable, HasAvailability {
 
     /**
      * The unique identifier.
@@ -32,8 +37,11 @@ public class Room implements Serializable {
 
     private RoomType type;
 
+    private Set<Course> courses = new HashSet<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "room_id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -73,5 +81,37 @@ public class Room implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     public RoomType getType() {
         return type;
+    }
+
+    public void setType(RoomType type) {
+        this.type = type;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="course_room", joinColumns=@JoinColumn(name="room_id"), inverseJoinColumns=@JoinColumn(name="course_id"))
+    @JsonBackReference
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomNumber='" + building + roomNumber + '\'' +
+                ", type=" + type +
+                ", seats=" + seats +
+                ", id=" + id +
+                '}';
+    }
+
+    @Transient
+    @Override
+    public Integer getCustomChangeTime() {
+        return type.getDefaultChangeTime();
     }
 }

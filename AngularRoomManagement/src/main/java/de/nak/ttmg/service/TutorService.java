@@ -1,7 +1,9 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.model.Tutor;
+import de.nak.ttmg.util.ValidationException;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,9 +11,9 @@ import java.util.List;
  */
 public interface TutorService {
 
-    void createTutor(Tutor tutor);
+    Long createTutor(Tutor tutor) throws ValidationException;
 
-    List<Tutor> listTutors();
+    List<Tutor> listTutors(Date freeStart, Date freeEnd) throws ValidationException;
 
-    Tutor loadTutor(Long id);
+    Tutor loadTutor(Long id) throws ValidationException;
 }

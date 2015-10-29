@@ -36,4 +36,9 @@ public enum EventType {
     public String getDiplayName() {
         return diplayName;
     }
+
+    @Override
+    public String toString() {
+        return getDiplayName();
+    }
 }

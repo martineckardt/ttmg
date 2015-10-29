@@ -1,6 +1,8 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.model.Centuria;
+import de.nak.ttmg.model.StudyProgram;
+import de.nak.ttmg.util.ValidationException;
 
 import java.util.List;
 
@@ -9,9 +11,9 @@ import java.util.List;
  */
 public interface CenturiaService {
 
-    void createCenturia(Centuria centuria);
+    Long createCenturia(Centuria centuria) throws ValidationException;
 
-    List<Centuria> listCenturias();
+    List<Centuria> listCenturias(Integer year, StudyProgram program) throws ValidationException;
 
-    Centuria loadCenturia(Long id);
+    Centuria loadCenturia(Long id) throws ValidationException;
 }

@@ -8,7 +8,10 @@ import java.util.Date;
  * Created by felixb on 27/10/15.
  */
 @Entity
+@Table(name = "event")
 public class Event implements Serializable {
+
+    private Course course;
 
     private Long id;
 
@@ -42,5 +45,23 @@ public class Event implements Serializable {
 
     public void setEnd(Date end) {
         this.end = end;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false)
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "begin=" + begin +
+                ", end=" + end +
+                '}';
     }
 }
