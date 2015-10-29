@@ -1,6 +1,7 @@
 package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Centuria;
+import de.nak.ttmg.model.StudyProgram;
 import de.nak.ttmg.util.EntityAlreadyExistsException;
 import de.nak.ttmg.util.InvalidParameterException;
 import de.nak.ttmg.util.ValidationException;
@@ -17,7 +18,8 @@ public class CenturiaDAO {
     private EntityManager entityManager;
 
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
-    public List<Centuria> findAll() {
+    public List<Centuria> findAll(Integer year, StudyProgram program) {
+        //TODO
         return entityManager.createQuery("select centuria from Centuria centuria").getResultList();
 
     }

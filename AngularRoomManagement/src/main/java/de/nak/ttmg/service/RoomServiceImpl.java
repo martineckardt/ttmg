@@ -16,6 +16,7 @@ import java.util.List;
 public class RoomServiceImpl implements RoomService {
     private RoomDAO roomDAO;
     private TimeValidator validator = new TimeValidator();
+    private RoomValidator roomValidator = new RoomValidator();
 
     @Override
     public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) throws ValidationException{
@@ -34,6 +35,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Long createRoom(Room room) throws ValidationException {
+        roomValidator.validateRoom(room);
         if (room.getId() == null) {
             try {
                 return roomDAO.create(room);
