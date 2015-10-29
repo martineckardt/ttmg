@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 28/10/15.
+ * This is the interface for the Centuria Service
  */
 public interface CenturiaService {
 

@@ -11,11 +11,17 @@ import java.util.Set;
 
 /**
  * Created by felixb on 29/10/15.
+ * This class handles the creation of pdf files, e.g. for time tables
  */
 public class PDFCreator {
 
     private static final Font.FontFamily fontFamily = Font.FontFamily.TIMES_ROMAN;
 
+    /**
+     * Creates a pdf with a time table for a given object and writes it to the stream
+     * @param stream where the pdf is written to
+     * @param object to create a time table for
+     */
     public void createPDF (OutputStream stream, HasAvailability object){
 
         Document doc = new Document();
@@ -92,6 +98,12 @@ public class PDFCreator {
         }
     }
 
+    /**
+     * Creates an error pdf page, listing a giving message.
+     * This can be used if the time table creation process has errors, but a pdf shall be returned rather than a json error.
+     * @param stream where the pdf is written to
+     * @param message to be printed onto the pdf
+     */
     public void createErrorPDF(OutputStream stream, String message) {
         Document doc = new Document();
         PdfWriter docWriter = null;

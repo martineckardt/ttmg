@@ -4,24 +4,26 @@ import de.nak.ttmg.model.Room;
 
 /**
  * Created by felixb on 28/10/15.
+ * This class checks if a room is valid.
  */
 public class RoomValidator {
 
+    /**
+     * Tests if a room is valid
+     * @param room to be tested
+     * @throws InvalidParameterException
+     */
     public void validateRoom(Room room) throws InvalidParameterException {
         validateBuilding(room.getBuilding());
         validateRoomNbr(room.getRoomNumber());
         validateSeats(room.getSeats());
     }
 
-    private void validateBuilding(String building) throws InvalidParameterException {
+    private void validateBuilding(Character building) throws InvalidParameterException {
         if (building == null) {
             throw new InvalidParameterException("building", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        if (building.trim().length() != 1) {
-            throw new InvalidParameterException("building", InvalidParameterException.InvalidParameterType.INVALID_LENGTH);
-        }
-        char b = building.toCharArray()[0];
-        if (!Character.isLetter(b)) {
+        if (!Character.isLetter(building)) {
             throw new InvalidParameterException("building", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
         }
     }

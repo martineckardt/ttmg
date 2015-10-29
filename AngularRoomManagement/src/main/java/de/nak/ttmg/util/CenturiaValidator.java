@@ -4,9 +4,15 @@ import de.nak.ttmg.model.Centuria;
 
 /**
  * Created by felixb on 30/10/15.
+ * This class checks if a centuria is valid.
  */
 public class CenturiaValidator {
 
+    /**
+     * Validates if a centuria has valid properties only.
+     * @param centuria to be tested
+     * @throws ValidationException
+     */
     public void validateCenturia(Centuria centuria) throws ValidationException{
         validateYear(centuria.getYear());
         validateLetter(centuria.getLetter());

@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 28/10/15.
+ * This class checks if an object is has overlapping events.
  */
 public class TimeValidator {
 
@@ -74,6 +75,14 @@ public class TimeValidator {
         checkAdjustedTime(object,newStart,newEnd,ignore);
     }
 
+    /**
+     * Checks if an object has any conflicting events.
+     * Instead of throwing an exception it is returning true if no conflicts exist, otherwise false
+     * @param object to be validated
+     * @param start time to block
+     * @param end time to block
+     * @return true if no conflicts exist, false otherwise
+     */
     public boolean hasTime(HasAvailability object, Date start, Date end) {
         try {
             validateTime(object,start,end,null);

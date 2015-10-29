@@ -4,9 +4,15 @@ import de.nak.ttmg.model.Tutor;
 
 /**
  * Created by felixb on 29/10/15.
+ * This class checks if a tutor is valid.
  */
 public class TutorValidator {
 
+    /**
+     * Checks if a tutor is valid
+     * @param tutor to be tested
+     * @throws ValidationException
+     */
     public void validateTutor(Tutor tutor) throws ValidationException {
         validateName(tutor.getFirstName());
         validateName(tutor.getLastName());

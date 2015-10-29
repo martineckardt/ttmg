@@ -6,9 +6,16 @@ import java.util.Set;
 
 /**
  * Created by felixb on 29/10/15.
+ * This class checks if a course is valid.
  */
 public class CourseValidator {
 
+    /**
+     * Validates if a course has valid properties only.
+     * @param course to be tested
+     * @param force if validation should be less strict
+     * @throws ValidationException
+     */
     public void validateCourse(Course course, boolean force) throws ValidationException {
         validateEvents(course.getEvents());
         validateTutor(course.getTutor());

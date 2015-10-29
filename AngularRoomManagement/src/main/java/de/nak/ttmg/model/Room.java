@@ -22,7 +22,7 @@ public class Room implements Serializable, HasAvailability {
     /**
      * The building.
      */
-    private String building;
+    private Character building;
 
     /**
      * The room's number.
@@ -50,11 +50,11 @@ public class Room implements Serializable, HasAvailability {
     }
 
     @Column(nullable = false)
-    public String getBuilding() {
+    public Character getBuilding() {
         return building;
     }
 
-    public void setBuilding(String building) {
+    public void setBuilding(Character building) {
         this.building = building;
     }
 

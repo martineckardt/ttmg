@@ -10,7 +10,7 @@ import java.util.List;
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class TimeConflictException extends ValidationException {
-    final List<Event> failures;
+    private final List<Event> failures;
 
     public TimeConflictException(List<Event> failures) {
         super("There are " + failures.size() + " conflicting events.");
