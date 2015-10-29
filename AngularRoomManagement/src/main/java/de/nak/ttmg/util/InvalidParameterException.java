@@ -1,8 +1,12 @@
 package de.nak.ttmg.util;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 /**
  * Created by felixb on 28/10/15.
  */
+@ResponseStatus(value=HttpStatus.NOT_FOUND, reason="Test Bla Bla Fooooo")
 public class InvalidParameterException extends ValidationException {
 
     public enum InvalidParameterType{
