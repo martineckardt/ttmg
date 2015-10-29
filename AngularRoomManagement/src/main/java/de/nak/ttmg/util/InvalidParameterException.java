@@ -1,14 +1,16 @@
 package de.nak.ttmg.util;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Created by felixb on 28/10/15.
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class InvalidParameterException extends ValidationException {
 
-    public enum InvalidParameterType{
+    public enum InvalidParameterType {
         INVALID_FORMAT("has an invalid format / type."),
         INVALID_RANGE("has a value beyond its bounds."),
         INVALID_LENGTH("has an invalid"),
@@ -42,10 +44,5 @@ public class InvalidParameterException extends ValidationException {
 
     public InvalidParameterType getType() {
         return type;
-    }
-
-    @Override
-    public StackTraceElement[] getStackTrace() {
-        return null;
     }
 }

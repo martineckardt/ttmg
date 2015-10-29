@@ -27,7 +27,7 @@ public class RestControllerExceptionHandler {
         return e;
     }
 
-    @ResponseStatus(HttpStatus.ALREADY_REPORTED)
+    @ResponseStatus(HttpStatus.ALREADY_REPORTED) //208??
     @ExceptionHandler(EntityAlreadyExistsException.class)
     @ResponseBody
     EntityAlreadyExistsException handleEAEException(EntityAlreadyExistsException e) {
@@ -48,11 +48,10 @@ public class RestControllerExceptionHandler {
         return e;
     }
 
-    /*@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(ValidationException.class)
     @ResponseBody
     ValidationException handleGeneralException(ValidationException e) {
         return e;
-    }*/
-
+    }
 }

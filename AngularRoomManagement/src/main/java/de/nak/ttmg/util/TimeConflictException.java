@@ -1,5 +1,6 @@
 package de.nak.ttmg.util;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import de.nak.ttmg.model.Event;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 /**
  * Created by felixb on 28/10/15.
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class TimeConflictException extends ValidationException {
     List<Event> failures;
 

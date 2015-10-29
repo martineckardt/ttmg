@@ -1,10 +1,13 @@
 package de.nak.ttmg.util;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.Entity;
 
 /**
  * Created by felixb on 28/10/15.
  */
+@JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class EntityNotFoundException extends ValidationException {
 
     private String type;
