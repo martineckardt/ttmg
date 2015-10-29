@@ -2,7 +2,6 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.TutorDAO;
 import de.nak.ttmg.model.Tutor;
-import de.nak.ttmg.util.DateRangeException;
 import de.nak.ttmg.util.DateRangeValidator;
 import de.nak.ttmg.util.TutorValidator;
 import de.nak.ttmg.util.ValidationException;

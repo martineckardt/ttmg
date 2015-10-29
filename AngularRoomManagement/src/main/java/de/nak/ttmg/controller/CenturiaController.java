@@ -3,7 +3,6 @@ package de.nak.ttmg.controller;
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.StudyProgram;
 import de.nak.ttmg.service.CenturiaService;
-import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;

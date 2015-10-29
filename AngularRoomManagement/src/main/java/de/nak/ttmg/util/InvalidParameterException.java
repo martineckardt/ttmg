@@ -1,8 +1,6 @@
 package de.nak.ttmg.util;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Created by felixb on 28/10/15.

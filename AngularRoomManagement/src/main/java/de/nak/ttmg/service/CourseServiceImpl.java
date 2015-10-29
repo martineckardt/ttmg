@@ -1,12 +1,8 @@
 package de.nak.ttmg.service;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import de.nak.ttmg.controller.CourseController;
 import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.model.Course;
-import de.nak.ttmg.model.Event;
 import de.nak.ttmg.util.CourseValidator;
-import de.nak.ttmg.util.TimeConflictException;
 import de.nak.ttmg.util.TimeValidatior;
 import de.nak.ttmg.util.ValidationException;
 

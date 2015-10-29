@@ -7,7 +7,6 @@ import de.nak.ttmg.util.*;
 import org.hibernate.exception.ConstraintViolationException;
 
 import javax.inject.Inject;
-import javax.persistence.RollbackException;
 import java.util.Date;
 import java.util.List;
 

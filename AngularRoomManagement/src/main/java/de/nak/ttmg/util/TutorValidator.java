@@ -18,7 +18,7 @@ public class TutorValidator {
         if (name == null || name.isEmpty()) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        boolean validCharacters = name.chars().allMatch(x -> Character.isLetter(x));
+        boolean validCharacters = name.chars().allMatch(Character::isLetter);
         if (!validCharacters) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
         }

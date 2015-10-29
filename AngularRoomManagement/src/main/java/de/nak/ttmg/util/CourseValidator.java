@@ -3,7 +3,6 @@ package de.nak.ttmg.util;
 import de.nak.ttmg.model.*;
 
 import java.util.Set;
-import java.util.stream.Stream;
 
 /**
  * Created by felixb on 29/10/15.
@@ -59,7 +58,7 @@ public class CourseValidator {
         if (name == null || name.isEmpty()) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        boolean validCharacters = name.chars().allMatch(x -> Character.isLetterOrDigit(x));
+        boolean validCharacters = name.chars().allMatch(Character::isLetterOrDigit);
         if (!validCharacters) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
         }

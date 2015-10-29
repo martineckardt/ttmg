@@ -3,9 +3,6 @@ package de.nak.ttmg.controller;
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.service.RoomService;
-import de.nak.ttmg.util.ValidationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;

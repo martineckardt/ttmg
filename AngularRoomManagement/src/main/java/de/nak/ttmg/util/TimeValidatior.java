@@ -1,6 +1,5 @@
 package de.nak.ttmg.util;
 
-import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.model.HasAvailability;
@@ -77,19 +76,17 @@ public class TimeValidatior {
 
     private void checkAdjustedTime(HasAvailability object, Date start, Date end, Course ignore) throws TimeConflictException {
         List<Event> failures = new ArrayList<>();
-        for (Course course : object.getCourses()) {
-            if (course != ignore) {
-                for (Event e : course.getEvents()) {
-                    if (e.getBegin().after(start) && e.getBegin().before(end)) {
-                        failures.add(e);
-                    } else if (e.getEnd().after(start) && e.getEnd().before(end)) {
-                        failures.add(e);
-                    } else if (e.getBegin().equals(start) || e.getEnd().equals(end)) {
-                        failures.add(e);
-                    }
+        object.getCourses().stream().filter(course -> course != ignore).forEach(course -> {
+            for (Event e : course.getEvents()) {
+                if (e.getBegin().after(start) && e.getBegin().before(end)) {
+                    failures.add(e);
+                } else if (e.getEnd().after(start) && e.getEnd().before(end)) {
+                    failures.add(e);
+                } else if (e.getBegin().equals(start) || e.getEnd().equals(end)) {
+                    failures.add(e);
                 }
             }
-        }
+        });
         if (!failures.isEmpty()) {
             throw new TimeConflictException(failures);
         }

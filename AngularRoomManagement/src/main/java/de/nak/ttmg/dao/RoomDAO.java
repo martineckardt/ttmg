@@ -1,10 +1,7 @@
 package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Room;
-import de.nak.ttmg.util.EntityAlreadyExistsException;
-import de.nak.ttmg.util.InvalidParameterException;
 import de.nak.ttmg.util.ValidationException;
-import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

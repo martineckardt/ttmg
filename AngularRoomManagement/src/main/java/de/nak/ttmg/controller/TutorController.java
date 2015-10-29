@@ -2,7 +2,6 @@ package de.nak.ttmg.controller;
 
 import de.nak.ttmg.model.Tutor;
 import de.nak.ttmg.service.TutorService;
-import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;

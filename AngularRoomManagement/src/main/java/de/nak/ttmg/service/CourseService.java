@@ -1,7 +1,6 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.model.*;
-import de.nak.ttmg.util.TimeConflictException;
 import de.nak.ttmg.util.ValidationException;
 
 import java.util.List;

@@ -25,7 +25,7 @@ public class TimeValidatiorTest {
     private Tutor tutor;
     private Centuria centuria;
 
-    private Date pastStart = new Date(2014, 05, 3);
+    private Date pastStart = new Date(2014, 5, 3);
     private Date pastEnd = new Date(2014,7,10);
     private Date futureStart = new Date(2015, 11, 15);
     private Date futureEnd = new Date(2016, 6,20);
