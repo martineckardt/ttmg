@@ -9,4 +9,6 @@ public interface HasAvailability {
     Integer getCustomChangeTime();
 
     Set<Course> getCourses();
+
+    String getObjectType();
 }

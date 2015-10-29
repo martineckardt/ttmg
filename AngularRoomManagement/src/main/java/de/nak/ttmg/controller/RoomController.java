@@ -2,10 +2,15 @@ package de.nak.ttmg.controller;
 
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
+import de.nak.ttmg.pdf.PDFCreator;
 import de.nak.ttmg.service.RoomService;
+import de.nak.ttmg.util.ValidationException;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.io.*;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +37,23 @@ public class RoomController {
     @RequestMapping(value = "/rooms/{id}", method = RequestMethod.GET)
     public Room getRoom(@PathVariable final Long id) {
         return roomService.loadRoom(id);
+    }
+
+    @RequestMapping(value = "/rooms/{id}/pdf", method = RequestMethod.GET, produces="application/pdf")
+    public InputStreamResource getTimeTablePDF(@PathVariable final Long id) {
+            try {
+                Room room = getRoom(id);
+                PDFCreator pdf = new PDFCreator();
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pdf.createPDF(stream, room);
+
+                stream.flush();
+                byte[] pdfContent = stream.toByteArray();
+                InputStream inputStream = new ByteArrayInputStream(pdfContent);
+                return new InputStreamResource(inputStream);
+            } catch (IOException ex) {
+                throw new RuntimeException("IOError writing file to output stream");
+            }
     }
 
     @RequestMapping(value = "/rooms", method = RequestMethod.POST)

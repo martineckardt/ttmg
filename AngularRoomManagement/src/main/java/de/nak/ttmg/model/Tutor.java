@@ -85,6 +85,12 @@ public class Tutor implements Serializable, HasAvailability {
 
     @Transient
     @Override
+    public String getObjectType() {
+        return "Tutor";
+    }
+
+    @Transient
+    @Override
     public Integer getCustomChangeTime() {
         if (getChangeTime() != null) {
             return getChangeTime();

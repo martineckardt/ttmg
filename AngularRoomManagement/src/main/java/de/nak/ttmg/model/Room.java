@@ -93,6 +93,12 @@ public class Room implements Serializable, HasAvailability {
         return courses;
     }
 
+    @Transient
+    @Override
+    public String getObjectType() {
+        return "Room";
+    }
+
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
     }
