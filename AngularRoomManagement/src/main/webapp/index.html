@@ -1,43 +1,43 @@
 <!DOCTYPE html>
-<html ng-app="roommanagement">
+<html ng-app="ttmg">
 <head lang="en">
     <meta charset="UTF-8">
     <title>AngularJS Room Management</title>
+    <!-- Bower Components -->
     <script type="application/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="application/javascript" src="bower_components/angular-route/angular-route.js"></script>
+
+    <!-- Application files -->
     <script type="application/javascript" src="js/application.js"></script>
+    <script type="application/javascript" src="js/routes.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
+    <!-- Ressources -->
+    <script type="application/javascript" src="js/resources/room.js"></script>
+
+    <!-- Services -->
+    <script type="application/javascript" src="js/services/room-service.js"></script>
+
+    <!-- Controllers -->
+    <script type="application/javascript" src="js/home/home-controller.js"></script>
+    <script type="application/javascript" src="js/create-room/create-room-controller.js"></script>
+    <script type="application/javascript" src="js/list-rooms/list-rooms-controller.js"></script>
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"-->
 
 </head>
-<body ng-controller="mainController as mainController">
-<div class="container">
-    <h1>Angular Room Management</h1>
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <table class="table">
-                <tr>
-                    <th>Building</th>
-                    <th>Room Number</th>
-                    <th>Seats</th>
-                    <th>Projector present?</th>
-                </tr>
-                <tr ng-repeat="room in model.rooms">
-                    <td>{{room.building}}</td>
-                    <td>{{room.roomNumber}}</td>
-                    <td>{{room.seats}}</td>
-                    <td>{{room.beamerPresent}}</td>
-                </tr>
-            </table>
+<body>
+
+    <div class="container">
+        <h1><a href="#/">Angular Room Management</a></h1>
+
+        <div class="panel panel-default">
+            <div class="panel-body" ng-view>
+
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>
