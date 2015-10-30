@@ -2,6 +2,8 @@ package de.nak.ttmg.util;
 
 import de.nak.ttmg.model.Tutor;
 
+import java.util.regex.Pattern;
+
 /**
  * Created by felixb on 29/10/15.
  * This class checks if a tutor is valid.
@@ -14,19 +16,35 @@ public class TutorValidator {
      * @throws ValidationException
      */
     public void validateTutor(Tutor tutor) throws ValidationException {
-        validateName(tutor.getFirstName());
-        validateName(tutor.getLastName());
-        validateName(tutor.getTitle());
+        validateName(tutor.getFirstName(), "first");
+        validateName(tutor.getLastName(), "last");
+        validateTitle(tutor.getTitle());
         validateChangeTime(tutor.getCustomChangeTime());
     }
 
-    private void validateName(String name) throws ValidationException {
-        if (name == null || name.isEmpty()) {
-            throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_NULL);
+    private void validateName(String name, String fieldName) throws ValidationException {
+        if (name == null || name.trim().isEmpty()) {
+            throw new InvalidParameterException(fieldName, InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        boolean validCharacters = name.chars().allMatch(Character::isLetter);
+        boolean validCharacters = name.chars().allMatch(Character::isAlphabetic);
         if (!validCharacters) {
-            throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
+            throw new InvalidParameterException(fieldName, InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
+        }
+        if (name.length() > 40) {
+            throw new InvalidParameterException(fieldName, InvalidParameterException.InvalidParameterType.INVALID_LENGTH);
+        }
+    }
+
+    private void validateTitle(String title) throws ValidationException {
+        if (title == null || title.trim().isEmpty()) {
+            return;
+        }
+        boolean validCharacters = Pattern.matches("[A-Za-z-.\\s]+",title);
+        if (!validCharacters) {
+            throw new InvalidParameterException("title", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
+        }
+        if (title.length() > 20) {
+            throw new InvalidParameterException("title", InvalidParameterException.InvalidParameterType.INVALID_LENGTH);
         }
     }
 
@@ -38,5 +56,4 @@ public class TutorValidator {
             throw new InvalidParameterException("changeTime", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
     }
-
 }

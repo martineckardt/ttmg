@@ -36,6 +36,10 @@ public class RoomValidator {
         if (roomNbr.length() < 1 || roomNbr.length() > 3) {
             throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_LENGTH);
         }
+        boolean validCharacters = roomNbr.chars().allMatch(Character::isLetterOrDigit);
+        if (!validCharacters) {
+            throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
+        }
     }
 
     private void validateSeats(Integer seats) throws InvalidParameterException {

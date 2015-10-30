@@ -3,9 +3,8 @@ package de.nak.ttmg.service;
 import de.nak.ttmg.dao.CenturiaDAO;
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.StudyProgram;
-import de.nak.ttmg.util.CenturiaValidator;
-import de.nak.ttmg.util.EntityNotFoundException;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.util.*;
+import org.hibernate.exception.ConstraintViolationException;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -21,7 +20,18 @@ public class CenturiaServiceImpl implements CenturiaService {
     @Override
     public Long createCenturia(Centuria centuria) throws ValidationException {
         centuriaValidator.validateCenturia(centuria);
-        return centuriaDAO.create(centuria);
+        if (centuria.getId() == null) {
+            try {
+                return centuriaDAO.create(centuria);
+            } catch (Exception e) {
+                if (e.getCause() instanceof ConstraintViolationException) {
+                    throw new EntityAlreadyExistsException();
+                }
+                throw new ValidationException(e.getCause());
+            }
+        } else {
+            throw new InvalidParameterException("centuriaId", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
+        }
     }
 
     @Override

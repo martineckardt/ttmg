@@ -39,18 +39,8 @@ public class CenturiaDAO {
     }
 
     public Long create(Centuria centuria) throws ValidationException{
-        if (centuria.getId() == null) {
-            try {
-                entityManager.persist(centuria);
-                return centuria.getId();
-            } catch (ConstraintViolationException e) {
-                throw new EntityAlreadyExistsException();
-            } catch (Exception e) {
-                throw new ValidationException(e);
-            }
-        } else {
-            throw new InvalidParameterException("centuriaId", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
-        }
+        entityManager.persist(centuria);
+        return centuria.getId();
     }
 
     @PersistenceContext

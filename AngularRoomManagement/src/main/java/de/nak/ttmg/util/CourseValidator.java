@@ -20,7 +20,7 @@ public class CourseValidator {
         validateEvents(course.getEvents());
         validateTutor(course.getTutor());
         validateParticipants(course.getParticipants());
-        validateRooms(course.getRooms(),course.getParticipants(),force);
+        validateRooms(course.getRooms(),course.getParticipants(), course.getType(), force);
         validateName(course.getName());
     }
 
@@ -34,12 +34,16 @@ public class CourseValidator {
         }
     }
 
-    private void validateRooms(Set<Room> rooms, Set<Centuria> centurias, boolean force) throws ValidationException {
+    private void validateRooms(Set<Room> rooms, Set<Centuria> centurias, EventType type, boolean force) throws ValidationException {
         if (rooms == null || rooms.isEmpty()) {
             throw new InvalidParameterException("rooms", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
         Integer capacity = rooms.stream().mapToInt(Room::getSeats).sum();
         Integer required = centurias.stream().mapToInt(Centuria::getNbrOfStudents).sum();
+        if (type == EventType.SEMINAR) {
+            //Limit required seats to 20
+            required = Math.min(required, 20);
+        }
         if (required > capacity && force) {
             throw new InvalidParameterException("seats", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
