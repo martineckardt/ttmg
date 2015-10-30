@@ -47,7 +47,7 @@ public class RoomDAO {
     }
 
     public void delete(Room room) throws ValidationException {
-        entityManager.detach(room);
+        entityManager.remove(room);
     }
 
     @PersistenceContext

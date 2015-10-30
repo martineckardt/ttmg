@@ -40,7 +40,7 @@ public class CenturiaDAO {
     }
 
     public void delete(Centuria centuria) throws ValidationException {
-        entityManager.detach(centuria);
+        entityManager.remove(centuria);
     }
 
     @PersistenceContext
