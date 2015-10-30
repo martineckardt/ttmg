@@ -2,7 +2,6 @@ package de.nak.ttmg.controller;
 
 import de.nak.ttmg.model.Course;
 import de.nak.ttmg.service.CourseService;
-import de.nak.ttmg.util.InvalidParameterException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;

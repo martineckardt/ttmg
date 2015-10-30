@@ -6,7 +6,7 @@ package de.nak.ttmg.util;
  */
 public abstract class IgnorableValidationException extends ValidationException {
 
-    public IgnorableValidationException(String message) {
+    IgnorableValidationException(String message) {
         super(message);
     }
 

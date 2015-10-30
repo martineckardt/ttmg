@@ -5,7 +5,7 @@ package de.nak.ttmg.util;
  * This exception will be thrown if a course has more participants than the room can handle
  */
 public class InsufficientSeatException extends IgnorableValidationException {
-    private int seats;
+    private final int seats;
 
     public InsufficientSeatException(int missingSeats) {
         super("There are " + missingSeats + " seats missing.");

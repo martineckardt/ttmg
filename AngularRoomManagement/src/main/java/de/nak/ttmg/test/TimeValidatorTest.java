@@ -26,9 +26,13 @@ public class TimeValidatorTest {
     private Centuria centuria;
     private Centuria centuria2;
 
+    @SuppressWarnings("deprecation")
     private final Date pastStart = new Date(2014, 5, 3);
+    @SuppressWarnings("deprecation")
     private final Date pastEnd = new Date(2014,7,10);
+    @SuppressWarnings("deprecation")
     private final Date futureStart = new Date(2015, 11, 15);
+    @SuppressWarnings("deprecation")
     private final Date futureEnd = new Date(2016, 6,20);
 
     private Event past;

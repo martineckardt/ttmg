@@ -8,10 +8,10 @@ import de.nak.ttmg.model.HasAvailability;
  * because it has some existing courses that might get broken.
  */
 public class IsBusyException extends IgnorableValidationException {
-    private Integer courseCount;
+    private final Integer courseCount;
 
     public IsBusyException(HasAvailability object) {
-        super("Cannot delte " + object.getObjectType() + "; there are still " + object.getCourses().size() + " referenced courses!");
+        super("Cannot delete " + object.getObjectType() + "; there are still " + object.getCourses().size() + " referenced courses!");
         this.courseCount = object.getCourses().size();
     }
 
