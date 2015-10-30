@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 28/10/15.
+ * This Restcontroller handels all requests regarding centurias.
  */
 @RestController
 public class CenturiaController {
@@ -46,9 +47,9 @@ public class CenturiaController {
             } catch (ValidationException e) {
                 centuria = null;
             }
-            return TimeTableCreator.createPDF(centuria, id);
+            return TimeTableCreator.createPDF(centuria, "Centuria", id);
         } catch (IOException ex) {
-            throw new RuntimeException("IOError writing file to output stream");
+            throw new RuntimeException("IOError writing file to output stream: " + ex.getMessage());
         }
     }
 

@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 27/10/15.
+ * This Restcontroller handels all requests regarding rooms.
  */
 @RestController
 public class RoomController {
@@ -47,9 +48,9 @@ public class RoomController {
             } catch (ValidationException e) {
                 room = null;
             }
-            return TimeTableCreator.createPDF(room, id);
+            return TimeTableCreator.createPDF(room, "Room", id);
         } catch (IOException ex) {
-            throw new RuntimeException("IOError writing file to output stream");
+            throw new RuntimeException("IOError writing file to output stream: " + ex.getMessage());
         }
     }
 

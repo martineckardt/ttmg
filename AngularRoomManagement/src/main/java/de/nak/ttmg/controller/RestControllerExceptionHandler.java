@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Created by felixb on 29/10/15.
+ * This Class handles all Exceptions occurring on the server and ensures,
+ * that all error information is transferred to the client via JSON.
  */
 @ControllerAdvice
 public class RestControllerExceptionHandler {
@@ -53,5 +55,12 @@ public class RestControllerExceptionHandler {
     @ResponseBody
     ValidationException handleGeneralException(ValidationException e) {
         return e;
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseBody
+    ValidationException handleAllOtherServerErrors(RuntimeException e) {
+        return new ValidationException(e);
     }
 }

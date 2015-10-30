@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 28/10/15.
+ * This Restcontroller handels all requests regarding tutors.
  */
 @RestController
 public class TutorController {
@@ -40,9 +41,9 @@ public class TutorController {
             } catch (ValidationException e) {
                 tutor = null;
             }
-            return TimeTableCreator.createPDF(tutor, id);
+            return TimeTableCreator.createPDF(tutor, "Tutor", id);
         } catch (IOException ex) {
-            throw new RuntimeException("IOError writing file to output stream");
+            throw new RuntimeException("IOError writing file to output stream: " + ex.getMessage());
         }
     }
 

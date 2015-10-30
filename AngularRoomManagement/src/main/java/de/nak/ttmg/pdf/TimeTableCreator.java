@@ -21,14 +21,14 @@ public class TimeTableCreator {
      * @return InputStreamResource to be returned to client.
      * @throws IOException
      */
-    public static InputStreamResource createPDF(HasAvailability object, Long id) throws IOException{
+    public static InputStreamResource createPDF(HasAvailability object, String type, Long id) throws IOException{
         PDFCreator pdf = new PDFCreator();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
         if (object!= null) {
             pdf.createPDF(stream, object);
         } else {
-            pdf.createErrorPDF(stream, "Object with id " + id + " could not be found!");
+            pdf.createErrorPDF(stream, type + " with id " + id + " could not be found!");
         }
 
         stream.flush();

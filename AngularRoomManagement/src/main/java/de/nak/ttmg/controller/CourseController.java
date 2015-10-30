@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 27/10/15.
+ * This Restcontroller handels all requests regarding courses.
  */
 @RestController
 public class CourseController {
