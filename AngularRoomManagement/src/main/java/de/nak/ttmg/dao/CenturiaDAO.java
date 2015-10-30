@@ -27,6 +27,7 @@ public class CenturiaDAO {
         if (program != null) {
             criteria.add(Restrictions.eq("program", program));
         }
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return criteria.list();
     }
 

@@ -34,6 +34,7 @@ public class RoomDAO {
         if (minSeats != null) {
             criteria.add(Restrictions.ge("seats", minSeats));
         }
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return criteria.list();
     }
 
