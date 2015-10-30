@@ -50,6 +50,13 @@ public class RestControllerExceptionHandler {
         return e;
     }
 
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    @ExceptionHandler(InsufficientSeatException.class)
+    @ResponseBody
+    InsufficientSeatException handleISException(InsufficientSeatException e) {
+        return e;
+    }
+
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(ValidationException.class)
     @ResponseBody

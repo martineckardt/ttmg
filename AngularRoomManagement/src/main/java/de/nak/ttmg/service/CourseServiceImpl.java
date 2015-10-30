@@ -2,10 +2,7 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.model.Course;
-import de.nak.ttmg.util.CourseValidator;
-import de.nak.ttmg.util.EntityNotFoundException;
-import de.nak.ttmg.util.TimeValidator;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.util.*;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -29,12 +26,16 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void updateCourse(Course course, boolean force) throws ValidationException {
-        courseValidator.validateCourse(course, force);
-        if (!force) {
-            timeValidator.validateTime(course);
+    public void updateCourse(Long id, Course course, boolean force) throws ValidationException {
+        if (course != null && course.getId() != null && course.getId().equals(id)) {
+            courseValidator.validateCourse(course, force);
+            if (!force) {
+                timeValidator.validateTime(course);
+            }
+            courseDAO.update(course);
+        } else {
+            throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
         }
-        courseDAO.update(course);
     }
 
     @Override

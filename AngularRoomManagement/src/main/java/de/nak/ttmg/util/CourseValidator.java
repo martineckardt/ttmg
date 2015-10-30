@@ -45,7 +45,7 @@ public class CourseValidator {
             required = Math.min(required, 20);
         }
         if (required > capacity && force) {
-            throw new InvalidParameterException("seats", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
+            throw new InsufficientSeatException(capacity-required);
         }
     }
 

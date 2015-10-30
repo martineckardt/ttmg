@@ -43,12 +43,7 @@ public class CourseController {
     public void saveCourse(@PathVariable Long id,
                           @RequestBody Course course,
                           @RequestParam(required = false, value = "force") Boolean force) {
-            //TODO Move logic to Service
-            if (course != null && course.getId() != null && course.getId().equals(id)) {
-                 courseService.updateCourse(course, force);
-            } else {
-                throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
-            }
+        courseService.updateCourse(id, course, force);
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.DELETE)
