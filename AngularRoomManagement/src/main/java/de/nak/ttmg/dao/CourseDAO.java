@@ -50,7 +50,7 @@ public class CourseDAO {
     }
 
     public void delete(Course course) {
-        entityManager.refresh(course);
+        entityManager.remove(course);
     }
 
     @PersistenceContext

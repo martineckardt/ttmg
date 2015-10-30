@@ -17,6 +17,7 @@ public class ValidationException extends HibernateException {
 
     public ValidationException(Throwable t) {
         super("Server Exception: " + t.getClass().toString() + " message: " + t.getMessage());
+        t.printStackTrace();
     }
 
     @Override
