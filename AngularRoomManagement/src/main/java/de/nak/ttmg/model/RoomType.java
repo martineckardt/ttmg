@@ -2,6 +2,7 @@ package de.nak.ttmg.model;
 
 /**
  * Created by felixb on 28/10/15.
+ * This enum contains all room types
  */
 public enum RoomType {
     LECTURE(0, "Lecture", 15), COMPUTER(1, "Computer", 15), LAB(2, "Lab", 15), AUDIMAX(3, "Audimax", 30);

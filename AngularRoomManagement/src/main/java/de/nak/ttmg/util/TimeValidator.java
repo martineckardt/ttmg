@@ -70,6 +70,9 @@ public class TimeValidator {
      */
     public void validateTime(HasAvailability object, Date start, Date end, Course ignore) throws TimeConflictException {
         Integer changeTime = object.getCustomChangeTime();
+        if (ignore != null && ignore.getType().getMinChangeTime() > changeTime) {
+            changeTime = ignore.getType().getMinChangeTime();
+        }
         Date newStart = new Date(start.getTime() - changeTime * 60*1000);
         Date newEnd = new Date(end.getTime() + changeTime * 60*1000);
         checkAdjustedTime(object,newStart,newEnd,ignore);

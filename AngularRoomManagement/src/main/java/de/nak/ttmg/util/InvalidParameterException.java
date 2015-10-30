@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Created by felixb on 28/10/15.
+ * This exception is thrown if parameter are invalid or not available
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class InvalidParameterException extends ValidationException {

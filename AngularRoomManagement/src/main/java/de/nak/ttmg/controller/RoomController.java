@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 27/10/15.
- * This Restcontroller handels all requests regarding rooms.
+ * This RestController handles all requests regarding rooms.
  */
 @RestController
 public class RoomController {

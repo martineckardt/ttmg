@@ -5,6 +5,8 @@ import org.hibernate.HibernateException;
 
 /**
  * Created by felixb on 28/10/15.
+ * This is a super class for all validation exceptions.
+ * This exception can also be thrown for all other internal server errors.
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class ValidationException extends HibernateException {

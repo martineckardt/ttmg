@@ -2,6 +2,7 @@ package de.nak.ttmg.model;
 
 /**
  * Created by felixb on 27/10/15.
+ * This Enum contains all study programs
  */
 public enum StudyProgram {
     AINF("AINF", "A".charAt(0)), BWL("BWL", "B".charAt(0)), WINF("WINF", "I".charAt(0)), WING("WING","W".charAt(0));

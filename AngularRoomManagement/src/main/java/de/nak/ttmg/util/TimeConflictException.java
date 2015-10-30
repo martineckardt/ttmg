@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 28/10/15.
+ * This exception is thrown if a time conflict exists between to courses
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class TimeConflictException extends ValidationException {

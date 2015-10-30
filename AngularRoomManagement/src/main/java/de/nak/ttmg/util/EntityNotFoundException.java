@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Created by felixb on 28/10/15.
+ * This Exception is thrown if a requested object could not be found in the db.
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class EntityNotFoundException extends ValidationException {
