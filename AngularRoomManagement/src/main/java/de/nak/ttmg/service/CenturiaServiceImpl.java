@@ -26,6 +26,9 @@ public class CenturiaServiceImpl implements CenturiaService {
 
     @Override
     public List<Centuria> listCenturias(Integer year, StudyProgram program) {
+        if (year != null) {
+            centuriaValidator.validateYear(year);
+        }
         return centuriaDAO.findAll(year, program);
     }
 

@@ -19,7 +19,12 @@ public class CenturiaValidator {
         validateNbrOfStudents(centuria.getNbrOfStudents());
     }
 
-    private void validateYear(Integer year) throws ValidationException {
+    /**
+     * Validates if a year is between 1970 and 2100
+     * @param year to be tested
+     * @throws ValidationException
+     */
+    public void validateYear(Integer year) throws ValidationException {
         if (year == null) {
             throw new InvalidParameterException("year", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
