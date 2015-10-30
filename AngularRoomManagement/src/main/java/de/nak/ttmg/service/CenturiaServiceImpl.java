@@ -50,6 +50,17 @@ public class CenturiaServiceImpl implements CenturiaService {
         }
         return centuria;
     }
+    @Override
+    public void deleteCenturia(Long id, Boolean force) throws ValidationException {
+        Centuria centuria = loadCenturia(id);
+        if (centuria == null) {
+            throw new EntityNotFoundException("centuria", id);
+        }
+        if (!force && centuria.getCourses().size() > 0) {
+            throw new IsBusyException(centuria);
+        }
+        centuriaDAO.delete(centuria);
+    }
 
     @Inject
     public void setCenturiaDAO (CenturiaDAO centuriaDAO) {

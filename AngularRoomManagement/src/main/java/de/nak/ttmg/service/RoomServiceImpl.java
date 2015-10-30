@@ -54,6 +54,18 @@ public class RoomServiceImpl implements RoomService {
         }
     }
 
+    @Override
+    public void deleteRoom(Long id, Boolean force) throws ValidationException {
+        Room room = loadRoom(id);
+        if (room == null) {
+            throw new EntityNotFoundException("room", id);
+        }
+        if (!force && room.getCourses().size() > 0) {
+            throw new IsBusyException(room);
+        }
+        roomDAO.delete(room);
+    }
+
     @Inject
     public void setRoomDAO(RoomDAO roomDAO) {
         this.roomDAO = roomDAO;

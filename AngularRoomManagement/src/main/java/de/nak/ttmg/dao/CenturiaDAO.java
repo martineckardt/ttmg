@@ -2,6 +2,7 @@ package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.StudyProgram;
+import de.nak.ttmg.model.Tutor;
 import de.nak.ttmg.util.EntityAlreadyExistsException;
 import de.nak.ttmg.util.InvalidParameterException;
 import de.nak.ttmg.util.ValidationException;
@@ -41,6 +42,10 @@ public class CenturiaDAO {
     public Long create(Centuria centuria) throws ValidationException{
         entityManager.persist(centuria);
         return centuria.getId();
+    }
+
+    public void delete(Centuria centuria) throws ValidationException {
+        entityManager.detach(centuria);
     }
 
     @PersistenceContext

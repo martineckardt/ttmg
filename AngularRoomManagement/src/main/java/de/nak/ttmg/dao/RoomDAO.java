@@ -30,6 +30,10 @@ public class RoomDAO {
         return room.getId();
     }
 
+    public void delete(Room room) throws ValidationException {
+        entityManager.detach(room);
+    }
+
     @PersistenceContext
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;

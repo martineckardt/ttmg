@@ -18,4 +18,6 @@ public interface RoomService {
     List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) throws ValidationException;
 
     Room loadRoom(Long id) throws ValidationException;
+
+    void deleteRoom(Long id, Boolean force) throws ValidationException;
 }

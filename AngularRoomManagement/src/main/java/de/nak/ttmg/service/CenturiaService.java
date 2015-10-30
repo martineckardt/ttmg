@@ -17,4 +17,6 @@ public interface CenturiaService {
     List<Centuria> listCenturias(Integer year, StudyProgram program) throws ValidationException;
 
     Centuria loadCenturia(Long id) throws ValidationException;
+
+    void deleteCenturia(Long id, Boolean force) throws ValidationException;
 }

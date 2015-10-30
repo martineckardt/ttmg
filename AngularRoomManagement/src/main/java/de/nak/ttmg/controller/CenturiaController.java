@@ -22,7 +22,7 @@ public class CenturiaController {
     private CenturiaService centuriaService;
 
     @RequestMapping(value = "/centurias", method = RequestMethod.GET)
-    public List<Centuria> listRooms(@RequestParam(required = false, value = "year") Integer year,
+    public List<Centuria> listCenturias(@RequestParam(required = false, value = "year") Integer year,
                                     @RequestParam(required = false, value = "program") String studyProgram) {
         StudyProgram program = StudyProgram.programForString(studyProgram);
         return centuriaService.listCenturias(year, program);
@@ -51,6 +51,12 @@ public class CenturiaController {
         } catch (IOException ex) {
             throw new RuntimeException("IOError writing file to output stream: " + ex.getMessage());
         }
+    }
+
+    @RequestMapping(value = "/centurias/{id}", method = RequestMethod.DELETE)
+    public void deleteCenturias(@PathVariable Long id,
+                                @RequestParam(required = false, value = "force") Boolean force) {
+        centuriaService.deleteCenturia(id, force);
     }
 
     @Inject
