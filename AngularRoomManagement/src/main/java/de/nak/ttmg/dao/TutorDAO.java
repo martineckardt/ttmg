@@ -41,7 +41,7 @@ public class TutorDAO {
     }
 
     public void delete(Tutor tutor) throws ValidationException {
-        entityManager.detach(tutor);
+        entityManager.remove(tutor);
     }
 
     @PersistenceContext
