@@ -54,7 +54,7 @@ public class RoomController {
         }
     }
 
-    @RequestMapping(value = "/centurias/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/rooms/{id}", method = RequestMethod.DELETE)
     public void deleteRoom(@PathVariable Long id,
                                 @RequestParam(required = false, value = "force") Boolean force) {
         roomService.deleteRoom(id, force);
