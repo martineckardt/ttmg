@@ -50,7 +50,7 @@ public class Course implements Serializable {
     }
 
     @Column(name = "events")
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "course")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "course", cascade = CascadeType.ALL)
     @JsonBackReference
     public Set<Event> getEvents() {
         return events;
