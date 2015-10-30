@@ -32,7 +32,7 @@ public class RoomDAO {
             criteria.add(Restrictions.eq("type", type));
         }
         if (minSeats != null) {
-            criteria.add(Restrictions.eq("seats", minSeats));
+            criteria.add(Restrictions.ge("seats", minSeats));
         }
         return criteria.list();
     }
