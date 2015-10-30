@@ -100,7 +100,7 @@ public class Centuria implements Serializable, HasAvailability {
     @Override
     public String toString() {
         return "Centuria{" +
-                program + year + letter +
+                program + (year%100) + letter +
                 ", nbrOfStudents=" + nbrOfStudents +
                 ", changeTime=" + changeTime +
                 '}';
@@ -109,7 +109,7 @@ public class Centuria implements Serializable, HasAvailability {
     @Transient
     @Override
     public String getReadableString() {
-        return "" + program.getLetter() + year + letter;
+        return "" + program.getLetter() + (year%100) + letter;
     }
 
     @Transient
