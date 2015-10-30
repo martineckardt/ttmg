@@ -10,7 +10,7 @@ import java.util.List;
  * This exception is thrown if a time conflict exists between to courses
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
-public class TimeConflictException extends ValidationException {
+public class TimeConflictException extends IgnorableValidationException {
     private final List<Event> failures;
 
     public TimeConflictException(List<Event> failures) {

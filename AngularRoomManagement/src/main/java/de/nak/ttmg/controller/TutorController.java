@@ -52,6 +52,11 @@ public class TutorController {
         return tutorService.createTutor(tutor);
     }
 
+    @RequestMapping(value = "/tutors/{id}", method = RequestMethod.DELETE)
+    public void deleteCourse(@PathVariable Long id, @RequestParam(required = false, value = "force") Boolean force) {
+        tutorService.deleteTutor(id, force);
+    }
+
     @Inject
     public void setTutorService(TutorService tutorService) {
         this.tutorService = tutorService;

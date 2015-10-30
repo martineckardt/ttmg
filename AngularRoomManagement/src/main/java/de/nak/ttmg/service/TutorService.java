@@ -17,4 +17,6 @@ public interface TutorService {
     List<Tutor> listTutors(Date freeStart, Date freeEnd) throws ValidationException;
 
     Tutor loadTutor(Long id) throws ValidationException;
+
+    void deleteTutor(Long id, Boolean force) throws ValidationException;
 }

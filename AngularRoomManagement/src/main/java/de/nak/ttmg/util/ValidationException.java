@@ -28,4 +28,8 @@ public class ValidationException extends HibernateException {
     public String getExceptionType() {
         return this.getClass().toString();
     }
+
+    public Boolean getIgnorable() {
+        return false;
+    }
 }

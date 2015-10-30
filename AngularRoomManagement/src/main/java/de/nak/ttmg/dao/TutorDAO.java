@@ -40,6 +40,10 @@ public class TutorDAO {
         }
     }
 
+    public void delete(Tutor tutor) throws ValidationException {
+        entityManager.detach(tutor);
+    }
+
     @PersistenceContext
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;

@@ -42,6 +42,18 @@ public class TutorServiceImpl implements TutorService {
        return tutor;
     }
 
+    @Override
+    public void deleteTutor(Long id, Boolean force) throws ValidationException {
+        Tutor tutor = tutorDAO.load(id);
+        if (tutor == null) {
+            throw new EntityNotFoundException("tutor", id);
+        }
+        if (!force && tutor.getCourses().size() > 0) {
+            throw new IsBusyException(tutor);
+        }
+        tutorDAO.delete(tutor);
+    }
+
     @Inject
     public void setTutorDAO(TutorDAO tutorDAO) {
         this.tutorDAO = tutorDAO;
