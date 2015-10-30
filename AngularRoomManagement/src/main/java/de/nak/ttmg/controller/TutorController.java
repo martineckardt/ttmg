@@ -1,10 +1,14 @@
 package de.nak.ttmg.controller;
 
 import de.nak.ttmg.model.Tutor;
+import de.nak.ttmg.pdf.TimeTableCreator;
 import de.nak.ttmg.service.TutorService;
+import de.nak.ttmg.util.ValidationException;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +29,21 @@ public class TutorController {
     @RequestMapping(value = "/tutors/{id}",method = RequestMethod.GET)
     public Tutor getTutor(@PathVariable Long id) {
         return tutorService.loadTutor(id);
+    }
+
+    @RequestMapping(value = "/tutors/{id}/pdf", method = RequestMethod.GET, produces="application/pdf")
+    public InputStreamResource getTimeTablePDF(@PathVariable final Long id) {
+        try {
+            Tutor tutor;
+            try {
+                tutor = getTutor(id);
+            } catch (ValidationException e) {
+                tutor = null;
+            }
+            return TimeTableCreator.createPDF(tutor, id);
+        } catch (IOException ex) {
+            throw new RuntimeException("IOError writing file to output stream");
+        }
     }
 
     @RequestMapping(value = "/tutors", method = RequestMethod.POST)
