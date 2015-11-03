@@ -1,12 +1,13 @@
 <section>
     <h2>Tutors</h2>
-    <table class="table">
+    <table class="table table-striped">
         <tr>
             <th>title</th>
             <th>Firstname</th>
             <th>Lastname</th>
         </tr>
-        <tr ng-repeat="tutor in model.tutors">
+        <!-- List tutors orderedBy lastname and firstname. -->
+        <tr ng-repeat="tutor in model.tutors | orderBy: '[lastName, firstName]'">
             <td>{{tutor.title}}</td>
             <td>{{tutor.firstName}}</td>
             <td>{{tutor.lastName}}</td>

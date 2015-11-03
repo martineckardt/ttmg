@@ -22,11 +22,22 @@ angular.module('ttmg').config(
                 controller: 'listTutorsController',
                 controllerAs:  'listTutorsCtrl'
             })
-            // Centuries
+            // CENTURIAS
             .when('/centurias', {
                 templateUrl: 'js/list-centurias/index.html',
                 controller: 'listCenturiasController',
                 controllerAs: 'listCenturiasCtrl'
+            })
+            // COURSES
+            .when('/courses', {
+                templateUrl: 'js/list-courses/index.html',
+                controller: 'listCoursesController',
+                controllerAs: 'listCoursesCtrl'
+            })
+            .when('/courses/:id', {
+                templateUrl: 'js/show-course/index.html',
+                controller: 'showCourseController',
+                controllerAs: 'showCourseCtrl'
             })
         .otherwise(
             { redirectTo: '/' }

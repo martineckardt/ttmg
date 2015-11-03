@@ -1,17 +1,17 @@
 <section>
     <h2>Rooms</h2>
-    <table class="table">
+    <table class="table table-striped">
         <tr>
             <th>Building</th>
             <th>Room Number</th>
             <th>Seats</th>
-            <th>Projector present?</th>
+            <th>Room type</th>
         </tr>
-        <tr ng-repeat="room in model.rooms">
+        <tr ng-repeat="room in model.rooms | orderBy:'[building, roomNumber]'">
             <td>{{room.building}}</td>
             <td>{{room.roomNumber}}</td>
             <td>{{room.seats}}</td>
-            <td>{{room.beamerPresent}}</td>
+            <td>{{room.type}}</td>
         </tr>
     </table>
 
