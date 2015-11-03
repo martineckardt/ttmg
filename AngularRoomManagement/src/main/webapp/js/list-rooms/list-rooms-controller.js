@@ -2,9 +2,9 @@
  * Created by U519643 on 28.10.2015.
  */
 
-application.controller('listRoomsController', ['$scope', 'roomService', function ($scope, roomService) {
+angular.module('ttmg.controllers').controller('listRoomsController', ['$scope', 'roomService', function ($scope, roomService) {
 
-    console.log('listRoomsController started')
+    console.log('listRoomsController started');
 
     // Setup scope model
     $scope.model = {
@@ -14,7 +14,8 @@ application.controller('listRoomsController', ['$scope', 'roomService', function
     // Load rooms from REST API
     roomService.listRoomsWithPromise().then(function successCallback(response) {
         $scope.model.rooms = response.data;
+        console.log($scope.model.rooms);
     }, function errorCallback(response) {
-        alert('Error occured while loading');
+        console.log('failed to query rooms');
     });
 }]);

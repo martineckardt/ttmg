@@ -1,4 +1,5 @@
-<section ng-controller="listRoomsController as listRoomsController"></section>
+<section>
+    <h2>Rooms</h2>
     <table class="table">
         <tr>
             <th>Building</th>
@@ -15,4 +16,8 @@
     </table>
 
     <a href="#/rooms/create" class="btn btn-default">Raum hinzufügen</a>
+    <button ng-click="listRoomsCtrl.logModel();" class="btn btn-default">
+        Log Model
+    </button>
+
 </section>

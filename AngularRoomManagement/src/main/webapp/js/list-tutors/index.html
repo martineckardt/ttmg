@@ -1,0 +1,17 @@
+<section>
+    <h2>Tutors</h2>
+    <table class="table">
+        <tr>
+            <th>title</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+        <tr ng-repeat="tutor in model.tutors">
+            <td>{{tutor.title}}</td>
+            <td>{{tutor.firstName}}</td>
+            <td>{{tutor.lastName}}</td>
+        </tr>
+    </table>
+
+    <a href="#/tutors/create" class="btn btn-default">Add Tutor</a>
+</section>

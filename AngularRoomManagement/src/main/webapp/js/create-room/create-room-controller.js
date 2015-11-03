@@ -2,7 +2,7 @@
  * Created by U519643 on 28.10.2015.
  */
 
-application.controller('createRoomController', ['$scope', 'Room', 'roomService', function ($scope, Room, roomService) {
+angular.module('ttmg.controllers').controller('createRoomController', ['$scope', 'Room', 'roomService', function ($scope, Room, roomService) {
 
     console.log('createRoomController initialized');
 
