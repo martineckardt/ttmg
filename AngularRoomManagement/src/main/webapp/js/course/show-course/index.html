@@ -4,14 +4,19 @@
     <p>Tutor: {{model.course.tutor.readableString}}</p>
 
     <div class="row">
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-4 col-md-4">
             <h3>Rooms</h3>
             <room-table rooms="model.course.rooms"></room-table>
         </div>
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-4 col-md-4">
             <h3>Participants</h3>
-            <room-table rooms="model.course.participants"></room-table>
+            <century-table rooms="model.course.participants"></century-table>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <h3>Events</h3>
+            <event-table events="model.course.events"></event-table>
         </div>
     </div>
 
+    <p>{{model.course}}</p>
 </section>

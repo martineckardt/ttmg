@@ -14,7 +14,9 @@ angular.module('ttmg').config(
             controllerAs:  'listRoomsCtrl'
         })
         .when('/rooms/create', {
-                templateUrl: 'js/room/create-room/index.html'
+                templateUrl: 'js/room/create-room/index.html',
+                controller: 'createRoomController',
+                controllerAs: 'createRoomCtrl'
         })
         // TUTORS
         .when('/tutors', {

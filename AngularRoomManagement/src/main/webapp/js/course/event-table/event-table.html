@@ -1,0 +1,10 @@
+<table class="table table-striped">
+    <tr>
+        <th>Begin</th>
+        <th>End</th>
+    </tr>
+    <tr ng-repeat="event in events | orderBy:'begin'">
+        <td>{{event.begin}}</td>
+        <td>{{event.end}}</td>
+    </tr>
+</table>
