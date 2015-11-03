@@ -7,7 +7,7 @@ angular.module('ttmg.services').service('tutorService', ['$http', function ($htt
     console.log('tutorService initialized')
 
     /**
-     * Return all rooms using an asynchronous REST call with promise.
+     * Return all tutors using an asynchronous REST call with promise.
      * @returns {HttpPromise}.
      */
     this.listTutorsWithPromise = function () {
@@ -15,8 +15,8 @@ angular.module('ttmg.services').service('tutorService', ['$http', function ($htt
     };
 
     /**
-     * Saves a given room using an asynchronous REST call with promise.
-     * @param room The room to be saved.
+     * Saves a given tutor using an asynchronous REST call with promise.
+     * @param tutor The tutor to be saved.
      * @returns {HttpPromise}.
      */
     this.saveTutorWithPromise = function (tutor) {
@@ -24,8 +24,8 @@ angular.module('ttmg.services').service('tutorService', ['$http', function ($htt
     };
 
     /**
-     * Deletes the given room using an asynchronous REST call with promise.
-     * @param room The room to be deleted.
+     * Deletes the given tutor using an asynchronous REST call with promise.
+     * @param tutor The tutor to be deleted.
      * @returns {HttpPromise}.
      */
     this.deleteTutorWithPromise = function (tutor) {

@@ -1,0 +1,19 @@
+<section>
+    <h2>Centurias</h2>
+    <table class="table">
+        <tr>
+            <th>program</th>
+            <th>letter</th>
+            <th>nbrOfStudents</th>
+            <th>year</th>
+        </tr>
+        <tr ng-repeat="century in model.centurias">
+            <td>{{century.program}}</td>
+            <td>{{century.letter}}</td>
+            <td>{{century.nbrOfStudents}}</td>
+            <td>{{century.year}}</td>
+        </tr>
+    </table>
+
+    <a href="#/centurias/create" class="btn btn-default">Add Century</a>
+</section>

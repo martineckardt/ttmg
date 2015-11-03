@@ -22,6 +22,12 @@ angular.module('ttmg').config(
                 controller: 'listTutorsController',
                 controllerAs:  'listTutorsCtrl'
             })
+            // Centuries
+            .when('/centurias', {
+                templateUrl: 'js/list-centurias/index.html',
+                controller: 'listCenturiasController',
+                controllerAs: 'listCenturiasCtrl'
+            })
         .otherwise(
             { redirectTo: '/' }
         )
