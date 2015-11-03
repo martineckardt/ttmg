@@ -5,7 +5,7 @@
         <th>letter</th>
         <th>Nunmber of students</th>
     </tr>
-    <tr ng-repeat="century in model.centurias | orderBy:'[-year, -programm, letter]'">
+    <tr ng-repeat="century in centurias | orderBy:'[-year, -programm, letter]'">
         <td>{{century.year}}</td>
         <td>{{century.program}}</td>
         <td>{{century.letter}}</td>
