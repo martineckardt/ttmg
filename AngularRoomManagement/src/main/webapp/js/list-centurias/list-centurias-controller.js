@@ -15,6 +15,6 @@ angular.module('ttmg.controllers').controller('listCenturiasController', ['$scop
     centuryService.listCenturiasWithPromise().then(function successCallback(response) {
         $scope.model.centurias = response.data;
     }, function errorCallback(response) {
-        console.log('failed to query tutors');
+        console.log('failed to query centruias');
     });
 }]);

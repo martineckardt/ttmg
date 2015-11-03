@@ -1,17 +1,18 @@
 <section>
     <h2>Centurias</h2>
-    <table class="table">
+    <table class="table table-striped">
         <tr>
-            <th>program</th>
             <th>letter</th>
+            <th>program</th>
             <th>nbrOfStudents</th>
             <th>year</th>
         </tr>
-        <tr ng-repeat="century in model.centurias">
+        <tr ng-repeat="century in model.centurias | orderBy:'[-year, -programm, letter]'">
+            <td>{{century.year}}</td>
             <td>{{century.program}}</td>
             <td>{{century.letter}}</td>
             <td>{{century.nbrOfStudents}}</td>
-            <td>{{century.year}}</td>
+
         </tr>
     </table>
 
