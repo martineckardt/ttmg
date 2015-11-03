@@ -1,0 +1,14 @@
+<table class="table table-striped">
+    <tr>
+        <th>Year</th>
+        <th>program</th>
+        <th>letter</th>
+        <th>Nunmber of students</th>
+    </tr>
+    <tr ng-repeat="century in model.centurias | orderBy:'[-year, -programm, letter]'">
+        <td>{{century.year}}</td>
+        <td>{{century.program}}</td>
+        <td>{{century.letter}}</td>
+        <td>{{century.nbrOfStudents}}</td>
+    </tr>
+</table>

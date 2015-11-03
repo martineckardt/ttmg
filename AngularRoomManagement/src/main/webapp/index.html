@@ -2,7 +2,7 @@
 <html ng-app="ttmg">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>AngularJS Time Table Management</title>
+    <title>Time Table Management</title>
     <!-- Bower Components -->
     <script type="application/javascript" src="bower_components/angular/angular.js"></script>
     <script type="application/javascript" src="bower_components/angular-route/angular-route.js"></script>
@@ -11,23 +11,29 @@
     <script type="application/javascript" src="js/application.js"></script>
     <script type="application/javascript" src="js/routes.js"></script>
 
-    <!-- Ressources -->
-    <script type="application/javascript" src="js/resources/room.js"></script>
+    <!-- Century -->
+    <script type="application/javascript" src="js/century/century-service.js"></script>
+    <script type="application/javascript" src="js/century/list-centurias/list-centurias-controller.js"></script>
+    <script type="application/javascript" src="js/century/century-table/century-table-directive.js"></script>
 
-    <!-- Services -->
-    <script type="application/javascript" src="js/services/room-service.js"></script>
-    <script type="application/javascript" src="js/services/tutor-service.js"></script>
-    <script type="application/javascript" src="js/services/century-service.js"></script>
-    <script type="application/javascript" src="js/services/course-service.js"></script>
+    <!-- Course -->
+    <script type="application/javascript" src="js/course/course-service.js"></script>
+    <script type="application/javascript" src="js/course/list-courses/list-courses-controller.js"></script>
+    <script type="application/javascript" src="js/course/show-course/show-course-controller.js"></script>
 
-    <!-- Controllers -->
+    <!-- Home -->
     <script type="application/javascript" src="js/home/home-controller.js"></script>
-    <script type="application/javascript" src="js/create-room/create-room-controller.js"></script>
-    <script type="application/javascript" src="js/list-rooms/list-rooms-controller.js"></script>
-    <script type="application/javascript" src="js/list-tutors/list-tutors-controller.js"></script>
-    <script type="application/javascript" src="js/list-centurias/list-centurias-controller.js"></script>
-    <script type="application/javascript" src="js/list-courses/list-courses-controller.js"></script>
-    <script type="application/javascript" src="js/show-course/show-course-controller.js"></script>
+
+    <!-- Room -->
+    <script type="application/javascript" src="js/room/room-factory.js"></script>
+    <script type="application/javascript" src="js/room/room-service.js"></script>
+    <script type="application/javascript" src="js/room/create-room/create-room-controller.js"></script>
+    <script type="application/javascript" src="js/room/list-rooms/list-rooms-controller.js"></script>
+    <script type="application/javascript" src="js/room/room-table/room-table-directive.js"></script>
+
+    <!-- Tutor -->
+    <script type="application/javascript" src="js/tutor/tutor-service.js"></script>
+    <script type="application/javascript" src="js/tutor/list-tutors/list-tutors-controller.js"></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -38,7 +44,7 @@
 <body>
 
     <div class="container">
-        <h1><a href="#/">Angular Room Management</a></h1>
+        <h1><a href="#/">Time Table Management</a></h1>
 
         <div class="panel panel-default">
             <div class="panel-body" ng-view>
