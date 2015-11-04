@@ -94,30 +94,32 @@ public class TimeValidatorTest {
         courseIAA = new Course();
         courseIAA.setName("IAA");
 
-        //TODO
-        //courseIAA.setRooms(rooms);
         courseIAA.setTutor(tutor);
         courseIAA.setParticipants(participants);
         courseIAA.setType(EventType.COURSE);
         centuria.getCourses().add(courseIAA);
-        //roomA101.getCourses().add(courseIAA);
-        //roomA102.getCourses().add(courseIAA);
         tutor.getCourses().add(courseIAA);
 
         past = new Event();
         past.setBegin(pastStart);
         past.setEnd(pastEnd);
         past.setCourse(courseIAA);
+        past.setRooms(rooms);
 
         future = new Event();
         future.setBegin(futureStart);
         future.setEnd(futureEnd);
         future.setCourse(courseIAA);
+        future.setRooms(rooms);
 
         Set<Event> events = new HashSet<>(2);
         events.add(past);
         events.add(future);
         courseIAA.setEvents(events);
+        roomA101.getEvents().add(past);
+        roomA101.getEvents().add(future);
+        roomA102.getEvents().add(past);
+        roomA102.getEvents().add(future);
     }
 
     @Test
@@ -144,18 +146,27 @@ public class TimeValidatorTest {
 
         Course copy = new Course();
         Set<Event> events = new HashSet<>(2);
-        events.add(past);
-        events.add(future);
+        Event e1 = new Event();
+        e1.setBegin(futureStart);
+        e1.setEnd(futureEnd);
+        e1.setCourse(courseIAA);
+        Event e2 = new Event();
+        e2.setBegin(futureStart);
+        e2.setEnd(futureEnd);
+        e2.setCourse(courseIAA);
+
+        events.add(e1);
+        events.add(e2);
         copy.setEvents(events);
         copy.setType(EventType.COURSE);
         copy.setTutor(tutor);
         Set<Room> rooms = new HashSet<>(2);
         rooms.add(roomA101);
         rooms.add(roomA102);
+        e1.setRooms(rooms);
+        e2.setRooms(rooms);
         Set<Centuria> participants = new HashSet<>(1);
         participants.add(centuria);
-        //TODO
-        //copy.setRooms(rooms);
         copy.setParticipants(participants);
         copy.setName("Copy");
         try {
