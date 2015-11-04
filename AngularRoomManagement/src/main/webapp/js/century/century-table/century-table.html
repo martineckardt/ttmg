@@ -1,17 +1,15 @@
 <table class="table table-striped">
     <tr>
-        <th>Year</th>
-        <th>program</th>
-        <th>letter</th>
+        <th>Name</th>
         <th>Nunmber of students</th>
-        <th>Schedule</th>
+        <th ng-if="hideDownloadButton != true">Schedule</th>
     </tr>
     <tr ng-repeat="century in centurias | orderBy:'[-year, -programm, letter]'">
-        <td>{{century.year}}</td>
-        <td>{{century.program}}</td>
-        <td>{{century.letter}}</td>
+        <td>{{century.readableString}}</td>
         <td>{{century.nbrOfStudents}}</td>
-        <td><a class="btn btn-default btn-xs" ng-href="rest/centurias/{{century.id}}/schedule.pdf" target="_blank"><span
+        <td ng-if="hideDownloadButton != true"><a class="btn btn-default btn-xs"
+                                                  ng-href="rest/centurias/{{century.id}}/schedule.pdf"
+                                                  target="_blank"><span
                 class="glyphicon glyphicon-download-alt"></span> Download</a></td>
     </tr>
 </table>

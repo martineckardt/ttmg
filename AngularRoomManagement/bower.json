@@ -2,6 +2,7 @@
   "name": "ttmg",
   "dependencies": {
     "angular": "1.4.x",
-    "angular-route" : "1.4.x"
+    "angular-route": "1.4.x",
+    "angular-resource": "1.4.x"
   }
 }

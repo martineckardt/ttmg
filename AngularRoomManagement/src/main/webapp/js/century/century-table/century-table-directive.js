@@ -6,7 +6,10 @@
 angular.module('ttmg').directive('centuryTable', function () {
     return {
         restrict: 'E',
-        scope: {centurias: '='},
+        scope: {
+            centurias: '=',
+            hideDownloadButton: '='
+        },
         templateUrl: 'js/century/century-table/century-table.html'
     };
 });
