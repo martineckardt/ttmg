@@ -20,20 +20,30 @@ public class EventDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId) throws ValidationException {
+    public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Date rangeStart, Date rangeEnd) throws ValidationException {
         Session session = entityManager.unwrap(Session.class);
-        Criteria criteria = session.createCriteria(Event.class);
-        //if (centuriaId != null) {
-        //    criteria.add(Restrictions.eq("centuriaId", centuriaId));
-        //}
-        //if (tutorId != null) {
-        //    criteria.add(Restrictions.eq("tutorId", tutorId));
-        //}
+        Criteria criteria = session.createCriteria(Event.class, "event");
+        criteria.createAlias("event.course", "course"); // inner join by default
+
+        if (centuriaId != null) {
+            criteria.createAlias("course.participants", "centuria");
+            criteria.add(Restrictions.eq("centuria.id", centuriaId));
+        }
+        if (tutorId != null) {
+            criteria.createAlias("course.tutor", "tutor");
+            criteria.add(Restrictions.eq("tutor.id", tutorId));
+        }
         if (roomId != null) {
-            criteria.add(Restrictions.eq("roomId", roomId));
+            criteria.createAlias("event.rooms", "room");
+            criteria.add(Restrictions.eq("room.id", roomId));
+        }
+        if (rangeStart != null) {
+            criteria.add(Restrictions.ge("begin", rangeStart));
+        }
+        if (rangeEnd != null) {
+            criteria.add(Restrictions.lt("begin", rangeEnd));
         }
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return criteria.list();
-
     }
 }

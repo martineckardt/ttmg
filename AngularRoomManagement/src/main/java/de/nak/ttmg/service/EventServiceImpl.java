@@ -27,10 +27,6 @@ public class EventServiceImpl implements EventService {
             end = rangeEnd;
         }
         DateRangeValidator.validateDateRange(rangeStart, end);
-        List<Event> allEvents = eventDAO.listEvents(centuriaId,tutorId,roomId);
-        if (rangeStart != null) {
-            allEvents.stream().filter(event -> event.getBegin().after(rangeStart) && event.getBegin().before(end));
-        }
-        return allEvents;
+        return eventDAO.listEvents(centuriaId,tutorId,roomId, rangeStart, rangeEnd);
     }
 }
