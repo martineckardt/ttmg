@@ -38,7 +38,7 @@ public class CenturiaController {
         return centuriaService.createCenturia(centuria);
     }
 
-    @RequestMapping(value = "/centurias/{id}/pdf", method = RequestMethod.GET, produces="application/pdf")
+    @RequestMapping(value = "/centurias/{id}/schedule.pdf", method = RequestMethod.GET, produces = "application/pdf")
     public InputStreamResource getTimeTablePDF(@PathVariable final Long id) {
         try {
             Centuria centuria;
