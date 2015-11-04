@@ -1,9 +1,10 @@
 <section>
     <h2>Rooms</h2>
+
+    <div class="btn-toolbar" role="toolbar">
+        <a href="#/rooms/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Room</a>
+    </div>
+
     <room-table rooms="model.rooms"></room-table>
-    <a href="#/rooms/create" class="btn btn-default">Raum hinzufügen</a>
-    <button ng-click="listRoomsCtrl.logModel();" class="btn btn-default">
-        Log Model
-    </button>
 
 </section>

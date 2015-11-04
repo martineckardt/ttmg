@@ -9,4 +9,4 @@
 
 var application = angular.module('ttmg', ['ngRoute','ttmg.services','ttmg.controllers']);
 var controllers = angular.module('ttmg.controllers', ['ttmg.services']);
-var services = angular.module('ttmg.services', []);
+var services = angular.module('ttmg.services', ['ngResource']);

@@ -1,13 +1,11 @@
 <table class="table table-striped">
     <tr>
-        <th>Building</th>
-        <th>Room Number</th>
+        <th>Name</th>
         <th>Seats</th>
         <th>Room type</th>
     </tr>
     <tr ng-repeat="room in rooms | orderBy:'[building, roomNumber]'">
-        <td>{{room.building}}</td>
-        <td>{{room.roomNumber}}</td>
+        <td>{{room.readableString}}</td>
         <td>{{room.seats}}</td>
         <td>{{room.type}}</td>
     </tr>

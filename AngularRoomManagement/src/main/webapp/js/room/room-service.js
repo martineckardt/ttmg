@@ -2,6 +2,7 @@
  * Created by U519643 on 28.10.2015.
  */
 
+// AKTUELL NICHT VERWENDET
 angular.module('ttmg.services').service('roomService', ['$http', function ($http) {
 
     console.log('roomService initialized')
@@ -20,7 +21,7 @@ angular.module('ttmg.services').service('roomService', ['$http', function ($http
      * @returns {HttpPromise}.
      */
     this.saveRoomWithPromise = function (room) {
-        return $http.put('rest/rooms', room);
+        return $http.post('rest/rooms', room);
     };
 
     /**

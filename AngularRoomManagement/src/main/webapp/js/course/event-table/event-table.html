@@ -4,7 +4,7 @@
         <th>End</th>
     </tr>
     <tr ng-repeat="event in events | orderBy:'begin'">
-        <td>{{event.begin}}</td>
-        <td>{{event.end}}</td>
+        <td>{{event.begin | date : 'd.M.yy HH:mm'}}</td>
+        <td>{{event.end | date : 'd.M.yy HH:mm'}}</td>
     </tr>
 </table>

@@ -1,5 +1,7 @@
 <section>
-    <form name="roomForm" novalidate>
+    <h2>Create a new room</h2>
 
+    <form class="form-horizontal" role="form" ng-submit="addRoom()">
+        <div ng-include="'js/room/create-room/room-form.html'"></div>
     </form>
 </section>
