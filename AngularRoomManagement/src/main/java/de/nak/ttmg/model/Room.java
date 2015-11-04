@@ -36,7 +36,7 @@ public class Room implements Serializable, HasAvailability {
 
     private RoomType type;
 
-    private Set<Course> courses = new HashSet<>();
+    private Set<Event> events = new HashSet<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -87,10 +87,10 @@ public class Room implements Serializable, HasAvailability {
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="course_room", joinColumns=@JoinColumn(name="room_id"), inverseJoinColumns=@JoinColumn(name="course_id"))
+    @JoinTable(name="event_room", joinColumns=@JoinColumn(name="room_id"), inverseJoinColumns=@JoinColumn(name="event_id"))
     @JsonBackReference
-    public Set<Course> getCourses() {
-        return courses;
+    public Set<Event> getEvents() {
+        return events;
     }
 
     @Transient
@@ -105,10 +105,9 @@ public class Room implements Serializable, HasAvailability {
         return "room";
     }
 
-    public void setCourses(Set<Course> courses) {
-        this.courses = courses;
+    public void setEvents(Set<Event> events) {
+        this.events = events;
     }
-
 
     @Override
     public String toString() {

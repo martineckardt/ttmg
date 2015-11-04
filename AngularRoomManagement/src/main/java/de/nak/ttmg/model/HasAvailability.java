@@ -9,7 +9,7 @@ import java.util.Set;
 public interface HasAvailability extends HasReadableString {
     Integer getCustomChangeTime();
 
-    Set<Course> getCourses();
+    Set<Event> getEvents();
 
     String getObjectType();
 }

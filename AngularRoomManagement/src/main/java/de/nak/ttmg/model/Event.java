@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by felixb on 27/10/15.
@@ -14,6 +16,8 @@ import java.util.Date;
 public class Event implements Serializable, HasReadableString {
 
     private Course course;
+
+    private Set<Room> rooms = new HashSet<>();
 
     private Long id;
 
@@ -58,6 +62,16 @@ public class Event implements Serializable, HasReadableString {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    @Column(name = "rooms")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "events")
+    public Set<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Set<Room> rooms) {
+        this.rooms = rooms;
     }
 
     @Override

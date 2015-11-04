@@ -20,8 +20,6 @@ public class Course implements Serializable {
 
     private Set<Event> events = new HashSet<>();
 
-    private Set<Room> rooms = new HashSet<>();
-
     private Set<Centuria> participants = new HashSet<>();
 
     private Tutor tutor;
@@ -59,16 +57,6 @@ public class Course implements Serializable {
         this.events = events;
     }
 
-    @Column(name = "rooms")
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "courses")
-    public Set<Room> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(Set<Room> rooms) {
-        this.rooms = rooms;
-    }
-
     @Column(name = "participants")
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "courses")
     public Set<Centuria> getParticipants() {
@@ -103,7 +91,6 @@ public class Course implements Serializable {
         return "Course{" +
                 "type=" + type +
                 ", events=" + events +
-                ", rooms=" + rooms +
                 ", participants=" + participants +
                 ", tutor=" + tutor +
                 ", name='" + name + '\'' +

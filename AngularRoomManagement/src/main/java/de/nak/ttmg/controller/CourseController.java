@@ -20,9 +20,10 @@ public class CourseController {
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     public List<Course> listCourses(@RequestParam(required = false, value = "centuriaId") Long centuriaId,
                                   @RequestParam(required = false, value = "tutorId") Long tutorId,
-                                  @RequestParam(required = false, value = "roomId") Long roomId,
-                                  @RequestParam(required = false, value = "rangeStart") Date rangeStart,
-                                  @RequestParam(required = false, value = "rangeEnd") Date rangeEnd) {
+                                  @RequestParam(required = false, value = "roomId") Long roomId
+                                  //@RequestParam(required = false, value = "rangeStart") Date rangeStart,
+                                  //@RequestParam(required = false, value = "rangeEnd") Date rangeEnd
+                                    ) {
         //TODO
         return courseService.listCourses();
     }

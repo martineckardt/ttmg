@@ -94,13 +94,14 @@ public class TimeValidatorTest {
         courseIAA = new Course();
         courseIAA.setName("IAA");
 
-        courseIAA.setRooms(rooms);
+        //TODO
+        //courseIAA.setRooms(rooms);
         courseIAA.setTutor(tutor);
         courseIAA.setParticipants(participants);
         courseIAA.setType(EventType.COURSE);
         centuria.getCourses().add(courseIAA);
-        roomA101.getCourses().add(courseIAA);
-        roomA102.getCourses().add(courseIAA);
+        //roomA101.getCourses().add(courseIAA);
+        //roomA102.getCourses().add(courseIAA);
         tutor.getCourses().add(courseIAA);
 
         past = new Event();
@@ -130,9 +131,9 @@ public class TimeValidatorTest {
         assertNotNull(courseIAA.getParticipants());
         assertNotNull(centuria.getCourses());
         assertTrue(centuria.getCourses().size() > 0);
-        assertTrue(roomA101.getCourses().size() > 0);
-        assertTrue(roomA102.getCourses().size() > 0);
-        assertTrue(roomA103.getCourses().size() == 0);
+        assertTrue(roomA101.getEvents().size() > 0);
+        assertTrue(roomA102.getEvents().size() > 0);
+        assertTrue(roomA103.getEvents().size() == 0);
         assertTrue(tutor.getCourses().size() > 0);
 
         try {
@@ -153,7 +154,8 @@ public class TimeValidatorTest {
         rooms.add(roomA102);
         Set<Centuria> participants = new HashSet<>(1);
         participants.add(centuria);
-        copy.setRooms(rooms);
+        //TODO
+        //copy.setRooms(rooms);
         copy.setParticipants(participants);
         copy.setName("Copy");
         try {

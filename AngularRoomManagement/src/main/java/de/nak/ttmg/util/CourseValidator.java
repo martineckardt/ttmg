@@ -20,7 +20,8 @@ public class CourseValidator {
         validateEvents(course.getEvents());
         validateTutor(course.getTutor());
         validateParticipants(course.getParticipants());
-        validateRooms(course.getRooms(),course.getParticipants(), course.getType(), force);
+        //TODO
+        //validateRooms(course.getRooms(),course.getParticipants(), course.getType(), force);
         validateName(course.getName());
     }
 

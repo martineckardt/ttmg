@@ -67,14 +67,15 @@ public class PDFCreator {
             table.setHeaderRows(1);
 
             //just some random data to fill
-            for(Course course : object.getCourses()){
+            for(Event event : object.getEvents()){
+                Course course = event.getCourse();
                 insertCell(table, course.getName(), Element.ALIGN_LEFT, 1, bf12);
                 insertCell(table, convertObjectToString(course.getParticipants()), Element.ALIGN_LEFT, 1, bf12);
-                insertCell(table, convertObjectToString(course.getRooms()), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, convertObjectToString(event.getRooms()), Element.ALIGN_LEFT, 1, bf12);
                 insertCell(table, course.getTutor().getReadableString(), Element.ALIGN_LEFT, 1, bf12);
                 insertCell(table, convertObjectToString(course.getEvents()), Element.ALIGN_LEFT, 1, bf12);
             }
-            if (object.getCourses().isEmpty()) {
+            if (object.getEvents().isEmpty()) {
                 Paragraph emptyMessage = new Paragraph("This " + object.getObjectType() + " has no courses.");
                 doc.add(emptyMessage);
             } else {

@@ -97,6 +97,17 @@ public class Centuria implements Serializable, HasAvailability {
         this.changeTime = changeTime;
     }
 
+    @Transient
+    @JsonBackReference
+    @Override
+    public Set<Event> getEvents() {
+        Set<Event> events = new HashSet<>();
+        for (Course c : getCourses()) {
+            events.addAll(c.getEvents());
+        }
+        return events;
+    }
+
     @Override
     public String toString() {
         return "Centuria{" +

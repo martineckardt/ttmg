@@ -115,4 +115,15 @@ public class Tutor implements Serializable, HasAvailability {
         }
         return defaultChangeTime;
     }
+
+    @Transient
+    @JsonBackReference
+    @Override
+    public Set<Event> getEvents() {
+        Set<Event> events = new HashSet<>();
+        for (Course c : getCourses()) {
+            events.addAll(c.getEvents());
+        }
+        return events;
+    }
 }
