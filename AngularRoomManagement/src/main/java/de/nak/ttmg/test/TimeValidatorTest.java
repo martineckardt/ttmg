@@ -46,17 +46,17 @@ public class TimeValidatorTest {
         roomA101 = new Room();
         roomA101.setBuilding("A".charAt(0));
         roomA101.setSeats(30);
-        roomA101.setRoomNumber("101");
+        roomA101.setRoomNumber(101);
         roomA101.setType(RoomType.LECTURE);
         roomA102 = new Room();
         roomA102.setBuilding("B".charAt(0));
         roomA102.setSeats(30);
-        roomA102.setRoomNumber("102");
+        roomA102.setRoomNumber(102);
         roomA102.setType(RoomType.COMPUTER);
         roomA103 = new Room();
         roomA103.setBuilding("C".charAt(0));
         roomA103.setSeats(29);
-        roomA103.setRoomNumber("103");
+        roomA103.setRoomNumber(103);
         roomA103.setType(RoomType.LECTURE);
 
         tutor = new Tutor();

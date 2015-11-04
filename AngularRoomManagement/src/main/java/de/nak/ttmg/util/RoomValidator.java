@@ -28,17 +28,12 @@ public class RoomValidator {
         }
     }
 
-    private void validateRoomNbr(String roomNbr) throws InvalidParameterException {
+    private void validateRoomNbr(Integer roomNbr) throws InvalidParameterException {
         if (roomNbr == null) {
             throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        roomNbr = roomNbr.trim();
-        if (roomNbr.length() < 1 || roomNbr.length() > 3) {
-            throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_LENGTH);
-        }
-        boolean validCharacters = roomNbr.chars().allMatch(Character::isLetterOrDigit);
-        if (!validCharacters) {
-            throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
+        if (roomNbr < 0 || roomNbr > 1000) {
+            throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
     }
 

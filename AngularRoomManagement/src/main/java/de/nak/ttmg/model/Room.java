@@ -27,7 +27,7 @@ public class Room implements Serializable, HasAvailability {
     /**
      * The room's number.
      */
-    private String roomNumber;
+    private Integer roomNumber;
 
     /**
      * Number of seats in the room.
@@ -59,11 +59,11 @@ public class Room implements Serializable, HasAvailability {
     }
 
     @Column(name = "room_number", nullable = false)
-    public String getRoomNumber() {
+    public Integer getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(String roomNumber) {
+    public void setRoomNumber(Integer roomNumber) {
         this.roomNumber = roomNumber;
     }
 
@@ -96,7 +96,7 @@ public class Room implements Serializable, HasAvailability {
     @Transient
     @Override
     public String getReadableString() {
-        return building + roomNumber;
+        return "" + building + roomNumber;
     }
 
     @Transient
