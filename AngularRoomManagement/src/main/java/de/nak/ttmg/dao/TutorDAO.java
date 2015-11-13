@@ -25,11 +25,11 @@ public class TutorDAO {
         return entityManager.find(Tutor.class, id);
     }
 
-    public Long create(Tutor tutor) throws ValidationException {
+    public Tutor create(Tutor tutor) throws ValidationException {
         if (tutor.getId() == null) {
             try {
                 entityManager.persist(tutor);
-                return tutor.getId();
+                return tutor;
             } catch (ConstraintViolationException e) {
                 throw new EntityAlreadyExistsException();
             } catch (Exception e) {

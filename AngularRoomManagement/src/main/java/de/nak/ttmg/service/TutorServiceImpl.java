@@ -18,7 +18,7 @@ public class TutorServiceImpl implements TutorService {
     private final TimeValidator timeValidator = new TimeValidator();
 
     @Override
-    public Long createTutor(Tutor tutor) throws ValidationException {
+    public Tutor createTutor(Tutor tutor) throws ValidationException {
         tutorValidator.validateTutor(tutor);
         return tutorDAO.create(tutor);
     }

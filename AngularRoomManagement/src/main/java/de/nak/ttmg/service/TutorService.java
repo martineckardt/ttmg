@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface TutorService {
 
-    Long createTutor(Tutor tutor) throws ValidationException;
+    Tutor createTutor(Tutor tutor) throws ValidationException;
 
     List<Tutor> listTutors(Date freeStart, Date freeEnd) throws ValidationException;
 

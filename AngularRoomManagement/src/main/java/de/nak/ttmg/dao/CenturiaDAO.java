@@ -35,9 +35,9 @@ public class CenturiaDAO {
         return entityManager.find(Centuria.class, id);
     }
 
-    public Long create(Centuria centuria) throws ValidationException{
+    public Centuria create(Centuria centuria) throws ValidationException{
         entityManager.persist(centuria);
-        return centuria.getId();
+        return centuria;
     }
 
     public void delete(Centuria centuria) throws ValidationException {

@@ -34,16 +34,16 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/courses", method = RequestMethod.POST)
-    public Long createCourse(@RequestBody Course course,
+    public Course createCourse(@RequestBody Course course,
                             @RequestParam(required = false, value = "force") Boolean force) {
         return courseService.createCourse(course, force);
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.PUT)
-    public void saveCourse(@PathVariable Long id,
+    public Course saveCourse(@PathVariable Long id,
                           @RequestBody Course course,
                           @RequestParam(required = false, value = "force") Boolean force) {
-        courseService.updateCourse(id, course, force);
+        return courseService.updateCourse(id, course, force);
     }
 
     @RequestMapping(value = "/courses/{id}", method = RequestMethod.DELETE)

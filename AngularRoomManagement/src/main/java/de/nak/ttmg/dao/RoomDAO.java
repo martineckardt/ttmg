@@ -42,9 +42,9 @@ public class RoomDAO {
         return entityManager.find(Room.class, id);
     }
 
-    public Long create(Room room) throws ValidationException {
+    public Room create(Room room) throws ValidationException {
         entityManager.persist(room);
-        return room.getId();
+        return room;
     }
 
     public void delete(Room room) throws ValidationException {

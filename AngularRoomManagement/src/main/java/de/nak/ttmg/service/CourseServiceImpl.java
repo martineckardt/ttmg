@@ -17,7 +17,7 @@ public class CourseServiceImpl implements CourseService {
     private final CourseValidator courseValidator = new CourseValidator();
 
     @Override
-    public Long createCourse(Course course, boolean force) throws ValidationException {
+    public Course createCourse(Course course, boolean force) throws ValidationException {
         courseValidator.validateCourse(course, force);
         if (!force) {
             timeValidator.validateTime(course);
@@ -26,13 +26,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void updateCourse(Long id, Course course, boolean force) throws ValidationException {
+    public Course updateCourse(Long id, Course course, boolean force) throws ValidationException {
         if (course != null && course.getId() != null && course.getId().equals(id)) {
             courseValidator.validateCourse(course, force);
             if (!force) {
                 timeValidator.validateTime(course);
             }
-            courseDAO.update(course);
+            return courseDAO.update(course);
         } else {
             throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
         }

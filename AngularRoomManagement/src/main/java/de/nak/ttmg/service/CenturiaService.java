@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface CenturiaService {
 
-    Long createCenturia(Centuria centuria) throws ValidationException;
+    Centuria createCenturia(Centuria centuria) throws ValidationException;
 
     List<Centuria> listCenturias(Integer year, StudyProgram program) throws ValidationException;
 

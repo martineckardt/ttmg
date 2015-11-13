@@ -18,7 +18,7 @@ public class CenturiaServiceImpl implements CenturiaService {
     private final CenturiaValidator centuriaValidator = new CenturiaValidator();
 
     @Override
-    public Long createCenturia(Centuria centuria) throws ValidationException {
+    public Centuria createCenturia(Centuria centuria) throws ValidationException {
         centuriaValidator.validateCenturia(centuria);
         if (centuria.getId() == null) {
             try {

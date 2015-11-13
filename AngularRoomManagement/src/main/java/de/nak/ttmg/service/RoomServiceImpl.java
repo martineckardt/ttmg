@@ -38,7 +38,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Long createRoom(Room room) throws ValidationException {
+    public Room createRoom(Room room) throws ValidationException {
         roomValidator.validateRoom(room);
         if (room.getId() == null) {
             try {

@@ -30,7 +30,7 @@ public class CourseDAO {
         throw new EntityNotFoundException("course", id);
     }
 
-    public Long create(Course course) throws ValidationException {
+    public Course create(Course course) throws ValidationException {
         if (course.getId() == null) {
             try {
                 entityManager.persist(course);
@@ -39,14 +39,15 @@ public class CourseDAO {
             } catch (Exception e) {
                 throw new ValidationException(e);
             }
-            return course.getId();
+            return course;
         } else {
             throw new InvalidParameterException("id", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
         }
     }
 
-    public void update(Course course) {
+    public Course update(Course course) {
         entityManager.merge(course);
+        return course;
     }
 
     public void delete(Course course) {

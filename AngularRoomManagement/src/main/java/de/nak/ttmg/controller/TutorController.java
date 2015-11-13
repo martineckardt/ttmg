@@ -48,7 +48,7 @@ public class TutorController {
     }
 
     @RequestMapping(value = "/tutors", method = RequestMethod.POST)
-    public Long createTutor(@RequestBody Tutor tutor) {
+    public Tutor createTutor(@RequestBody Tutor tutor) {
         return tutorService.createTutor(tutor);
     }
 

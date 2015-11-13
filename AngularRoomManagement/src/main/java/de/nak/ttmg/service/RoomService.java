@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface RoomService {
 
-    Long createRoom(Room room) throws ValidationException;
+    Room createRoom(Room room) throws ValidationException;
 
     List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) throws ValidationException;
 

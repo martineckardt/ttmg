@@ -34,7 +34,7 @@ public class CenturiaController {
     }
 
     @RequestMapping(value = "/centurias", method = RequestMethod.POST)
-    public Long createCenturia(@RequestBody Centuria centuria) {
+    public Centuria createCenturia(@RequestBody Centuria centuria) {
         return centuriaService.createCenturia(centuria);
     }
 

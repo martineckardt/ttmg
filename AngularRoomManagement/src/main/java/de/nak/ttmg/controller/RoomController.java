@@ -61,7 +61,7 @@ public class RoomController {
     }
 
     @RequestMapping(value = "/rooms", method = RequestMethod.POST)
-    public Long createRoom(@RequestBody Room room) {
+    public Room createRoom(@RequestBody Room room) {
         return roomService.createRoom(room);
     }
 
