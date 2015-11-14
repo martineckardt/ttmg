@@ -51,6 +51,11 @@ angular.module('ttmg').config(
                 controller: 'createCenturyController',
                 controllerAs: 'createCenturyCtrl'
             })
+            .when('/centurias/:id', {
+                templateUrl: 'js/century/view-century/view-century-template.html',
+                controller: 'viewCenturyController',
+                controllerAs: 'showCenturyCtrl'
+            })
             // COURSES
             .when('/courses', {
                 templateUrl: 'js/course/list-courses/list-courses-template.html',

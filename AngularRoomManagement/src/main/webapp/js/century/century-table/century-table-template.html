@@ -5,7 +5,7 @@
         <th ng-if="hideDownloadButton != true">Schedule</th>
     </tr>
     <tr ng-repeat="century in centurias | orderBy:'[-year, -programm, letter]'">
-        <td>{{century.readableString}}</td>
+        <td><a ng-href="#/centurias/{{century.id}}">{{century.readableString}}</a></td>
         <td>{{century.nbrOfStudents}}</td>
         <td ng-if="hideDownloadButton != true"><a class="btn btn-default btn-xs"
                                                   ng-href="rest/centurias/{{century.id}}/schedule.pdf"
