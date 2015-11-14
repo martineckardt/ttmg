@@ -1,18 +1,19 @@
 <section>
     <h2>Tutors</h2>
+
+    <div class="btn-toolbar" role="toolbar">
+        <a href="#/tutors/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Tutor</a>
+    </div>
+
     <table class="table table-striped">
         <tr>
-            <th>title</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
+            <th>Tutor</th>
         </tr>
         <!-- List tutors orderedBy lastname and firstname. -->
         <tr ng-repeat="tutor in model.tutors | orderBy: '[lastName, firstName]'">
-            <td>{{tutor.title}}</td>
-            <td>{{tutor.firstName}}</td>
-            <td>{{tutor.lastName}}</td>
+            <td><a ng-href="#/tutors/{{tutor.id}}">{{tutor.readableString}}</a></td>
         </tr>
     </table>
 
-    <a href="#/tutors/create" class="btn btn-default">Add Tutor</a>
+
 </section>
