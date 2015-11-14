@@ -7,7 +7,7 @@ angular.module('ttmg.controllers').controller('createTutorController', ['$scope'
     console.log('createRoomController initialized');
 
     // Set up form model
-    $scope.tutor = new RoomFactory();
+    $scope.tutor = new TutorFactory();
 
     //create a new tutor
     $scope.addTutor = function () {
