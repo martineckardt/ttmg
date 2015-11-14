@@ -1,5 +1,5 @@
 /**
- * Created by U519643 on 28.10.2015.
+ * Created by Martin Eckardt on 28.10.2015.
  */
 
 angular.module('ttmg').config(
@@ -28,6 +28,11 @@ angular.module('ttmg').config(
                 templateUrl: 'js/tutor/list-tutors/list-tutors-template.html',
                 controller: 'listTutorsController',
                 controllerAs:  'listTutorsCtrl'
+            })
+            .when('/tutors/create', {
+                templateUrl: 'js/tutor/create-tutor/create-tutor-template.html',
+                controller: 'createTutorController',
+                controllerAs: 'createTutorCtrl'
             })
             // CENTURIAS
             .when('/centurias', {

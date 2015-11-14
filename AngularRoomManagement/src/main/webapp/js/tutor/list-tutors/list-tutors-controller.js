@@ -1,21 +1,19 @@
 /**
- * Created by U519643 on 28.10.2015.
+ * Created by Martin Eckardt on 28.10.2015.
  */
 
-angular.module('ttmg.controllers').controller('listTutorsController', ['$scope', 'tutorService', function ($scope, tutorService) {
+angular.module('ttmg.controllers').controller('listTutorsController', ['$scope', 'TutorFactory', function ($scope, TutorFactory) {
 
     console.log('listTutorsController started');
 
     // Setup scope model
-    $scope.model = {
-        tutors: []
-    };
+    $scope.model = [];
 
     // Load rooms from REST API
-    tutorService.listTutorsWithPromise().then(function successCallback(response) {
-        $scope.model.tutors = response.data;
-        console.log($scope.model.rooms);
-    }, function errorCallback(response) {
-        console.log('failed to query tutors');
+    TutorFactory.query(function (data) {
+        $scope.model.tutors = data;
+    }, function (error) {
+        console.log("error:");
+        console.log(error);
     });
 }]);
