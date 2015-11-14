@@ -8,16 +8,17 @@ angular.module('ttmg.controllers').controller('listCoursesController', ['$scope'
 
     // Setup scope model
     $scope.model = {
-        courses: CourseFactory.query(function successCallback(data) {
-            // Logging
-            console.log("Successfully queried entities");
-            console.log(data);
-        }, function errorCallback(error) {
-            // Logging
-            console.log("Error loading entities:");
-            console.log(error);
+        courses: CourseFactory.query(
+            function successCallback(data) {
+                // Logging
+                console.log("Successfully queried entities");
+                console.log(data);
+            }, function errorCallback(error) {
+                // Logging
+                console.log("Error loading entities:");
+                console.log(error);
 
-            // TODO Error handling
-        })
+                // TODO Error handling
+            })
     };
 }]);

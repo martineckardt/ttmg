@@ -7,22 +7,18 @@ angular.module('ttmg.controllers').controller('listRoomsController', ['$scope', 
 
     console.log('listRoomsController started');
 
-    // Setup scope model
-    $scope.model = [];
+    // Set up scope model
+    $scope.model = {
+        rooms: RoomFactory.query(function successCallback(data) {
+            // Logging
+            console.log("Successfully queried entities");
+            console.log(data);
+        }, function errorCallback(error) {
+            // Logging
+            console.log("Error loading entities:");
+            console.log(error);
 
-    // Load rooms
-    RoomFactory.query(function successCallback(data) {
-        // Logging
-        console.log("Successfully queried entities");
-        console.log(data);
-
-        // Set model
-        $scope.model.rooms = data;
-    }, function errorCallback(error) {
-        // Logging
-        console.log("Error loading entities:");
-        console.log(error);
-
-        // TODO Error handling
-    });
+            // TODO Error handling
+        })
+    };
 }]);
