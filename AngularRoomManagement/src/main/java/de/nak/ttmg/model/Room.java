@@ -119,6 +119,11 @@ public class Room implements Serializable, HasAvailability {
                 '}';
     }
 
+    /**
+     * The "custom change time" cannot be customized. however, it is also called custom change time to
+     * be consistent with centuria and tutor properties.
+     * @return change time of the room type
+     */
     @Transient
     @Override
     public Integer getCustomChangeTime() {

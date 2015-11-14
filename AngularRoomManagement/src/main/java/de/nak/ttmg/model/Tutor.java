@@ -1,6 +1,7 @@
 package de.nak.ttmg.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -57,6 +58,7 @@ public class Tutor implements Serializable, HasAvailability {
         this.title = title;
     }
 
+    @JsonIgnore
     public Integer getChangeTime() {
         return changeTime;
     }
