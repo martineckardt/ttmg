@@ -4,15 +4,16 @@
 
 angular.module('ttmg').config(
     function($routeProvider) {
-        $routeProvider.when('/', {
+        $routeProvider
+            .when('/', {
             templateUrl: 'js/home/home-template.html'
-        })
-        // ROOMS
-        .when('/rooms', {
+            })
+            // ROOMS
+            .when('/rooms', {
                 templateUrl: 'js/room/list-rooms/list-rooms-template.html',
-            controller: 'listRoomsController',
-            controllerAs:  'listRoomsCtrl'
-        })
+                controller: 'listRoomsController',
+                controllerAs: 'listRoomsCtrl'
+            })
             .when('/rooms/create', {
                 templateUrl: 'js/room/create-room/create-room-template.html',
                 controller: 'createRoomController',
@@ -23,11 +24,11 @@ angular.module('ttmg').config(
                 controller: 'viewRoomController',
                 controllerAs: 'viewRoomCtrl'
             })
-        // TUTORS
-        .when('/tutors', {
+            // TUTORS
+            .when('/tutors', {
                 templateUrl: 'js/tutor/list-tutors/list-tutors-template.html',
                 controller: 'listTutorsController',
-                controllerAs:  'listTutorsCtrl'
+                controllerAs: 'listTutorsCtrl'
             })
             .when('/tutors/create', {
                 templateUrl: 'js/tutor/create-tutor/create-tutor-template.html',
@@ -45,6 +46,11 @@ angular.module('ttmg').config(
                 controller: 'listCenturiasController',
                 controllerAs: 'listCenturiasCtrl'
             })
+            .when('/centurias/create', {
+                templateUrl: 'js/century/create-century/create-century-template.html',
+                controller: 'createCenturyController',
+                controllerAs: 'createCenturyCtrl'
+            })
             // COURSES
             .when('/courses', {
                 templateUrl: 'js/course/list-courses/list-courses-template.html',
@@ -56,8 +62,8 @@ angular.module('ttmg').config(
                 controller: 'viewCourseController',
                 controllerAs: 'showCourseCtrl'
             })
-        .otherwise(
-            { redirectTo: '/' }
+            .otherwise(
+            {redirectTo: '/'}
         )
 
     }
