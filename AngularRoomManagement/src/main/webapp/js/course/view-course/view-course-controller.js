@@ -4,7 +4,7 @@
 
 angular.module('ttmg.controllers').controller('viewCourseController', ['$scope', '$routeParams', 'courseService', function ($scope, $routeParams, courseService) {
 
-    console.log('viewCourseController for Course ' + $routeParams.id + 'started');
+    console.log('viewCourseController for Course ' + $routeParams.id + ' started');
 
     $scope.model = [];
 
