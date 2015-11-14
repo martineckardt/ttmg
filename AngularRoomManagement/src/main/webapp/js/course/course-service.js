@@ -2,7 +2,7 @@
  * Created by Martin Eckardt on 28.10.2015.
  */
 
-angular.module('ttmg.services').service('courseService', ['$http', function ($http) {
+angular.module('ttmg.provider').service('courseService', ['$http', function ($http) {
 
     console.log('courseService initialized')
 
