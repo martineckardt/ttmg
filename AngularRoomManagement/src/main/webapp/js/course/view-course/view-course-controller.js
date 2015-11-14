@@ -2,16 +2,11 @@
  * Created by Martin Eckardt on 28.10.2015.
  */
 
-angular.module('ttmg.controllers').controller('viewCourseController', ['$scope', '$routeParams', 'courseService', function ($scope, $routeParams, courseService) {
+angular.module('ttmg.controllers').controller('viewCourseController', ['$scope', '$routeParams', 'courseFactory', function ($scope, $routeParams, courseFactory) {
 
     console.log('viewCourseController for Course ' + $routeParams.id + ' started');
 
     $scope.model = [];
 
-    // Load rooms from REST API
-    courseService.getCourseWithPromise($routeParams.id).then(function successCallback(response) {
-        $scope.model.course = response.data;
-    }, function errorCallback(response) {
-        console.log('failed to query courses');
-    });
+    $scope.model.room = courseFactory.get({id: roomId});
 }]);

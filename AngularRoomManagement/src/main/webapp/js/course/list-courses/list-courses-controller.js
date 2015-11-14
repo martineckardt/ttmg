@@ -2,19 +2,22 @@
  * Created by Martin Eckardt on 28.10.2015.
  */
 
-angular.module('ttmg.controllers').controller('listCoursesController', ['$scope', 'courseService', function ($scope, courseService) {
+angular.module('ttmg.controllers').controller('listCoursesController', ['$scope', 'CourseFactory', function ($scope, CourseFactory) {
 
     console.log('listCoursesController started');
 
     // Setup scope model
     $scope.model = {
-        courses: []
-    };
+        courses: CourseFactory.query(function successCallback(data) {
+            // Logging
+            console.log("Successfully queried entities");
+            console.log(data);
+        }, function errorCallback(error) {
+            // Logging
+            console.log("Error loading entities:");
+            console.log(error);
 
-    // Load rooms from REST API
-    courseService.listCoursesWithPromise().then(function successCallback(response) {
-        $scope.model.courses = response.data;
-    }, function errorCallback(response) {
-        console.log('failed to query courses');
-    });
+            // TODO Error handling
+        })
+    };
 }]);
