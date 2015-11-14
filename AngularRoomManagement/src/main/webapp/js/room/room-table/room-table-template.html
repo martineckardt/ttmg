@@ -5,7 +5,7 @@
         <th>Room type</th>
     </tr>
     <tr ng-repeat="room in rooms | orderBy:'[building, roomNumber]'">
-        <td>{{room.readableString}}</td>
+        <td><a ng-href="#/rooms/{{room.id}}">{{room.readableString}}</a></td>
         <td>{{room.seats}}</td>
         <td>{{room.type}}</td>
     </tr>

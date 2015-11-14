@@ -1,5 +1,6 @@
 /**
  * Created by U519643 on 28.10.2015.
+ * Controller to list all rooms.
  */
 
 angular.module('ttmg.controllers').controller('listRoomsController', ['$scope', 'RoomsFactory', function ($scope, RoomsFactory) {
@@ -7,17 +8,9 @@ angular.module('ttmg.controllers').controller('listRoomsController', ['$scope', 
     console.log('listRoomsController started');
 
     // Setup scope model
-    $scope.model = {
-        rooms: []
-    };
+    $scope.model = [];
 
     // Load rooms from REST API
-    /*roomService.listRoomsWithPromise().then(function successCallback(response) {
-        $scope.model.rooms = response.data;
-        console.log($scope.model.rooms);
-    }, function errorCallback(response) {
-        console.log('failed to query rooms');
-     });*/
     RoomsFactory.query(function (data) {
         $scope.model.rooms = data;
     }, function (error) {
