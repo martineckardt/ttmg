@@ -1,0 +1,46 @@
+<div class="form-group">
+    <label for="program" class="col-sm-2 control-label">Program</label>
+
+    <div class="col-sm-10">
+        <select ng-model="century.program" placeholder="Choose a study program" class="form-control" id="program"
+                autofocus>
+            <option value="" disabled selected>Select study program</option>
+            <option>BWL</option>
+            <option>WINF</option>
+            <option>WING</option>
+            <option>AINF</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="year" class="col-sm-2 control-label">Year</label>
+
+    <div class="col-sm-10">
+        <input type="number" ng-model="century.year" class="form-control" id="year" min="2010" max="2100"/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="nbrOfStudents" class="col-sm-2 control-label">Number of students</label>
+
+    <div class="col-sm-10">
+        <input type="number" ng-model="century.nbrOfStudents" class="form-control" id="nbrOfStudents" min="1"
+               max="999"/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="customChangeTime" class="col-sm-2 control-label">Custom change time (optional)</label>
+
+    <div class="col-sm-10">
+        <input type="number" ng-model="century.customChangeTime" class="form-control" id="customChangeTime" min="0"/>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" class="btn btn-primary" value="Save"/>
+        <a href="#/centurias" class="btn btn-default">Cancel</a>
+    </div>
+</div>

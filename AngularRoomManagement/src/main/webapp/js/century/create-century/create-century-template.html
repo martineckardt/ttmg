@@ -1,0 +1,16 @@
+<section>
+    <h2>Create a new tutor</h2>
+
+    <div ng-if="entitySuccesfullyCreated" class="alert alert-success" role="alert">
+        <p>The century <a ng-href="#/tutors/{{messageData.id}}" class="alert-link">{{messageData.readableString}}</a>
+            was
+            created.</p>
+    </div>
+    <div ng-if="entitySuccesfullyCreated == false" class="alert alert-danger" role="alert">
+        <p>{{messageData}}</p>
+    </div>
+
+    <form class="form-horizontal" role="form" ng-submit="addCentury()" novalidate>
+        <div ng-include="'js/century/create-century/create-century-form-template.html'"></div>
+    </form>
+</section>
