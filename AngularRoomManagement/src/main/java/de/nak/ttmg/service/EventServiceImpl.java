@@ -22,6 +22,7 @@ public class EventServiceImpl implements EventService {
     public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Date rangeStart, Date rangeEnd) throws ValidationException {
         final Date end;
         if (rangeStart != null && rangeEnd == null) {
+            // TODO Documentation
             end = new Date(rangeStart.getTime() + 7*24*60*60);
         } else {
             end = rangeEnd;
