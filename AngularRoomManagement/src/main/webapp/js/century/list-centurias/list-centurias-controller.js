@@ -11,10 +11,19 @@ angular.module('ttmg.controllers').controller('listCenturiasController', ['$scop
         centurias: []
     };
 
-    // Load rooms from REST API
-    centuryService.listCenturiasWithPromise().then(function successCallback(response) {
-        $scope.model.centurias = response.data;
-    }, function errorCallback(response) {
-        console.log('failed to query centruias');
+    // Load centurias from REST API
+    RoomFactory.query(function successCallback(data) {
+        // Logging
+        console.log("Successfully queried entities");
+        console.log(data);
+
+        // Set model
+        $scope.model.centurias = data;
+    }, function errorCallback(error) {
+        // Logging
+        console.log("Error loading entities:");
+        console.log(error);
+
+        // TODO Error handling
     });
 }]);

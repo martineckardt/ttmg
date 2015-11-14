@@ -11,9 +11,17 @@ angular.module('ttmg.controllers').controller('listTutorsController', ['$scope',
 
     // Load rooms from REST API
     TutorFactory.query(function successCallback(data) {
+        // Logging
+        console.log("Successfully queried entities");
+        console.log(data);
+
+        // Set model
         $scope.model.tutors = data;
     }, function errorCallback(error) {
-        console.log("error:");
+        // Logging
+        console.log("Error loading entities:");
         console.log(error);
+
+        // TODO Error handling
     });
 }]);
