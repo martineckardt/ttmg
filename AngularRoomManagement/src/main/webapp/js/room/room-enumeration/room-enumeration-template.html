@@ -1,0 +1,3 @@
+<span ng-repeat="room in rooms | orderBy:'[building, roomNumber]'">
+    <a ng-href="#/rooms/{{room.id}}">{{room.readableString}}</a>
+</span>
