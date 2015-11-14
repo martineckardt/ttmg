@@ -8,7 +8,7 @@ angular.module('ttmg').directive('centuryTable', function () {
         restrict: 'E',
         scope: {
             centurias: '=',
-            hideDownloadButton: '='
+            hideButtons: '='
         },
         templateUrl: 'js/century/century-table/century-table-template.html'
     };

@@ -2,14 +2,20 @@
     <tr>
         <th>Name</th>
         <th>Nunmber of students</th>
-        <th ng-if="hideDownloadButton != true">Schedule</th>
+        <th ng-if="hideButtons != true">Schedule</th>
     </tr>
     <tr ng-repeat="century in centurias | orderBy:'[-year, -programm, letter]'">
-        <td><a ng-href="#/centurias/{{century.id}}">{{century.readableString}}</a></td>
+        <td>
+            <a ng-href="#/centurias/{{century.id}}">{{century.readableString}}</a>
+        </td>
         <td>{{century.nbrOfStudents}}</td>
-        <td ng-if="hideDownloadButton != true"><a class="btn btn-default btn-xs"
-                                                  ng-href="rest/centurias/{{century.id}}/schedule.pdf"
-                                                  target="_blank"><span
-                class="glyphicon glyphicon-download-alt"></span> Download</a></td>
+        <td ng-if="hideButtons != true">
+            <a class="btn btn-default btn-xs" ng-href="#/centurias/{{century.id}}">
+                <span class="glyphicon glyphicon-info-sign"></span> Show
+            </a>
+            <a class="btn btn-default btn-xs" ng-href="rest/centurias/{{century.id}}/schedule.pdf" target="_blank">
+                <span class="glyphicon glyphicon-download-alt"></span> Download
+            </a>
+        </td>
     </tr>
 </table>

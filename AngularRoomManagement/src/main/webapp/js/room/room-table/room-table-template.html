@@ -3,10 +3,19 @@
         <th>Name</th>
         <th>Seats</th>
         <th>Room type</th>
+        <th ng-if="hideButtons != true">Schedule</th>
     </tr>
     <tr ng-repeat="room in rooms | orderBy:'[building, roomNumber]'">
         <td><a ng-href="#/rooms/{{room.id}}">{{room.readableString}}</a></td>
         <td>{{room.seats}}</td>
         <td>{{room.type}}</td>
+        <td ng-if="hideButtons != true">
+            <a class="btn btn-default btn-xs" ng-href="#/rooms/{{room.id}}">
+                <span class="glyphicon glyphicon-info-sign"></span> Show
+            </a>
+            <a class="btn btn-default btn-xs" ng-href="rest/rooms/{{room.id}}/schedule.pdf" target="_blank">
+                <span class="glyphicon glyphicon-download-alt"></span> Download
+            </a>
+        </td>
     </tr>
 </table>

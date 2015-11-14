@@ -8,10 +8,19 @@
     <table class="table table-striped">
         <tr>
             <th>Tutor</th>
+            <th>Schedule</th>
         </tr>
         <!-- List tutors orderedBy lastname and firstname. -->
         <tr ng-repeat="tutor in model.tutors | orderBy: '[lastName, firstName]'">
             <td><a ng-href="#/tutors/{{tutor.id}}">{{tutor.readableString}}</a></td>
+            <td>
+                <a class="btn btn-default btn-xs" ng-href="#/centurias/{{century.id}}">
+                    <span class="glyphicon glyphicon-info-sign"></span> Show
+                </a>
+                <a class="btn btn-default btn-xs" ng-href="rest/centurias/{{century.id}}/schedule.pdf" target="_blank">
+                    <span class="glyphicon glyphicon-download-alt"></span> Download
+                </a>
+            </td>
         </tr>
     </table>
 

@@ -2,7 +2,7 @@
     <h2>{{model.tutor.readableString}}</h2>
     <hr>
 
-    <p>Title: {{model.tutor.title}}</p>
+    <p ng-if="model.tutor.title != ''">Title: {{model.tutor.title}}</p>
 
     <p>First name: {{model.tutor.firstName}}</p>
 
