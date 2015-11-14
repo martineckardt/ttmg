@@ -1,18 +1,29 @@
 <section>
     <h2>Courses</h2>
+
+    <hr>
+
+    <div class="btn-toolbar" role="toolbar">
+        <a href="#/courses/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Course</a>
+    </div>
+
     <table class="table table-striped">
         <tr>
             <th>Course name</th>
             <th>type</th>
-            <th>Show details</th>
+            <th>Schedule</th>
         </tr>
         <tr ng-repeat="course in model.courses | orderBy:'[type, name]'">
             <td>{{course.name}}</td>
-            <td>{{course.type}}</td>
-            <td><a class="btn btn-default btn-xs" ng-href="#/courses/{{course.id}}"><span
-                    class="glyphicon glyphicon-info-sign"></span> Show</a></td>
+            <td>{{course.type | capitalize}}</td>
+            <td ng-if="hideButtons != true">
+                <a class="btn btn-default btn-xs" ng-href="#/courses/{{course.id}}">
+                    <span class="glyphicon glyphicon-info-sign"></span> Show
+                </a>
+                <a class="btn btn-default btn-xs" ng-href="rest/courses/{{course.id}}/schedule.pdf" target="_blank">
+                    <span class="glyphicon glyphicon-download-alt"></span> Download
+                </a>
+            </td>
         </tr>
     </table>
-
-    <a href="#/courses/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add Course</a>
 </section>

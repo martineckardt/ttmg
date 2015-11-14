@@ -1,7 +1,9 @@
 <section>
-    <h2>{{model.course.name}} ({{model.course.type}})</h2>
+    <h2>{{model.course.name}}</h2>
     <hr>
-    <p>Tutor: {{model.course.tutor.readableString}}</p>
+    <p>Type: {{model.course.type | capitalize}}</p>
+
+    <p>Tutor: <a ng-href="#/tutors/{{model.course.tutor.id}}">{{model.course.tutor.readableString}}</a></p>
 
 
     <h3>Participants</h3>

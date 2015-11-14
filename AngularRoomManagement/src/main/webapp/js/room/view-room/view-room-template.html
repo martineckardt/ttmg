@@ -6,7 +6,7 @@
 
     <p>Number of seats: {{model.room.seats}}</p>
 
-    <p>Room type: {{model.room.type}}</p>
+    <p>Room type: {{model.room.type | capitalize}}</p>
 
     <h3>Schedule</h3>
     <event-table events="model.events"></event-table>
