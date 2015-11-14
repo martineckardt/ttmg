@@ -2,7 +2,7 @@
  * Created by Martin Eckardt on 28.10.2015.
  */
 
-angular.module('ttmg.controllers').controller('listCenturiasController', ['$scope', 'centuryService', function ($scope, centuryService) {
+angular.module('ttmg.controllers').controller('listCenturiasController', ['$scope', 'CenturyFactory', function ($scope, CenturyFactory) {
 
     console.log('listCenturiasController started');
 
@@ -12,7 +12,7 @@ angular.module('ttmg.controllers').controller('listCenturiasController', ['$scop
     };
 
     // Load centurias from REST API
-    RoomFactory.query(function successCallback(data) {
+    CenturyFactory.query(function successCallback(data) {
         // Logging
         console.log("Successfully queried entities");
         console.log(data);
