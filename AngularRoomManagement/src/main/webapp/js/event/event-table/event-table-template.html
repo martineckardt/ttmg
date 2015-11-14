@@ -8,7 +8,7 @@
     <tr ng-repeat="event in events | orderBy:'[begin, end]'">
         <td>{{event.begin | date : 'd.M.yy HH:mm'}}</td>
         <td>{{event.end | date : 'd.M.yy HH:mm'}}</td>
-        <td><a ng-href="#/rooms/{{room.id}}">{{event.course.readableString}}</a></td>
+        <td><a ng-href="#/courses/{{event.course.id}}">{{event.course.name}}</a></td>
         <td>
             <room-enumeration rooms="event.rooms"></room-enumeration>
         </td>

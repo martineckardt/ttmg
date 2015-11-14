@@ -3,11 +3,15 @@
  *
  */
 
-angular.module('ttmg.controllers').controller('viewCenturyController', ['$scope', '$routeParams', 'CenturyFactory', function ($scope, $routeParams, CenturyFactory) {
+angular.module('ttmg.controllers').controller('viewCenturyController', ['$scope', '$routeParams', 'CenturyFactory', 'EventFactory', function ($scope, $routeParams, CenturyFactory, EventFactory) {
 
-    console.log('viewCenturyController for Century ' + $routeParams.id + ' started');
+    // Route parameters
+    var centuryId = $routeParams.id;
+    console.log('viewCenturyController for Century ' + centuryId + ' started');
 
-    $scope.model = [];
-
-    $scope.model.century = CenturyFactory.get({id: $routeParams.id});
+    // Set up scope model
+    $scope.model = {
+        century: CenturyFactory.get({id: centuryId}),
+        events: EventFactory.query({centuryId: centuryId})
+    };
 }]);
