@@ -1,5 +1,5 @@
 /**
- * Created by U519643 on 28.10.2015.
+ * Created by Martin Eckardt on 28.10.2015.
  */
 
 angular.module('ttmg.controllers').controller('listCenturiasController', ['$scope', 'centuryService', function ($scope, centuryService) {

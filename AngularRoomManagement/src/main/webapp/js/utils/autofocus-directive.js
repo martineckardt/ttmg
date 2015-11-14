@@ -1,5 +1,5 @@
 /**
- * Created by U519643 on 14.11.2015.
+ * Created by Martin Eckardt on 14.11.2015.
  * A directive to make autofocus possible with routing.
  * Source: https://gist.github.com/mlynch/dd407b93ed288d499778
  */

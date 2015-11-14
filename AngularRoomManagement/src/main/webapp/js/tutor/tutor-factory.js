@@ -3,8 +3,8 @@
  * Factory for querying all rooms and creating new rooms.
  */
 
-angular.module('ttmg.services').factory('RoomFactory', function ($resource) {
-    return $resource('rest/rooms/:id', {}, {
+angular.module('ttmg.services').factory('TutorFactory', function ($resource) {
+    return $resource('rest/tutors/:id', {}, {
         query: {method: 'GET', isArray: true},
         create: {method: 'POST'}
     })

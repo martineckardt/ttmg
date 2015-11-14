@@ -1,5 +1,5 @@
 /**
- * Created by U519643 on 03.11.2015.
+ * Created by Martin Eckardt on 03.11.2015.
  * Directive for displaying a set of centurias in a table.
  */
 

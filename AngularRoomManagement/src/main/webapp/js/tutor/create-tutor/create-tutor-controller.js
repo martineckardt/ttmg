@@ -3,15 +3,15 @@
  * Controller for creation of entities
  */
 
-angular.module('ttmg.controllers').controller('createRoomController', ['$scope', 'RoomFactory', function ($scope, RoomFactory) {
+angular.module('ttmg.controllers').controller('createTutorController', ['$scope', 'TutorFactory', function ($scope, TutorFactory) {
     console.log('createRoomController initialized');
 
     // Set up form model
-    $scope.room = new RoomFactory();
+    $scope.tutor = new RoomFactory();
 
-    //create a new room
-    $scope.addRoom = function () {
-        $scope.room.$create(
+    //create a new tutor
+    $scope.addTutor = function () {
+        $scope.tutor.$create(
             function successCallback(data) {
                 // Logging
                 console.log("entity sucessfully created");
@@ -22,7 +22,7 @@ angular.module('ttmg.controllers').controller('createRoomController', ['$scope',
                 $scope.messageData = data;
 
                 // Reset form model
-                $scope.room = new RoomFactory();
+                $scope.tutor = new TutorFactory();
             }, function errorCallback(error) {
                 // Logging
                 console.log("Error creating entity");
