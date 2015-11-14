@@ -7,6 +7,6 @@ angular.module('ttmg').directive('eventTable', function () {
     return {
         restrict: 'E',
         scope: {events: '='},
-        templateUrl: 'js/course/event-table/event-table.html'
+        templateUrl: 'js/course/event-table/event-table-template.html'
     };
 });

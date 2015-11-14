@@ -10,6 +10,6 @@ angular.module('ttmg').directive('centuryTable', function () {
             centurias: '=',
             hideDownloadButton: '='
         },
-        templateUrl: 'js/century/century-table/century-table.html'
+        templateUrl: 'js/century/century-table/century-table-template.html'
     };
 });

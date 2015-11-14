@@ -1,0 +1,15 @@
+<section>
+    <h2>Create a new room</h2>
+
+    <div ng-if="roomSuccesfullyCreated" class="alert alert-success" role="alert">
+        <p>The room <a ng-href="#/rooms/{{messageData.id}}" class="alert-link">{{messageData.readableString}}</a> was
+            created.</p>
+    </div>
+    <div ng-if="roomSuccesfullyCreated == false" class="alert alert-danger" role="alert">
+        <p>{{messageData}}</p>
+    </div>
+
+    <form class="form-horizontal" role="form" ng-submit="addRoom()" novalidate>
+        <div ng-include="'js/room/create-room/room-form-template.html'"></div>
+    </form>
+</section>

@@ -7,6 +7,6 @@ angular.module('ttmg').directive('roomTable', function () {
     return {
         restrict: 'E',
         scope: {rooms: '='},
-        templateUrl: 'js/room/room-table/room-table.html'
+        templateUrl: 'js/room/room-table/room-table-template.html'
     };
 });

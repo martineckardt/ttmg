@@ -2,9 +2,9 @@
  * Created by U519643 on 28.10.2015.
  */
 
-angular.module('ttmg.controllers').controller('showCourseController', ['$scope', '$routeParams', 'courseService', function ($scope, $routeParams, courseService) {
+angular.module('ttmg.controllers').controller('viewCourseController', ['$scope', '$routeParams', 'courseService', function ($scope, $routeParams, courseService) {
 
-    console.log('showCourseController for Room ' + $routeParams.id + 'started');
+    console.log('viewCourseController for Course ' + $routeParams.id + 'started');
 
     $scope.model = [];
 

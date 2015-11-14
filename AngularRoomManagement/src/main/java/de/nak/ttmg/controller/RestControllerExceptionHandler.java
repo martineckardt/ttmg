@@ -29,7 +29,7 @@ public class RestControllerExceptionHandler {
         return e;
     }
 
-    @ResponseStatus(HttpStatus.ALREADY_REPORTED) //208??
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE) //208??
     @ExceptionHandler(EntityAlreadyExistsException.class)
     @ResponseBody
     EntityAlreadyExistsException handleEAEException(EntityAlreadyExistsException e) {

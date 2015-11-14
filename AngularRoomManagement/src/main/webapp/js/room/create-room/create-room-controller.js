@@ -10,14 +10,15 @@ angular.module('ttmg.controllers').controller('createRoomController', ['$scope',
 
     //create a new room. Issues a POST to /rest/rooms
     $scope.addRoom = function () {
-        console.log("attempting to add room");
-        console.log($scope.room);
-        $scope.room.$create(function (response) {
-                console.log("Succesfully saved room");
-                console.log(response);
+        $scope.room.$create(function (data) {
+                console.log(data);
+                $scope.roomSuccesfullyCreated = true;
+                $scope.messageData = data;
+                $scope.room = new RoomsFactory();
             }, function (error) {
-                console.log("error adding new room");
+                $scope.roomSuccesfullyCreated = false;
                 console.log(error);
+                $scope.messageData = error.data.message;
             }
         );
     };
