@@ -13,11 +13,11 @@ angular.module('ttmg').config(
             controller: 'listRoomsController',
             controllerAs:  'listRoomsCtrl'
         })
-        .when('/rooms/create', {
+            .when('/rooms/create', {
                 templateUrl: 'js/room/create-room/create-room-template.html',
                 controller: 'createRoomController',
                 controllerAs: 'createRoomCtrl'
-        })
+            })
             .when('/rooms/:id', {
                 templateUrl: 'js/room/view-room/view-room-template.html',
                 controller: 'viewRoomController',
@@ -33,6 +33,11 @@ angular.module('ttmg').config(
                 templateUrl: 'js/tutor/create-tutor/create-tutor-template.html',
                 controller: 'createTutorController',
                 controllerAs: 'createTutorCtrl'
+            })
+            .when('/tutors/:id', {
+                templateUrl: 'js/tutor/view-tutor/view-tutor-template.html',
+                controller: 'viewTutorController',
+                controllerAs: 'viewTutorCtrl'
             })
             // CENTURIAS
             .when('/centurias', {
@@ -54,6 +59,6 @@ angular.module('ttmg').config(
         .otherwise(
             { redirectTo: '/' }
         )
-        console.log('routes defined')
+
     }
 );
