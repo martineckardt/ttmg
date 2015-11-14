@@ -20,7 +20,7 @@ public class EventController {
     private EventService eventService;
 
     @RequestMapping(value = "/events", method = RequestMethod.GET)
-    public List<Event> listCourses(@RequestParam(required = false, value = "centuriaId") Long centuriaId,
+    public List<Event> listCourses(@RequestParam(required = false, value = "centuryId") Long centuriaId,
                                     @RequestParam(required = false, value = "tutorId") Long tutorId,
                                     @RequestParam(required = false, value = "roomId") Long roomId,
                                     @RequestParam(required = false, value = "rangeStart") Date rangeStart,
