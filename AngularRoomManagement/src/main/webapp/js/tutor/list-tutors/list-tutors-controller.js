@@ -10,9 +10,9 @@ angular.module('ttmg.controllers').controller('listTutorsController', ['$scope',
     $scope.model = [];
 
     // Load rooms from REST API
-    TutorFactory.query(function (data) {
+    TutorFactory.query(function successCallback(data) {
         $scope.model.tutors = data;
-    }, function (error) {
+    }, function errorCallback(error) {
         console.log("error:");
         console.log(error);
     });

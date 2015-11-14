@@ -10,10 +10,10 @@ angular.module('ttmg.controllers').controller('listRoomsController', ['$scope', 
     // Setup scope model
     $scope.model = [];
 
-    // Load rooms from REST API
-    RoomFactory.query(function (data) {
+    // Load rooms
+    RoomFactory.query(function successCallback(data) {
         $scope.model.rooms = data;
-    }, function (error) {
+    }, function errorCallback(error) {
         console.log("error:");
         console.log(error);
     });
