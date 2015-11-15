@@ -37,7 +37,7 @@ public class RoomServiceImpl implements RoomService {
                 DateRange range = new DateRange(freeRange, i);
                 allRooms.stream().filter(room -> timeValidator.hasTime(room, range));
             }
-        } else if (rangeRepeat == null) {
+        } else if (freeRange == null && rangeRepeat != null) {
             throw new InvalidParameterException("rangeRepeat",
                     InvalidParameterException.InvalidParameterType.INCONSISTENT);
         }
