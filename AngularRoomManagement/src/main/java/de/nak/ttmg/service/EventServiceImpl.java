@@ -19,15 +19,15 @@ public class EventServiceImpl implements EventService {
     private EventDAO eventDAO;
 
     @Override
-    public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Date rangeStart, Date rangeEnd) throws ValidationException {
+    public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Long courseId, Date rangeStart, Date rangeEnd) throws ValidationException {
         final Date end;
         if (rangeStart != null && rangeEnd == null) {
-            // TODO Documentation
+            // If no end date is specified, create a range with a length of one week to create valid time tables.
             end = new Date(rangeStart.getTime() + 7*24*60*60);
         } else {
             end = rangeEnd;
         }
         DateRangeValidator.validateDateRange(rangeStart, end);
-        return eventDAO.listEvents(centuriaId,tutorId,roomId, rangeStart, rangeEnd);
+        return eventDAO.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
     }
 }

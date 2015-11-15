@@ -23,10 +23,11 @@ public class EventController {
     public List<Event> listCourses(@RequestParam(required = false, value = "centuryId") Long centuriaId,
                                     @RequestParam(required = false, value = "tutorId") Long tutorId,
                                     @RequestParam(required = false, value = "roomId") Long roomId,
+                                   @RequestParam(required = false, value = "courseId") Long courseId,
                                     @RequestParam(required = false, value = "rangeStart") Date rangeStart,
                                     @RequestParam(required = false, value = "rangeEnd") Date rangeEnd
     ) {
-        return eventService.listEvents(centuriaId, tutorId, roomId, rangeStart, rangeEnd);
+        return eventService.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
     }
 
     @Inject
