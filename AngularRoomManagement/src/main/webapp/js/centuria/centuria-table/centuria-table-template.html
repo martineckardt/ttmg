@@ -1,7 +1,7 @@
 <table class="table table-striped">
     <tr>
         <th>Name</th>
-        <th>Nunmber of students</th>
+        <th>Number of students</th>
         <th ng-if="hideButtons != true">Schedule</th>
     </tr>
     <tr ng-repeat="centuria in centurias | orderBy:'[-year, -programm, letter]'">
