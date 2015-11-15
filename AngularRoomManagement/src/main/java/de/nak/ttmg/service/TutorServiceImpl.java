@@ -2,6 +2,7 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.TutorDAO;
 import de.nak.ttmg.model.DateRange;
+import de.nak.ttmg.model.DateRangeFactory;
 import de.nak.ttmg.model.Tutor;
 import de.nak.ttmg.util.*;
 
@@ -28,7 +29,7 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public List<Tutor> listTutors(Date freeStart, Date freeEnd)  throws ValidationException{
-        DateRange freeRange = new DateRange(freeStart, freeEnd);
+        DateRange freeRange = DateRangeFactory.createDateRange(freeStart, freeEnd);
         List<Tutor> allTutors = tutorDAO.findAll();
         if (freeRange != null) {
             allTutors.stream().filter(tutor -> timeValidator.hasTime(tutor, freeRange));

@@ -2,6 +2,7 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.RoomDAO;
 import de.nak.ttmg.model.DateRange;
+import de.nak.ttmg.model.DateRangeFactory;
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.util.*;
@@ -23,20 +24,14 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date start, Date end,
-                                Integer rangeRepeat) throws ValidationException{
-        DateRange freeRange = new DateRange(start, end);
+                                Integer rangeRepeat) throws ValidationException {
+        DateRange freeRange = DateRangeFactory.createDateRange(start, end);
         List<Room> allRooms = roomDAO.findAll(building, roomNbr, type, minSeats);
         if (freeRange != null) {
-            if (rangeRepeat == null) {
-                rangeRepeat = 0;
-            }
-            for (int i = 0; i<rangeRepeat; i++) {
-                DateRange range = new DateRange(freeRange, i);
+            for (int i = 0; i < rangeRepeat; i++) {
+                DateRange range = DateRangeFactory.createDateRangeWithOffset(freeRange, rangeRepeat);
                 allRooms.stream().filter(room -> timeValidator.hasTime(room, range));
             }
-        } else if (freeRange == null && rangeRepeat != null) {
-            throw new InvalidParameterException("rangeRepeat",
-                    InvalidParameterException.InvalidParameterType.INCONSISTENT);
         }
         return allRooms;
     }

@@ -28,8 +28,8 @@ public class DateRange {
     }
 
     /**
-     * Creates a date range from a daterange with an offset of X weeks
-     * @param range that should be moved by X weeks
+     * Creates a date range from a date range with an offset of X weeks
+     * @param range that should be moved by X weeks, must not be null
      * @param weekOffset number of weeks the the range should be moved
      */
     public DateRange(DateRange range, Integer weekOffset) throws InvalidParameterException{

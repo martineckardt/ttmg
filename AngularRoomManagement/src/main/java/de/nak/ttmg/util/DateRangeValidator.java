@@ -1,7 +1,5 @@
 package de.nak.ttmg.util;
 
-import de.nak.ttmg.model.DateRange;
-
 import java.util.Date;
 
 /**
@@ -13,7 +11,7 @@ public class DateRangeValidator {
     /**
      * Tests if a date range is valid
      * @param start date to be tested
-     * @param start date to be tested
+     * @param end date to be tested
      * @throws DateRangeException
      */
     public void validateRange(Date start, Date end) throws DateRangeException {

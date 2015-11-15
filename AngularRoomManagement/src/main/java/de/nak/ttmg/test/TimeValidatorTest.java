@@ -42,7 +42,7 @@ public class TimeValidatorTest {
     private final TimeValidator validator = new TimeValidator();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
 
         roomA101 = new Room();
         roomA101.setBuilding("A".charAt(0));
@@ -120,6 +120,8 @@ public class TimeValidatorTest {
         future.setEnd(futureEnd);
         future.setCourse(courseIAA);
         future.setRooms(rooms);
+        DateRange range = new DateRange(pastStart, pastEnd);
+        assertNull(range);
 
         Set<Event> events = new HashSet<>(2);
         events.add(past);
