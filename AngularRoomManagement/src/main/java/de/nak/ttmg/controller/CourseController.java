@@ -5,7 +5,6 @@ import de.nak.ttmg.service.CourseService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
-import java.util.Date;
 import java.util.List;
 
 /**

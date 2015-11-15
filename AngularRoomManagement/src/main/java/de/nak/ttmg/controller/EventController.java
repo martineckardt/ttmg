@@ -1,6 +1,5 @@
 package de.nak.ttmg.controller;
 
-import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.service.EventService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 04/11/15.
+ * This RestController handles all requests regarding events.
  */
 @RestController
 public class EventController {

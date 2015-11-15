@@ -11,9 +11,11 @@ import java.util.List;
 
 /**
  * Created by U519647 on 28.10.2015.
+ * The Service Implementation for Centurias
  */
 public class CenturiaServiceImpl implements CenturiaService {
 
+    @Inject
     private CenturiaDAO centuriaDAO;
     private final CenturiaValidator centuriaValidator = new CenturiaValidator();
 
@@ -60,10 +62,5 @@ public class CenturiaServiceImpl implements CenturiaService {
             throw new IsBusyException(centuria);
         }
         centuriaDAO.delete(centuria);
-    }
-
-    @Inject
-    public void setCenturiaDAO (CenturiaDAO centuriaDAO) {
-        this.centuriaDAO = centuriaDAO;
     }
 }

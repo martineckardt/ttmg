@@ -13,9 +13,11 @@ import java.util.List;
 
 /**
  * Created by felixb on 28/10/15.
+ * The Data Access Object for Rooms
  */
 public class RoomDAO {
 
+    @PersistenceContext
     private EntityManager entityManager;
 
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
@@ -49,10 +51,5 @@ public class RoomDAO {
 
     public void delete(Room room) throws ValidationException {
         entityManager.remove(room);
-    }
-
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
     }
 }

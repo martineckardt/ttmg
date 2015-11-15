@@ -1,9 +1,9 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.EventDAO;
+import de.nak.ttmg.model.DateRange;
+import de.nak.ttmg.model.DateRangeFactory;
 import de.nak.ttmg.model.Event;
-import de.nak.ttmg.util.DateRangeValidator;
-import de.nak.ttmg.util.TimeValidator;
 import de.nak.ttmg.util.ValidationException;
 
 import javax.inject.Inject;
@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 04/11/15.
+ * The Service Implementation for Events
  */
 public class EventServiceImpl implements EventService {
 
@@ -27,7 +28,7 @@ public class EventServiceImpl implements EventService {
         } else {
             end = rangeEnd;
         }
-        DateRangeValidator.validateDateRange(rangeStart, end);
-        return eventDAO.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
+        DateRange range = DateRangeFactory.createDateRange(rangeStart, end);
+        return eventDAO.listEvents(centuriaId, tutorId, roomId, courseId, range);
     }
 }

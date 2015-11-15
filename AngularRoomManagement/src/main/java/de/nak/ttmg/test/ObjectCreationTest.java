@@ -14,13 +14,15 @@ import static org.junit.Assert.*;
 
 /**
  * Created by felixb on 28/10/15.
+ * This Test class tests creation of several data objects.
  */
-public class TimeValidatorTest {
+public class ObjectCreationTest {
 
     private Room roomA101;
     private Room roomA102;
     private Room roomA103;
     private Course courseIAA;
+    private Course exam;
     private Tutor tutor;
     private Tutor tutor2;
     private Centuria centuria;
@@ -41,7 +43,7 @@ public class TimeValidatorTest {
     private final TimeValidator validator = new TimeValidator();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
 
         roomA101 = new Room();
         roomA101.setBuilding("A".charAt(0));
@@ -100,6 +102,14 @@ public class TimeValidatorTest {
         centuria.getCourses().add(courseIAA);
         tutor.getCourses().add(courseIAA);
 
+        exam = new Course();
+        exam.setName("EXAM");
+        exam.setType(EventType.EXAM);
+        exam.setParticipants(participants);
+        centuria.getCourses().add(exam);
+        courseIAA.setTutor(tutor);
+        tutor.getCourses().add(exam);
+
         past = new Event();
         past.setBegin(pastStart);
         past.setEnd(pastEnd);
@@ -111,6 +121,8 @@ public class TimeValidatorTest {
         future.setEnd(futureEnd);
         future.setCourse(courseIAA);
         future.setRooms(rooms);
+        DateRange range = new DateRange(pastStart, pastEnd);
+        assertNull(range);
 
         Set<Event> events = new HashSet<>(2);
         events.add(past);
@@ -175,5 +187,18 @@ public class TimeValidatorTest {
         } catch (TimeConflictException e) {
             System.out.println("e.getFailures() = " + e.getFailures());
         }
+    }
+
+    @Test
+    public void testEqual() throws Exception {
+        assertNotEquals(roomA101, roomA102);
+        assertNotEquals(roomA102, roomA103);
+        assertNotEquals(roomA101, roomA103);
+
+        assertNotEquals(courseIAA, exam);
+
+        assertNotEquals(tutor,tutor2);
+        assertNotEquals(centuria, centuria2);
+        assertNotEquals(past, future);
     }
 }

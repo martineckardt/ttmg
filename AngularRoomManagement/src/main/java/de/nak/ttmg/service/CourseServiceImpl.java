@@ -9,9 +9,11 @@ import java.util.List;
 
 /**
  * Created by U519647 on 28.10.2015.
+ * The Service Implementation for Courses
  */
 public class CourseServiceImpl implements CourseService {
 
+    @Inject
     private CourseDAO courseDAO;
     private final TimeValidator timeValidator = new TimeValidator();
     private final CourseValidator courseValidator = new CourseValidator();
@@ -60,10 +62,5 @@ public class CourseServiceImpl implements CourseService {
             throw new EntityNotFoundException("course", id);
         }
         courseDAO.delete(course);
-    }
-
-    @Inject
-    public void setCourseDAO(CourseDAO courseDAO) {
-        this.courseDAO = courseDAO;
     }
 }

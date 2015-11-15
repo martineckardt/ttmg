@@ -2,13 +2,13 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.util.ValidationException;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by felixb on 04/11/15.
+ * This is the interface for the Event Service
  */
 public interface EventService {
 
