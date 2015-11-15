@@ -3,13 +3,13 @@
  * Directive for displaying a set of centurias in a table.
  */
 
-angular.module('ttmg').directive('centuryTable', function () {
+angular.module('ttmg').directive('centuriaTable', function () {
     return {
         restrict: 'E',
         scope: {
             centurias: '=',
             hideButtons: '='
         },
-        templateUrl: 'js/century/century-table/century-table-template.html'
+        templateUrl: 'js/centuria/centuria-table/centuria-table-template.html'
     };
 });

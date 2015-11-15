@@ -3,15 +3,15 @@
  * Controller for creation of entities
  */
 
-angular.module('ttmg.controllers').controller('createCenturyController', ['$scope', 'CenturyFactory', function ($scope, CenturyFactory) {
-    console.log('createCenturyController initialized');
+angular.module('ttmg.controllers').controller('createCenturiaController', ['$scope', 'CenturiaFactory', function ($scope, CenturiaFactory) {
+    console.log('createCenturiaController initialized');
 
     // Set up form model
-    $scope.century = new CenturyFactory();
+    $scope.centuria = new CenturiaFactory();
 
-    //create a new century
-    $scope.addCentury = function () {
-        $scope.century.$create(
+    //create a new centuria
+    $scope.addCenturia = function () {
+        $scope.centuria.$create(
             function successCallback(data) {
                 // Logging
                 console.log("entity sucessfully created");
@@ -22,7 +22,7 @@ angular.module('ttmg.controllers').controller('createCenturyController', ['$scop
                 $scope.messageData = data;
 
                 // Reset form model
-                $scope.century = new CenturyFactory();
+                $scope.centuria = new CenturiaFactory();
             }, function errorCallback(error) {
                 // Logging
                 console.log("Error creating entity");

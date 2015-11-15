@@ -2,7 +2,7 @@
  * Created by Martin Eckardt on 28.10.2015.
  */
 
-angular.module('ttmg.controllers').controller('listCenturiasController', ['$scope', 'CenturyFactory', function ($scope, CenturyFactory) {
+angular.module('ttmg.controllers').controller('listCenturiasController', ['$scope', 'CenturiaFactory', function ($scope, CenturiaFactory) {
 
     console.log('listCenturiasController started');
 
@@ -12,7 +12,7 @@ angular.module('ttmg.controllers').controller('listCenturiasController', ['$scop
     };
 
     // Load centurias from REST API
-    CenturyFactory.query(function successCallback(data) {
+    CenturiaFactory.query(function successCallback(data) {
         // Logging
         console.log("Successfully queried entities");
         console.log(data);

@@ -42,19 +42,19 @@ angular.module('ttmg').config(
             })
             // CENTURIAS
             .when('/centurias', {
-                templateUrl: 'js/century/list-centurias/list-centurias-template.html',
+                templateUrl: 'js/centuria/list-centurias/list-centurias-template.html',
                 controller: 'listCenturiasController',
                 controllerAs: 'listCenturiasCtrl'
             })
             .when('/centurias/create', {
-                templateUrl: 'js/century/create-century/create-century-template.html',
-                controller: 'createCenturyController',
-                controllerAs: 'createCenturyCtrl'
+                templateUrl: 'js/centuria/create-centuria/create-centuria-template.html',
+                controller: 'createCenturiaController',
+                controllerAs: 'createCenturiaCtrl'
             })
             .when('/centurias/:id', {
-                templateUrl: 'js/century/view-century/view-century-template.html',
-                controller: 'viewCenturyController',
-                controllerAs: 'showCenturyCtrl'
+                templateUrl: 'js/centuria/view-centuria/view-centuria-template.html',
+                controller: 'viewCenturiaController',
+                controllerAs: 'showCenturiaCtrl'
             })
             // COURSES
             .when('/courses', {

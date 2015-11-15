@@ -1,0 +1,17 @@
+<section>
+    <h2>{{model.centuria.readableString}}</h2>
+    <hr>
+    <p>Program: {{model.centuria.program}}</p>
+
+    <p>Year: {{model.centuria.year}}</p>
+
+    <p>Letter: {{model.centuria.letter}}</p>
+
+    <p>Number of students: {{model.centuria.nbrOfStudents}}</p>
+
+    <p>Custom change time: {{model.centuria.customChangeTime}}</p>
+
+    <h3>Schedule</h3>
+    <event-table events="model.events"></event-table>
+
+</section>
