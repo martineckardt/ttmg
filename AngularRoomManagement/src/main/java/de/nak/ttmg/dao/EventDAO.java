@@ -20,7 +20,7 @@ public class EventDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Date rangeStart, Date rangeEnd) throws ValidationException {
+    public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Long courseId, Date rangeStart, Date rangeEnd) throws ValidationException {
         Session session = entityManager.unwrap(Session.class);
         Criteria criteria = session.createCriteria(Event.class, "event");
         criteria.createAlias("event.course", "course"); // inner join by default
@@ -36,6 +36,9 @@ public class EventDAO {
         if (roomId != null) {
             criteria.createAlias("event.rooms", "room");
             criteria.add(Restrictions.eq("room.id", roomId));
+        }
+        if (courseId != null) {
+            criteria.add(Restrictions.eq("course.id", courseId));
         }
         if (rangeStart != null) {
             criteria.add(Restrictions.ge("begin", rangeStart));

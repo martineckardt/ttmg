@@ -12,5 +12,5 @@ import java.util.List;
  */
 public interface EventService {
 
-    List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Date rangeStart, Date rangeEnd) throws ValidationException;
+    List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Long courseId, Date rangeStart, Date rangeEnd) throws ValidationException;
 }
