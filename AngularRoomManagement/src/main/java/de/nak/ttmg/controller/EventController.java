@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 04/11/15.
+ * This RestController handles all requests regarding events.
  */
 @RestController
 public class EventController {

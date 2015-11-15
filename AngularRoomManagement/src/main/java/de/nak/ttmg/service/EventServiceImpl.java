@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 04/11/15.
+ * The Service Implementation for Events
  */
 public class EventServiceImpl implements EventService {
 

@@ -14,8 +14,9 @@ import static org.junit.Assert.*;
 
 /**
  * Created by felixb on 28/10/15.
+ * This Test class tests creation of several data objects.
  */
-public class TimeValidatorTest {
+public class ObjectCreationTest {
 
     private Room roomA101;
     private Room roomA102;

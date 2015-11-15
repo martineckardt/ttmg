@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by felixb on 04/11/15.
+ * The Data Access Object for Events
  */
 public class EventDAO {
 

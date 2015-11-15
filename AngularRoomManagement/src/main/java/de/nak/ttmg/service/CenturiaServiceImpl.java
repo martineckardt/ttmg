@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Created by U519647 on 28.10.2015.
+ * The Service Implementation for Centurias
  */
 public class CenturiaServiceImpl implements CenturiaService {
 
