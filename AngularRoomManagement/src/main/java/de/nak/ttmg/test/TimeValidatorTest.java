@@ -21,6 +21,7 @@ public class TimeValidatorTest {
     private Room roomA102;
     private Room roomA103;
     private Course courseIAA;
+    private Course exam;
     private Tutor tutor;
     private Tutor tutor2;
     private Centuria centuria;
@@ -100,6 +101,14 @@ public class TimeValidatorTest {
         centuria.getCourses().add(courseIAA);
         tutor.getCourses().add(courseIAA);
 
+        exam = new Course();
+        exam.setName("EXAM");
+        exam.setType(EventType.EXAM);
+        exam.setParticipants(participants);
+        centuria.getCourses().add(exam);
+        courseIAA.setTutor(tutor);
+        tutor.getCourses().add(exam);
+
         past = new Event();
         past.setBegin(pastStart);
         past.setEnd(pastEnd);
@@ -175,5 +184,18 @@ public class TimeValidatorTest {
         } catch (TimeConflictException e) {
             System.out.println("e.getFailures() = " + e.getFailures());
         }
+    }
+
+    @Test
+    public void testEqual() throws Exception {
+        assertNotEquals(roomA101, roomA102);
+        assertNotEquals(roomA102, roomA103);
+        assertNotEquals(roomA101, roomA103);
+
+        assertNotEquals(courseIAA, exam);
+
+        assertNotEquals(tutor,tutor2);
+        assertNotEquals(centuria, centuria2);
+        assertNotEquals(past, future);
     }
 }

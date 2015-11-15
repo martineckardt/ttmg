@@ -3,7 +3,6 @@ package de.nak.ttmg.service;
 import de.nak.ttmg.dao.EventDAO;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.util.DateRangeValidator;
-import de.nak.ttmg.util.TimeValidator;
 import de.nak.ttmg.util.ValidationException;
 
 import javax.inject.Inject;
@@ -29,7 +28,7 @@ public class EventServiceImpl implements EventService {
         } else {
             end = rangeEnd;
         }
-        rangeValidator.createValidRange(rangeStart, end);
+        rangeValidator.validateRange(rangeStart, end);
         return eventDAO.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
     }
 }

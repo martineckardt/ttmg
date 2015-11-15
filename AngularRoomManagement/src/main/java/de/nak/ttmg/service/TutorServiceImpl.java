@@ -19,7 +19,6 @@ public class TutorServiceImpl implements TutorService {
 
     private final TutorValidator tutorValidator = new TutorValidator();
     private final TimeValidator timeValidator = new TimeValidator();
-    private final DateRangeValidator dateRangeValidator = new DateRangeValidator();
 
     @Override
     public Tutor createTutor(Tutor tutor) throws ValidationException {
@@ -29,7 +28,7 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public List<Tutor> listTutors(Date freeStart, Date freeEnd)  throws ValidationException{
-        DateRange freeRange = dateRangeValidator.createValidRange(freeStart, freeEnd);
+        DateRange freeRange = new DateRange(freeStart, freeEnd);
         List<Tutor> allTutors = tutorDAO.findAll();
         if (freeRange != null) {
             allTutors.stream().filter(tutor -> timeValidator.hasTime(tutor, freeRange));

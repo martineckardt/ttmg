@@ -20,14 +20,11 @@ public class RoomServiceImpl implements RoomService {
     private RoomDAO roomDAO;
     private final TimeValidator timeValidator = new TimeValidator();
     private final RoomValidator roomValidator = new RoomValidator();
-    private final DateRangeValidator rangeValidator = new DateRangeValidator();
 
     @Override
     public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date start, Date end,
                                 Integer rangeRepeat) throws ValidationException{
-        DateRange freeRange = rangeValidator.createValidRange(start, end);
-        rangeValidator.validateRepeatCount(rangeRepeat);
-
+        DateRange freeRange = new DateRange(start, end);
         List<Room> allRooms = roomDAO.findAll(building, roomNbr, type, minSeats);
         if (freeRange != null) {
             if (rangeRepeat == null) {

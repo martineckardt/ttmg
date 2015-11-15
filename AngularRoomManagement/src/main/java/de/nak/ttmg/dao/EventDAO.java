@@ -1,6 +1,5 @@
 package de.nak.ttmg.dao;
 
-import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.util.ValidationException;
 import org.hibernate.Criteria;
@@ -20,6 +19,7 @@ public class EventDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @SuppressWarnings("unchecked")
     public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Long courseId, Date rangeStart, Date rangeEnd) throws ValidationException {
         Session session = entityManager.unwrap(Session.class);
         Criteria criteria = session.createCriteria(Event.class, "event");

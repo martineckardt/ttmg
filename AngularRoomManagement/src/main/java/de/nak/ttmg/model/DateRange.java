@@ -1,5 +1,9 @@
 package de.nak.ttmg.model;
 
+import de.nak.ttmg.util.DateRangeException;
+import de.nak.ttmg.util.DateRangeValidator;
+import de.nak.ttmg.util.InvalidParameterException;
+
 import java.util.Date;
 
 /**
@@ -8,15 +12,17 @@ import java.util.Date;
  */
 public class DateRange {
 
-    private Date begin;
-    private Date end;
+    private final Date begin;
+    private final Date end;
+    private final DateRangeValidator rangeValidator = new DateRangeValidator();
 
     /**
      * Creates a date range with a begin and an end date.
-     * @param begin
-     * @param end
+     * @param begin date
+     * @param end date
      */
-    public DateRange(Date begin, Date end) {
+    public DateRange(Date begin, Date end) throws DateRangeException{
+        rangeValidator.validateRange(begin,end);
         this.begin = begin;
         this.end = end;
     }
@@ -26,7 +32,11 @@ public class DateRange {
      * @param range that should be moved by X weeks
      * @param weekOffset number of weeks the the range should be moved
      */
-    public DateRange(DateRange range, Integer weekOffset) {
+    public DateRange(DateRange range, Integer weekOffset) throws InvalidParameterException{
+        rangeValidator.validateRepeatCount(weekOffset);
+        if (weekOffset == null) {
+            weekOffset = 0;
+        }
         this.begin = new Date(range.getBegin().getTime() + weekOffset*7*24*60*60);
         this.end = new Date(range.getEnd().getTime() + weekOffset*7*24*60*60);
     }
