@@ -39,7 +39,7 @@ public class RoomController {
         return roomService.loadRoom(id);
     }
 
-    @RequestMapping(value = "/rooms/{id}/pdf", method = RequestMethod.GET, produces="application/pdf")
+    @RequestMapping(value = "/rooms/{id}/schedule", method = RequestMethod.GET, produces = "application/pdf")
     public InputStreamResource getTimeTablePDF(@PathVariable final Long id) {
         try {
             Room room;
