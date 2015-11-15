@@ -1,6 +1,7 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.TutorDAO;
+import de.nak.ttmg.model.DateRange;
 import de.nak.ttmg.model.Tutor;
 import de.nak.ttmg.util.*;
 
@@ -13,9 +14,12 @@ import java.util.List;
  */
 public class TutorServiceImpl implements TutorService {
 
+    @Inject
     private TutorDAO tutorDAO;
+
     private final TutorValidator tutorValidator = new TutorValidator();
     private final TimeValidator timeValidator = new TimeValidator();
+    private final DateRangeValidator dateRangeValidator = new DateRangeValidator();
 
     @Override
     public Tutor createTutor(Tutor tutor) throws ValidationException {
@@ -25,10 +29,10 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public List<Tutor> listTutors(Date freeStart, Date freeEnd)  throws ValidationException{
-        DateRangeValidator.validateDateRange(freeStart,freeEnd);
+        DateRange freeRange = dateRangeValidator.createValidRange(freeStart, freeEnd);
         List<Tutor> allTutors = tutorDAO.findAll();
-        if (freeStart != null) {
-            allTutors.stream().filter(tutor -> timeValidator.hasTime(tutor, freeStart, freeEnd));
+        if (freeRange != null) {
+            allTutors.stream().filter(tutor -> timeValidator.hasTime(tutor, freeRange));
         }
         return allTutors;
     }
@@ -52,10 +56,5 @@ public class TutorServiceImpl implements TutorService {
             throw new IsBusyException(tutor);
         }
         tutorDAO.delete(tutor);
-    }
-
-    @Inject
-    public void setTutorDAO(TutorDAO tutorDAO) {
-        this.tutorDAO = tutorDAO;
     }
 }

@@ -18,6 +18,8 @@ public class EventServiceImpl implements EventService {
     @Inject
     private EventDAO eventDAO;
 
+    private final DateRangeValidator rangeValidator = new DateRangeValidator();
+
     @Override
     public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Long courseId, Date rangeStart, Date rangeEnd) throws ValidationException {
         final Date end;
@@ -27,7 +29,7 @@ public class EventServiceImpl implements EventService {
         } else {
             end = rangeEnd;
         }
-        DateRangeValidator.validateDateRange(rangeStart, end);
+        rangeValidator.createValidRange(rangeStart, end);
         return eventDAO.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
     }
 }

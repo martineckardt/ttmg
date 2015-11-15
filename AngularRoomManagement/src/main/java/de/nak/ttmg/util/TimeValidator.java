@@ -1,6 +1,7 @@
 package de.nak.ttmg.util;
 
 import de.nak.ttmg.model.Course;
+import de.nak.ttmg.model.DateRange;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.model.HasAvailability;
 
@@ -83,13 +84,12 @@ public class TimeValidator {
      * Checks if an object has any conflicting events.
      * Instead of throwing an exception it is returning true if no conflicts exist, otherwise false
      * @param object to be validated
-     * @param start time to block
-     * @param end time to block
+     * @param range time range to block
      * @return true if no conflicts exist, false otherwise
      */
-    public boolean hasTime(HasAvailability object, Date start, Date end) {
+    public boolean hasTime(HasAvailability object, DateRange range) {
         try {
-            validateTime(object,start,end,null);
+            validateTime(object,range.getBegin(), range.getEnd(), null);
             return true;
         } catch (TimeConflictException e) {
             return false;

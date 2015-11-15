@@ -1,6 +1,7 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.RoomDAO;
+import de.nak.ttmg.model.DateRange;
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.util.*;
@@ -14,16 +15,31 @@ import java.util.List;
  * Created by felixb on 28/10/15.
  */
 public class RoomServiceImpl implements RoomService {
+
+    @Inject
     private RoomDAO roomDAO;
-    private final TimeValidator validator = new TimeValidator();
+    private final TimeValidator timeValidator = new TimeValidator();
     private final RoomValidator roomValidator = new RoomValidator();
+    private final DateRangeValidator rangeValidator = new DateRangeValidator();
 
     @Override
-    public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) throws ValidationException{
-        DateRangeValidator.validateDateRange(freeBegin, freeEnd);
+    public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date start, Date end,
+                                Integer rangeRepeat) throws ValidationException{
+        DateRange freeRange = rangeValidator.createValidRange(start, end);
+        rangeValidator.validateRepeatCount(rangeRepeat);
+
         List<Room> allRooms = roomDAO.findAll(building, roomNbr, type, minSeats);
-        if (freeBegin != null) {
-            allRooms.stream().filter(room -> validator.hasTime(room, freeBegin, freeEnd));
+        if (freeRange != null) {
+            if (rangeRepeat == null) {
+                rangeRepeat = 0;
+            }
+            for (int i = 0; i<rangeRepeat; i++) {
+                DateRange range = new DateRange(freeRange, i);
+                allRooms.stream().filter(room -> timeValidator.hasTime(room, range));
+            }
+        } else if (rangeRepeat == null) {
+            throw new InvalidParameterException("rangeRepeat",
+                    InvalidParameterException.InvalidParameterType.INCONSISTENT);
         }
         return allRooms;
     }
@@ -64,10 +80,5 @@ public class RoomServiceImpl implements RoomService {
             throw new IsBusyException(room);
         }
         roomDAO.delete(room);
-    }
-
-    @Inject
-    public void setRoomDAO(RoomDAO roomDAO) {
-        this.roomDAO = roomDAO;
     }
 }
