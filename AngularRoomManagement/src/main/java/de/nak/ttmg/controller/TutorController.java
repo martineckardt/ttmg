@@ -32,7 +32,7 @@ public class TutorController {
         return tutorService.loadTutor(id);
     }
 
-    @RequestMapping(value = "/tutors/{id}/pdf", method = RequestMethod.GET, produces="application/pdf")
+    @RequestMapping(value = "/tutors/{id}/schedule.pdf", method = RequestMethod.GET, produces = "application/pdf")
     public InputStreamResource getTimeTablePDF(@PathVariable final Long id) {
         try {
             Tutor tutor;
