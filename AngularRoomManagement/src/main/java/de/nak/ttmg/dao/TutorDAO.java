@@ -14,6 +14,7 @@ import java.util.List;
  * Created by felixb on 28/10/15.
  */
 public class TutorDAO {
+    @PersistenceContext
     private EntityManager entityManager;
 
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
@@ -42,10 +43,5 @@ public class TutorDAO {
 
     public void delete(Tutor tutor) throws ValidationException {
         entityManager.remove(tutor);
-    }
-
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
     }
 }

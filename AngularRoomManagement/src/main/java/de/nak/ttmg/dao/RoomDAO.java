@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class RoomDAO {
 
+    @PersistenceContext
     private EntityManager entityManager;
 
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
@@ -49,10 +50,5 @@ public class RoomDAO {
 
     public void delete(Room room) throws ValidationException {
         entityManager.remove(room);
-    }
-
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
     }
 }

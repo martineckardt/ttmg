@@ -15,6 +15,7 @@ import java.util.List;
  * Created by felixb on 28/10/15.
  */
 public class CenturiaDAO {
+    @PersistenceContext
     private EntityManager entityManager;
 
     @SuppressWarnings({"unchecked", "JpaQlInspection"})
@@ -42,10 +43,5 @@ public class CenturiaDAO {
 
     public void delete(Centuria centuria) throws ValidationException {
         entityManager.remove(centuria);
-    }
-
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
     }
 }
