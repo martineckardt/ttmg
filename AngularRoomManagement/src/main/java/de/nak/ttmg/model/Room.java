@@ -96,7 +96,9 @@ public class Room implements Serializable, HasAvailability {
     @Transient
     @Override
     public String getReadableString() {
-        return "" + building + roomNumber;
+        //Pad room number to 3 characters
+        String room = String.format("%03d",roomNumber);
+        return "" + building + room;
     }
 
     @Transient
