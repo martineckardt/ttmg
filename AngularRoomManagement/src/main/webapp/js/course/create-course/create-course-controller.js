@@ -50,6 +50,7 @@ angular.module('ttmg.controllers').controller('createCourseController', ['$scope
             var currentBegin = new Date();
             var currentEnd = new Date();
             // Query available rooms for this event using the number of participants
+            // TODO Free start, free end
             var currentAvailableRooms = RoomFactory.query({
                 //freeStart: currentBegin.getTime(),
                 //freeEnd: currentEnd.getTime(),
@@ -67,6 +68,7 @@ angular.module('ttmg.controllers').controller('createCourseController', ['$scope
     };
 
     this.addCourse = function () {
+        // create course events from selection
         var courseEvents = [];
         eventsForRoomSelection.forEach(function (currentEvent) {
             // Filter the selected rooms
@@ -82,7 +84,16 @@ angular.module('ttmg.controllers').controller('createCourseController', ['$scope
             courseEvents.push(event);
         });
 
-        $scope.model.course.events = courseEvents;
+        course.events = courseEvents;
+
+        course.$create(function successCallback(data) {
+            console.log("Course successfully created");
+            console.log(data);
+        }, function errorCallback(error) {
+            console.log("Failed to create course");
+            console.log(error);
+        });
+
         $scope.formState = 4;
     };
 
