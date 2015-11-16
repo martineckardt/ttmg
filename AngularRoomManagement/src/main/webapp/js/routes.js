@@ -62,6 +62,11 @@ angular.module('ttmg').config(
                 controller: 'listCoursesController',
                 controllerAs: 'listCoursesCtrl'
             })
+            .when('/courses/create', {
+                templateUrl: 'js/course/create-course/create-course-template.html',
+                controller: 'createCourseController',
+                controllerAs: 'createCourseCtrl'
+            })
             .when('/courses/:id', {
                 templateUrl: 'js/course/view-course/view-course-template.html',
                 controller: 'viewCourseController',

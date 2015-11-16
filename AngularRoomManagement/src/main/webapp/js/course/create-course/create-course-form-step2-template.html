@@ -1,0 +1,27 @@
+<table class="table table-bordered">
+    <tr>
+        <th>Begin</th>
+        <th>End</th>
+        <th>Rooms</th>
+    </tr>
+    <tr ng-repeat="event in model.course.events">
+        <td>
+            <input type="datetime-local" ng-model="event.begin">
+        </td>
+        <td>
+            <input type="datetime-local" ng-model="event.end">
+        </td>
+        <td>
+            <label for="{{room.id}}" class="btn btn-default" ng-repeat="room in event.availableRooms">
+                <input type="checkbox" ng-model="room" id="{{room.id}}"> {{room.readableString}}
+            </label>
+        </td>
+    </tr>
+</table>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" class="btn btn-primary" value="Save"/>
+        <a href="#/courses" class="btn btn-default">Cancel</a>
+    </div>
+</div>
