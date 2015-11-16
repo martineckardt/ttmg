@@ -52,7 +52,7 @@ public class PDFCreator {
             doc.add(header);
 
             //specify column widths
-            float[] columnWidths = {1.5f, 2f, 5f, 3f, 2f};
+            float[] columnWidths = {3f, 2f, 2f, 2f, 4f};
             //create PDF table with the given widths
             PdfPTable table = new PdfPTable(columnWidths);
             // set table width a percentage of the page width
@@ -70,10 +70,10 @@ public class PDFCreator {
             for(Event event : object.getEvents()){
                 Course course = event.getCourse();
                 insertCell(table, course.getName(), Element.ALIGN_LEFT, 1, bf12);
-                insertCell(table, convertObjectToString(course.getParticipants()), Element.ALIGN_LEFT, 1, bf12);
-                insertCell(table, convertObjectToString(event.getRooms()), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, convertObjectToString(course.getParticipants(), false), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, convertObjectToString(event.getRooms(), false), Element.ALIGN_LEFT, 1, bf12);
                 insertCell(table, course.getTutor().getReadableString(), Element.ALIGN_LEFT, 1, bf12);
-                insertCell(table, convertObjectToString(course.getEvents()), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, convertObjectToString(course.getEvents(), true), Element.ALIGN_LEFT, 1, bf12);
             }
             if (object.getEvents().isEmpty()) {
                 Paragraph emptyMessage = new Paragraph("This " + object.getObjectType() + " has no courses.");
@@ -156,11 +156,16 @@ public class PDFCreator {
 
     }
 
-    private String convertObjectToString(Set<? extends HasReadableString> objects) {
+    private String convertObjectToString(Set<? extends HasReadableString> objects, boolean newLine) {
         StringBuilder sb = new StringBuilder();
         for (HasReadableString object: objects) {
             sb.append(object.getReadableString());
-            sb.append(", ");
+            sb.append(",");
+            if (newLine) {
+                sb.append("\n");
+            } else {
+                sb.append(" ");
+            }
         }
         String string = sb.toString();
         string = string.substring(0, string.length()-2);
