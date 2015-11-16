@@ -19,7 +19,11 @@ public class CourseServiceImpl implements CourseService {
     private final CourseValidator courseValidator = new CourseValidator();
 
     @Override
-    public Course createCourse(Course course, boolean force) throws ValidationException {
+    public Course createCourse(Course course, Boolean force) throws ValidationException {
+        if (force == null) {
+            force = false;
+        }
+        System.out.println("Create Course in CourseServiceImpl");
         courseValidator.validateCourse(course, force);
         if (!force) {
             timeValidator.validateTime(course);
@@ -28,7 +32,10 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Course updateCourse(Long id, Course course, boolean force) throws ValidationException {
+    public Course updateCourse(Long id, Course course, Boolean force) throws ValidationException {
+        if (force == null) {
+            force = false;
+        }
         if (course != null && course.getId() != null && course.getId().equals(id)) {
             courseValidator.validateCourse(course, force);
             if (!force) {
