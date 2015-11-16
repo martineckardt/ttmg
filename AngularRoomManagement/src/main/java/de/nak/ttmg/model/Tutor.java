@@ -2,6 +2,7 @@ package de.nak.ttmg.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,15 +11,20 @@ import java.util.Set;
 
 /**
  * Created by felixb on 28/10/15.
+ * This class is the tutor entity
  */
 @Entity
 public class Tutor implements Serializable, HasAvailability {
     private static final Integer defaultChangeTime = 15;
 
     private String firstName;
+
     private String lastName;
+
     private String title;
+
     private Integer changeTime;
+
     private Set<Course> courses = new HashSet<>();
 
     private Long id;
@@ -34,6 +40,7 @@ public class Tutor implements Serializable, HasAvailability {
         this.id = id;
     }
 
+    @Column(name = "first_name", nullable = false)
     public String getFirstName() {
         return firstName;
     }
@@ -42,6 +49,7 @@ public class Tutor implements Serializable, HasAvailability {
         this.firstName = firstName;
     }
 
+    @Column(name = "last_name", nullable = false)
     public String getLastName() {
         return lastName;
     }
@@ -58,11 +66,13 @@ public class Tutor implements Serializable, HasAvailability {
         this.title = title;
     }
 
+    @Column(name = "change_time")
     @JsonIgnore
     public Integer getChangeTime() {
         return changeTime;
     }
 
+    @JsonProperty
     public void setChangeTime(Integer changeTime) {
         this.changeTime = changeTime;
     }

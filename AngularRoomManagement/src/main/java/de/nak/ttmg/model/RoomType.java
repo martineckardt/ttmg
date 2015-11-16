@@ -5,21 +5,15 @@ package de.nak.ttmg.model;
  * This enum contains all room types
  */
 public enum RoomType {
-    LECTURE(0, "Lecture", 0), COMPUTER(1, "Computer", 15), LAB(2, "Lab", 0), AUDIMAX(3, "Audimax", 0);
+    LECTURE("Lecture", 0), COMPUTER("Computer", 15), LAB("Lab", 0), AUDIMAX("Audimax", 0);
 
-
-    private final int identifier;
     private final String displayName;
+
     private final Integer defaultChangeTime;
 
-    RoomType(int identifier, String displayName, Integer defaultChangeTime) {
+    RoomType(String displayName, Integer defaultChangeTime) {
         this.defaultChangeTime = defaultChangeTime;
         this.displayName = displayName;
-        this.identifier = identifier;
-    }
-
-    public int getIdentifier() {
-        return identifier;
     }
 
     public String getDisplayName() {
