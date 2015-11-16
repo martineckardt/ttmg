@@ -13,8 +13,10 @@ import java.util.Date;
 public class DateRange {
 
     private final Date begin;
+
     private final Date end;
-    private final DateRangeValidator rangeValidator = new DateRangeValidator();
+
+    private static final DateRangeValidator rangeValidator = new DateRangeValidator();
 
     /**
      * Creates a date range with a begin and an end date.

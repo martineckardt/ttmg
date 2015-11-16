@@ -9,6 +9,7 @@ import java.util.Set;
 
 /**
  * Created by felixb on 28/10/15.
+ * This class is the course entity
  */
 @Entity
 @Table(name = "course")

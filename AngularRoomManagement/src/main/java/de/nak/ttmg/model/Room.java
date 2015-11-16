@@ -9,6 +9,7 @@ import java.util.Set;
 
 /**
  * Created by felixb on 27/10/15.
+ * This class is the room entity
  */
 @Entity
 @Table(name = "room", uniqueConstraints = @UniqueConstraint(columnNames = {"BUILDING", "ROOM_NUMBER"}))

@@ -8,6 +8,7 @@ import java.util.Set;
 
 /**
  * Created by felixb on 27/10/15.
+ * This class is the event entity
  */
 @Entity
 @Table(name = "event")
