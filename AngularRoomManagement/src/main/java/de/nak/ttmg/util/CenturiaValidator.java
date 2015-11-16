@@ -20,7 +20,7 @@ public class CenturiaValidator {
     }
 
     /**
-     * Validates if a year is between 1970 and 2100
+     * Validates if a year is between 2000 and 2099
      * @param year to be tested
      * @throws ValidationException
      */
@@ -28,7 +28,7 @@ public class CenturiaValidator {
         if (year == null) {
             throw new InvalidParameterException("year", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        if (year < 1970 || year > 2100) {
+        if (year < 2000 || year > 2099) {
             throw new InvalidParameterException("year", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
     }

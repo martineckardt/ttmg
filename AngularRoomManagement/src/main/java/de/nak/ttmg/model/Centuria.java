@@ -2,6 +2,7 @@ package de.nak.ttmg.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -89,12 +90,19 @@ public class Centuria implements Serializable, HasAvailability {
         this.courses = courses;
     }
 
+    /**
+     * This is used by hibernate only.
+     * When querring for the change time refere to
+     * {@link #getCustomChangeTime()}
+     * @return change time or null if not set
+     */
     @Column(name = "change_time")
     @JsonIgnore
     public Integer getChangeTime() {
         return changeTime;
     }
 
+    @JsonProperty //We only want to set the change time
     public void setChangeTime(Integer changeTime) {
         this.changeTime = changeTime;
     }
