@@ -93,7 +93,7 @@ public class Centuria implements Serializable, HasAvailability {
 
     /**
      * This is used by hibernate only.
-     * When querring for the change time refere to
+     * When querying for the change time refer to
      * {@link #getCustomChangeTime()}
      * @return change time or null if not set
      */
