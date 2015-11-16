@@ -83,8 +83,7 @@ public class Event implements Serializable, HasReadableString {
     @Transient
     @Override
     public String getReadableString() {
-        String date1 = begin.toString();
-        String date2 = begin.toString();
-        return date1 + " - " + date2;
+        DateRange range = new DateRange(getBegin(), getEnd());
+        return range.getReadableString();
     }
 }
