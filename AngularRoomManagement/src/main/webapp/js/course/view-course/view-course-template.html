@@ -12,6 +12,6 @@
     <h3>Schedule</h3>
     <event-table events="model.events"></event-table>
 
-    <delete-entity-modal entity-ressource="model.course" entity-type="course" entity-name="model.course.readableString"
-                         success-href="courses"></delete-entity-modal>
+    <delete-entity-modal entity-ressource="model.course" entity-type="course" entity-name="{{model.course.name}}"
+                         success-view="courses"></delete-entity-modal>
 </section>
