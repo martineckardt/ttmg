@@ -54,7 +54,7 @@ angular.module('ttmg').config(
             .when('/centurias/:id', {
                 templateUrl: 'js/centuria/view-centuria/view-centuria-template.html',
                 controller: 'viewCenturiaController',
-                controllerAs: 'showCenturiaCtrl'
+                controllerAs: 'viewCenturiaCtrl'
             })
             // COURSES
             .when('/courses', {
@@ -70,7 +70,7 @@ angular.module('ttmg').config(
             .when('/courses/:id', {
                 templateUrl: 'js/course/view-course/view-course-template.html',
                 controller: 'viewCourseController',
-                controllerAs: 'showCourseCtrl'
+                controllerAs: 'viewCourseCtrl'
             })
             .otherwise(
             {redirectTo: '/'}
