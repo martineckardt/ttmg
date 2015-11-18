@@ -89,9 +89,17 @@ angular.module('ttmg.controllers').controller('createCourseController', ['$scope
         course.$create(function successCallback(data) {
             console.log("Course successfully created");
             console.log(data);
+
+            // Fill messageData with newly created entity
+            $scope.entitySuccesfullyCreated = true;
+            $scope.messageData = data;
         }, function errorCallback(error) {
             console.log("Failed to create course");
             console.log(error);
+
+            // Fill messageData with exception message from backend
+            $scope.entitySuccesfullyCreated = false;
+            $scope.messageData = error.data.message;
         });
 
         $scope.formState = 4;
