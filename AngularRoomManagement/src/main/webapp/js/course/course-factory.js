@@ -6,6 +6,7 @@
 angular.module('ttmg.provider').factory('CourseFactory', function ($resource) {
     return $resource('rest/courses/:id', {}, {
         query: {method: 'GET', isArray: true},
-        create: {method: 'POST'}
+        create: {method: 'POST'},
+        delete: {method: 'DELETE'}
     })
 });

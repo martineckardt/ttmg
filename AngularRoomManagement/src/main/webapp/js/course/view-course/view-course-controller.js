@@ -14,4 +14,14 @@ angular.module('ttmg.controllers').controller('viewCourseController', ['$scope',
         events: EventFactory.query({courseId: courseId})
     };
 
+    this.deleteCourse = function () {
+        $scope.model.course.$delete({id: courseId},
+            function successCallback(data) {
+                console.log("successfully deleted course");
+                console.log(data);
+            }, function errorCallback(error) {
+                console.log("failed to delete course");
+                console.log(error);
+            });
+    };
 }]);
