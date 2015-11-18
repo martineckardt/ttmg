@@ -1,6 +1,6 @@
 /**
  * Created by Martin Eckardt on 28.10.2015.
- * Controller for creation of entities
+ * Controller for creation of a room.
  */
 
 angular.module('ttmg.controllers').controller('createRoomController', ['$scope', 'RoomFactory', function ($scope, RoomFactory) {
@@ -28,7 +28,7 @@ angular.module('ttmg.controllers').controller('createRoomController', ['$scope',
                 console.log("Error creating entity");
                 console.log(error);
 
-                // Fill messageData with exception messagefrom backend
+                // Fill messageData with exception message from backend
                 $scope.entitySuccesfullyCreated = false;
                 $scope.messageData = error.data.message;
             }
