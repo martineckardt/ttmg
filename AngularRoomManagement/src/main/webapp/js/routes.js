@@ -1,5 +1,10 @@
 /**
  * Created by Martin Eckardt on 28.10.2015.
+ *
+ * The routes of the application. For every entity there aber basically the following router:
+ * list: A list of all instances of the entity
+ * create: A form to create a new instance
+ * view: A detail view of an instance also showing the schedule
  */
 
 angular.module('ttmg').config(
