@@ -12,4 +12,10 @@
 
     <h3>Schedule</h3>
     <event-table events="model.events"></event-table>
+
+    <!-- Only show if there are no events -->
+    <delete-entity-modal ng-if="model.events.length == 0"
+                         entity-ressource="model.tutor" entity-type="tutor"
+                         entity-name="{{model.tutor.readableString}}"
+                         success-view="tutors"></delete-entity-modal>
 </section>
