@@ -5,7 +5,6 @@
 
 angular.module('ttmg.utils').filter('capitalize', function () {
     return function (input) {
-        console.log(input);
         return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
     }
 });
