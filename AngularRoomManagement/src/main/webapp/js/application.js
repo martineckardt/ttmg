@@ -5,7 +5,7 @@
 'use strict';
 
 
-var application = angular.module('ttmg', ['ngRoute', 'ttmg.provider', 'ttmg.controllers', 'ttmg.utils']);
+var application = angular.module('ttmg', ['ngRoute', 'ttmg.provider', 'ttmg.controllers', 'ttmg.utils', 'pascalprecht.translate']);
 
 // The controller module. Contains all controllers fpr the views
 var controllers = angular.module('ttmg.controllers', ['ttmg.provider']);

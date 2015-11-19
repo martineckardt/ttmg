@@ -2,7 +2,8 @@
  * Created by felixb on 19/11/15.
  */
 
-app.config(['$translateProvider', function ($translateProvider) {
+angular.module('ttmg').config(['$translateProvider', function ($translateProvider) {
+    $translateProvider.useSanitizeValueStrategy('escapeParameters');
     $translateProvider.translations('en', {
         //General
         'APP_NAME': 'Time Table Management',
