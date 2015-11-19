@@ -1,7 +1,6 @@
 package de.nak.ttmg.util;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import de.nak.ttmg.model.Event;
 
 import java.util.List;
 
@@ -11,14 +10,14 @@ import java.util.List;
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class TimeConflictException extends IgnorableValidationException {
-    private final List<Event> failures;
+    private final List<TimeConflict> failures;
 
-    public TimeConflictException(List<Event> failures) {
+    public TimeConflictException(List<TimeConflict> failures) {
         super("There are " + failures.size() + " conflicting events.");
         this.failures = failures;
     }
 
-    public List<Event> getFailures() {
+    public List<TimeConflict> getFailures() {
         return failures;
     }
 }

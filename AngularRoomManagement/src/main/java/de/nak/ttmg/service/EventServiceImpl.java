@@ -49,13 +49,19 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event updateEvent(Long id, Event event, Boolean force) throws ValidationException {
+    public Event updateEvent(Long id, Long courseId, Event event, Boolean force) throws ValidationException {
         if (force == null) {
             force = false;
         }
-        if (event != null && event.getId() != null && event.getId().equals(id)) {
-            Course course = event.getCourse();
-            courseValidator.validateCourse(course, force);
+        Event oldEvent = loadEvent(id);
+        if (oldEvent == null) {
+            throw new InvalidParameterException("id of event", InvalidParameterException.InvalidParameterType.INCONSISTENT);
+        }
+        if (event != null && event.getId() != null && event.getId().equals(id) && oldEvent.getId().equals(id)) {
+            Course course = oldEvent.getCourse();
+            if (!courseId.equals(course.getId())) {
+                throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
+            }
             if (!force) {
                 timeValidator.validateTime(course);
             }

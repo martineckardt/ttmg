@@ -2,8 +2,6 @@ package de.nak.ttmg.util;
 
 import de.nak.ttmg.model.Tutor;
 
-import java.util.regex.Pattern;
-
 /**
  * Created by felixb on 29/10/15.
  * This class checks if a tutor is valid.

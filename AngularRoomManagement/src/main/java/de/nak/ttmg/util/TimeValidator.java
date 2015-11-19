@@ -25,7 +25,7 @@ public class TimeValidator {
         objectsToTest.add(course.getTutor());
         objectsToTest.addAll(course.getParticipants());
 
-        List<Event> failures = new ArrayList<>();
+        List<TimeConflict> failures = new ArrayList<>();
         course.getEvents().forEach(event -> {
             objectsToTest.addAll(event.getRooms());
             for (HasAvailability object : objectsToTest) {
@@ -49,7 +49,7 @@ public class TimeValidator {
      * @throws TimeConflictException
      */
     public void validateTime(HasAvailability object, Event event) throws TimeConflictException {
-        List<Event> failures = new ArrayList<>();
+        List<TimeConflict> failures = new ArrayList<>();
             try {
                 validateTime(object, event.getBegin(), event.getEnd(), event);
             }
@@ -96,14 +96,14 @@ public class TimeValidator {
     }
 
     private void checkAdjustedTime(HasAvailability object, Date start, Date end, Event ignore) throws TimeConflictException {
-        List<Event> failures = new ArrayList<>();
+        List<TimeConflict> failures = new ArrayList<>();
         object.getEvents().stream().filter(event -> event != ignore).forEach(e -> {
                 if (e.getBegin().after(start) && e.getBegin().before(end)) {
-                    failures.add(e);
+                    failures.add(new TimeConflict(e, object));
                 } else if (e.getEnd().after(start) && e.getEnd().before(end)) {
-                    failures.add(e);
+                    failures.add(new TimeConflict(e, object));
                 } else if (e.getBegin().equals(start) || e.getEnd().equals(end)) {
-                    failures.add(e);
+                    failures.add(new TimeConflict(e, object));
                 }
         });
         if (!failures.isEmpty()) {

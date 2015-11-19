@@ -17,23 +17,23 @@ public class CourseValidator {
      * @throws ValidationException
      */
     public void validateCourse(Course course, boolean force) throws ValidationException {
-        validateEvents(course.getEvents(),course.getParticipants(), course.getType(), force);
+        validateEvents(course.getEvents(),course.getParticipants(), force);
         validateTutor(course.getTutor());
         validateName(course.getName());
         validateParticipants(course.getParticipants());
     }
 
-    private void validateEvents(Set<Event> events, Set<Centuria> centurias, EventType type, boolean force) throws ValidationException {
+    private void validateEvents(Set<Event> events, Set<Centuria> centurias, boolean force) throws ValidationException {
         if (events != null) {
             boolean validDates = events.stream().allMatch(event -> event.getBegin().before(event.getEnd()));
             if (!validDates) {
                 throw new InvalidParameterException("events", InvalidParameterException.InvalidParameterType.INCONSISTENT);
             }
-            events.forEach(event -> validateCapacity(event.getRooms(), centurias, type, force));
+            events.forEach(event -> validateCapacity(event.getRooms(), centurias, force));
         }
     }
 
-    private void validateCapacity(Set<Room> rooms, Set<Centuria> centurias, EventType type, boolean force) throws ValidationException {
+    private void validateCapacity(Set<Room> rooms, Set<Centuria> centurias, boolean force) throws ValidationException {
         if (rooms == null || rooms.isEmpty()) {
             throw new InvalidParameterException("rooms", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }

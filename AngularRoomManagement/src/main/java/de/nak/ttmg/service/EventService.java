@@ -1,6 +1,5 @@
 package de.nak.ttmg.service;
 
-import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.util.ValidationException;
 
@@ -17,7 +16,7 @@ public interface EventService {
 
     Event createEvent(Event event, Boolean force) throws ValidationException;
 
-    Event updateEvent(Long id, Event event, Boolean force) throws ValidationException;
+    Event updateEvent(Long id, Long courseId, Event event, Boolean force) throws ValidationException;
 
     Event loadEvent(Long id) throws ValidationException;
 
