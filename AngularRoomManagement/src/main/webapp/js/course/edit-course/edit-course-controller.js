@@ -43,10 +43,9 @@ angular.module('ttmg.controllers').controller('editCourseController', ['$scope',
     });
 
 
-    var course = $scope.model.course;
-
 
     this.updateCourse = function () {
+        var course = $scope.model.course;
         // Reset values
         course.participants = {};
 
@@ -60,9 +59,6 @@ angular.module('ttmg.controllers').controller('editCourseController', ['$scope',
         course.$update({courseId: course.id}, function successCallback(data) {
             console.log("Course successfully updated");
             console.log(data);
-
-            // Reset form
-            $scope.model.course = new CourseFactory();
 
             // Fill messageData with newly created entity
             $scope.entitySuccesfullyCreated = true;

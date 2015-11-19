@@ -4,9 +4,11 @@
  */
 
 angular.module('ttmg.provider').factory('CourseFactory', function ($resource) {
-    return $resource('rest/courses/:id', {}, {
+    return $resource('rest/courses/:courseId', {}, {
         query: {method: 'GET', isArray: true},
         create: {method: 'POST'},
-        delete: {method: 'DELETE'}
+        update: {method: 'PUT'},
+        delete: {method: 'DELETE'},
+        getEvents: {method: 'GET', isArray: true, url: 'rest/courses/:courseId/events'}
     })
 });
