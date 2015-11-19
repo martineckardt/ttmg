@@ -77,13 +77,12 @@ public class EventController {
     }
 
     @RequestMapping(value = "/courses/{courseId}/events", method = RequestMethod.POST)
-    public Event createEvent(@RequestBody Event event,
+    public List<Event> createEvents(@RequestBody List<Event> events,
                              @PathVariable Long courseId,
                              @RequestParam(required = false, value = "force") Boolean force) {
-        event.setCourse(courseService.loadCourse(courseId));
-        return eventService.createEvent(event, force);
+        return eventService.createEvents(events, courseId, force);
     }
-    
+
     @RequestMapping(value = "/courses/{courseId}/events/{id}", method = RequestMethod.PUT)
     public Event saveEvent(@PathVariable Long id,
                              @PathVariable Long courseId,
