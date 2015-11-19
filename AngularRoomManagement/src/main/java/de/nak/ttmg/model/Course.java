@@ -99,4 +99,9 @@ public class Course implements Serializable {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    @Transient
+    public Integer getNumberOfStudents() {
+        return participants.stream().mapToInt(Centuria::getNbrOfStudents).sum();
+    }
 }
