@@ -34,4 +34,8 @@ public class ValidationException extends HibernateException {
     public Boolean getIgnorable() {
         return false;
     }
+
+    public String getLocalizableMessage() {
+        return this.getMessage();
+    }
 }

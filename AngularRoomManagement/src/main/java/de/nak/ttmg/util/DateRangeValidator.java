@@ -17,10 +17,10 @@ public class DateRangeValidator {
     public void validateRange(Date start, Date end) throws DateRangeException {
         if (start != null && end != null) {
             if (!end.after(start)) {
-                throw new DateRangeException("End Date has to be after the start date");
+                throw new DateRangeException(Constants.DATE_RANGE_START_AFTER_END);
             }
         } else if (start != null || end != null) {
-            throw new DateRangeException("Start- and End-Date have to be set together.");
+            throw new DateRangeException(Constants.DATE_RANGE_ONE_NULL);
         }
     }
 

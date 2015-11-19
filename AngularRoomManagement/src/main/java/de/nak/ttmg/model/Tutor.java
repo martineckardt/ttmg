@@ -3,6 +3,7 @@ package de.nak.ttmg.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import de.nak.ttmg.util.Constants;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -116,7 +117,7 @@ public class Tutor implements Serializable, HasAvailability {
     @Transient
     @Override
     public String getObjectType() {
-        return "tutor";
+        return Constants.TUTOR;
     }
 
     @Transient

@@ -1,5 +1,6 @@
 package de.nak.ttmg.service;
 
+import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.dao.EventDAO;
 import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.DateRange;
@@ -8,6 +9,7 @@ import de.nak.ttmg.model.Event;
 import de.nak.ttmg.util.*;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +21,12 @@ public class EventServiceImpl implements EventService {
 
     @Inject
     private EventDAO eventDAO;
+
+    @Inject
+    private CourseDAO courseDAO;
+
     private final TimeValidator timeValidator = new TimeValidator();
+
     private final CourseValidator courseValidator = new CourseValidator();
 
     @Override
@@ -36,16 +43,23 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event createEvent(Event event, Boolean force) throws ValidationException {
-        if (force == null) {
-            force = false;
+    public List<Event> createEvents(List<Event> events, Long courseId, Boolean force) throws ValidationException {
+        Course course = courseDAO.load(courseId);
+        //TODO Transaction
+        List<Event> results = new ArrayList<>(events.size());
+        for (Event event : events) {
+            event.setCourse(course);
+            if (force == null) {
+                force = false;
+            }
+            courseValidator.validateCourse(course, force);
+            if (!force) {
+                timeValidator.validateTime(course);
+            }
+            results.add(eventDAO.create(event));
         }
-        Course course = event.getCourse();
-        courseValidator.validateCourse(course, force);
-        if (!force) {
-            timeValidator.validateTime(course);
-        }
-        return eventDAO.create(event);
+        //TODO END TRANSACTION
+        return results;
     }
 
     @Override

@@ -20,4 +20,9 @@ public class TimeConflictException extends IgnorableValidationException {
     public List<TimeConflict> getFailures() {
         return failures;
     }
+
+    @Override
+    public String getLocalizableMessage() {
+        return Constants.TIME_CONFLICTS;
+    }
 }

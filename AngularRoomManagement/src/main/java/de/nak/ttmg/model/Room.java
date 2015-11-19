@@ -1,6 +1,7 @@
 package de.nak.ttmg.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import de.nak.ttmg.util.Constants;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -105,7 +106,7 @@ public class Room implements Serializable, HasAvailability {
     @Transient
     @Override
     public String getObjectType() {
-        return "room";
+        return Constants.ROOM;
     }
 
     public void setEvents(Set<Event> events) {

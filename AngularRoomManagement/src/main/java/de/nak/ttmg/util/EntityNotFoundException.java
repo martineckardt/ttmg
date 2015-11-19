@@ -24,4 +24,9 @@ public class EntityNotFoundException extends ValidationException {
     public Long getId() {
         return id;
     }
+
+    @Override
+    public String getLocalizableMessage() {
+        return Constants.ENTITY_NOT_FOUND;
+    }
 }
