@@ -26,7 +26,7 @@ public class EventController {
     public List<Event> listEvents(@RequestParam(required = false, value = "centuriaId") Long centuriaId,
                                     @RequestParam(required = false, value = "tutorId") Long tutorId,
                                     @RequestParam(required = false, value = "roomId") Long roomId,
-                                   @RequestParam(required = false, value = "courseId") Long courseId,
+                                    @RequestParam(required = false, value = "courseId") Long courseId,
                                     @RequestParam(required = false, value = "rangeStart") Date rangeStart,
                                     @RequestParam(required = false, value = "rangeEnd") Date rangeEnd
     ) {
@@ -40,6 +40,39 @@ public class EventController {
                                    @PathVariable Long courseId,
                                    @RequestParam(required = false, value = "rangeStart") Date rangeStart,
                                    @RequestParam(required = false, value = "rangeEnd") Date rangeEnd
+    ) {
+        return eventService.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
+    }
+
+    @RequestMapping(value = "/rooms/{roomId}/events", method = RequestMethod.GET)
+    public List<Event> listEventsForRoom(@RequestParam(required = false, value = "centuriaId") Long centuriaId,
+                                           @RequestParam(required = false, value = "tutorId") Long tutorId,
+                                           @PathVariable Long roomId,
+                                           @RequestParam(required = false, value = "courseId") Long courseId,
+                                           @RequestParam(required = false, value = "rangeStart") Date rangeStart,
+                                           @RequestParam(required = false, value = "rangeEnd") Date rangeEnd
+    ) {
+        return eventService.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
+    }
+
+    @RequestMapping(value = "/tutors/{tutorId}/events", method = RequestMethod.GET)
+    public List<Event> listEventsForTutor(@RequestParam(required = false, value = "centuriaId") Long centuriaId,
+                                         @RequestParam(required = false, value = "roomId") Long roomId,
+                                         @PathVariable Long tutorId,
+                                         @RequestParam(required = false, value = "courseId") Long courseId,
+                                         @RequestParam(required = false, value = "rangeStart") Date rangeStart,
+                                         @RequestParam(required = false, value = "rangeEnd") Date rangeEnd
+    ) {
+        return eventService.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
+    }
+
+    @RequestMapping(value = "/centurias/{centuriaId}/events", method = RequestMethod.GET)
+    public List<Event> listEventsForCenturia(@RequestParam(required = false, value = "tutorId") Long tutorId,
+                                          @RequestParam(required = false, value = "roomId") Long roomId,
+                                          @PathVariable Long centuriaId,
+                                          @RequestParam(required = false, value = "courseId") Long courseId,
+                                          @RequestParam(required = false, value = "rangeStart") Date rangeStart,
+                                          @RequestParam(required = false, value = "rangeEnd") Date rangeEnd
     ) {
         return eventService.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
     }
