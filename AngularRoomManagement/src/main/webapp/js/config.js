@@ -93,7 +93,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
     $translateProvider.translations('de', {
         //TODO SEBASTIAN
         'TITLE': 'Hallo',
-        'FOO': 'Dies ist ein Absatz'
+        'FOO': 'Dies ist ein Absatz',
+        'SHOW': 'Anzeigen'
     });
 
     $translateProvider.preferredLanguage('en');
