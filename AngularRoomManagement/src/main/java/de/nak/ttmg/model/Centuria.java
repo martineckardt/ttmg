@@ -3,6 +3,7 @@ package de.nak.ttmg.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import de.nak.ttmg.util.Constants;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -136,7 +137,7 @@ public class Centuria implements Serializable, HasAvailability {
     @Transient
     @Override
     public String getObjectType() {
-        return "centuria";
+        return Constants.CENTURIA;
     }
 
     @Transient

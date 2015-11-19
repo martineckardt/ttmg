@@ -15,4 +15,9 @@ public class InsufficientSeatException extends IgnorableValidationException {
     public int getSeats() {
         return seats;
     }
+
+    @Override
+    public String getLocalizableMessage() {
+        return Constants.INSUFFICIENT_SEATS;
+    }
 }

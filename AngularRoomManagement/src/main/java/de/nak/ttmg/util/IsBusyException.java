@@ -18,4 +18,9 @@ public class IsBusyException extends IgnorableValidationException {
     public Integer getEventCount() {
         return eventCount;
     }
+
+    @Override
+    public String getLocalizableMessage() {
+        return Constants.OBJECT_HAS_EVENTS;
+    }
 }
