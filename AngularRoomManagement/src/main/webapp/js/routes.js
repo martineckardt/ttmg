@@ -77,6 +77,22 @@ angular.module('ttmg').config(
                 controller: 'viewCourseController',
                 controllerAs: 'viewCourseCtrl'
             })
+            .when('/courses/:id/edit', {
+                templateUrl: 'js/course/edit-course/edit-course-template.html',
+                controller: 'editCourseController',
+                controllerAs: 'editCourseCtrl'
+            })
+            .when('/courses/:id/events/create', {
+                templateUrl: 'js/event/create-course-events/create-course-events-template.html',
+                controller: 'createCourseEventsController',
+                controllerAs: 'createCourseEventsCtrl'
+            })
+            // EVENTS
+            .when('/events/:id/edit', {
+                templateUrl: 'js/event/edit-event/edit-event-template.html',
+                controller: 'editEventController',
+                controllerAs: 'editEventCtrl'
+            })
             .otherwise(
             {redirectTo: '/'}
         )

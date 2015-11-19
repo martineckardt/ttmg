@@ -53,7 +53,30 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" class="btn btn-primary" value="Save"/>
         <button ng-click="createCourseCtrl.proceedToEventSelection()" class="btn btn-primary">Next</button>
         <a href="#/courses" class="btn btn-default">Cancel</a>
     </div>
 </div>
+
+<div ng-if="entitySuccesfullyCreated" class="alert alert-success" role="alert">
+    <p>The course <a ng-href="#/courses/{{messageData.id}}" class="alert-link">{{messageData.name}}</a> was
+        created.</p>
+</div>
+<div ng-if="entitySuccesfullyCreated == false" class="alert alert-danger" role="alert">
+    <p>{{messageData}}</p>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <a href="#/courses/" class="btn btn-default">Add</a>
+    </div>
+</div>
+
+<hr>
+<hr>
+
+<p>Posted to rest/courses</p>
+<p>
+<pre>{{model.course | json }}</pre>
+</p>
