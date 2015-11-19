@@ -19,7 +19,6 @@ public class CourseValidator {
     public void validateCourse(Course course, boolean force) throws ValidationException {
         validateEvents(course.getEvents(),course.getParticipants(), course.getType(), force);
         validateTutor(course.getTutor());
-        validateParticipants(course.getParticipants());
         validateName(course.getName());
     }
 
@@ -51,16 +50,6 @@ public class CourseValidator {
     private void validateTutor(Tutor tutor) throws ValidationException {
         if (tutor == null) {
             throw new InvalidParameterException("tutor", InvalidParameterException.InvalidParameterType.INVALID_NULL);
-        }
-    }
-
-    private void validateParticipants(Set<Centuria> centurias) throws ValidationException {
-        if (centurias == null || centurias.isEmpty()) {
-            throw new InvalidParameterException("participants", InvalidParameterException.InvalidParameterType.INVALID_NULL);
-        }
-        Integer participants = centurias.stream().mapToInt(Centuria::getNbrOfStudents).sum();
-        if (participants <=0) {
-            throw new InvalidParameterException("participants", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
     }
 
