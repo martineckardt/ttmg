@@ -59,8 +59,9 @@ public class Course implements Serializable {
         this.events = events;
     }
 
-    @Column(name = "participants")
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "courses")
+    @Column(name = "participants", nullable = false)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="course_centuria", joinColumns=@JoinColumn(name="course_id"), inverseJoinColumns=@JoinColumn(name="centuria_id"))
     public Set<Centuria> getParticipants() {
         return participants;
     }

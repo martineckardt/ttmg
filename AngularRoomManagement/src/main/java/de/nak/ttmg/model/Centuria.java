@@ -80,8 +80,7 @@ public class Centuria implements Serializable, HasAvailability {
         this.year = year;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="course_centuria", joinColumns=@JoinColumn(name="centuria_id"), inverseJoinColumns=@JoinColumn(name="course_id"))
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "participants")
     @JsonBackReference
     public Set<Course> getCourses() {
         return courses;
