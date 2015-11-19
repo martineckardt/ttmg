@@ -26,11 +26,11 @@ public class TutorValidator {
         if (name == null || name.trim().isEmpty()) {
             throw new InvalidParameterException(fieldName, InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        boolean validCharacters = name.chars().allMatch(Character::isAlphabetic);
+        boolean validCharacters = name.matches("[A-Z][. 'a-zA-Z0-9öäüÖÄÜ-]*");
         if (!validCharacters) {
             throw new InvalidParameterException(fieldName, InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
         }
-        if (name.length() > 40) {
+        if (name.length() > 50) {
             throw new InvalidParameterException(fieldName, InvalidParameterException.InvalidParameterType.INVALID_LENGTH);
         }
     }
@@ -39,11 +39,11 @@ public class TutorValidator {
         if (title == null || title.trim().isEmpty()) {
             return;
         }
-        boolean validCharacters = Pattern.matches("[A-Za-z-.\\s]+",title);
+        boolean validCharacters = title.matches("[A-Z][. 'a-zA-Z0-9öäüÖÄÜ-]*");
         if (!validCharacters) {
             throw new InvalidParameterException("title", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
         }
-        if (title.length() > 20) {
+        if (title.length() > 50) {
             throw new InvalidParameterException("title", InvalidParameterException.InvalidParameterType.INVALID_LENGTH);
         }
     }

@@ -38,10 +38,6 @@ public class CourseValidator {
         }
         Integer capacity = rooms.stream().mapToInt(Room::getSeats).sum();
         Integer required = centurias.stream().mapToInt(Centuria::getNbrOfStudents).sum();
-        if (type == EventType.SEMINAR) {
-            //Limit required seats to 20
-            required = Math.min(required, 20);
-        }
         if (required > capacity && force) {
             throw new InsufficientSeatException(capacity-required);
         }
@@ -57,7 +53,7 @@ public class CourseValidator {
         if (name == null || name.isEmpty()) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        boolean validCharacters = name.chars().allMatch(Character::isLetterOrDigit);
+        boolean validCharacters = name.matches("[A-Z][. 'a-zA-Z0-9öäüÖÄÜ-]*");
         if (!validCharacters) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
         }
