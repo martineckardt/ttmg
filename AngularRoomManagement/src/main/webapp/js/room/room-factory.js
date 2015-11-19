@@ -4,8 +4,9 @@
  */
 
 angular.module('ttmg.provider').factory('RoomFactory', function ($resource) {
-    return $resource('rest/rooms/:id', {}, {
+    return $resource('rest/rooms/:roomId', {}, {
         query: {method: 'GET', isArray: true},
-        create: {method: 'POST'}
+        create: {method: 'POST'},
+        getEvents: {method: 'GET', isArray: true, url: 'rest/rooms/:roomId/events'}
     })
 });
