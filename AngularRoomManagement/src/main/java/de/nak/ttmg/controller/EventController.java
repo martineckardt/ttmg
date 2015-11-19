@@ -1,6 +1,5 @@
 package de.nak.ttmg.controller;
 
-import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.service.CourseService;
 import de.nak.ttmg.service.EventService;
@@ -84,12 +83,13 @@ public class EventController {
         event.setCourse(courseService.loadCourse(courseId));
         return eventService.createEvent(event, force);
     }
-
-    @RequestMapping(value = "/events/{id}", method = RequestMethod.PUT)
+    
+    @RequestMapping(value = "/courses/{courseId}/events/{id}", method = RequestMethod.PUT)
     public Event saveEvent(@PathVariable Long id,
+                             @PathVariable Long courseId,
                              @RequestBody Event event,
                              @RequestParam(required = false, value = "force") Boolean force) {
-        return eventService.updateEvent(id, event, force);
+        return eventService.updateEvent(id, courseId, event, force);
     }
 
     @RequestMapping(value = "/events/{id}", method = RequestMethod.DELETE)
