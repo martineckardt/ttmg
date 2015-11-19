@@ -1,6 +1,7 @@
 package de.nak.ttmg.test;
 
 import de.nak.ttmg.model.*;
+import de.nak.ttmg.util.DateRangeException;
 import de.nak.ttmg.util.TimeConflictException;
 import de.nak.ttmg.util.TimeValidator;
 import org.junit.Before;
@@ -122,7 +123,14 @@ public class ObjectCreationTest {
         future.setCourse(courseIAA);
         future.setRooms(rooms);
         DateRange range = new DateRange(pastStart, pastEnd);
-        assertNull(range);
+        assertNotNull(range);
+        try {
+            DateRange range2 = new DateRange(pastEnd, pastStart);
+            assertNull(range2);
+        } catch (DateRangeException e) {
+            //All good!
+        }
+
 
         Set<Event> events = new HashSet<>(2);
         events.add(past);

@@ -1,7 +1,6 @@
 package de.nak.ttmg.util;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import de.nak.ttmg.model.Event;
 
 import java.util.List;
 

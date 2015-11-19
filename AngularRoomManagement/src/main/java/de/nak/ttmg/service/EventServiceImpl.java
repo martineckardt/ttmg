@@ -59,7 +59,7 @@ public class EventServiceImpl implements EventService {
         }
         if (event != null && event.getId() != null && event.getId().equals(id) && oldEvent.getId().equals(id)) {
             Course course = oldEvent.getCourse();
-            if (course.getId() != courseId) {
+            if (!courseId.equals(course.getId())) {
                 throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
             }
             if (!force) {

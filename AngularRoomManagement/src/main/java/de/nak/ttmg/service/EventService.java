@@ -1,6 +1,5 @@
 package de.nak.ttmg.service;
 
-import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.util.ValidationException;
 

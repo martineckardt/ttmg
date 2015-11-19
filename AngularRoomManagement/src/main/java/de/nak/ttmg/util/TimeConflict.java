@@ -8,8 +8,8 @@ import de.nak.ttmg.model.HasAvailability;
  * This object contains information about a Time Conflict
  */
 public class TimeConflict {
-    private Event event;
-    private HasAvailability causer;
+    private final Event event;
+    private final HasAvailability causer;
 
     public TimeConflict(Event event, HasAvailability causer) {
         this.event = event;
