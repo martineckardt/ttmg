@@ -1,5 +1,6 @@
 package de.nak.ttmg.util;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.HibernateException;
 
@@ -21,9 +22,9 @@ public class ValidationException extends HibernateException {
     }
 
     @Override
+    @JsonIgnore //We don't want stack traces in client
     public StackTraceElement[] getStackTrace() {
-        //We don't want stack traces in client
-        return null;
+        return super.getStackTrace();
     }
 
     public String getExceptionType() {
