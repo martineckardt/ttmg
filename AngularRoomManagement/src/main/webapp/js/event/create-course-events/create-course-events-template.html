@@ -1,0 +1,31 @@
+<section>
+    <h2>Create new events for the course {{model.course.name}}</h2>
+    <hr>
+
+
+    <div ng-if="entitySuccesfullyCreated" class="alert alert-success" role="alert">
+        <p>The course <a ng-href="#/courses/{{messageData.id}}" class="alert-link">{{messageData.name}}</a> was
+            created.</p>
+    </div>
+    <div ng-if="entitySuccesfullyCreated == false" class="alert alert-danger" role="alert">
+        <p>{{messageData}}</p>
+    </div>
+
+    <form class="form-horizontal" role="form" ng-submit="createCourseEventsCtrl.addEvents()" novalidate>
+        <div ng-if="formState == 1"
+             ng-include="'js/event/create-course-events/create-course-events-form-step1-template.html'"></div>
+        <div ng-if="formState == 2"
+             ng-include="'js/event/create-course-events/create-course-events-form-step2-template.html'"></div>
+        <div ng-if="formState == 3"
+             ng-include="'js/event/create-course-events/create-course-events-form-step3-template.html'"></div>
+    </form>
+</section>
+
+
+<hr>
+<p>formState:</p>
+<p>{{formState}}</p>
+<hr>
+<p>events:</p>
+<p>
+<pre>{{model.events | json}}</pre></p>

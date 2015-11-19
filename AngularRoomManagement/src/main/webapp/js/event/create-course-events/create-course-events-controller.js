@@ -3,18 +3,23 @@
  * Controller to create multiple events for a course
  */
 
-createCourseEventsController
+angular.module('ttmg.controllers').controller('createCourseEventsController',
+    ['$scope', '$routeParams', 'EventFactory', 'CourseFactory', 'RoomFactory',
+        function ($scope, $routeParams, EventFactory, CourseFactory, RoomFactory) {
 
-angular.module('ttmg.controllers').controller('createCourseEventsController', ['$scope', 'CourseFactory', 'RoomFactory', function ($scope, CourseFactory, RoomFactory) {
-    console.log('createCourseController initialized');
+            // Route parameters
+            var courseId = $routeParams.id;
+            console.log('createCourseEventsController for Course ' + courseId + ' started');
 
     $scope.formState = 1;
 
     // Set up model
     $scope.model = {
-        course: new CourseFactory(),
-        tutors: TutorFactory.query(),
-        centurias: CenturiaFactory.query(),
+        course: CourseFactory.get({courseId: courseId}),
+        events: []
+    };
+
+            $scope.formModel = {
         eventForDateSelection: {
             begin: new Date(),
             end: new Date(),
@@ -24,36 +29,17 @@ angular.module('ttmg.controllers').controller('createCourseEventsController', ['
     };
 
     var course = $scope.model.course;
-    var eventForDateSelection = $scope.model.eventForDateSelection;
-    var eventsForRoomSelection = $scope.model.eventsForRoomSelection;
 
-    this.proceedToEventSelection = function () {
-        // Reset values
-        course.participants = {};
-        var numberOfParticipants = 0;
 
-        if (course.type != 'SEMINAR') { // if the course is not a seminar
-            // Add selected centruias to course
-            course.participants = $scope.model.centurias.filter(function filter(participant) {
-                return participant.selected == true;
-            });
-
-            //  Calculate the total number of participants for the querying of the room
-            course.participants.forEach(function (currentParticipant) {
-                numberOfParticipants += currentParticipant.nbrOfStudents;
-            });
-        }
-
-        $scope.model.numberOfParticipants = numberOfParticipants;
-        $scope.formState = 2;
-    };
+            var eventForDateSelection = $scope.formModel.eventForDateSelection;
+            var eventsForRoomSelection = $scope.formModel.eventsForRoomSelection;
 
     this.proceedToRoomSelection = function () {
         // Reset room selection
         eventsForRoomSelection.splice(0, eventsForRoomSelection.length);
 
         // create events
-        for (repetitionIndex = 0; repetitionIndex < eventForDateSelection.repeatForWeeks; repetitionIndex++) {
+        for (var repetitionIndex = 0; repetitionIndex < eventForDateSelection.repeatForWeeks; repetitionIndex++) {
             var currentBegin = new Date();
             var currentEnd = new Date();
             // Query available rooms for this event using the number of participants
@@ -61,7 +47,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController', ['
             var currentAvailableRooms = RoomFactory.query({
                 //freeStart: currentBegin.getTime(),
                 //freeEnd: currentEnd.getTime(),
-                minSeats: $scope.model.numberOfParticipants
+                minSeats: course.numberOfStudents
             });
 
             var currentEvent = {
@@ -71,12 +57,13 @@ angular.module('ttmg.controllers').controller('createCourseEventsController', ['
             };
             eventsForRoomSelection.push(currentEvent);
         }
-        $scope.formState = 3;
+        $scope.formState = 2;
     };
 
-    this.addCourse = function () {
-        // create course events from selection
-        var courseEvents = [];
+            this.addEvents = function () {
+                var events = $scope.model.events;
+
+                // Add the selected rooms to the events
         eventsForRoomSelection.forEach(function (currentEvent) {
             // Filter the selected rooms
             var selectedRoomsForCurrentEvent = currentEvent.availableRooms.filter(function selectedFilter(room) {
@@ -88,13 +75,12 @@ angular.module('ttmg.controllers').controller('createCourseEventsController', ['
                 end: currentEvent.end,
                 rooms: selectedRoomsForCurrentEvent
             };
-            courseEvents.push(event);
+            events.push(event);
         });
 
-        course.events = courseEvents;
-
-        course.$create(function successCallback(data) {
-            console.log("Course successfully created");
+                var eventsRessource = new EventFactory(events);
+                eventsRessource.$bulkCreate({courseId: course.id}, function successCallback(data) {
+                    console.log("Events successfully created");
             console.log(data);
 
             // Fill messageData with newly created entity
@@ -109,7 +95,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController', ['
             $scope.messageData = error.data.message;
         });
 
-        $scope.formState = 4;
+                $scope.formState = 3;
     };
 
     this.goBackToStep = function (stepId) {
