@@ -24,12 +24,11 @@ public class CourseValidator {
     }
 
     private void validateEvents(Set<Event> events, Set<Centuria> centurias, EventType type, boolean force) throws ValidationException {
-        if (events == null || events.isEmpty()) {
-            throw new InvalidParameterException("events", InvalidParameterException.InvalidParameterType.INVALID_NULL);
-        }
-        boolean validDates = events.stream().allMatch(event -> event.getBegin().before(event.getEnd()));
-        if (!validDates) {
-            throw new InvalidParameterException("events", InvalidParameterException.InvalidParameterType.INCONSISTENT);
+        if (events != null) {
+            boolean validDates = events.stream().allMatch(event -> event.getBegin().before(event.getEnd()));
+            if (!validDates) {
+                throw new InvalidParameterException("events", InvalidParameterException.InvalidParameterType.INCONSISTENT);
+            }
         }
         events.forEach(event -> validateRooms(event.getRooms(), centurias, type, force));
     }
