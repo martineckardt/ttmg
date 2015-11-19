@@ -1,10 +1,11 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.EventDAO;
+import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.DateRange;
 import de.nak.ttmg.model.DateRangeFactory;
 import de.nak.ttmg.model.Event;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.util.*;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -18,6 +19,8 @@ public class EventServiceImpl implements EventService {
 
     @Inject
     private EventDAO eventDAO;
+    private final TimeValidator timeValidator = new TimeValidator();
+    private final CourseValidator courseValidator = new CourseValidator();
 
     @Override
     public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Long courseId, Date rangeStart, Date rangeEnd) throws ValidationException {
@@ -30,5 +33,49 @@ public class EventServiceImpl implements EventService {
         }
         DateRange range = DateRangeFactory.createDateRange(rangeStart, end);
         return eventDAO.listEvents(centuriaId, tutorId, roomId, courseId, range);
+    }
+
+    @Override
+    public Event createEvent(Event event, Boolean force) throws ValidationException {
+        if (force == null) {
+            force = false;
+        }
+        Course course = event.getCourse();
+        courseValidator.validateCourse(course, force);
+        if (!force) {
+            timeValidator.validateTime(course);
+        }
+        return eventDAO.create(event);
+    }
+
+    @Override
+    public Event updateEvent(Long id, Event event, Boolean force) throws ValidationException {
+        if (force == null) {
+            force = false;
+        }
+        if (event != null && event.getId() != null && event.getId().equals(id)) {
+            Course course = event.getCourse();
+            courseValidator.validateCourse(course, force);
+            if (!force) {
+                timeValidator.validateTime(course);
+            }
+            return eventDAO.update(event);
+        } else {
+            throw new InvalidParameterException("eventId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
+        }
+    }
+
+    @Override
+    public Event loadEvent(Long id) throws ValidationException {
+        Event event= eventDAO.load(id);
+        if (event == null) {
+            throw new EntityNotFoundException("event", id);
+        }
+        return event;
+    }
+
+    @Override
+    public void deleteEvent(Long id) throws ValidationException {
+        eventDAO.delete(loadEvent(id));
     }
 }

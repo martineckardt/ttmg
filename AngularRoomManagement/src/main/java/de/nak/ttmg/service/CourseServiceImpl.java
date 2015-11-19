@@ -64,10 +64,6 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void deleteCourse(Long id) throws ValidationException {
-        Course course = loadCourse(id);
-        if (course == null) {
-            throw new EntityNotFoundException("course", id);
-        }
-        courseDAO.delete(course);
+        courseDAO.delete(loadCourse(id));
     }
 }

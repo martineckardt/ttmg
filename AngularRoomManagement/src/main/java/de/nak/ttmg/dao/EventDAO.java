@@ -2,10 +2,14 @@ package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.DateRange;
 import de.nak.ttmg.model.Event;
+import de.nak.ttmg.util.EntityAlreadyExistsException;
+import de.nak.ttmg.util.EntityNotFoundException;
+import de.nak.ttmg.util.InvalidParameterException;
 import de.nak.ttmg.util.ValidationException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -48,5 +52,37 @@ public class EventDAO {
         }
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return criteria.list();
+    }
+
+    public Event load(Long id) throws ValidationException {
+        Event event = entityManager.find(Event.class, id);
+        if (event != null) {
+            return event;
+        }
+        throw new EntityNotFoundException("event", id);
+    }
+
+    public Event create(Event event) throws ValidationException {
+        if (event.getId() == null) {
+            try {
+                entityManager.persist(event);
+            } catch (ConstraintViolationException e) {
+                throw new EntityAlreadyExistsException();
+            } catch (Exception e) {
+                throw new ValidationException(e);
+            }
+            return event;
+        } else {
+            throw new InvalidParameterException("id", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
+        }
+    }
+
+    public Event update(Event event) {
+        entityManager.merge(event);
+        return event;
+    }
+
+    public void delete(Event event) {
+        entityManager.remove(event);
     }
 }

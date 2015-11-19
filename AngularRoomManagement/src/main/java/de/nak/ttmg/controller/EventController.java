@@ -1,11 +1,9 @@
 package de.nak.ttmg.controller;
 
+import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.service.EventService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -17,6 +15,7 @@ import java.util.List;
  */
 @RestController
 public class EventController {
+    @Inject
     private EventService eventService;
 
     @RequestMapping(value = "/events", method = RequestMethod.GET)
@@ -30,8 +29,21 @@ public class EventController {
         return eventService.listEvents(centuriaId, tutorId, roomId, courseId, rangeStart, rangeEnd);
     }
 
-    @Inject
-    public void setEventService(EventService eventService) {
-        this.eventService = eventService;
+    @RequestMapping(value = "/events", method = RequestMethod.POST)
+    public Event createEvent(@RequestBody Event event,
+                               @RequestParam(required = false, value = "force") Boolean force) {
+        return eventService.createEvent(event, force);
+    }
+
+    @RequestMapping(value = "/events/{id}", method = RequestMethod.PUT)
+    public Event saveEvent(@PathVariable Long id,
+                             @RequestBody Event event,
+                             @RequestParam(required = false, value = "force") Boolean force) {
+        return eventService.updateEvent(id, event, force);
+    }
+
+    @RequestMapping(value = "/events/{id}", method = RequestMethod.DELETE)
+    public void deleteEvent(@PathVariable Long id) {
+        eventService.deleteEvent(id);
     }
 }
