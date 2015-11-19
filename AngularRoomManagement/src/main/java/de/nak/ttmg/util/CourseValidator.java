@@ -20,6 +20,7 @@ public class CourseValidator {
         validateEvents(course.getEvents(),course.getParticipants(), course.getType(), force);
         validateTutor(course.getTutor());
         validateName(course.getName());
+        validateParticipants(course.getParticipants());
     }
 
     private void validateEvents(Set<Event> events, Set<Centuria> centurias, EventType type, boolean force) throws ValidationException {
@@ -28,11 +29,11 @@ public class CourseValidator {
             if (!validDates) {
                 throw new InvalidParameterException("events", InvalidParameterException.InvalidParameterType.INCONSISTENT);
             }
+            events.forEach(event -> validateCapacity(event.getRooms(), centurias, type, force));
         }
-        events.forEach(event -> validateRooms(event.getRooms(), centurias, type, force));
     }
 
-    private void validateRooms(Set<Room> rooms, Set<Centuria> centurias, EventType type, boolean force) throws ValidationException {
+    private void validateCapacity(Set<Room> rooms, Set<Centuria> centurias, EventType type, boolean force) throws ValidationException {
         if (rooms == null || rooms.isEmpty()) {
             throw new InvalidParameterException("rooms", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
@@ -59,4 +60,9 @@ public class CourseValidator {
         }
     }
 
+    private void validateParticipants(Set<Centuria> centurias) throws ValidationException {
+        if (centurias == null) {
+            throw new InvalidParameterException("participants", InvalidParameterException.InvalidParameterType.INVALID_NULL);
+        }
+    }
 }
