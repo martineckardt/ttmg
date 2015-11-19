@@ -22,6 +22,7 @@ public class CenturiaServiceImpl implements CenturiaService {
     @Override
     public Centuria createCenturia(Centuria centuria) throws ValidationException {
         centuriaValidator.validateCenturia(centuria);
+        centuria.setLetter(Character.toLowerCase(centuria.getLetter()));
         if (centuria.getId() == null) {
             try {
                 return centuriaDAO.create(centuria);

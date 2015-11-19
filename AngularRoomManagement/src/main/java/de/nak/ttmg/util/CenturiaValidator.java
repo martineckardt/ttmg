@@ -17,6 +17,7 @@ public class CenturiaValidator {
         validateYear(centuria.getYear());
         validateLetter(centuria.getLetter());
         validateNbrOfStudents(centuria.getNbrOfStudents());
+        validateChangeTime(centuria.getChangeTime());
     }
 
     /**
@@ -34,21 +35,25 @@ public class CenturiaValidator {
     }
 
     private void validateLetter(Character letter) {
-        char[] chars = "abcd".toCharArray();
-        for (char aChar : chars) {
-            if (letter == aChar) {
-                return;
-            }
+        if (!Character.isLetter(letter)) {
+            throw new InvalidParameterException("letter", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
-        throw new InvalidParameterException("letter", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
     }
 
     private void validateNbrOfStudents(Integer students) {
         if (students == null) {
             throw new InvalidParameterException("students", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        if (students < 0 || students > 1000) {
+        if (students < 0 || students > 9999) {
             throw new InvalidParameterException("students", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
+        }
+    }
+
+    private void validateChangeTime(Integer changeTime) {
+        if (changeTime != null) {
+            if (changeTime < 0 || changeTime > 300) {
+                throw new InvalidParameterException("changeTime", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
+            }
         }
     }
 }

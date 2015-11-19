@@ -49,10 +49,7 @@ public class TutorValidator {
     }
 
     private void validateChangeTime(Integer changeTime) throws ValidationException {
-        if (changeTime == null) {
-            throw new InvalidParameterException("changeTime", InvalidParameterException.InvalidParameterType.INVALID_NULL);
-        }
-        if (changeTime < 0 || changeTime > 1000) {
+        if (changeTime < 0 || changeTime > 300) {
             throw new InvalidParameterException("changeTime", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
     }

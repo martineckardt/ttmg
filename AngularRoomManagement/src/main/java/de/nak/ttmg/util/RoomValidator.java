@@ -32,7 +32,7 @@ public class RoomValidator {
         if (roomNbr == null) {
             throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        if (roomNbr < 0 || roomNbr > 999) {
+        if (roomNbr < 1 || roomNbr > 999) {
             throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
     }
@@ -41,7 +41,7 @@ public class RoomValidator {
         if (seats == null) {
             throw new InvalidParameterException("seats", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        if (seats < 0) {
+        if (seats < 0 || seats > 999) {
             throw new InvalidParameterException("seats", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
     }
