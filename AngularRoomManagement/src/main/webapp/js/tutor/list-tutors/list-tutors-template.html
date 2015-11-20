@@ -1,24 +1,25 @@
 <section>
-    <h2>{ 'TUTORS' | translate}</h2>
+    <h2>{{ 'TUTORS' | translate }}</h2>
 
     <div class="btn-toolbar" role="toolbar">
-        <a href="#/tutors/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> { 'ADD_TUTOR' | translate}r</a>
+        <a href="#/tutors/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> {{ 'ADD_TUTOR'
+            | translate }}</a>
     </div>
 
     <table class="table table-striped">
         <tr>
-            <th>{ 'TUTOR' | translate}</th>
-            <th>Schedule</th>
+            <th>{{ 'TUTOR' | translate }}</th>
+            <th>{{ 'TIMETABLE' | translate }}</th>
         </tr>
         <!-- List tutors orderedBy lastname and firstname. -->
         <tr ng-repeat="tutor in model.tutors | orderBy: '[lastName, firstName]'">
             <td><a ng-href="#/tutors/{{tutor.id}}">{{tutor.readableString}}</a></td>
             <td>
                 <a class="btn btn-default btn-xs" ng-href="#/tutors/{{tutor.id}}">
-                    <span class="glyphicon glyphicon-info-sign"></span> { 'SHOW' | translate}
+                    <span class="glyphicon glyphicon-info-sign"></span> {{ 'SHOW' | translate }}
                 </a>
                 <a class="btn btn-default btn-xs" ng-href="rest/tutors/{{tutor.id}}/schedule.pdf" target="_blank">
-                    <span class="glyphicon glyphicon-download-alt"></span> { 'DOWNLOAD' | translate}
+                    <span class="glyphicon glyphicon-download-alt"></span> {{ 'DOWNLOAD' | translate }}
                 </a>
             </td>
         </tr>

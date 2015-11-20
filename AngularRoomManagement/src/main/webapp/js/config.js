@@ -7,7 +7,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
     $translateProvider.translations('en', {
         //General
         'APP_NAME': 'Time Table Management',
-        'TIMETABLE': 'Time Table',
+        'TIMETABLE': 'Time table',
         'SHOW': 'Show',
         'DOWNLOAD_PDF': 'Download PDF',
         'NAME': 'Name',
@@ -32,8 +32,15 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'CENTURIA_CREATION_FAILURE': 'The centuria could not be created',
 
         //TODO COURSES
-        //Courses
+        // === Courses ===
+        // Course types
+        'COURSE': 'Course',
+        'SEMINAR': 'Seminar',
+        'EXAM': 'Exam',
+        'ELECTIVE_MODULE': "Elective module",
 
+        // Properties
+        'COURSE_TYPE': 'Course type',
 
         //Home
         'LOADING': 'Please wait while the application is loading',
@@ -94,7 +101,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
     $translateProvider.translations('de', {
         //General
         'APP_NAME': 'Time Table Management',
-        'TIMETABLE': 'Time Table',
+        'TIMETABLE': 'Stundenplan',
         'SHOW': 'Anzeigen',
         'DOWNLOAD_PDF': 'PDF Herunterladen',
         'NAME': 'Name',
@@ -120,7 +127,13 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
 
         //TODO COURSES
         //Courses
+        'COURSE': 'Kurs',
+        'SEMINAR': 'Seminar',
+        'EXAM': 'KLausur',
+        'ELECTIVE_MODULE': "WPK",
 
+        // Properties
+        'COURSE_TYPE': 'Modulart',
 
         //Home
         'LOADING': 'Bitte warten...',
@@ -178,5 +191,5 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'INCONSISTENT': 'ist inkonsistent mit Objekt'
     });
 
-    $translateProvider.preferredLanguage('en');
+    $translateProvider.preferredLanguage('de');
 }]);

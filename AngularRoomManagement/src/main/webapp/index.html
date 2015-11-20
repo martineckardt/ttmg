@@ -54,6 +54,7 @@
     <!-- Utils -->
     <script type="application/javascript" src="js/utils/autofocus-directive.js"></script>
     <script type="application/javascript" src="js/utils/capitalize-filter.js"></script>
+    <script type="application/javascript" src="js/utils/change-language-controller.js"></script>
 
     <!-- Common -->
     <script type="application/javascript"
@@ -74,14 +75,28 @@
 <body>
 
     <div class="container">
+
         <h1><a href="#/">{{ 'APP_NAME' | translate }}</a></h1>
+
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <a href="#/rooms" class="btn btn-default">Show Rooms</a>
-                <a href="#/tutors" class="btn btn-default">Show Tutors</a>
-                <a href="#/centurias" class="btn btn-default">Show Centurias</a>
-                <a href="#/courses" class="btn btn-default">Show Courses</a>
+                <div class="row">
+                    <div class="col col-sm-8">
+                        <a href="#/rooms" class="btn btn-default">Show Rooms</a>
+                        <a href="#/tutors" class="btn btn-default">Show Tutors</a>
+                        <a href="#/centurias" class="btn btn-default">Show Centurias</a>
+                        <a href="#/courses" class="btn btn-default">Show Courses</a>
+                    </div>
+                    <div class="col col-sm-4" ng-controller="changeLanguageController">
+                        <div class="btn-toolbar" role="toolbar">
+                            <button ng-click="changeLanguage('de')" class="btn btn-default">German</button>
+                            <button ng-click="changeLanguage('en')" class="btn btn-default">Englisch</button>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
