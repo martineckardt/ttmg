@@ -16,6 +16,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ADD': 'Add',
         'DELETE': 'Delete',
         'QUESTION_DELETE_ITEM': 'Do you really want to delete the {{value}}',
+        'CANCEL': 'Cancel',
 
         //Centuria
         'CENTURIAS': 'Centurias',
@@ -91,10 +92,90 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
     });
 
     $translateProvider.translations('de', {
-        //TODO SEBASTIAN
-        'TITLE': 'Hallo',
-        'FOO': 'Dies ist ein Absatz',
-        'SHOW': 'Anzeigen'
+        //General
+        'APP_NAME': 'Time Table Management',
+        'TIMETABLE': 'Time Table',
+        'SHOW': 'Anzeigen',
+        'DOWNLOAD_PDF': 'PDF Herunterladen',
+        'NAME': 'Name',
+        'SAVE': 'Speichern',
+        'BACK': 'Zurück',
+        'ADD': 'Hinzufügen',
+        'DELETE': 'Löschen',
+        'QUESTION_DELETE_ITEM': 'Möchten Sie {{value}} wirklich löschen?',
+        'CANCEL': 'Abbrechen',
+
+        //Centuria
+        'CENTURIAS': 'Zenturien',
+        'NBR_STUDENTS': 'Anzahl der Studenten',
+        'PROGRAM': 'Studiengang',
+        'SELECT_PROGRAM': 'Wählen Sie einen Studiengang',
+        'YEAR': 'Jahrgang',
+        'LETTER': 'Buchstabe',
+        'CHANGE_TIME': 'Wechselzeit',
+        'CREATE_CENTURIA': 'Neue Zenturie anlegen',
+        'ADD_CENTURIA': 'Zenturie anlegen',
+        'CENTURIA_CREATION_SUCCESS': 'Die Zenturie {{value}} wurde erfolgreich angelegt',
+        'CENTURIA_CREATION_FAILURE': 'Die Zenturie konnte nicht angelegt werden',
+
+        //TODO COURSES
+        //Courses
+
+
+        //Home
+        'LOADING': 'Bitte warten...',
+
+        //Room
+        'ROOMS': 'Räume',
+        'BUILDING': 'Gebäude',
+        'SELECT_BUILDING': 'Gebäude auswählen',
+        'ROOM_NBR': 'Raumnummer',
+        'ROOM_CAPACITY': 'Kapazität',
+        'ROOM_TYPE': 'Raumtyp',
+        'SELECT_ROOM_TYPE': 'Raumtyp auswählen',
+        'ROOM_TYPE_AUDIMAX': 'Audimax',
+        'ROOM_TYPE_LECTURE': 'Hörsaal',
+        'ROOM_TYPE_LAB': 'Labor',
+        'ROOM_TYPE_COMPUTER': 'Computer-Raum',
+        'CREATE_ROOM': 'Neuen Raum anlegen',
+        'ADD_ROOM': 'Raum anlegen',
+        'ROOM_CREATION_SUCCESS': 'Der Raum {{value}} wurde erfolgreich angelegt',
+        'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden',
+
+        //Tutors
+        'TUTORS': 'Dozenten',
+        'TUTOR': 'Dozent',
+        'TITLE': 'Titel',
+        'FIRST_NAME': 'Vorname',
+        'LAST_NAME': 'Nachname',
+        'CREATE_TUTOR': 'Neuen Dozenten anlegen',
+        'ADD_TUTOR': 'Dozenten anlegen',
+        'TUTOR_CREATION_SUCCESS': 'Der Dozent{{value}} wurde erfolgreich angelegt',
+        'TUTOR_CREATION_FAILURE': 'Der Dozent konnte nicht angelegt werden',
+
+        //INDEX / MENU
+        'SHOW_ROOMS': 'Räume anzeigen',
+        'SHOW_TUTORS': 'Dozenten anzeigen',
+        'SHOW_CENTURIAS': 'Zenturien anzeigen',
+        'SHOW_COURSES': 'Kurse anzeigen',
+
+        //ERRORS (See Constants.java)
+        'DATE_RANGE_START_AFTER_END': 'Das End Datum muss nach dem Start Datum liegen.',
+        'DATE_RANGE_ONE_NULL': 'Start- and End-Datum müssen eingetragen werden',
+        'ENTITY_ALREADY_EXISTS': 'Die Entität ist schon im System und konnte nicht angelegt werden.',
+        'ENTITY_NOT_FOUND': 'Entität des Typs {{type}} mit id {{id}} wurde nicht gefunden.',
+        'INSUFFICIENT_SEATS': 'Es fehlen {{seats}} Sitzplätze.',
+        'OBJECT_HAS_EVENTS': 'Kann {{type}} ´nicht löschen, es gibt noch {{numberEvents}} referenzierte Kurse!',
+        'TIME_CONFLICTS': 'Es gibt {{number}} in Konflikt stehende Veranstaltungen.',
+        'INVALID_PARAMETER': '"Der Parameter {{name}} {{description}} ist nicht valide.',
+
+        //Invalid Parameter Exception
+        'INVALID_FORMAT': 'hat ein invalides Format.',
+        'INVALID_RANGE': 'hat einen Wert außerhalb der Grenzen.',
+        'INVALID_LENGTH': 'hat ein invalides',
+        'INVALID_NULL': 'darf nicht null sein',
+        'INVALID_NOT_NULL': 'muss null sein',
+        'INCONSISTENT': 'ist inkonsistent mit Objekt'
     });
 
     $translateProvider.preferredLanguage('en');
