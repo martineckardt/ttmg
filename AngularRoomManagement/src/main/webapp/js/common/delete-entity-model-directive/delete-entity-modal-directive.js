@@ -21,13 +21,17 @@ angular.module('ttmg').directive('deleteEntityModal', function () {
             console.log("deleteEntityController started");
 
             this.deleteEntity = function () {
-                $scope.entityRessource.$delete({id: $scope.entityRessource.id},
+                // put together parameters, e.g. courseId
+                var params = {};
+                params[$scope.entityType + "Id"] = $scope.entityRessource.id;
+
+                $scope.entityRessource.$delete(params,
                     function successCallback(data) {
                         console.log("successfully deleted entity");
                         console.log(data);
 
                         // Hide the modal
-                        $('#deleteCourseModal').modal('hide');
+                        $('#deleteEntityModal').modal('hide');
 
                         // Redirecting to successHref
                         $location.path($scope.successView);

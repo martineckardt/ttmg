@@ -3,7 +3,7 @@
  *
  */
 
-angular.module('ttmg.controllers').controller('viewRoomController', ['$scope', '$routeParams', 'RoomFactory', function ($scope, $routeParams, RoomFactory) {
+angular.module('ttmg.controllers').controller('viewRoomController', ['$scope', '$routeParams', 'RoomFactory', 'EventFactory', function ($scope, $routeParams, RoomFactory, EventFactory) {
 
     // Route parameters
     var roomId = $routeParams.id;
@@ -12,6 +12,6 @@ angular.module('ttmg.controllers').controller('viewRoomController', ['$scope', '
     // Set up scope model
     $scope.model = {
         room: RoomFactory.get({roomId: roomId}),
-        events: RoomFactory.getEvents({roomId: roomId})
+        events: EventFactory.query({roomId: roomId})
     };
 }]);

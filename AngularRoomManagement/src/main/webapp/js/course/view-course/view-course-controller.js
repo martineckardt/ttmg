@@ -11,7 +11,7 @@ angular.module('ttmg.controllers').controller('viewCourseController', ['$scope',
     // Set up scope model
     $scope.model = {
         course: CourseFactory.get({courseId: courseId}),
-        events: CourseFactory.getEvents({courseId: courseId})
+        events: EventFactory.query({courseId: courseId})
     };
 
 
