@@ -2,10 +2,8 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.dao.EventDAO;
-import de.nak.ttmg.model.Course;
-import de.nak.ttmg.model.DateRange;
-import de.nak.ttmg.model.DateRangeFactory;
-import de.nak.ttmg.model.Event;
+import de.nak.ttmg.dao.RoomDAO;
+import de.nak.ttmg.model.*;
 import de.nak.ttmg.util.*;
 
 import javax.inject.Inject;
@@ -92,6 +90,11 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public void deleteEvent(Long id) throws ValidationException {
-        eventDAO.delete(loadEvent(id));
+        Event event = loadEvent(id);
+        for (Room room : event.getRooms()) {
+            room.getEvents().remove(event);
+        }
+        event.getCourse().getEvents().remove(event);
+        eventDAO.delete(event);
     }
 }
