@@ -1,10 +1,15 @@
 <!-- Button trigger Delete Course Modal -->
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteCourseModal">
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteEntityModal"
+        ng-if="buttonType == 'button'">
     Delete
 </button>
 
+<div ng-if="buttonType == 'icon'">
+    <span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#deleteEntityModal"></span>
+</div>
+
 <!-- Delete Course Modal -->
-<div class="modal fade" id="deleteCourseModal" tabindex="-1" role="dialog" aria-labelledby="deleteCourseModelLabel">
+<div class="modal fade" id="deleteEntityModal" tabindex="-1" role="dialog" aria-labelledby="deleteEntityModelLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

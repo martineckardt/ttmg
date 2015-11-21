@@ -11,8 +11,14 @@
     <centuria-table centurias="model.course.participants" hide-buttons="true"></centuria-table>
 
     <h3>Schedule</h3>
+
+    <div class="btn-toolbar" role="toolbar">
+        <a ng-href="#/courses/{{course.id/events/create" class="btn btn-default"><span
+                class="glyphicon glyphicon-plus"></span> {{ 'ADD_EVENTS' | translate }}</a>
+    </div>
     <event-table events="model.events"></event-table>
 
     <delete-entity-modal entity-ressource="model.course" entity-type="course" entity-name="{{model.course.name}}"
-                         success-view="courses"></delete-entity-modal>
+                         success-view="courses" button-type="button"></delete-entity-modal>
+
 </section>

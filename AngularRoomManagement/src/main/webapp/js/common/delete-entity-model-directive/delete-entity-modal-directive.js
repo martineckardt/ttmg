@@ -14,7 +14,8 @@ angular.module('ttmg').directive('deleteEntityModal', function () {
             entityRessource: '=',
             entityType: '@',
             entityName: '@',
-            successView: '@'
+            successView: '@',
+            buttonType: '@'
         },
         controller: ['$scope', '$location', function ($scope, $location) {
             console.log("deleteEntityController started");
