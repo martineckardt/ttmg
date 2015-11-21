@@ -55,7 +55,6 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'EXAM': 'Exam',
         'ELECTIVE_MODULE': 'Elective module',
         //Planning
-        'SCHEDULE': 'Schedule',
         'BEGIN': 'Begin',
         'END': 'End',
 
@@ -179,7 +178,6 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'EXAM': 'Klausur',
         'ELECTIVE_MODULE': 'WPK',
         //Planning
-        'SCHEDULE': 'Plan',
         'BEGIN': 'Beginn',
         'END': 'Ende',
 

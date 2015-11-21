@@ -2,7 +2,7 @@
     <tr>
         <th>{{ 'NAME' | translate }}</th>
         <th>{{ 'NBR_STUDENTS' | translate }}</th>
-        <th ng-if="hideButtons != true">{{ 'SCHEDULE' | translate }}</th>
+        <th ng-if="hideButtons != true">{{ 'TIMETABLE' | translate }}</th>
     </tr>
     <tr ng-repeat="centuria in centurias | orderBy:'[-year, -programm, letter]'">
         <td>
