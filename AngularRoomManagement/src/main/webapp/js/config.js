@@ -132,17 +132,17 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         //General
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Willkommen zum Time Table Management System!',
-        'WELCOME_TEXT_BODY': 'Mit dem Time Table Management System können Sie Räume, Dozenten und Zenturien zu den Stammdaten hinzufügen und Veranstaltungen verwalten.',
+        'WELCOME_TEXT_BODY': 'Mit dem Time Table Management System kÃ¶nnen Sie RÃ¤ume, Dozenten und Zenturien zu den Stammdaten hinzufÃ¼gen und Veranstaltungen verwalten.',
 
         'TIMETABLE': 'Stundenplan',
         'SHOW': 'Anzeigen',
         'DOWNLOAD_PDF': 'PDF Herunterladen',
         'NAME': 'Name',
         'SAVE': 'Speichern',
-        'BACK': 'Zurück',
-        'ADD': 'Hinzufügen',
-        'DELETE': 'Löschen',
-        'QUESTION_DELETE_ITEM': 'Möchten Sie {{value}} wirklich löschen?',
+        'BACK': 'ZurÃ¼ck',
+        'ADD': 'HinzufÃ¼gen',
+        'DELETE': 'LÃ¶schen',
+        'QUESTION_DELETE_ITEM': 'MÃ¶chten Sie {{value}} wirklich lÃ¶schen?',
         'CANCEL': 'Abbrechen',
         'SUCCESS': 'Erfolg',
         'NEXT': 'Weiter',
@@ -152,7 +152,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'CENTURIA': 'Zenturie',
         'NBR_STUDENTS': 'Anzahl der Studenten',
         'PROGRAM': 'Studiengang',
-        'SELECT_PROGRAM': 'Wählen Sie einen Studiengang',
+        'SELECT_PROGRAM': 'WÃ¤hlen Sie einen Studiengang',
         'YEAR': 'Jahrgang',
         'LETTER': 'Buchstabe',
         'CHANGE_TIME': 'Wechselzeit',
@@ -163,8 +163,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'CENTURIA_CREATION_FAILURE': 'Die Zenturie konnte nicht angelegt werden',
 
         //Event
-        'CREATE_NEW_EVENT_FOR_COURSE': 'Erstelle neue Veranstaltungen für den Kurs ',
-        'REPEAT_FOR_WEEKS': 'Anzahl der wöchentlichen Wiederholungen',
+        'CREATE_NEW_EVENT_FOR_COURSE': 'Erstelle neue Veranstaltungen fÃ¼r den Kurs ',
+        'REPEAT_FOR_WEEKS': 'Anzahl der wÃ¶chentlichen Wiederholungen',
         'CREATE_EVENT': 'Erstelle neue Veranstaltung',
 
         //TODO COURSES
@@ -182,37 +182,37 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         // Course Properties
         'COURSE_TYPE': 'Modulart',
         'COURSE_NAME': 'Name',
-        'SELECT_COURSE_TYPE': 'Wählen Sie einen Kurs-Typ',
+        'SELECT_COURSE_TYPE': 'WÃ¤hlen Sie einen Kurs-Typ',
         'PARTICIPANTS_OPTIONAL': 'Teilnehmer (optional)',
         'SEMINARS_NO_PARTICIPANTS': 'Seminare haben keine Teilnehmer.',
 
         // Actions
-        'ADD_EVENTS': 'Veranstaltungen hinzufügen',
-        'EDIT_COURSE': 'Kurs verändern',
+        'ADD_EVENTS': 'Veranstaltungen hinzufÃ¼gen',
+        'EDIT_COURSE': 'Kurs verÃ¤ndern',
         'CREATE_NEW_COURSE': 'Neuen Kurs anlegen',
 
         //Home
         'LOADING': 'Bitte warten...',
 
         //Room
-        'ROOMS': 'Räume',
+        'ROOMS': 'RÃ¤ume',
         'ROOM': 'Raum',
-        'BUILDING': 'Gebäude',
-        'SELECT_BUILDING': 'Gebäude auswählen',
+        'BUILDING': 'GebÃ¤ude',
+        'SELECT_BUILDING': 'GebÃ¤ude auswÃ¤hlen',
         'ROOM_NBR': 'Raumnummer',
-        'ROOM_CAPACITY': 'Kapazität',
+        'ROOM_CAPACITY': 'KapazitÃ¤t',
         'ROOM_TYPE': 'Raumtyp',
-        'SELECT_ROOM_TYPE': 'Raumtyp auswählen',
+        'SELECT_ROOM_TYPE': 'Raumtyp auswÃ¤hlen',
         'ROOM_TYPE_AUDIMAX': 'Audimax',
-        'ROOM_TYPE_LECTURE': 'Hörsaal',
+        'ROOM_TYPE_LECTURE': 'HÃ¶rsaal',
         'ROOM_TYPE_LAB': 'Labor',
         'ROOM_TYPE_COMPUTER': 'Computer-Raum',
         'CREATE_ROOM': 'Neuen Raum anlegen',
         'ADD_ROOM': 'Raum anlegen',
         'ROOM_CREATION_SUCCESS': 'Der Raum {{value}} wurde erfolgreich angelegt',
-        'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden'
-        'AVAILABLE_ROOMS': 'Verfügbare Räume',
-        'NO_SUFF_LARGE_ROOM': 'Kein ausreichend großer Raum steht zur Verfügung',
+        'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden',
+        'AVAILABLE_ROOMS': 'VerfÃ¼gbare RÃ¤ume',
+        'NO_SUFF_LARGE_ROOM': 'Kein ausreichend groÃŸer Raum steht zur VerfÃ¼gung',
 
         //Tutors
         'TUTORS': 'Dozenten',
@@ -226,24 +226,24 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'TUTOR_CREATION_FAILURE': 'Der Dozent konnte nicht angelegt werden',
 
         //INDEX / MENU
-        'SHOW_ROOMS': 'Räume anzeigen',
+        'SHOW_ROOMS': 'RÃ¤ume anzeigen',
         'SHOW_TUTORS': 'Dozenten anzeigen',
         'SHOW_CENTURIAS': 'Zenturien anzeigen',
         'SHOW_COURSES': 'Kurse anzeigen',
 
         //ERRORS (See Constants.java)
         'DATE_RANGE_START_AFTER_END': 'Das End Datum muss nach dem Start Datum liegen.',
-        'DATE_RANGE_ONE_NULL': 'Start- and End-Datum müssen eingetragen werden',
-        'ENTITY_ALREADY_EXISTS': 'Die Entität ist schon im System und konnte nicht angelegt werden.',
-        'ENTITY_NOT_FOUND': 'Entität des Typs {{type}} mit id {{id}} wurde nicht gefunden.',
-        'INSUFFICIENT_SEATS': 'Es fehlen {{seats}} Sitzplätze.',
-        'OBJECT_HAS_EVENTS': 'Kann {{type}} ´nicht löschen, es gibt noch {{numberEvents}} referenzierte Kurse!',
+        'DATE_RANGE_ONE_NULL': 'Start- and End-Datum mÃ¼ssen eingetragen werden',
+        'ENTITY_ALREADY_EXISTS': 'Die EntitÃ¤t ist schon im System und konnte nicht angelegt werden.',
+        'ENTITY_NOT_FOUND': 'EntitÃ¤t des Typs {{type}} mit id {{id}} wurde nicht gefunden.',
+        'INSUFFICIENT_SEATS': 'Es fehlen {{seats}} SitzplÃ¤tze.',
+        'OBJECT_HAS_EVENTS': 'Kann {{type}} Â´nicht lÃ¶schen, es gibt noch {{numberEvents}} referenzierte Kurse!',
         'TIME_CONFLICTS': 'Es gibt {{number}} in Konflikt stehende Veranstaltungen.',
         'INVALID_PARAMETER': 'Der Parameter {{name}} {{description}} ist nicht valide.',
 
         //Invalid Parameter Exception
         'INVALID_FORMAT': 'hat ein invalides Format.',
-        'INVALID_RANGE': 'hat einen Wert außerhalb der Grenzen.',
+        'INVALID_RANGE': 'hat einen Wert auÃŸerhalb der Grenzen.',
         'INVALID_LENGTH': 'hat ein invalides',
         'INVALID_NULL': 'darf nicht null sein',
         'INVALID_NOT_NULL': 'muss null sein',
