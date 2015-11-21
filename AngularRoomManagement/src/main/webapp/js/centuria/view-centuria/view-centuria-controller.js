@@ -3,7 +3,7 @@
  *
  */
 
-angular.module('ttmg.controllers').controller('viewCenturiaController', ['$scope', '$routeParams', 'CenturiaFactory', function ($scope, $routeParams, CenturiaFactory) {
+angular.module('ttmg.controllers').controller('viewCenturiaController', ['$scope', '$routeParams', 'CenturiaFactory', 'EventFactory', function ($scope, $routeParams, CenturiaFactory, EventFactory) {
 
     // Route parameters
     var centuriaId = $routeParams.id;
@@ -12,6 +12,6 @@ angular.module('ttmg.controllers').controller('viewCenturiaController', ['$scope
     // Set up scope model
     $scope.model = {
         centuria: CenturiaFactory.get({centuriaId: centuriaId}),
-        events: CenturiaFactory.getEvents({centuriaId: centuriaId})
+        events: EventFactory.query({centuriaId: centuriaId})
     };
 }]);

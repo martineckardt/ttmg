@@ -8,7 +8,6 @@ angular.module('ttmg.provider').factory('CourseFactory', function ($resource) {
         query: {method: 'GET', isArray: true},
         create: {method: 'POST'},
         update: {method: 'PUT'},
-        delete: {method: 'DELETE'},
-        getEvents: {method: 'GET', isArray: true, url: 'rest/courses/:courseId/events'}
+        delete: {method: 'DELETE'}
     })
 });
