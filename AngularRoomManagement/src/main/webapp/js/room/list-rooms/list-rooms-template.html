@@ -1,8 +1,9 @@
 <section>
-    <h2>Rooms</h2>
+    <h2>{{ 'ROOMS' | translate }}</h2>
 
     <div class="btn-toolbar" role="toolbar">
-        <a href="#/rooms/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span>{{ 'ADD_ROOM' | translate }}</a>
+        <a href="#/rooms/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> {{ 'ADD_ROOM' |
+            translate }}</a>
     </div>
 
     <room-table rooms="model.rooms"></room-table>
