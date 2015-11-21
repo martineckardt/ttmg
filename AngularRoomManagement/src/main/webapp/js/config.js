@@ -7,6 +7,9 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
     $translateProvider.translations('en', {
         //General
         'APP_NAME': 'Time Table Management',
+        'WELCOME_TEXT_HEADER': 'Welcome to the Time Table Management!',
+        'WELCOME_TEXT_BODY': 'PLease add text here',
+
         'TIMETABLE': 'Time table',
         'SHOW': 'Show',
         'DOWNLOAD_PDF': 'Download PDF',
@@ -101,6 +104,9 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
     $translateProvider.translations('de', {
         //General
         'APP_NAME': 'Time Table Management',
+        'WELCOME_TEXT_HEADER': 'Willkommen zum Time Table Management System!',
+        'WELCOME_TEXT_BODY': '@Basti: bitte noch einen kleinen Text über die Applikation einfügen.',
+
         'TIMETABLE': 'Stundenplan',
         'SHOW': 'Anzeigen',
         'DOWNLOAD_PDF': 'PDF Herunterladen',
