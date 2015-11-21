@@ -12,7 +12,8 @@
     <event-table events="model.events"></event-table>
 
     <!-- Only show if there are no events -->
-    <delete-entity-modal ng-if="model.events.length == 0"
+    <!--ng-if="model.events.length == 0"-->
+    <delete-entity-modal
                          entity-ressource="model.room" entity-type="room" entity-name="{{model.room.readableString}}"
                          success-view="rooms"
                          button-type="button">
