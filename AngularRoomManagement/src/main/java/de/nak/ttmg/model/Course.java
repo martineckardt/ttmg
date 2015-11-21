@@ -60,7 +60,7 @@ public class Course implements Serializable {
     }
 
     @Column(name = "participants", nullable = false)
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinTable(name="course_centuria", joinColumns=@JoinColumn(name="course_id"), inverseJoinColumns=@JoinColumn(name="centuria_id"))
     public Set<Centuria> getParticipants() {
         return participants;
@@ -70,7 +70,7 @@ public class Course implements Serializable {
         this.participants = participants;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "tutor_id", nullable = false)
     public Tutor getTutor() {
         return tutor;

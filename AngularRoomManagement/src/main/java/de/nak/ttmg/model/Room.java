@@ -89,7 +89,7 @@ public class Room implements Serializable, HasAvailability {
     }
 
     @Column(name = "events", nullable = false)
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "rooms", cascade = CascadeType.REFRESH)
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "rooms", cascade = CascadeType.ALL)
     @JsonBackReference
     public Set<Event> getEvents() {
         return events;
