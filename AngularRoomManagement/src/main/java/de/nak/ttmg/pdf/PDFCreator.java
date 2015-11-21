@@ -73,7 +73,7 @@ public class PDFCreator {
                 insertCell(table, convertObjectToString(course.getParticipants(), false), Element.ALIGN_LEFT, 1, bf12);
                 insertCell(table, convertObjectToString(event.getRooms(), false), Element.ALIGN_LEFT, 1, bf12);
                 insertCell(table, course.getTutor().getReadableString(), Element.ALIGN_LEFT, 1, bf12);
-                insertCell(table, convertObjectToString(course.getEvents(), true), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, event.getReadableString(), Element.ALIGN_LEFT, 1, bf12);
             }
             if (object.getEvents().isEmpty()) {
                 Paragraph emptyMessage = new Paragraph("This " + object.getObjectType() + " has no courses.");
