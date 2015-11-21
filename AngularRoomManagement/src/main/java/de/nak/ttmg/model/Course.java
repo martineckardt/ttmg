@@ -17,7 +17,7 @@ public class Course implements Serializable {
 
     private Long id;
 
-    private EventType type;
+    private CourseType type;
 
     private Set<Event> events = new HashSet<>();
 
@@ -40,11 +40,11 @@ public class Course implements Serializable {
 
     @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
-    public EventType getType() {
+    public CourseType getType() {
         return type;
     }
 
-    public void setType(EventType type) {
+    public void setType(CourseType type) {
         this.type = type;
     }
 

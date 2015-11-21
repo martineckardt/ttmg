@@ -99,13 +99,13 @@ public class ObjectCreationTest {
 
         courseIAA.setTutor(tutor);
         courseIAA.setParticipants(participants);
-        courseIAA.setType(EventType.COURSE);
+        courseIAA.setType(CourseType.COURSE);
         centuria.getCourses().add(courseIAA);
         tutor.getCourses().add(courseIAA);
 
         exam = new Course();
         exam.setName("EXAM");
-        exam.setType(EventType.EXAM);
+        exam.setType(CourseType.EXAM);
         exam.setParticipants(participants);
         centuria.getCourses().add(exam);
         courseIAA.setTutor(tutor);
@@ -178,7 +178,7 @@ public class ObjectCreationTest {
         events.add(e1);
         events.add(e2);
         copy.setEvents(events);
-        copy.setType(EventType.COURSE);
+        copy.setType(CourseType.COURSE);
         copy.setTutor(tutor);
         Set<Room> rooms = new HashSet<>(2);
         rooms.add(roomA101);
