@@ -8,11 +8,13 @@ import de.nak.ttmg.util.InvalidParameterException;
 import de.nak.ttmg.util.ValidationException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,6 +76,22 @@ public class EventDAO {
             return event;
         } else {
             throw new InvalidParameterException("id", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
+        }
+    }
+
+    public List<Event> createEvents(List<Event> events) throws ValidationException {
+        Session session = entityManager.unwrap(Session.class);
+        Transaction t = session.beginTransaction();
+        try {
+            List<Event> newEvents = new ArrayList<>(events.size());
+            for (Event event : events) {
+                newEvents.add(create(event));
+            }
+            t.commit();
+            return newEvents;
+        } catch (ValidationException e) {
+            t.rollback();
+            throw e;
         }
     }
 

@@ -45,8 +45,6 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> createEvents(List<Event> events, Long courseId, Boolean force) throws ValidationException {
         Course course = courseDAO.load(courseId);
-        //TODO Transaction
-        List<Event> results = new ArrayList<>(events.size());
         for (Event event : events) {
             event.setCourse(course);
             if (force == null) {
@@ -56,10 +54,8 @@ public class EventServiceImpl implements EventService {
             if (!force) {
                 timeValidator.validateTime(course);
             }
-            results.add(eventDAO.create(event));
         }
-        //TODO END TRANSACTION
-        return results;
+        return eventDAO.createEvents(events);
     }
 
     @Override
