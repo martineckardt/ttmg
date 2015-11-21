@@ -10,9 +10,9 @@ import de.nak.ttmg.model.HasAvailability;
 public class IsBusyException extends IgnorableValidationException {
     private final Integer eventCount;
 
-    public IsBusyException(HasAvailability object) {
-        super("Cannot delete " + object.getObjectType() + "; there are still " + object.getEvents().size() + " referenced events!");
-        this.eventCount = object.getEvents().size();
+    public IsBusyException(HasAvailability object, Integer eventCount) {
+        super("Cannot delete " + object.getObjectType() + "; there are still " + eventCount + " referenced events!");
+        this.eventCount = eventCount;
     }
 
     public Integer getEventCount() {

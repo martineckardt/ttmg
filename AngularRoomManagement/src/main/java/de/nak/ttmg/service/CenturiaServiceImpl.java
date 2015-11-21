@@ -60,7 +60,7 @@ public class CenturiaServiceImpl implements CenturiaService {
             throw new EntityNotFoundException("centuria", id);
         }
         if ((force == null || !force) && centuria.getCourses().size() > 0) {
-            throw new IsBusyException(centuria);
+            throw new IsBusyException(centuria, centuria.getCourses().size());
         }
         centuriaDAO.delete(centuria);
     }

@@ -70,7 +70,7 @@ public class RoomServiceImpl implements RoomService {
             throw new EntityNotFoundException("room", id);
         }
         if ((force == null || !force) && room.getEvents().size() > 0) {
-            throw new IsBusyException(room);
+            throw new IsBusyException(room, room.getEvents().size());
         }
         roomDAO.delete(room);
     }
