@@ -8,7 +8,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         //General
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Welcome to the Time Table Management!',
-        'WELCOME_TEXT_BODY': 'PLease add text here',
+        'WELCOME_TEXT_BODY': 'Time Table Management is an application that helps you creating Time Tables.',
 
         'TIMETABLE': 'Time table',
         'SHOW': 'Show',
