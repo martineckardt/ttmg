@@ -9,6 +9,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Welcome to the Time Table Management!',
         'WELCOME_TEXT_BODY': 'Time Table Management is an application that helps you creating Time Tables.',
+        'GERMAN': 'German',
+        'ENGLISH': 'English',
 
         'TIMETABLE': 'Time table',
         'SHOW': 'Show',
@@ -53,7 +55,6 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'EXAM': 'Exam',
         'ELECTIVE_MODULE': 'Elective module',
         //Planning
-        'SCHEDULE': 'Schedule',
         'BEGIN': 'Begin',
         'END': 'End',
 
@@ -68,6 +69,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ADD_EVENTS': 'Add events',
         'EDIT_COURSE': 'Edit course',
         'CREATE_NEW_COURSE': 'Create a new course',
+        'ADD_COURSE': 'Add Course',
 
         //Home
         'LOADING': 'Please wait while the application is loading',
@@ -133,6 +135,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Willkommen zum Time Table Management System!',
         'WELCOME_TEXT_BODY': 'Mit dem Time Table Management System können Sie Räume, Dozenten und Zenturien zu den Stammdaten hinzufügen und Veranstaltungen verwalten.',
+        'GERMAN': 'Deutsch',
+        'ENGLISH': 'Englisch',
 
         'TIMETABLE': 'Stundenplan',
         'SHOW': 'Anzeigen',
@@ -175,7 +179,6 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'EXAM': 'Klausur',
         'ELECTIVE_MODULE': 'WPK',
         //Planning
-        'SCHEDULE': 'Plan',
         'BEGIN': 'Beginn',
         'END': 'Ende',
 
@@ -190,6 +193,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ADD_EVENTS': 'Veranstaltungen hinzufügen',
         'EDIT_COURSE': 'Kurs verändern',
         'CREATE_NEW_COURSE': 'Neuen Kurs anlegen',
+        'ADD_COURSE': 'Kurs anlegen',
 
         //Home
         'LOADING': 'Bitte warten...',
