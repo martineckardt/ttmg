@@ -2,11 +2,11 @@
     <h2>{{model.room.readableString}}</h2>
     <hr>
 
-    <p>{{ 'CHANGE_TIME' | translate }} {{model.room.customChangeTime}}</p>
+    <p>{{ 'ROOM_CAPACITY' | translate }}: {{model.room.seats}}</p>
 
-    <p>{{ 'ROOM_CAPACITY' | translate }} {{model.room.seats}}</p>
+    <p>{{ 'ROOM_TYPE' | translate }}: {{model.room.type | translate }}</p>
 
-    <p>{{ 'ROOM_TYPE' | translate }} {{model.room.type | capitalize}}</p>
+    <p>{{ 'CHANGE_TIME' | translate }}: {{model.room.customChangeTime}} {{ 'MINUTES' | translate }}</p>
 
     <h3>{{ 'TIMETABLE' | translate }}</h3>
     <event-table events="model.events"></event-table>
