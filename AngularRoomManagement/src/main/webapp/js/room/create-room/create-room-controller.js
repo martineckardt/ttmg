@@ -3,15 +3,19 @@
  * Controller for creation of a room.
  */
 
-angular.module('ttmg.controllers').controller('createRoomController', ['$scope', 'RoomFactory', function ($scope, RoomFactory) {
+angular.module('ttmg.controllers').controller('createRoomController', ['$scope', 'RoomFactory', 'BUIDLINGS', 'ROOM_TYPES', function ($scope, RoomFactory, BUIDLINGS, ROOM_TYPES) {
     console.log('createRoomController initialized');
 
     // Set up form model
-    $scope.room = new RoomFactory();
+    $scope.model = {
+        room: new RoomFactory(),
+        buildings: BUIDLINGS,
+        roomTypes: ROOM_TYPES
+    };
 
     //create a new room
     $scope.addRoom = function () {
-        $scope.room.$create(
+        $scope.model.room.$create(
             function successCallback(data) {
                 // Logging
                 console.log("entity sucessfully created");

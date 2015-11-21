@@ -87,16 +87,18 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ROOM_CAPACITY': 'Capacity',
         'ROOM_TYPE': 'Room type',
         'SELECT_ROOM_TYPE': 'Select a room type',
-        'ROOM_TYPE_AUDIMAX': 'Audimax',
-        'ROOM_TYPE_LECTURE': 'Lecture',
-        'ROOM_TYPE_LAB': 'Lab',
-        'ROOM_TYPE_COMPUTER': 'Computer room',
         'CREATE_ROOM': 'Create new room',
         'ADD_ROOM': 'Add room',
         'ROOM_CREATION_SUCCESS': 'The room {{value}} has been created successfully',
         'ROOM_CREATION_FAILURE': 'The room could not be created',
         'AVAILABLE_ROOMS': 'Available rooms',
         'NO_SUFF_LARGE_ROOM': 'No sufficiently large rooms are available',
+
+        // Properties
+        'AUDIMAX': 'Audimax',
+        'LECTURE': 'Lecture',
+        'LAB': 'Lab',
+        'COMPUTER': 'Computer room',
 
         //Tutors
         'TUTORS': 'Tutors',
