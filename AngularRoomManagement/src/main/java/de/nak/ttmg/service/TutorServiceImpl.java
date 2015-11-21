@@ -54,7 +54,7 @@ public class TutorServiceImpl implements TutorService {
             throw new EntityNotFoundException("tutor", id);
         }
         if ((force == null || !force) && tutor.getCourses().size() > 0) {
-            throw new IsBusyException(tutor);
+            throw new IsBusyException(tutor, tutor.getCourses().size());
         }
         tutorDAO.delete(tutor);
     }

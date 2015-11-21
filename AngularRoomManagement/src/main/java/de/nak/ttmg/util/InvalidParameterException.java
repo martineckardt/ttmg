@@ -32,7 +32,7 @@ public class InvalidParameterException extends ValidationException {
     private final InvalidParameterType type;
 
     public InvalidParameterException(String parameterName, InvalidParameterType type) {
-        super(Constants.INVALID_PARAMETER);
+        super("The parameter " + parameterName + " " + type.getDebugText());
         this.type = type;
         this.parameterName = parameterName;
     }
