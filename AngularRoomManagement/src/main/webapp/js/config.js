@@ -9,6 +9,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Welcome to the Time Table Management!',
         'WELCOME_TEXT_BODY': 'Time Table Management is an application that helps you creating Time Tables.',
+        'GERMAN': 'German',
+        'ENGLISH': 'English',
 
         'TIMETABLE': 'Time table',
         'SHOW': 'Show',
@@ -133,6 +135,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Willkommen zum Time Table Management System!',
         'WELCOME_TEXT_BODY': 'Mit dem Time Table Management System können Sie Räume, Dozenten und Zenturien zu den Stammdaten hinzufügen und Veranstaltungen verwalten.',
+        'GERMAN': 'Deutsch',
+        'ENGLISH': 'Englisch',
 
         'TIMETABLE': 'Stundenplan',
         'SHOW': 'Anzeigen',
