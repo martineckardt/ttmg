@@ -15,7 +15,7 @@ import java.util.Set;
  * This class is the tutor entity
  */
 @Entity
-@Table(name = "tutor", uniqueConstraints = @UniqueConstraint(columnNames = {"first_name", "last_name", "title"}))
+@Table(name = "tutor", uniqueConstraints = @UniqueConstraint(columnNames = {"first_name", "last_name"}))
 public class Tutor implements Serializable, HasAvailability {
     private static final Integer defaultChangeTime = 15;
 
