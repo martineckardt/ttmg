@@ -13,6 +13,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ENGLISH': 'English',
 
         'TIMETABLE': 'Time table',
+        'ACTIONS': 'Actions',
         'SHOW': 'Show',
         'DOWNLOAD_PDF': 'Download PDF',
         'NAME': 'Name',
@@ -25,6 +26,11 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'SUCCESS': 'Success',
         'NEXT': 'Next',
 
+        // Properties
+        'CHANGE_TIME': 'Change time',
+        'CHANGE_TIME_OPTIONAL': 'Change Time (optional)',
+        'MINUTES': 'minutes',
+
         //Centuria
         'CENTURIAS': 'Centurias',
         'CENTURIA': 'Centuria',
@@ -33,8 +39,6 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'SELECT_PROGRAM': 'Select a study program',
         'YEAR': 'Year',
         'LETTER': 'Letter',
-        'CHANGE_TIME': 'Change Time',
-        'CHANGE_TIME_OPTIONAL': 'Change Time (optional)',
         'CREATE_CENTURIA': 'Create new centuria',
         'ADD_CENTURIA': 'Add centuria',
         'CENTURIA_CREATION_SUCCESS': 'The centuria {{value}} has been created successfully',
@@ -131,7 +135,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
     });
 
     $translateProvider.translations('de', {
-        //General
+        // === General ===
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Willkommen zum Time Table Management System!',
         'WELCOME_TEXT_BODY': 'Mit dem Time Table Management System können Sie Räume, Dozenten und Zenturien zu den Stammdaten hinzufügen und Veranstaltungen verwalten.',
@@ -139,6 +143,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ENGLISH': 'Englisch',
 
         'TIMETABLE': 'Stundenplan',
+        'ACTIONS': 'Aktionen',
         'SHOW': 'Anzeigen',
         'DOWNLOAD_PDF': 'PDF Herunterladen',
         'NAME': 'Name',
@@ -150,6 +155,11 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'CANCEL': 'Abbrechen',
         'SUCCESS': 'Erfolg',
         'NEXT': 'Weiter',
+
+        // Properties
+        'CHANGE_TIME': 'Wechselzeit',
+        'CHANGE_TIME_OPTIONAL': 'Wechselzeit (optional)',
+        'MINUTES': 'Minuten',
 
         //Centuria
         'CENTURIAS': 'Zenturien',

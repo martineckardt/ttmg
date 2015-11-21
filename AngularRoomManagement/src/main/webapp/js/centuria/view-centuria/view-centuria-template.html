@@ -1,15 +1,15 @@
 <section>
     <h2>{{model.centuria.readableString}}</h2>
     <hr>
-    <p>{{ 'PROGRAM' | translate }} {{model.centuria.program}}</p>
+    <p>{{ 'PROGRAM' | translate }}: {{model.centuria.program}}</p>
 
-    <p>{{ 'YEAR' | translate }} {{model.centuria.year}}</p>
+    <p>{{ 'YEAR' | translate }}: {{model.centuria.year}}</p>
 
-    <p>{{ 'LETTER' | translate }} {{model.centuria.letter}}</p>
+    <p>{{ 'LETTER' | translate }}: {{model.centuria.letter}}</p>
 
-    <p>{{ 'NBR_STUDENTS' | translate }} {{model.centuria.nbrOfStudents}}</p>
+    <p>{{ 'NBR_STUDENTS' | translate }}: {{model.centuria.nbrOfStudents}}</p>
 
-    <p>{{ 'CHANGE_TIME' | translate }} {{model.centuria.customChangeTime}}</p>
+    <p>{{ 'CHANGE_TIME' | translate }}: {{model.centuria.customChangeTime}} {{ 'MINUTES' | translate }}</p>
 
     <h3>{{ 'TIMETABLE' | translate }}</h3>
     <event-table events="model.events"></event-table>
