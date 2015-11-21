@@ -69,6 +69,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ADD_EVENTS': 'Add events',
         'EDIT_COURSE': 'Edit course',
         'CREATE_NEW_COURSE': 'Create a new course',
+        'ADD_COURSE': 'Add Course',
 
         //Home
         'LOADING': 'Please wait while the application is loading',
@@ -192,6 +193,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ADD_EVENTS': 'Veranstaltungen hinzufügen',
         'EDIT_COURSE': 'Kurs verändern',
         'CREATE_NEW_COURSE': 'Neuen Kurs anlegen',
+        'ADD_COURSE': 'Kurs hinzufügen',
 
         //Home
         'LOADING': 'Bitte warten...',
