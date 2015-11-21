@@ -193,7 +193,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ADD_EVENTS': 'Veranstaltungen hinzufügen',
         'EDIT_COURSE': 'Kurs verändern',
         'CREATE_NEW_COURSE': 'Neuen Kurs anlegen',
-        'ADD_COURSE': 'Kurs hinzufügen',
+        'ADD_COURSE': 'Kurs anlegen',
 
         //Home
         'LOADING': 'Bitte warten...',
