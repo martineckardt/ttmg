@@ -14,14 +14,12 @@
     <div class="col-sm-10">
         <select ng-model="model.course.type" placeholder="Choose a type" class="form-control" id="type">
             <option value="" disabled selected>{{ 'SELECT_COURSE_TYPE' | translate }}</option>
-            <option>{{ 'COURSE' | translate }}</option>
-            <option>{{ 'EXAM' | translate }}</option>
-            <option>{{ 'SEMINAR'| translate }}</option>
-            <option>{{ 'ELECTIVE_MODULE' | translate }}</option>
+            <option ng-repeat="courseType in model.courseTypes" value="{{courseType}}">{{ courseType | translate }}
+            </option>
         </select>
     </div>
 </div>
-
+{{  }}
 <!-- TUTOR -->
 <div class="form-group">
     <label for="tutor" class="col-sm-2 control-label">{{ 'TUTOR' | translate }}</label>
@@ -50,3 +48,5 @@
         </div>
     </div>
 </div>
+
+<pre>{{model.course | json }}</pre>

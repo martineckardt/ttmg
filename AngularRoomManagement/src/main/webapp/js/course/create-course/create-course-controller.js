@@ -2,14 +2,20 @@
  * Created by Martin Eckardt on 16.11.2015.
  * Controller to create a course
  */
-angular.module('ttmg.controllers').controller('createCourseController', ['$scope', 'CourseFactory', 'CenturiaFactory', 'TutorFactory', function ($scope, CourseFactory, CenturiaFactory, TutorFactory) {
+angular.module('ttmg.controllers').controller('createCourseController',
+    ['$scope', 'CourseFactory', 'CenturiaFactory', 'TutorFactory', 'COURSE_TYPES',
+        function ($scope, CourseFactory, CenturiaFactory, TutorFactory, COURSE_TYPES) {
+
     console.log('createCourseController initialized');
+
+            console.log('course types: ' + COURSE_TYPES)
 
     // Set up model
     $scope.model = {
         course: new CourseFactory(),
         tutors: TutorFactory.query(),
-        centurias: CenturiaFactory.query()
+        centurias: CenturiaFactory.query(),
+        courseTypes: COURSE_TYPES
     };
 
     var course = $scope.model.course;
