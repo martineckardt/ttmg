@@ -1,5 +1,5 @@
 <div ng-if="entitySuccesfullyCreated" class="alert alert-success" role="alert">
-    <p>Success</p>
+    <p>{{ 'SUCCESS' | translate }}</p>
 </div>
 <div ng-if="entitySuccesfullyCreated == false" class="alert alert-danger" role="alert">
     <p>{{messageData}}</p>
@@ -7,7 +7,7 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <a href="#/courses/" class="btn btn-default">Show courses</a>
+        <a href="#/courses/" class="btn btn-default">{{ 'SHOW_COURSES' | translate }}</a>
     </div>
 </div>
 

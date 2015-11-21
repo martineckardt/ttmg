@@ -1,5 +1,5 @@
 <section>
-    <h2>Edit course {{model.course.name}}</h2>
+    <h2>{{ 'EDIT_COURSE' | translate }} {{model.course.name}}</h2>
     <hr>
 
     <div ng-if="entitySuccesfullyCreated" class="alert alert-success" role="alert">
@@ -16,7 +16,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="submit" class="btn btn-primary" value="Save"/>
-                <a ng-href="#/courses/{{course.id}}" class="btn btn-default">Cancel</a>
+                <a ng-href="#/courses/{{course.id}}" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
             </div>
         </div>
     </form>

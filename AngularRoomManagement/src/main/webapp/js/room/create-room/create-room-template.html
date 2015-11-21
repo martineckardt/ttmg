@@ -1,5 +1,5 @@
 <section>
-    <h2>Create a new room</h2>
+    <h2>{{ 'CREATE_ROOM'| translate }}</h2>
 
     <div ng-if="entitySuccesfullyCreated" class="alert alert-success" role="alert">
         <p>The room <a ng-href="#/rooms/{{messageData.id}}" class="alert-link">{{messageData.readableString}}</a> was

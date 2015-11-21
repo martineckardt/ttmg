@@ -1,8 +1,8 @@
 <table class="table table-striped">
     <tr>
-        <th>Name</th>
-        <th>Number of students</th>
-        <th ng-if="hideButtons != true">Schedule</th>
+        <th>{{ 'NAME' | translate }}</th>
+        <th>{{ 'NBR_STUDENTS' | translate }}</th>
+        <th ng-if="hideButtons != true">{{ 'SCHEDULE' | translate }}</th>
     </tr>
     <tr ng-repeat="centuria in centurias | orderBy:'[-year, -programm, letter]'">
         <td>
@@ -11,10 +11,10 @@
         <td>{{centuria.nbrOfStudents}}</td>
         <td ng-if="hideButtons != true">
             <a class="btn btn-default btn-xs" ng-href="#/centurias/{{centuria.id}}">
-                <span class="glyphicon glyphicon-info-sign"></span> Show
+                <span class="glyphicon glyphicon-info-sign"></span> {{ 'SHOW' | translate }}
             </a>
             <a class="btn btn-default btn-xs" ng-href="rest/centurias/{{centuria.id}}/schedule.pdf" target="_blank">
-                <span class="glyphicon glyphicon-download-alt"></span> Download
+                <span class="glyphicon glyphicon-download-alt"></span> {{ 'DOWNLOAD' | translate }}
             </a>
         </td>
     </tr>

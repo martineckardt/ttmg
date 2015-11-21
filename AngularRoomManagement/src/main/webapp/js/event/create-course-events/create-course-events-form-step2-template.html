@@ -1,8 +1,8 @@
 <table class="table table-bordered">
     <tr>
-        <th>Begin</th>
-        <th>End</th>
-        <th>Available Rooms</th>
+        <th>{{ 'BEGIN' | translate }}</th>
+        <th>{{ 'END' | translate }}</th>
+        <th>{{ 'AVAILABLE_ROOMS' | translate }}</th>
     </tr>
     <tr ng-repeat="event in formModel.eventsForRoomSelection">
         <td>
@@ -12,7 +12,7 @@
             {{event.end | date : 'd.M.yy HH:mm'}}
         </td>
         <td>
-            <span ng-if="event.availableRooms.length == 0">No sufficiently large rooms are available,</span>
+            <span ng-if="event.availableRooms.length == 0">{{ 'NO_SUFF_LARGE_ROOM' | translate }},</span>
 
             <div class="btn-toolbar">
                 <label ng-attr-for="event{{event.id}}-room{{room.id}}" class="btn btn-default"
@@ -28,7 +28,7 @@
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
         <input type="submit" class="btn btn-primary" value="Save"/>
-        <button ng-click="createCourseEventsCtrl.goBackToStep(1)" class="btn btn-default">Go back</button>
-        <a href="#/courses" class="btn btn-default">Cancel</a>
+        <button ng-click="createCourseEventsCtrl.goBackToStep(1)" class="btn btn-default">{{ 'BACK' | translate }}</button>
+        <a href="#/courses" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
     </div>
 </div>

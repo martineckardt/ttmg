@@ -20,39 +20,61 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'DELETE': 'Delete',
         'QUESTION_DELETE_ITEM': 'Do you really want to delete the {{value}}',
         'CANCEL': 'Cancel',
+        'SUCCESS': 'Success',
+        'NEXT': 'Next',
 
         //Centuria
         'CENTURIAS': 'Centurias',
+        'CENTURIA': 'Centuria',
         'NBR_STUDENTS': 'Number of students',
         'PROGRAM': 'Study Program',
         'SELECT_PROGRAM': 'Select a study program',
         'YEAR': 'Year',
         'LETTER': 'Letter',
         'CHANGE_TIME': 'Change Time',
+        'CHANGE_TIME_OPTIONAL': 'Change Time (optional)',
         'CREATE_CENTURIA': 'Create new centuria',
         'ADD_CENTURIA': 'Add centuria',
         'CENTURIA_CREATION_SUCCESS': 'The centuria {{value}} has been created successfully',
         'CENTURIA_CREATION_FAILURE': 'The centuria could not be created',
 
+        //Event
+        'CREATE_NEW_EVENT_FOR_COURSE': 'Create new events for the course ',
+        'REPEAT_FOR_WEEKS': 'Repeat for weeks',
+        'CREATE_EVENT': 'Create event',
+
+
         //TODO COURSES
         // === Courses ===
         // Course types
         'COURSE': 'Course',
+        'COURSES': 'Courses',
         'SEMINAR': 'Seminar',
         'EXAM': 'Exam',
-        'ELECTIVE_MODULE': "Elective module",
+        'ELECTIVE_MODULE': 'Elective module',
+        //Planning
+        'SCHEDULE': 'Schedule',
+        'BEGIN': 'Begin',
+        'END': 'End',
 
-        // Properties
+        // Course Properties
         'COURSE_TYPE': 'Course type',
+        'COURSE_NAME': 'Name',
+        'SELECT_COURSE_TYPE': 'Select a course type',
+        'PARTICIPANTS_OPTIONAL': 'Participants (optional)',
+        'SEMINARS_NO_PARTICIPANTS': 'Seminars do not have participants.',
 
         // Actions
         'ADD_EVENTS': 'Add events',
+        'EDIT_COURSE': 'Edit course',
+        'CREATE_NEW_COURSE': 'Create a new course',
 
         //Home
         'LOADING': 'Please wait while the application is loading',
 
         //Room
         'ROOMS': 'Rooms',
+        'ROOM': 'Room',
         'BUILDING': 'building',
         'SELECT_BUILDING': 'Select a building',
         'ROOM_NBR': 'Room number',
@@ -67,6 +89,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ADD_ROOM': 'Add room',
         'ROOM_CREATION_SUCCESS': 'The room {{value}} has been created successfully',
         'ROOM_CREATION_FAILURE': 'The room could not be created',
+        'AVAILABLE_ROOMS': 'Available rooms',
+        'NO_SUFF_LARGE_ROOM': 'No sufficiently large rooms are available',
 
         //Tutors
         'TUTORS': 'Tutors',
@@ -93,7 +117,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'INSUFFICIENT_SEATS': 'There are {{seats}} seats missing.',
         'OBJECT_HAS_EVENTS': 'Cannot delete {{type}} there are still {{numberEvents}} referenced events!',
         'TIME_CONFLICTS': 'There are {{number}} conflicting events.',
-        'INVALID_PARAMETER': '"The parameter {{name}} {{description}}',
+        'INVALID_PARAMETER': 'The parameter {{name}} {{description}}',
 
         //Invalid Parameter Exception
         'INVALID_FORMAT': 'has an invalid format / type.',
@@ -108,7 +132,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         //General
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Willkommen zum Time Table Management System!',
-        'WELCOME_TEXT_BODY': '@Basti: bitte noch einen kleinen Text über die Applikation einfügen.',
+        'WELCOME_TEXT_BODY': 'Mit dem Time Table Management System können Sie Räume, Dozenten und Zenturien zu den Stammdaten hinzufügen und Veranstaltungen verwalten.',
 
         'TIMETABLE': 'Stundenplan',
         'SHOW': 'Anzeigen',
@@ -120,38 +144,59 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'DELETE': 'Löschen',
         'QUESTION_DELETE_ITEM': 'Möchten Sie {{value}} wirklich löschen?',
         'CANCEL': 'Abbrechen',
+        'SUCCESS': 'Erfolg',
+        'NEXT': 'Weiter',
 
         //Centuria
         'CENTURIAS': 'Zenturien',
+        'CENTURIA': 'Zenturie',
         'NBR_STUDENTS': 'Anzahl der Studenten',
         'PROGRAM': 'Studiengang',
         'SELECT_PROGRAM': 'Wählen Sie einen Studiengang',
         'YEAR': 'Jahrgang',
         'LETTER': 'Buchstabe',
         'CHANGE_TIME': 'Wechselzeit',
+        'CHANGE_TIME_OPTIONAL': 'Wechselzeit (optional)',
         'CREATE_CENTURIA': 'Neue Zenturie anlegen',
         'ADD_CENTURIA': 'Zenturie anlegen',
         'CENTURIA_CREATION_SUCCESS': 'Die Zenturie {{value}} wurde erfolgreich angelegt',
         'CENTURIA_CREATION_FAILURE': 'Die Zenturie konnte nicht angelegt werden',
 
+        //Event
+        'CREATE_NEW_EVENT_FOR_COURSE': 'Erstelle neue Veranstaltungen für den Kurs ',
+        'REPEAT_FOR_WEEKS': 'Anzahl der wöchentlichen Wiederholungen',
+        'CREATE_EVENT': 'Erstelle neue Veranstaltung',
+
         //TODO COURSES
         //Courses
         'COURSE': 'Kurs',
+        'COURSES': 'Kurse',
         'SEMINAR': 'Seminar',
         'EXAM': 'KLausur',
-        'ELECTIVE_MODULE': "WPK",
+        'ELECTIVE_MODULE': 'WPK',
+        //Planning
+        'SCHEDULE': 'Plan',
+        'BEGIN': 'Beginn',
+        'END': 'Ende',
 
-        // Properties
+        // Course Properties
         'COURSE_TYPE': 'Modulart',
+        'COURSE_NAME': 'Name',
+        'SELECT_COURSE_TYPE': 'Wählen Sie einen Kurs-Typ',
+        'PARTICIPANTS_OPTIONAL': 'Teilnehmer (optional)',
+        'SEMINARS_NO_PARTICIPANTS': 'Seminare haben keine Teilnehmer.',
 
         // Actions
         'ADD_EVENTS': 'Veranstaltungen hinzufügen',
+        'EDIT_COURSE': 'Kurs verändern',
+        'CREATE_NEW_COURSE': 'Neuen Kurs anlegen',
 
         //Home
         'LOADING': 'Bitte warten...',
 
         //Room
         'ROOMS': 'Räume',
+        'ROOM': 'Raum',
         'BUILDING': 'Gebäude',
         'SELECT_BUILDING': 'Gebäude auswählen',
         'ROOM_NBR': 'Raumnummer',
@@ -165,7 +210,9 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'CREATE_ROOM': 'Neuen Raum anlegen',
         'ADD_ROOM': 'Raum anlegen',
         'ROOM_CREATION_SUCCESS': 'Der Raum {{value}} wurde erfolgreich angelegt',
-        'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden',
+        'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden'
+        'AVAILABLE_ROOMS': 'Verfügbare Räume',
+        'NO_SUFF_LARGE_ROOM': 'Kein ausreichend großer Raum steht zur Verfügung',
 
         //Tutors
         'TUTORS': 'Dozenten',
@@ -192,7 +239,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'INSUFFICIENT_SEATS': 'Es fehlen {{seats}} Sitzplätze.',
         'OBJECT_HAS_EVENTS': 'Kann {{type}} ´nicht löschen, es gibt noch {{numberEvents}} referenzierte Kurse!',
         'TIME_CONFLICTS': 'Es gibt {{number}} in Konflikt stehende Veranstaltungen.',
-        'INVALID_PARAMETER': '"Der Parameter {{name}} {{description}} ist nicht valide.',
+        'INVALID_PARAMETER': 'Der Parameter {{name}} {{description}} ist nicht valide.',
 
         //Invalid Parameter Exception
         'INVALID_FORMAT': 'hat ein invalides Format.',

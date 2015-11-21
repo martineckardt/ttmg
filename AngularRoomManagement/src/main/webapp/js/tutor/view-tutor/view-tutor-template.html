@@ -2,13 +2,13 @@
     <h2>{{model.tutor.readableString}}</h2>
     <hr>
 
-    <p ng-if="model.tutor.title != ''">{ 'TITLE' | translate} {{model.tutor.title}}</p>
+    <p ng-if="model.tutor.title != ''">{{ 'TITLE' | translate}} {{model.tutor.title}}</p>
 
-    <p>{ 'FIRST_NAME' | translate} {{model.tutor.firstName}}</p>
+    <p>{{ 'FIRST_NAME' | translate}} {{model.tutor.firstName}}</p>
 
-    <p>{ 'LAST_NAME' | translate} {{model.tutor.lastName}}</p>
+    <p>{{ 'LAST_NAME' | translate}} {{model.tutor.lastName}}</p>
 
-    <p>{ 'CHANGE_TIME' | translate} {{model.tutor.customChangeTime}}</p>
+    <p>{{ 'CHANGE_TIME' | translate}} {{model.tutor.customChangeTime}}</p>
 
     <h3>Schedule</h3>
     <event-table events="model.events"></event-table>

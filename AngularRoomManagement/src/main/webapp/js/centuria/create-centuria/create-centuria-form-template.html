@@ -1,10 +1,10 @@
 <div class="form-group">
-    <label for="program" class="col-sm-2 control-label">Program</label>
+    <label for="program" class="col-sm-2 control-label">{{ 'PROGRAM' | translate }}</label>
 
     <div class="col-sm-10">
         <select ng-model="centuria.program" placeholder="Choose a study program" class="form-control" id="program"
                 autofocus>
-            <option value="" disabled selected>Select study program</option>
+            <option value="" disabled selected>{{ 'SELECT_PROGRAM' | translate }}</option>
             <option>BWL</option>
             <option>WINF</option>
             <option>WING</option>
@@ -14,7 +14,7 @@
 </div>
 
 <div class="form-group">
-    <label for="year" class="col-sm-2 control-label">Year</label>
+    <label for="year" class="col-sm-2 control-label">{{ 'YEAR' | translate }}</label>
 
     <div class="col-sm-10">
         <input type="number" ng-model="centuria.year" class="form-control" id="year" min="2010" max="2100"/>
@@ -22,7 +22,7 @@
 </div>
 
 <div class="form-group">
-    <label for="lastName" class="col-sm-2 control-label">letter</label>
+    <label for="lastName" class="col-sm-2 control-label">{{ 'LETTER' | translate }}</label>
 
     <div class="col-sm-10">
         <input type="text" ng-model="centuria.letter" class="form-control" id="lastName" required/>
@@ -30,7 +30,7 @@
 </div>
 
 <div class="form-group">
-    <label for="nbrOfStudents" class="col-sm-2 control-label">Number of students</label>
+    <label for="nbrOfStudents" class="col-sm-2 control-label">{{ 'NBR_STUDENTS' | translate }}</label>
 
     <div class="col-sm-10">
         <input type="number" ng-model="centuria.nbrOfStudents" class="form-control" id="nbrOfStudents" min="1"
@@ -39,7 +39,7 @@
 </div>
 
 <div class="form-group">
-    <label for="changeTime" class="col-sm-2 control-label">Custom change time (optional)</label>
+    <label for="changeTime" class="col-sm-2 control-label">{{ 'CHANGE_TIME_OPTIONAL' | translate }}</label>
 
     <div class="col-sm-10">
         <input type="number" ng-model="centuria.changeTime" class="form-control" id="changeTime" min="0"/>
@@ -49,6 +49,6 @@
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
         <input type="submit" class="btn btn-primary" value="Save"/>
-        <a href="#/centurias" class="btn btn-default">Cancel</a>
+        <a href="#/centurias" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
     </div>
 </div>

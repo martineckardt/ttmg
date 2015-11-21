@@ -2,13 +2,13 @@
     <h2>{{model.room.readableString}}</h2>
     <hr>
 
-    <p>Custom change time: {{model.room.customChangeTime}}</p>
+    <p>{{ 'CHANGE_TIME' | translate }} {{model.room.customChangeTime}}</p>
 
-    <p>Number of seats: {{model.room.seats}}</p>
+    <p>{{ 'ROOM_CAPACITY' | translate }} {{model.room.seats}}</p>
 
-    <p>Room type: {{model.room.type | capitalize}}</p>
+    <p>{{ 'ROOM_TYPE' | translate }} {{model.room.type | capitalize}}</p>
 
-    <h3>Schedule</h3>
+    <h3>{{ 'SCHEDULE' | translate }}</h3>
     <event-table events="model.events"></event-table>
 
     <!-- Only show if there are no events -->

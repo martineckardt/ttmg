@@ -1,5 +1,5 @@
 <section>
-    <h2>Courses</h2>
+    <h2>{{ 'COURSES' | translate }}</h2>
 
     <hr>
 
@@ -9,16 +9,16 @@
 
     <table class="table table-striped">
         <tr>
-            <th>Course name</th>
-            <th>type</th>
-            <th>Schedule</th>
+            <th>{{ 'COURSE_NAME' | translate }}</th>
+            <th>{{ 'COURSE_TYPE' | translate }}</th>
+            <th>{{ 'SCHEDULE' | translate }}</th>
         </tr>
         <tr ng-repeat="course in model.courses | orderBy:'[type, name]'">
             <td>{{course.name}}</td>
             <td>{{course.type | capitalize}}</td>
             <td ng-if="hideButtons != true">
                 <a class="btn btn-default btn-xs" ng-href="#/courses/{{course.id}}">
-                    <span class="glyphicon glyphicon-info-sign"></span> Show
+                    <span class="glyphicon glyphicon-info-sign"></span> {{ 'SHOW' | translate }}
                 </a>
             </td>
         </tr>
