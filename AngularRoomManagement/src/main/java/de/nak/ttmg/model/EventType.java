@@ -5,7 +5,7 @@ package de.nak.ttmg.model;
  * This enum lists all types of events
  */
 public enum EventType {
-    COURSE("Course", 15), EXAM("Exam", 30), SEMINAR("Seminar", 15), WPK("WPK", 15);
+    COURSE("Course", 15), EXAM("Exam", 30), SEMINAR("Seminar", 15), ELECTIVE_MODULE("Elective module", 15);
 
     private final int minChangeTime;
 
