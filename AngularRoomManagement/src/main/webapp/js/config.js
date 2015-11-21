@@ -8,7 +8,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         //General
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Welcome to the Time Table Management!',
-        'WELCOME_TEXT_BODY': 'PLease add text here',
+        'WELCOME_TEXT_BODY': 'Time Table Management is an application that helps you creating Time Tables.',
 
         'TIMETABLE': 'Time table',
         'SHOW': 'Show',
@@ -84,7 +84,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ROOM_TYPE_AUDIMAX': 'Audimax',
         'ROOM_TYPE_LECTURE': 'Lecture',
         'ROOM_TYPE_LAB': 'Lab',
-        'ROOM_TYPE_COMPUTER': 'Computer',
+        'ROOM_TYPE_COMPUTER': 'Computer room',
         'CREATE_ROOM': 'Create new room',
         'ADD_ROOM': 'Add room',
         'ROOM_CREATION_SUCCESS': 'The room {{value}} has been created successfully',
@@ -172,7 +172,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'COURSE': 'Kurs',
         'COURSES': 'Kurse',
         'SEMINAR': 'Seminar',
-        'EXAM': 'KLausur',
+        'EXAM': 'Klausur',
         'ELECTIVE_MODULE': 'WPK',
         //Planning
         'SCHEDULE': 'Plan',
@@ -194,7 +194,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         //Home
         'LOADING': 'Bitte warten...',
 
-        //Room
+        // === Room ===
         'ROOMS': 'Räume',
         'ROOM': 'Raum',
         'BUILDING': 'Gebäude',
@@ -203,16 +203,18 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ROOM_CAPACITY': 'Kapazität',
         'ROOM_TYPE': 'Raumtyp',
         'SELECT_ROOM_TYPE': 'Raumtyp auswählen',
-        'ROOM_TYPE_AUDIMAX': 'Audimax',
-        'ROOM_TYPE_LECTURE': 'Hörsaal',
-        'ROOM_TYPE_LAB': 'Labor',
-        'ROOM_TYPE_COMPUTER': 'Computer-Raum',
         'CREATE_ROOM': 'Neuen Raum anlegen',
         'ADD_ROOM': 'Raum anlegen',
         'ROOM_CREATION_SUCCESS': 'Der Raum {{value}} wurde erfolgreich angelegt',
         'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden',
         'AVAILABLE_ROOMS': 'Verfügbare Räume',
         'NO_SUFF_LARGE_ROOM': 'Kein ausreichend großer Raum steht zur Verfügung',
+
+        // Room type
+        'AUDIMAX': 'Audimax',
+        'LECTURE': 'Hörsaal',
+        'LAB': 'Labor',
+        'COMPUTER': 'Computer-Raum',
 
         //Tutors
         'TUTORS': 'Dozenten',

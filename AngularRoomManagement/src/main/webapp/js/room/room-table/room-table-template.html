@@ -8,7 +8,7 @@
     <tr ng-repeat="room in rooms | orderBy:'[building, roomNumber]'">
         <td><a ng-href="#/rooms/{{room.id}}">{{room.readableString}}</a></td>
         <td>{{room.seats}}</td>
-        <td>{{room.type | capitalize}}</td>
+        <td>{{room.type | translate }}</td>
         <td ng-if="hideButtons != true">
             <a class="btn btn-default btn-xs" ng-href="#/rooms/{{room.id}}">
                 <span class="glyphicon glyphicon-info-sign"></span> {{ 'SHOW' | translate }}
