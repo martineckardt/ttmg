@@ -1,10 +1,14 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.TutorDAO;
+import de.nak.ttmg.exceptions.EntityNotFoundException;
+import de.nak.ttmg.exceptions.IsBusyException;
+import de.nak.ttmg.exceptions.ValidationException;
 import de.nak.ttmg.model.DateRange;
 import de.nak.ttmg.model.DateRangeFactory;
 import de.nak.ttmg.model.Tutor;
-import de.nak.ttmg.util.*;
+import de.nak.ttmg.validator.TimeValidator;
+import de.nak.ttmg.validator.TutorValidator;
 
 import javax.inject.Inject;
 import java.util.Date;

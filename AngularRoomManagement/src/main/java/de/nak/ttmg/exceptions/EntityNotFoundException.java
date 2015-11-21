@@ -1,6 +1,7 @@
-package de.nak.ttmg.util;
+package de.nak.ttmg.exceptions;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import de.nak.ttmg.util.Constants;
 
 /**
  * Created by felixb on 28/10/15.

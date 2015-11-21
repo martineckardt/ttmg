@@ -2,10 +2,10 @@ package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.DateRange;
 import de.nak.ttmg.model.Event;
-import de.nak.ttmg.util.EntityAlreadyExistsException;
-import de.nak.ttmg.util.EntityNotFoundException;
-import de.nak.ttmg.util.InvalidParameterException;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.exceptions.EntityAlreadyExistsException;
+import de.nak.ttmg.exceptions.EntityNotFoundException;
+import de.nak.ttmg.exceptions.InvalidParameterException;
+import de.nak.ttmg.exceptions.ValidationException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

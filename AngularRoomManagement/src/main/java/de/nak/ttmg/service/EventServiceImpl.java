@@ -2,12 +2,14 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.dao.EventDAO;
-import de.nak.ttmg.dao.RoomDAO;
+import de.nak.ttmg.exceptions.EntityNotFoundException;
+import de.nak.ttmg.exceptions.InvalidParameterException;
+import de.nak.ttmg.exceptions.ValidationException;
 import de.nak.ttmg.model.*;
-import de.nak.ttmg.util.*;
+import de.nak.ttmg.validator.CourseValidator;
+import de.nak.ttmg.validator.TimeValidator;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

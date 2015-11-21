@@ -1,7 +1,7 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.model.Event;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.exceptions.ValidationException;
 
 import java.util.Date;
 import java.util.List;

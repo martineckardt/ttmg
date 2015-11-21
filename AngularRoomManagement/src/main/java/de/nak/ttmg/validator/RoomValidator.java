@@ -1,6 +1,7 @@
-package de.nak.ttmg.util;
+package de.nak.ttmg.validator;
 
 import de.nak.ttmg.model.Room;
+import de.nak.ttmg.exceptions.InvalidParameterException;
 
 /**
  * Created by felixb on 28/10/15.

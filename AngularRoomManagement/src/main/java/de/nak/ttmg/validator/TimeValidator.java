@@ -1,9 +1,11 @@
-package de.nak.ttmg.util;
+package de.nak.ttmg.validator;
 
 import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.DateRange;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.model.HasAvailability;
+import de.nak.ttmg.util.TimeConflict;
+import de.nak.ttmg.exceptions.TimeConflictException;
 
 import java.util.ArrayList;
 import java.util.Date;

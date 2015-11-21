@@ -1,9 +1,9 @@
 package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Tutor;
-import de.nak.ttmg.util.EntityAlreadyExistsException;
-import de.nak.ttmg.util.InvalidParameterException;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.exceptions.EntityAlreadyExistsException;
+import de.nak.ttmg.exceptions.InvalidParameterException;
+import de.nak.ttmg.exceptions.ValidationException;
 import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.EntityManager;

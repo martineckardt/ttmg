@@ -1,6 +1,8 @@
-package de.nak.ttmg.util;
+package de.nak.ttmg.validator;
 
 import de.nak.ttmg.model.Centuria;
+import de.nak.ttmg.exceptions.InvalidParameterException;
+import de.nak.ttmg.exceptions.ValidationException;
 
 /**
  * Created by felixb on 30/10/15.

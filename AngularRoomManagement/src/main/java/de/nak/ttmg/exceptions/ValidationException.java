@@ -1,4 +1,4 @@
-package de.nak.ttmg.util;
+package de.nak.ttmg.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

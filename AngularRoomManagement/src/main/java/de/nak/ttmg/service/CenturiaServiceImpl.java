@@ -1,9 +1,10 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.CenturiaDAO;
+import de.nak.ttmg.exceptions.*;
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.StudyProgram;
-import de.nak.ttmg.util.*;
+import de.nak.ttmg.validator.CenturiaValidator;
 import org.hibernate.exception.ConstraintViolationException;
 
 import javax.inject.Inject;

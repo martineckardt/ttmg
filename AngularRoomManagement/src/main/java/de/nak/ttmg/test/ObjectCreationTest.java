@@ -1,9 +1,9 @@
 package de.nak.ttmg.test;
 
 import de.nak.ttmg.model.*;
-import de.nak.ttmg.util.DateRangeException;
-import de.nak.ttmg.util.TimeConflictException;
-import de.nak.ttmg.util.TimeValidator;
+import de.nak.ttmg.exceptions.DateRangeException;
+import de.nak.ttmg.exceptions.TimeConflictException;
+import de.nak.ttmg.validator.TimeValidator;
 import org.junit.Before;
 import org.junit.Test;
 

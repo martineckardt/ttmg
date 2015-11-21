@@ -1,4 +1,6 @@
-package de.nak.ttmg.util;
+package de.nak.ttmg.exceptions;
+
+import de.nak.ttmg.util.Constants;
 
 /**
  * Created by felixb on 30/10/15.

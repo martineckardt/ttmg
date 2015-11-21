@@ -4,7 +4,7 @@ import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.pdf.TimeTableCreator;
 import de.nak.ttmg.service.RoomService;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.exceptions.ValidationException;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.web.bind.annotation.*;
 

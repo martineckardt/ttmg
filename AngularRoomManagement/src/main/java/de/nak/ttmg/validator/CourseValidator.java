@@ -1,6 +1,9 @@
-package de.nak.ttmg.util;
+package de.nak.ttmg.validator;
 
 import de.nak.ttmg.model.*;
+import de.nak.ttmg.exceptions.InsufficientSeatException;
+import de.nak.ttmg.exceptions.InvalidParameterException;
+import de.nak.ttmg.exceptions.ValidationException;
 
 import java.util.Set;
 

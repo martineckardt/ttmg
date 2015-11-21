@@ -3,7 +3,7 @@ package de.nak.ttmg.controller;
 import de.nak.ttmg.model.Tutor;
 import de.nak.ttmg.pdf.TimeTableCreator;
 import de.nak.ttmg.service.TutorService;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.exceptions.ValidationException;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.web.bind.annotation.*;
 

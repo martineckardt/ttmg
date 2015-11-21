@@ -1,6 +1,8 @@
-package de.nak.ttmg.util;
+package de.nak.ttmg.validator;
 
 import de.nak.ttmg.model.Tutor;
+import de.nak.ttmg.exceptions.InvalidParameterException;
+import de.nak.ttmg.exceptions.ValidationException;
 
 /**
  * Created by felixb on 29/10/15.

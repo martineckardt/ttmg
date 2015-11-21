@@ -1,4 +1,4 @@
-package de.nak.ttmg.util;
+package de.nak.ttmg.exceptions;
 
 /**
  * Created by felixb on 30/10/15.

@@ -1,11 +1,13 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.RoomDAO;
+import de.nak.ttmg.exceptions.*;
 import de.nak.ttmg.model.DateRange;
 import de.nak.ttmg.model.DateRangeFactory;
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
-import de.nak.ttmg.util.*;
+import de.nak.ttmg.validator.RoomValidator;
+import de.nak.ttmg.validator.TimeValidator;
 import org.hibernate.exception.ConstraintViolationException;
 
 import javax.inject.Inject;

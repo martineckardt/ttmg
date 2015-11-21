@@ -2,7 +2,7 @@ package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
-import de.nak.ttmg.util.ValidationException;
+import de.nak.ttmg.exceptions.ValidationException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
