@@ -88,8 +88,8 @@ public class Room implements Serializable, HasAvailability {
         this.type = type;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="event_room", joinColumns=@JoinColumn(name="room_id"), inverseJoinColumns=@JoinColumn(name="event_id"))
+    @Column(name = "events", nullable = false)
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "rooms", cascade = CascadeType.REFRESH)
     @JsonBackReference
     public Set<Event> getEvents() {
         return events;

@@ -52,7 +52,7 @@ public class Event implements Serializable, HasReadableString {
         this.end = end;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "course_id", nullable = false)
     public Course getCourse() {
         return course;
@@ -63,7 +63,8 @@ public class Event implements Serializable, HasReadableString {
     }
 
     @Column(name = "rooms")
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "events")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinTable(name="event_room", joinColumns=@JoinColumn(name="event_id"), inverseJoinColumns=@JoinColumn(name="room_id"))
     public Set<Room> getRooms() {
         return rooms;
     }
