@@ -5,9 +5,12 @@
 
 angular.module('ttmg.controllers').controller('changeLanguageController', ['$scope', '$translate', function ($scope, $translate) {
 
+    $scope.currentLanguage = 'de';
+
     //create a new room
     $scope.changeLanguage = function (langKey) {
         console.log("change language to " + langKey);
+        $scope.currentLanguage = langKey;
         $translate.use(langKey);
     };
 

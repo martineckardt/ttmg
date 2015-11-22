@@ -3,13 +3,13 @@
  * Controller for creation of a room.
  */
 
-angular.module('ttmg.controllers').controller('createRoomController', ['$scope', 'RoomFactory', 'BUIDLINGS', 'ROOM_TYPES', function ($scope, RoomFactory, BUIDLINGS, ROOM_TYPES) {
+angular.module('ttmg.controllers').controller('createRoomController', ['$scope', 'RoomFactory', 'BUILDINGS', 'ROOM_TYPES', function ($scope, RoomFactory, BUILDINGS, ROOM_TYPES) {
     console.log('createRoomController initialized');
 
     // Set up form model
     $scope.model = {
         room: new RoomFactory(),
-        buildings: BUIDLINGS,
+        buildings: BUILDINGS,
         roomTypes: ROOM_TYPES
     };
 
@@ -26,7 +26,7 @@ angular.module('ttmg.controllers').controller('createRoomController', ['$scope',
                 $scope.messageData = data;
 
                 // Reset form model
-                $scope.room = new RoomFactory();
+                $scope.model.room = new RoomFactory();
             }, function errorCallback(error) {
                 // Logging
                 console.log("Error creating entity");

@@ -5,7 +5,7 @@
         <th>{{ 'ROOM_TYPE' | translate }}</th>
         <th ng-if="hideButtons != true">{{ 'TIMETABLE' | translate }}</th>
     </tr>
-    <tr ng-repeat="room in rooms | orderBy:'[building, roomNumber]'">
+    <tr ng-repeat="room in rooms | filter:filter | orderBy:'[building, roomNumber]'">
         <td><a ng-href="#/rooms/{{room.id}}">{{room.readableString}}</a></td>
         <td>{{room.seats}}</td>
         <td>{{room.type | translate }}</td>

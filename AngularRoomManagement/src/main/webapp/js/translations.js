@@ -3,7 +3,11 @@
  */
 
 angular.module('ttmg').config(['$translateProvider', function ($translateProvider) {
+    // Set german as the preferred language
+    $translateProvider.preferredLanguage('de');
     $translateProvider.useSanitizeValueStrategy('escapeParameters');
+
+    // English translations
     $translateProvider.translations('en', {
         //General
         'APP_NAME': 'Time Table Management',
@@ -71,6 +75,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'SELECT_COURSE_TYPE': 'Select a course type',
         'PARTICIPANTS_OPTIONAL': 'Participants (optional)',
         'SEMINARS_NO_PARTICIPANTS': 'Seminars do not have participants.',
+        'PARTICIPANTS': 'Participants',
 
         // Actions
         'ADD_EVENTS': 'Add events',
@@ -90,12 +95,16 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ROOM_CAPACITY': 'Capacity',
         'ROOM_TYPE': 'Room type',
         'SELECT_ROOM_TYPE': 'Select a room type',
-        'CREATE_ROOM': 'Create new room',
+        'CREATE_NEW_ROOM': 'Create new room',
         'ADD_ROOM': 'Add room',
         'ROOM_CREATION_SUCCESS': 'The room {{value}} has been created successfully',
         'ROOM_CREATION_FAILURE': 'The room could not be created',
         'AVAILABLE_ROOMS': 'Available rooms',
         'NO_SUFF_LARGE_ROOM': 'No sufficiently large rooms are available',
+        'FILTER_ROOMS': 'Filter rooms',
+
+        // Messages
+        'ROOM_CREATED': 'The room was successfully created:',
 
         // Properties
         'AUDIMAX': 'Audimax',
@@ -109,10 +118,11 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'TITLE': 'Title',
         'FIRST_NAME': 'First name',
         'LAST_NAME': 'Last name',
-        'CREATE_TUTOR': 'Create new tutor',
+        'CREATE_NEW_TUTOR': 'Create a new tutor',
         'ADD_TUTOR': 'Add tutor',
-        'TUTOR_CREATION_SUCCESS': 'The tutor{{value}} has been created successfully',
-        'TUTOR_CREATION_FAILURE': 'The tutor could not be created',
+
+        // Messages
+        'TUTOR_CREATED': 'The tutor has been created successfully:',
 
         //INDEX / MENU
         'SHOW_ROOMS': 'Show Rooms',
@@ -139,6 +149,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'INCONSISTENT': 'is inconsistent with object'
     });
 
+    // German translations
     $translateProvider.translations('de', {
         // === General ===
         'APP_NAME': 'Time Table Management',
@@ -174,9 +185,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'SELECT_PROGRAM': 'Wählen Sie einen Studiengang',
         'YEAR': 'Jahrgang',
         'LETTER': 'Buchstabe',
-        'CHANGE_TIME': 'Wechselzeit',
-        'CHANGE_TIME_OPTIONAL': 'Wechselzeit (optional)',
-        'CREATE_CENTURIA': 'Neue Zenturie anlegen',
+        'CREATE_NEW_CENTURIA': 'Neue Zenturie anlegen',
         'ADD_CENTURIA': 'Zenturie anlegen',
         'CENTURIA_CREATION_SUCCESS': 'Die Zenturie {{value}} wurde erfolgreich angelegt',
         'CENTURIA_CREATION_FAILURE': 'Die Zenturie konnte nicht angelegt werden',
@@ -206,7 +215,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'SELECT_COURSE_TYPE': 'Wählen Sie einen Kurs-Typ',
         'PARTICIPANTS_OPTIONAL': 'Teilnehmer (optional)',
         'SEMINARS_NO_PARTICIPANTS': 'Seminare haben keine Teilnehmer.',
-
+        'PARTICIPANTS': 'Teilnehmer',
         // Actions
         'ADD_EVENTS': 'Veranstaltungen hinzufügen',
         'EDIT_COURSE': 'Kurs verändern',
@@ -225,12 +234,13 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ROOM_CAPACITY': 'Kapazität',
         'ROOM_TYPE': 'Raumtyp',
         'SELECT_ROOM_TYPE': 'Raumtyp auswählen',
-        'CREATE_ROOM': 'Neuen Raum anlegen',
+        'CREATE_NEW_ROOM': 'Neuen Raum anlegen',
         'ADD_ROOM': 'Raum anlegen',
         'ROOM_CREATION_SUCCESS': 'Der Raum {{value}} wurde erfolgreich angelegt',
         'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden',
         'AVAILABLE_ROOMS': 'Verfügbare Räume',
         'NO_SUFF_LARGE_ROOM': 'Kein ausreichend großer Raum steht zur Verfügung',
+        'FILTER_ROOMS': 'Räume filtern',
 
         // Room type
         'AUDIMAX': 'Audimax',
@@ -238,16 +248,22 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'LAB': 'Labor',
         'COMPUTER': 'Computer-Raum',
 
+        // Messages
+        'ROOM_CREATED': 'Der Raum wurde erfolgreich erstellt:',
+
         //Tutors
         'TUTORS': 'Dozenten',
         'TUTOR': 'Dozent',
         'TITLE': 'Titel',
         'FIRST_NAME': 'Vorname',
         'LAST_NAME': 'Nachname',
-        'CREATE_TUTOR': 'Neuen Dozenten anlegen',
-        'ADD_TUTOR': 'Dozenten anlegen',
-        'TUTOR_CREATION_SUCCESS': 'Der Dozent{{value}} wurde erfolgreich angelegt',
+        'CREATE_NEW_TUTOR': 'Neuen Dozenten anlegen',
+        'ADD_TUTOR': 'Dozent anlegen',
+        'TUTOR_CREATION_SUCCESS': 'Der Dozent wurde erfolgreich angelegt',
         'TUTOR_CREATION_FAILURE': 'Der Dozent konnte nicht angelegt werden',
+
+        // Messages
+        'TUTOR_CREATED': 'Der Tutor wurde erfolgreich erstellt:',
 
         //INDEX / MENU
         'SHOW_ROOMS': 'Räume anzeigen',
@@ -273,6 +289,4 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'INVALID_NOT_NULL': 'muss null sein',
         'INCONSISTENT': 'ist inkonsistent mit Objekt'
     });
-
-    $translateProvider.preferredLanguage('de');
 }]);

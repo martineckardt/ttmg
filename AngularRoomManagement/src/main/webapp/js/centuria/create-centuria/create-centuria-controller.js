@@ -3,13 +3,13 @@
  * Controller for creation of entities
  */
 
-angular.module('ttmg.controllers').controller('createCenturiaController', ['$scope', 'CenturiaFactory', 'STUDY_PROOGRAMS', function ($scope, CenturiaFactory, STUDY_PROOGRAMS) {
+angular.module('ttmg.controllers').controller('createCenturiaController', ['$scope', 'CenturiaFactory', 'STUDY_PROGRAMS', function ($scope, CenturiaFactory, STUDY_PROGRAMS) {
     console.log('createCenturiaController initialized');
 
     // Set up form model
     $scope.model = {
         centuria: new CenturiaFactory(),
-        studyPrograms: STUDY_PROOGRAMS
+        studyPrograms: STUDY_PROGRAMS
     };
 
     //create a new centuria
