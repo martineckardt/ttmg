@@ -3,7 +3,11 @@
  */
 
 angular.module('ttmg').config(['$translateProvider', function ($translateProvider) {
+    // Set german as the preferred language
+    $translateProvider.preferredLanguage('de');
     $translateProvider.useSanitizeValueStrategy('escapeParameters');
+
+    // English translations
     $translateProvider.translations('en', {
         //General
         'APP_NAME': 'Time Table Management',
@@ -139,6 +143,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'INCONSISTENT': 'is inconsistent with object'
     });
 
+    // German translations
     $translateProvider.translations('de', {
         // === General ===
         'APP_NAME': 'Time Table Management',
@@ -273,6 +278,4 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'INVALID_NOT_NULL': 'muss null sein',
         'INCONSISTENT': 'ist inkonsistent mit Objekt'
     });
-
-    $translateProvider.preferredLanguage('de');
 }]);

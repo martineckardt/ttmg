@@ -97,8 +97,12 @@
                     </div>
                     <div class="col col-sm-2" ng-controller="changeLanguageController">
                         <div class="btn-toolbar" role="toolbar">
-                            <button ng-click="changeLanguage('de')" class="btn btn-default">{{ 'GERMAN' | translate }}</button>
-                            <button ng-click="changeLanguage('en')" class="btn btn-default">{{ 'ENGLISH' | translate }}</button>
+                            <button ng-click="changeLanguage('de')" class="btn btn-default"
+                                    ng-hide="currentLanguage == 'de'">{{ 'GERMAN' | translate }}
+                            </button>
+                            <button ng-click="changeLanguage('en')" class="btn btn-default"
+                                    ng-hide="currentLanguage == 'en'">{{ 'ENGLISH' | translate }}
+                            </button>
                         </div>
                     </div>
                 </div>
