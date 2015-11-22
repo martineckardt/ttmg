@@ -4,4 +4,4 @@
  * Contstant cointaining all the buildings
  */
 
-angular.module('ttmg').constant('BUIDLINGS', ['A', 'B', 'C', 'D', 'E', 'H']);
+angular.module('ttmg').constant('BUILDINGS', ['A', 'B', 'C', 'D', 'E', 'H']);
