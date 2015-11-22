@@ -74,7 +74,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                         freeEnd: currentEndString,
                         minSeats: course.numberOfStudents
                     });
-
+                    console.log(currentAvailableRooms);
                     var currentEvent = {
                         begin: currentBegin,
                         end: currentEnd,
