@@ -3,25 +3,35 @@
 
     <div class="col-sm-10">
         <select ng-model="model.room.building" placeholder="Choose a building" class="form-control" id="building"
+                name="building"
                 autofocus>
             <option value="" disabled selected>{{ 'SELECT_BUILDING' | translate }}</option>
             <option ng-repeat="building in model.buildings" value="{{ building }}">{{ building }}</option>
         </select>
+        <span style="color:red" ng-show="form.building.$dirty && form.building.$invalid">Error</span>
+        <span ng-show="form.building.$error.required">Username is required.</span>
     </div>
 </div>
 <div class="form-group">
     <label for="roomNumber" class="col-sm-2 control-label">{{ 'ROOM_NBR' | translate }}</label>
 
     <div class="col-sm-10">
-        <input type="number" ng-model="model.room.roomNumber" class="form-control" id="roomNumber" min="1" max="999"
-               required/>
+        <input type="number" ng-model="model.room.roomNumber"
+               class="form-control"
+               id="roomNumber" name="roomNumber"
+               min="1" max="999" required/>
+        <span style="color:red" ng-show="form.roomNumber.$dirty && form.roomNumber.$invalid">Error</span>
+        <span ng-show="form.roomNumber.$touched && form.roomNumber.$error.required">Room number is required.</span>
     </div>
 </div>
 <div class="form-group">
     <label for="capacity" class="col-sm-2 control-label">{{ 'ROOM_CAPACITY'| translate }}</label>
 
     <div class="col-sm-10">
-        <input type="number" ng-model="model.room.seats" class="form-control" id="capacity"/>
+        <input type="number" ng-model="model.room.seats"
+               class="form-control"
+               id="capacity" name="capacity"
+               min="1" max="999" required/>
     </div>
 </div>
 <div class="form-group">
