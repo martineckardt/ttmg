@@ -1,6 +1,6 @@
 /**
  * Created by Martin Eckardt on 19.11.2015.
- * Controller to create multiple events for a course
+ * Controller to create multiple events for a course. The form has 3 steps
  */
 
 angular.module('ttmg.controllers').controller('createCourseEventsController',
@@ -20,7 +20,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             };
 
             $scope.formModel = {
-                eventForDateSelection: {
+                baseDate: {
                     date: new Date(),
                     begin: {
                         hours: 09,
@@ -38,23 +38,26 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             var course = $scope.model.course;
 
 
-            var eventForDateSelection = $scope.formModel.eventForDateSelection;
+            var baseDate = $scope.formModel.baseDate;
             var eventsForRoomSelection = $scope.formModel.eventsForRoomSelection;
 
             this.proceedToRoomSelection = function () {
                 // Reset room selection
                 eventsForRoomSelection.splice(0, eventsForRoomSelection.length);
 
-                var baseDateBegin = new Date(eventForDateSelection.date);
-                baseDateBegin.setHours(eventForDateSelection.begin.hours);
-                baseDateBegin.setMinutes(eventForDateSelection.begin.minutes);
+                // Construct base dates
+                var baseDateBegin = new Date(baseDate.date);
+                baseDateBegin.setHours(baseDate.begin.hours);
+                baseDateBegin.setMinutes(baseDate.begin.minutes);
 
-                var baseDateEnd = new Date(eventForDateSelection.date);
-                baseDateEnd.setHours(eventForDateSelection.end.hours);
-                baseDateEnd.setMinutes(eventForDateSelection.end.minutes);
+                var baseDateEnd = new Date(baseDate.date);
+                baseDateEnd.setHours(baseDate.end.hours);
+                baseDateEnd.setMinutes(baseDate.end.minutes);
 
-                // create events
-                for (var repetitionIndex = 0; repetitionIndex < eventForDateSelection.repeatForWeeks; repetitionIndex++) {
+                // create events for room selection
+                for (var repetitionIndex = 0; repetitionIndex < baseDate.repeatForWeeks; repetitionIndex++) {
+
+                    // Construct dates relativ to base date
                     var currentBegin = new Date(baseDateBegin);
                     currentBegin.setDate(baseDateBegin.getDate() + (7 * repetitionIndex));
 
@@ -120,6 +123,10 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             this.goBackToStep = function (stepId) {
                 $scope.formState = stepId;
             };
+
+            this.removeEventForRoomSelection = function (index) {
+                eventsForRoomSelection.splice(index, 1);
+            }
 
         }]);
 

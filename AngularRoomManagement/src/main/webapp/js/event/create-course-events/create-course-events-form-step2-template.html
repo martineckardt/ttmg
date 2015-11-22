@@ -1,15 +1,20 @@
 <table class="table table-bordered">
     <tr>
+        <th>{{ 'DATE' | translate }}</th>
         <th>{{ 'BEGIN' | translate }}</th>
         <th>{{ 'END' | translate }}</th>
         <th>{{ 'AVAILABLE_ROOMS' | translate }}</th>
+        <th>{{ 'ACTIONS' | translate }}</th>
     </tr>
     <tr ng-repeat="event in formModel.eventsForRoomSelection">
         <td>
-            {{event.begin | date : 'dd.MM.yy HH:mm'}}
+            {{event.begin | date : 'dd.MM.yy'}}
         </td>
         <td>
-            {{event.end | date : 'dd.MM.yy HH:mm'}}
+            {{event.begin | date : 'HH:mm'}}
+        </td>
+        <td>
+            {{event.end | date : 'HH:mm'}}
         </td>
         <td>
             <span ng-if="event.availableRooms.length == 0">{{ 'NO_SUFF_LARGE_ROOM' | translate }},</span>
@@ -22,6 +27,10 @@
                 </label>
             </div>
         </td>
+        <td>
+            <span class="glyphicon glyphicon-trash"
+                  ng-click="createCourseEventsCtrl.removeEventForRoomSelection($index)"></span>
+        </td>
     </tr>
 </table>
 
@@ -29,6 +38,6 @@
     <div class="col-sm-offset-2 col-sm-10">
         <input type="submit" class="btn btn-primary" value="Save"/>
         <button ng-click="createCourseEventsCtrl.goBackToStep(1)" class="btn btn-default">{{ 'BACK' | translate }}</button>
-        <a href="#/courses" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
+        <a href="#/courses/{{model.course.id}}" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
     </div>
 </div>
