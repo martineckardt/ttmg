@@ -65,10 +65,13 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                     currentEnd.setDate(baseDateEnd.getDate() + (7 * repetitionIndex));
 
                     // Query available rooms for this event using the number of participants
-                    // TODO Free start, free end
+
+                    var currentBeginString = $.format.date(currentBegin, 'yyyy-MM-dd_HH:mm')
+                    var currentEndString = $.format.date(currentEnd, 'yyyy-MM-dd_HH:mm')
+
                     var currentAvailableRooms = RoomFactory.query({
-                        //freeStart: currentBegin.getTime(),
-                        //freeEnd: currentEnd.getTime(),
+                        freeStart: currentBeginString,
+                        freeEnd: currentEndString,
                         minSeats: course.numberOfStudents
                     });
 

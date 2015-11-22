@@ -4,6 +4,7 @@
     "angular": "1.4.x",
     "angular-route": "1.4.x",
     "angular-resource": "1.4.x",
-    "angular-translate": "2.8.x"
+    "angular-translate": "2.8.x",
+    "jquery-dateFormat": "1.0.1"
   }
 }
