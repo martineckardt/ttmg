@@ -87,4 +87,35 @@ public class Event implements Serializable, HasReadableString {
         DateRange range = new DateRange(getBegin(), getEnd());
         return range.getReadableString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Event event = (Event) o;
+
+        if (course != null ? !course.equals(event.course) : event.course != null) return false;
+        if (rooms != null ? !rooms.equals(event.rooms) : event.rooms != null) return false;
+        if (id != null ? !id.equals(event.id) : event.id != null) return false;
+        if (begin != null ? !begin.equals(event.begin) : event.begin != null) return false;
+        return !(end != null ? !end.equals(event.end) : event.end != null);
+    }
+
+    public boolean equalsId(Event o) {
+        if (o != null && id != null && o.id != null) {
+            return id.equals(o.id);
+        }
+        return equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = course != null ? course.hashCode() : 0;
+        result = 31 * result + (rooms != null ? rooms.hashCode() : 0);
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + (begin != null ? begin.hashCode() : 0);
+        result = 31 * result + (end != null ? end.hashCode() : 0);
+        return result;
+    }
 }

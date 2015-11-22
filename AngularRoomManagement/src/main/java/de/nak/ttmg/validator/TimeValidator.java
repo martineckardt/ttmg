@@ -99,14 +99,20 @@ public class TimeValidator {
 
     private void checkAdjustedTime(HasAvailability object, Date start, Date end, Event ignore) throws TimeConflictException {
         List<TimeConflict> failures = new ArrayList<>();
-        object.getEvents().stream().filter(event -> !event.equals(ignore)).forEach(e -> {
-                if (e.getBegin().after(start) && e.getBegin().before(end)) {
-                    failures.add(new TimeConflict(e, object));
-                } else if (e.getEnd().after(start) && e.getEnd().before(end)) {
-                    failures.add(new TimeConflict(e, object));
-                } else if (e.getBegin().equals(start) || e.getEnd().equals(end)) {
-                    failures.add(new TimeConflict(e, object));
-                }
+        System.out.println("Check time: object = " + object);;
+        object.getEvents().stream().filter(event -> !event.equalsId(ignore)).forEach(e -> {
+            Integer err = 0;
+            if (e.getBegin().after(start) && e.getBegin().before(end)) {
+                failures.add(new TimeConflict(e, object));
+                err++;
+            } else if (e.getEnd().after(start) && e.getEnd().before(end)) {
+                failures.add(new TimeConflict(e, object));
+                err++;
+            } else if (e.getBegin().equals(start) || e.getEnd().equals(end)) {
+                failures.add(new TimeConflict(e, object));
+                err++;
+            }
+            System.out.println("Object event = " + e + " errors: " + err);
         });
         if (!failures.isEmpty()) {
             throw new TimeConflictException(failures);
