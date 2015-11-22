@@ -31,7 +31,10 @@ public class RoomServiceImpl implements RoomService {
         DateRange freeRange = DateRangeFactory.createDateRange(start, end);
         List<Room> allRooms = roomDAO.findAll(building, roomNbr, type, minSeats);
         if (freeRange != null) {
-            for (int i = 0; i < rangeRepeat; i++) {
+            if (rangeRepeat == null) {
+                rangeRepeat = 0;
+            }
+            for (int i = 0; i <= rangeRepeat; i++) {
                 DateRange range = DateRangeFactory.createDateRangeWithOffset(freeRange, rangeRepeat);
                 allRooms.stream().filter(room -> timeValidator.hasTime(room, range));
             }
