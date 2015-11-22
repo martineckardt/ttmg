@@ -61,7 +61,7 @@ public class CourseValidator {
         if (name == null || name.isEmpty()) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
-        boolean validCharacters = name.matches("[A-Z][. 'a-zA-Z0-9öäüÖÄÜ-]*");
+        boolean validCharacters = name.matches("[A-Z0-9][. 'a-zA-Z0-9öäüÖÄÜ-]*");
         if (!validCharacters) {
             throw new InvalidParameterException("name", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
         }
