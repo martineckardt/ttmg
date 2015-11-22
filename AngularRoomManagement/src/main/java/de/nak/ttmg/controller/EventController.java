@@ -7,8 +7,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by felixb on 04/11/15.
@@ -50,10 +52,14 @@ public class EventController {
      * @return list of created courses with id of the db
      */
     @RequestMapping(value = "/courses/{courseId}/events", method = RequestMethod.POST)
-    public List<Event> createEvents(@RequestBody List<Event> events,
+    public List<Event> createEvents(@RequestBody Map<Integer,Event> events,
                              @PathVariable Long courseId,
                              @RequestParam(required = false, value = "force") Boolean force) {
-        return eventService.createEvents(events, courseId, force);
+        List<Event> eventList = new ArrayList<>();
+        for (Event event : events.values()) {
+            eventList.add(event);
+        }
+        return eventService.createEvents(eventList, courseId, force);
     }
 
     /**
