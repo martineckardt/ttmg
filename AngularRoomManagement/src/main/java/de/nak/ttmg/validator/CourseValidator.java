@@ -37,8 +37,12 @@ public class CourseValidator {
     }
 
     private void validateCapacity(Set<Room> rooms, Set<Centuria> centurias, boolean force) throws ValidationException {
-        if (rooms == null || rooms.isEmpty()) {
+        if (rooms == null) {
             throw new InvalidParameterException("rooms", InvalidParameterException.InvalidParameterType.INVALID_NULL);
+        }
+        if (rooms.isEmpty()) {
+            //Events with no rooms are always ok
+            return;
         }
         Integer capacity = rooms.stream().mapToInt(Room::getSeats).sum();
         Integer required = centurias.stream().mapToInt(Centuria::getNbrOfStudents).sum();
