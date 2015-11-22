@@ -80,7 +80,7 @@ public class Tutor implements Serializable, HasAvailability {
         this.changeTime = changeTime;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tutor", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tutor", cascade = CascadeType.ALL)
     @JsonBackReference
     public Set<Course> getCourses() {
         return courses;
@@ -132,7 +132,7 @@ public class Tutor implements Serializable, HasAvailability {
     }
 
     @Transient
-    @JsonBackReference
+    @JsonIgnore
     @Override
     public Set<Event> getEvents() {
         Set<Event> events = new HashSet<>();

@@ -81,7 +81,7 @@ public class Centuria implements Serializable, HasAvailability {
         this.year = year;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "participants")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participants")
     @JsonBackReference
     public Set<Course> getCourses() {
         return courses;
@@ -109,7 +109,7 @@ public class Centuria implements Serializable, HasAvailability {
     }
 
     @Transient
-    @JsonBackReference
+    @JsonIgnore
     @Override
     public Set<Event> getEvents() {
         Set<Event> events = new HashSet<>();
