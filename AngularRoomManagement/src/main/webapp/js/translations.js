@@ -43,7 +43,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'SELECT_PROGRAM': 'Select a study program',
         'YEAR': 'Year',
         'LETTER': 'Letter',
-        'CREATE_CENTURIA': 'Create new centuria',
+        'CREATE_NEW_CENTURIA': 'Create new centuria',
         'ADD_CENTURIA': 'Add centuria',
         'CENTURIA_CREATION_SUCCESS': 'The centuria {{value}} has been created successfully',
         'CENTURIA_CREATION_FAILURE': 'The centuria could not be created',
