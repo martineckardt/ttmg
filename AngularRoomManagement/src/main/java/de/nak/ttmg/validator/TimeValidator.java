@@ -99,7 +99,7 @@ public class TimeValidator {
 
     private void checkAdjustedTime(HasAvailability object, Date start, Date end, Event ignore) throws TimeConflictException {
         List<TimeConflict> failures = new ArrayList<>();
-        object.getEvents().stream().filter(event -> event != ignore).forEach(e -> {
+        object.getEvents().stream().filter(event -> !event.equals(ignore)).forEach(e -> {
                 if (e.getBegin().after(start) && e.getBegin().before(end)) {
                     failures.add(new TimeConflict(e, object));
                 } else if (e.getEnd().after(start) && e.getEnd().before(end)) {
