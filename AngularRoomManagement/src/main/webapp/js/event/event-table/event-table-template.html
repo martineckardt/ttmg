@@ -1,5 +1,6 @@
 <table class="table table-striped">
     <tr>
+        <th>{{ 'DATE' | translate }}</th>
         <th>{{ 'BEGIN' | translate }}</th>
         <th>{{ 'END' | translate }}</th>
         <th>{{ 'COURSE' | translate }}</th>
@@ -7,8 +8,9 @@
         <th>{{ 'ACTIONS' | translate }}</th>
     </tr>
     <tr ng-repeat="event in events | orderBy:'[begin, end]'">
-        <td>{{event.begin | date : 'd.M.yy HH:mm'}}</td>
-        <td>{{event.end | date : 'd.M.yy HH:mm'}}</td>
+        <td>{{event.begin | date : 'dd.MM.yy'}}</td>
+        <td>{{event.begin | date : 'HH:mm'}}</td>
+        <td>{{event.end | date : 'HH:mm'}}</td>
         <td><a ng-href="#/courses/{{event.course.id}}">{{event.course.name}}</a></td>
         <td>
             <room-enumeration rooms="event.rooms"></room-enumeration>
@@ -39,6 +41,10 @@
                     </div>
                 </div>
             </div>
+
+            <a ng-href="#/events/{{event.id}}/edit">
+                <span class="glyphicon glyphicon-pencil" style="color: black"></span>
+            </a>
         </td>
     </tr>
 </table>

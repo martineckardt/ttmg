@@ -46,6 +46,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
 
         //Event
         'CREATE_NEW_EVENT_FOR_COURSE': 'Create new events for the course ',
+        'EDIT_EVENT_OF_COURSE': 'Edit the event of the course',
         'CREATE_EVENT': 'Create event',
 
         // create course events
@@ -182,6 +183,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
 
         // === Events ===
         'CREATE_NEW_EVENT_FOR_COURSE': 'Erstelle neue Veranstaltungen für den Kurs ',
+        'EDIT_EVENT_OF_COURSE': 'Bearbeiten der Veranstaltung des Kurses',
         'CREATE_EVENT': 'Erstelle neue Veranstaltung',
 
         // create course events

@@ -7,6 +7,7 @@
 angular.module('ttmg.provider').factory('EventFactory', function ($resource) {
     return $resource('rest/events/:eventId', {}, {
         bulkCreate: {method: 'POST', isArray: true, url: 'rest/courses/:courseId/events'},
-        delete: {method: 'DELETE'}
+        delete: {method: 'DELETE'},
+        update: {method: 'PUT'},
     })
 });

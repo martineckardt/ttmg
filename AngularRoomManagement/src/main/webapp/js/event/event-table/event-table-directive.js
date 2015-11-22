@@ -21,7 +21,7 @@ angular.module('ttmg').directive('eventTable', function () {
                         $('#deleteEntityModal-event-' + event.id).modal('hide');
 
                         // Redirecting to successHref
-                        //$window.location.reload();
+                        $window.location.reload();
                     }, function errorCallback(error) {
                         console.log("failed to delete entity");
                         console.log(error);
