@@ -17,7 +17,7 @@
             {{event.end | date : 'HH:mm'}}
         </td>
         <td>
-            <span ng-if="event.availableRooms.length == 0">{{ 'NO_SUFF_LARGE_ROOM' | translate }},</span>
+            <span ng-if="event.availableRooms.length == 0 && event.availableRooms.$resolved == true">{{ 'NO_SUFF_LARGE_ROOM' | translate }},</span>
 
             <div class="btn-toolbar">
                 <label ng-attr-for="event{{event.id}}-room{{room.id}}" class="btn btn-default"
