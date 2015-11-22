@@ -7,6 +7,7 @@ import de.nak.ttmg.exceptions.ValidationException;
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.Event;
+import de.nak.ttmg.model.Room;
 import de.nak.ttmg.validator.CourseValidator;
 import de.nak.ttmg.validator.TimeValidator;
 
@@ -55,7 +56,6 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<Course> listCourses() {
-        //TODO
         return courseDAO.findAll();
     }
 
@@ -75,6 +75,9 @@ public class CourseServiceImpl implements CourseService {
             centuria.getCourses().remove(course);
         }
         course.getTutor().getCourses().remove(course);
+        for (Event event : course.getEvents()) {
+            event.getRooms().forEach(room -> room.getEvents().remove(event));
+        }
         courseDAO.delete(course);
     }
 }
