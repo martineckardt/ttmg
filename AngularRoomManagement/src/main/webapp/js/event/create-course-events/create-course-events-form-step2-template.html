@@ -1,3 +1,5 @@
+<room-filter filter="filter"></room-filter>
+
 <table class="table table-bordered">
     <tr>
         <th>{{ 'DATE' | translate }}</th>
@@ -21,7 +23,7 @@
 
             <div class="btn-toolbar">
                 <label ng-attr-for="event{{event.id}}-room{{room.id}}" class="btn btn-default"
-                       ng-repeat="room in event.availableRooms">
+                       ng-repeat="room in event.availableRooms | filter:filter">
                     <input type="checkbox" ng-model="room.selected" ng-attr-id="event{{event.id}}-room{{room.id}}">
                     {{room.readableString}}
                 </label>
