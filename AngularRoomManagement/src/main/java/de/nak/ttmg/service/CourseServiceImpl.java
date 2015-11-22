@@ -4,7 +4,9 @@ import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.exceptions.EntityNotFoundException;
 import de.nak.ttmg.exceptions.InvalidParameterException;
 import de.nak.ttmg.exceptions.ValidationException;
+import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.Course;
+import de.nak.ttmg.model.Event;
 import de.nak.ttmg.validator.CourseValidator;
 import de.nak.ttmg.validator.TimeValidator;
 
@@ -68,6 +70,11 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void deleteCourse(Long id) throws ValidationException {
-        courseDAO.delete(loadCourse(id));
+        Course course = loadCourse(id);
+        for (Centuria centuria : course.getParticipants()) {
+            centuria.getCourses().remove(course);
+        }
+        course.getTutor().getCourses().remove(course);
+        courseDAO.delete(course);
     }
 }
