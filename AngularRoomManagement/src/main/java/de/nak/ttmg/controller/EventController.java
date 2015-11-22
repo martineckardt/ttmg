@@ -44,6 +44,16 @@ public class EventController {
     }
 
     /**
+     * Requests an event with a given id
+     * @param id of the event
+     * @return event
+     */
+    @RequestMapping(value = "/events/{id}", method = RequestMethod.GET)
+    public void getEvent(@PathVariable Long id) {
+        eventService.loadEvent(id);
+    }
+
+    /**
      * Creates multiple events for a course
      * @param events to be created
      * @param courseId of the course the events belong to
