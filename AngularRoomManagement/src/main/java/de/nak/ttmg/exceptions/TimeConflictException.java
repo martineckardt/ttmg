@@ -12,15 +12,15 @@ import java.util.List;
  */
 @JsonSerialize(include= JsonSerialize.Inclusion.NON_NULL)
 public class TimeConflictException extends IgnorableValidationException {
-    private final List<TimeConflict> failures;
+    private final List<TimeConflict> conflicts;
 
-    public TimeConflictException(List<TimeConflict> failures) {
-        super("There are " + failures.size() + " conflicting events.");
-        this.failures = failures;
+    public TimeConflictException(List<TimeConflict> conflicts) {
+        super("There are " + conflicts.size() + " conflicting events.");
+        this.conflicts = conflicts;
     }
 
-    public List<TimeConflict> getFailures() {
-        return failures;
+    public List<TimeConflict> getConflicts() {
+        return conflicts;
     }
 
     @Override

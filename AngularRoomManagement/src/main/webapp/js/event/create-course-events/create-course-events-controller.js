@@ -39,11 +39,10 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
 
 
             var baseDate = $scope.formModel.baseDate;
-            var eventsForRoomSelection = $scope.formModel.eventsForRoomSelection;
 
             this.proceedToRoomSelection = function () {
                 // Reset room selection
-                eventsForRoomSelection.splice(0, eventsForRoomSelection.length);
+                var eventsForRoomSelection = [];
 
                 // Construct base dates
                 var baseDateBegin = new Date(baseDate.date);
@@ -82,6 +81,8 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                     };
                     eventsForRoomSelection.push(currentEvent);
                 }
+
+                $scope.formModel.eventsForRoomSelection = eventsForRoomSelection;
                 $scope.formState = 2;
             };
 
@@ -89,7 +90,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                 var events = [];
 
                 // Add the selected rooms to the events
-                eventsForRoomSelection.forEach(function (currentEvent) {
+                $scope.formModel.eventsForRoomSelection.forEach(function (currentEvent) {
                     // Filter the selected rooms
                     var selectedRoomsForCurrentEvent = currentEvent.availableRooms.filter(function selectedFilter(room) {
                         return room.selected == true;
@@ -103,8 +104,8 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                     events.push(event);
                 });
 
-                var eventsRessource = new EventFactory(events);
-                eventsRessource.$bulkCreate({courseId: course.id}, function successCallback(data) {
+                var eventsResource = new EventFactory(events);
+                eventsResource.$bulkCreate({courseId: course.id}, function successCallback(data) {
                     console.log("Events successfully created");
                     console.log(data);
 
@@ -117,7 +118,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
 
                     // Fill messageData with exception message from backend
                     $scope.entitySuccesfullyCreated = false;
-                    $scope.messageData = error.data.message;
+                    $scope.messageData = error.data;
                 });
 
                 $scope.formState = 3;

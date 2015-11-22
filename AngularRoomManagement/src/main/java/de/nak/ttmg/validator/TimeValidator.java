@@ -32,7 +32,7 @@ public class TimeValidator {
                     validateTime(object,event);
                 }
                 catch (TimeConflictException e) {
-                    failures.addAll(e.getFailures());
+                    failures.addAll(e.getConflicts());
                 }
             }
         });
@@ -53,7 +53,7 @@ public class TimeValidator {
                 validateTime(object, event.getBegin(), event.getEnd(), event);
             }
             catch (TimeConflictException e) {
-                failures.addAll(e.getFailures());
+                failures.addAll(e.getConflicts());
             }
         if (!failures.isEmpty()) {
             throw new TimeConflictException(failures);
