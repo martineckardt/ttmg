@@ -86,7 +86,7 @@ angular.module('ttmg.controllers').controller('editEventController',
                     return room.selected == true;
                 });
 
-                event.$update({eventId: event.id}, function successCallback(data) {
+                event.$update({eventId: event.id, courseId: event.course.id}, function successCallback(data) {
                     console.log("Event successfully updated");
                     console.log(data);
 
