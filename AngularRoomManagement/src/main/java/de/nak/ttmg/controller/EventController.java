@@ -1,7 +1,6 @@
 package de.nak.ttmg.controller;
 
 import de.nak.ttmg.model.Event;
-import de.nak.ttmg.service.CourseService;
 import de.nak.ttmg.service.EventService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
