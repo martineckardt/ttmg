@@ -46,8 +46,13 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
 
         //Event
         'CREATE_NEW_EVENT_FOR_COURSE': 'Create new events for the course ',
-        'REPEAT_FOR_WEEKS': 'Repeat for weeks',
         'CREATE_EVENT': 'Create event',
+
+        // create course events
+        'DATE': "Date",
+        'BEGIN': 'Begin',
+        'END': 'End',
+        'REPEAT_FOR_WEEKS': 'Repeat for weeks',
 
 
         //TODO COURSES
@@ -58,9 +63,6 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'SEMINAR': 'Seminar',
         'EXAM': 'Exam',
         'ELECTIVE_MODULE': 'Elective module',
-        //Planning
-        'BEGIN': 'Begin',
-        'END': 'End',
 
         // Course Properties
         'COURSE_TYPE': 'Course type',
@@ -178,21 +180,23 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'CENTURIA_CREATION_SUCCESS': 'Die Zenturie {{value}} wurde erfolgreich angelegt',
         'CENTURIA_CREATION_FAILURE': 'Die Zenturie konnte nicht angelegt werden',
 
-        //Event
+        // === Events ===
         'CREATE_NEW_EVENT_FOR_COURSE': 'Erstelle neue Veranstaltungen für den Kurs ',
-        'REPEAT_FOR_WEEKS': 'Anzahl der wöchentlichen Wiederholungen',
         'CREATE_EVENT': 'Erstelle neue Veranstaltung',
 
+        // create course events
+        'DATE': "Datum",
+        'BEGIN': 'Beginn',
+        'END': 'Ende',
+        'REPEAT_FOR_WEEKS': 'Wöchentlich wiederholen',
+
         //TODO COURSES
-        //Courses
+        // === Courses ===
         'COURSE': 'Kurs',
         'COURSES': 'Kurse',
         'SEMINAR': 'Seminar',
         'EXAM': 'Klausur',
         'ELECTIVE_MODULE': 'WPK',
-        //Planning
-        'BEGIN': 'Beginn',
-        'END': 'Ende',
 
         // Course Properties
         'COURSE_TYPE': 'Modulart',

@@ -5,3 +5,15 @@
 .ng-touched.ng-invalid {
     border-color: red;
 }
+
+.time-input {
+    width: 45px;
+    display: inline-block;
+}
+
+.time-input::-webkit-outer-spin-button,
+.time-input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}

@@ -1,19 +1,35 @@
-<h3>{{ 'CREATE_EVENTS' | translate }}</h3>
-
 <div class="form-group">
-    <label for="begin" class="col-sm-2 control-label">{{ 'BEGIN' | translate }}</label>
+    <label for="date" class="col-sm-2 control-label">{{ 'BEGIN' | translate }}</label>
 
     <div class="col-sm-10">
-        <input type="datetime-local" ng-model="formModel.eventForDateSelection.begin" class="form-control" id="begin"
+        <input type="date" ng-model="formModel.eventForDateSelection.date" class="form-control" id="date"
                autofocus>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="begin" class="col-sm-2 control-label">{{ 'END' | translate }}</label>
+    <label class="col-sm-2 control-label">{{ 'BEGIN' | translate }}</label>
 
     <div class="col-sm-10">
-        <input type="datetime-local" ng-model="formModel.eventForDateSelection.end" class="form-control" id="end">
+        <input type="number" ng-model="formModel.eventForDateSelection.begin.hours" id="beginHours"
+               class="form-control time-input"
+               min="0" max="23"> :
+        <input type="number" ng-model="formModel.eventForDateSelection.begin.minutes" id="beginMinutes"
+               class="form-control time-input"
+               min="0" max="59">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-2 control-label">{{ 'END' | translate }}</label>
+
+    <div class="col-sm-10">
+        <input type="number" ng-model="formModel.eventForDateSelection.end.hours" id="endHours"
+               class="form-control time-input"
+               min="0" max="23"> :
+        <input type="number" ng-model="formModel.eventForDateSelection.end.minutes" id="endMinutes"
+               class="form-control time-input"
+               min="0" max="59">
     </div>
 </div>
 
