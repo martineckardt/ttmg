@@ -104,4 +104,27 @@ public class Course implements Serializable {
     public Integer getNumberOfStudents() {
         return participants.stream().mapToInt(Centuria::getNbrOfStudents).sum();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Course course = (Course) o;
+
+        if (type != course.type) return false;
+        if (events != null ? !events.equals(course.events) : course.events != null) return false;
+        if (tutor != null ? !tutor.equals(course.tutor) : course.tutor != null) return false;
+        return !(name != null ? !name.equals(course.name) : course.name != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = type != null ? type.hashCode() : 0;
+        result = 31 * result + (events != null ? events.hashCode() : 0);
+        result = 31 * result + (tutor != null ? tutor.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
 }

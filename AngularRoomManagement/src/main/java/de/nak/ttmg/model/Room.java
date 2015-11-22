@@ -133,4 +133,27 @@ public class Room implements Serializable, HasAvailability {
     public Integer getCustomChangeTime() {
         return type.getDefaultChangeTime();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Room room = (Room) o;
+
+        if (building != null ? !building.equals(room.building) : room.building != null) return false;
+        if (roomNumber != null ? !roomNumber.equals(room.roomNumber) : room.roomNumber != null) return false;
+        if (seats != null ? !seats.equals(room.seats) : room.seats != null) return false;
+        return type == room.type;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = building != null ? building.hashCode() : 0;
+        result = 31 * result + (roomNumber != null ? roomNumber.hashCode() : 0);
+        result = 31 * result + (seats != null ? seats.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
+    }
 }
