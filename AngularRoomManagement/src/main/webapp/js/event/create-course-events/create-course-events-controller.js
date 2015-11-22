@@ -86,7 +86,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             };
 
             this.addEvents = function () {
-                var events = $scope.model.events;
+                var events = [];
 
                 // Add the selected rooms to the events
                 eventsForRoomSelection.forEach(function (currentEvent) {
