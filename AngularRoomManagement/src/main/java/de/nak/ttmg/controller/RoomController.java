@@ -21,6 +21,7 @@ import java.util.List;
 @RestController
 public class RoomController {
 
+    @Inject
     private RoomService roomService;
 
     @RequestMapping(value = "/rooms", method = RequestMethod.GET)
@@ -28,8 +29,10 @@ public class RoomController {
                                 @RequestParam(required = false, value = "roomNbr") String roomNbr,
                                 @RequestParam(required = false, value = "type") String roomTypeString,
                                 @RequestParam(required = false, value = "minSeats") Integer minSeats,
-                                @RequestParam(required = false, value = "freeStart") @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeStart,
-                                @RequestParam(required = false, value = "freeEnd") @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeEnd,
+                                @RequestParam(required = false, value = "freeStart")
+                                    @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeStart,
+                                @RequestParam(required = false, value = "freeEnd")
+                                    @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeEnd,
                                 @RequestParam(required = false, value = "rangeRepeat") Integer rangeRepeat
                                 ) {
         RoomType roomType = RoomType.typeForString(roomTypeString);
@@ -65,10 +68,5 @@ public class RoomController {
     @RequestMapping(value = "/rooms", method = RequestMethod.POST)
     public Room createRoom(@RequestBody Room room) {
         return roomService.createRoom(room);
-    }
-
-    @Inject
-    public void setRoomService(RoomService roomService) {
-        this.roomService = roomService;
     }
 }

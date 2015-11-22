@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class RestControllerExceptionHandler {
 
-    @ResponseStatus(HttpStatus.CONFLICT)  // 409
+    @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(TimeConflictException.class)
     @ResponseBody
     TimeConflictException handleTCException(TimeConflictException e) {
@@ -29,7 +29,7 @@ public class RestControllerExceptionHandler {
         return e;
     }
 
-    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE) //208??
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     @ExceptionHandler(EntityAlreadyExistsException.class)
     @ResponseBody
     EntityAlreadyExistsException handleEAEException(EntityAlreadyExistsException e) {

@@ -19,8 +19,15 @@ import java.util.List;
 @RestController
 public class CenturiaController {
 
+    @Inject
     private CenturiaService centuriaService;
 
+    /**
+     * Requests all centuria
+     * @param year the year to be filtered to (YYYY) (optional)
+     * @param studyProgram the program to be filtered to (optinal)
+     * @return List with Centurias
+     */
     @RequestMapping(value = "/centurias", method = RequestMethod.GET)
     public List<Centuria> listCenturias(@RequestParam(required = false, value = "year") Integer year,
                                     @RequestParam(required = false, value = "program") String studyProgram) {
@@ -28,16 +35,31 @@ public class CenturiaController {
         return centuriaService.listCenturias(year, program);
     }
 
+    /**
+     * Requests a specified centuria with a given id
+     * @param id of the centuria
+     * @return centuria
+     */
     @RequestMapping(value = "/centurias/{id}", method = RequestMethod.GET)
     public Centuria getCenturia(@PathVariable Long id) {
         return centuriaService.loadCenturia(id);
     }
 
+    /**
+     * Creates a new centuria
+     * @param centuria to be created
+     * @return created centuria with id from db
+     */
     @RequestMapping(value = "/centurias", method = RequestMethod.POST)
     public Centuria createCenturia(@RequestBody Centuria centuria) {
         return centuriaService.createCenturia(centuria);
     }
 
+    /**
+     * Creates a PDF time table for a given centuria
+     * @param id of the centuria to create the time table for
+     * @return PDF File
+     */
     @RequestMapping(value = "/centurias/{id}/schedule.pdf", method = RequestMethod.GET, produces = "application/pdf")
     public InputStreamResource getTimeTablePDF(@PathVariable final Long id) {
         try {
@@ -53,14 +75,15 @@ public class CenturiaController {
         }
     }
 
+    /**
+     * Deletes a centuria.
+     * Note: A centuria can only be deleted if it does not have any courses
+     * @param id of the centuria to be created
+     * @param force if true, the centuria will be deleted even if it has courses
+     */
     @RequestMapping(value = "/centurias/{id}", method = RequestMethod.DELETE)
     public void deleteCenturias(@PathVariable Long id,
                                 @RequestParam(required = false, value = "force") Boolean force) {
         centuriaService.deleteCenturia(id, force);
-    }
-
-    @Inject
-    public void setRoomService(CenturiaService centuriaService) {
-        this.centuriaService = centuriaService;
     }
 }
