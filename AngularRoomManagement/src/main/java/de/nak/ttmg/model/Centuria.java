@@ -148,4 +148,30 @@ public class Centuria implements Serializable, HasAvailability {
         }
         return defaultChangeTime;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Centuria centuria = (Centuria) o;
+
+        if (letter != null ? !letter.equals(centuria.letter) : centuria.letter != null) return false;
+        if (program != centuria.program) return false;
+        if (nbrOfStudents != null ? !nbrOfStudents.equals(centuria.nbrOfStudents) : centuria.nbrOfStudents != null)
+            return false;
+        if (year != null ? !year.equals(centuria.year) : centuria.year != null) return false;
+        return !(changeTime != null ? !changeTime.equals(centuria.changeTime) : centuria.changeTime != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = letter != null ? letter.hashCode() : 0;
+        result = 31 * result + (program != null ? program.hashCode() : 0);
+        result = 31 * result + (nbrOfStudents != null ? nbrOfStudents.hashCode() : 0);
+        result = 31 * result + (year != null ? year.hashCode() : 0);
+        result = 31 * result + (changeTime != null ? changeTime.hashCode() : 0);
+        return result;
+    }
 }
