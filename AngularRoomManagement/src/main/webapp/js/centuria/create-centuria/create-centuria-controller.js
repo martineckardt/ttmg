@@ -14,7 +14,7 @@ angular.module('ttmg.controllers').controller('createCenturiaController', ['$sco
 
     //create a new centuria
     $scope.addCenturia = function () {
-        $scope.centuria.$create(
+        $scope.model.centuria.$create(
             function successCallback(data) {
                 // Logging
                 console.log("entity sucessfully created");
