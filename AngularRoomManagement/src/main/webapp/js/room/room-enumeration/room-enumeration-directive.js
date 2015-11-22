@@ -7,8 +7,7 @@ angular.module('ttmg').directive('roomEnumeration', function () {
     return {
         restrict: 'E',
         scope: {
-            rooms: '=',
-            filter: '='
+            rooms: '='
         },
         templateUrl: 'js/room/room-enumeration/room-enumeration-template.html'
     };

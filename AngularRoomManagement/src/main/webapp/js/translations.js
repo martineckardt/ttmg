@@ -101,6 +101,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ROOM_CREATION_FAILURE': 'The room could not be created',
         'AVAILABLE_ROOMS': 'Available rooms',
         'NO_SUFF_LARGE_ROOM': 'No sufficiently large rooms are available',
+        'FILTER_ROOMS': 'Filter rooms',
 
         // Messages
         'ROOM_CREATED': 'The room was successfully created:',
@@ -239,6 +240,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden',
         'AVAILABLE_ROOMS': 'Verfügbare Räume',
         'NO_SUFF_LARGE_ROOM': 'Kein ausreichend großer Raum steht zur Verfügung',
+        'FILTER_ROOMS': 'Räume filtern',
 
         // Room type
         'AUDIMAX': 'Audimax',
