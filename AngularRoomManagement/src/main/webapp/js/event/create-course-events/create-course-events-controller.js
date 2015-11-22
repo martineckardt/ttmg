@@ -66,15 +66,15 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
 
                     // Query available rooms for this event using the number of participants
 
-                    var currentBeginString = $.format.date(currentBegin, 'yyyy-MM-dd_HH:mm')
-                    var currentEndString = $.format.date(currentEnd, 'yyyy-MM-dd_HH:mm')
+                    var currentBeginString = $.format.date(currentBegin, 'yyyy-MM-dd_HH:mm');
+                    var currentEndString = $.format.date(currentEnd, 'yyyy-MM-dd_HH:mm');
 
                     var currentAvailableRooms = RoomFactory.query({
                         freeStart: currentBeginString,
                         freeEnd: currentEndString,
                         minSeats: course.numberOfStudents
                     });
-                    console.log(currentAvailableRooms);
+
                     var currentEvent = {
                         begin: currentBegin,
                         end: currentEnd,
