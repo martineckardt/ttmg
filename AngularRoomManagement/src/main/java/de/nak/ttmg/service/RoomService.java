@@ -15,7 +15,7 @@ public interface RoomService {
 
     Room createRoom(Room room) throws ValidationException;
 
-    List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd, Integer rangeRepeat) throws ValidationException;
+    List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date freeBegin, Date freeEnd) throws ValidationException;
 
     Room loadRoom(Long id) throws ValidationException;
 

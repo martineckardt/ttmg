@@ -86,7 +86,6 @@ public class TimeValidator {
      * @return true if no conflicts exist, false otherwise
      */
     public boolean hasTime(HasAvailability object, DateRange range) {
-        System.out.println("HAS TIME");
         try {
             validateTime(object,range.getBegin(), range.getEnd(), null);
             if (object instanceof Room) {
@@ -103,20 +102,14 @@ public class TimeValidator {
 
     private void checkAdjustedTime(HasAvailability object, Date start, Date end, Event ignore) throws TimeConflictException {
         List<TimeConflict> failures = new ArrayList<>();
-        System.out.println("Check time: object = " + object);;
+        System.out.println("\nCheck time: object = " + object + " event count: " + object.getEvents().size());
         object.getEvents().stream().filter(event -> !event.equalsId(ignore)).forEach(e -> {
-            Integer err = 0;
-            if (e.getBegin().after(start) && e.getBegin().before(end)) {
+            if (start.before(e.getEnd()) && end.after(e.getBegin())) {
                 failures.add(new TimeConflict(e, object));
-                err++;
-            } else if (e.getEnd().after(start) && e.getEnd().before(end)) {
-                failures.add(new TimeConflict(e, object));
-                err++;
             } else if (e.getBegin().equals(start) || e.getEnd().equals(end)) {
                 failures.add(new TimeConflict(e, object));
-                err++;
             }
-            System.out.println("Object event = " + e + " errors: " + err);
+            System.out.println("Object event = " + e + "des. " + object.getReadableString());
         });
         if (!failures.isEmpty()) {
             throw new TimeConflictException(failures);

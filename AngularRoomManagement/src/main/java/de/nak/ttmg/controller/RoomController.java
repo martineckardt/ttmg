@@ -32,11 +32,10 @@ public class RoomController {
                                 @RequestParam(required = false, value = "freeStart")
                                     @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeStart,
                                 @RequestParam(required = false, value = "freeEnd")
-                                    @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeEnd,
-                                @RequestParam(required = false, value = "rangeRepeat") Integer rangeRepeat
+                                    @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeEnd
                                 ) {
         RoomType roomType = RoomType.typeForString(roomTypeString);
-        return roomService.listRooms(building, roomNbr, roomType, minSeats, freeStart, freeEnd, rangeRepeat);
+        return roomService.listRooms(building, roomNbr, roomType, minSeats, freeStart, freeEnd);
     }
 
     @RequestMapping(value = "/rooms/{id}", method = RequestMethod.GET)
