@@ -104,8 +104,8 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                     events.push(event);
                 });
 
-                var eventsRessource = new EventFactory(events);
-                eventsRessource.$bulkCreate({courseId: course.id}, function successCallback(data) {
+                var eventsResource = new EventFactory(events);
+                eventsResource.$bulkCreate({courseId: course.id}, function successCallback(data) {
                     console.log("Events successfully created");
                     console.log(data);
 
@@ -118,7 +118,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
 
                     // Fill messageData with exception message from backend
                     $scope.entitySuccesfullyCreated = false;
-                    $scope.messageData = error.data.message;
+                    $scope.messageData = error.data;
                 });
 
                 $scope.formState = 3;
