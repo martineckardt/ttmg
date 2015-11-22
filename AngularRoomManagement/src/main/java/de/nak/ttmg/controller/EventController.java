@@ -49,8 +49,8 @@ public class EventController {
      * @return event
      */
     @RequestMapping(value = "/events/{id}", method = RequestMethod.GET)
-    public void getEvent(@PathVariable Long id) {
-        eventService.loadEvent(id);
+    public Event getEvent(@PathVariable Long id) {
+        return eventService.loadEvent(id);
     }
 
     /**
