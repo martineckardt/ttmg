@@ -81,7 +81,7 @@ public class Centuria implements Serializable, HasAvailability {
         this.year = year;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participants")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "participants")
     @JsonBackReference
     public Set<Course> getCourses() {
         return courses;
