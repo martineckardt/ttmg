@@ -193,7 +193,7 @@ public class ObjectCreationTest {
             validator.validateTime(copy);
             assertTrue(false);
         } catch (TimeConflictException e) {
-            System.out.println("e.getFailures() = " + e.getFailures());
+            System.out.println("e.getConflicts() = " + e.getConflicts());
         }
     }
 
