@@ -6,6 +6,7 @@ import de.nak.ttmg.pdf.TimeTableCreator;
 import de.nak.ttmg.service.RoomService;
 import de.nak.ttmg.exceptions.ValidationException;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -27,8 +28,8 @@ public class RoomController {
                                 @RequestParam(required = false, value = "roomNbr") String roomNbr,
                                 @RequestParam(required = false, value = "type") String roomTypeString,
                                 @RequestParam(required = false, value = "minSeats") Integer minSeats,
-                                @RequestParam(required = false, value = "freeStart") Date freeStart,
-                                @RequestParam(required = false, value = "freeEnd") Date freeEnd,
+                                @RequestParam(required = false, value = "freeStart") @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeStart,
+                                @RequestParam(required = false, value = "freeEnd") @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeEnd,
                                 @RequestParam(required = false, value = "rangeRepeat") Integer rangeRepeat
                                 ) {
         RoomType roomType = RoomType.typeForString(roomTypeString);
