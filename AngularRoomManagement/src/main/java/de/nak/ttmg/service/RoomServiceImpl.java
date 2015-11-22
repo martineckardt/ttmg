@@ -35,9 +35,16 @@ public class RoomServiceImpl implements RoomService {
                 rangeRepeat = 0;
             }
             for (int i = 0; i <= rangeRepeat; i++) {
+                System.out.println("Check time for room");
                 DateRange range = DateRangeFactory.createDateRangeWithOffset(freeRange, rangeRepeat);
-                allRooms.stream().filter(room -> timeValidator.hasTime(room, range));
+                allRooms.stream().filter(room -> {
+                    boolean hasTIme = timeValidator.hasTime(room, range);
+                    System.out.println("has Time; room = " + room + " true/false: " + hasTIme);
+                    return hasTIme;
+                });
             }
+        } else {
+            System.out.println("Request free rooms: " + start + " end: " + end);
         }
         return allRooms;
     }

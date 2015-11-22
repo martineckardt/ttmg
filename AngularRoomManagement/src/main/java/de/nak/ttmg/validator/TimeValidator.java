@@ -1,9 +1,6 @@
 package de.nak.ttmg.validator;
 
-import de.nak.ttmg.model.Course;
-import de.nak.ttmg.model.DateRange;
-import de.nak.ttmg.model.Event;
-import de.nak.ttmg.model.HasAvailability;
+import de.nak.ttmg.model.*;
 import de.nak.ttmg.util.TimeConflict;
 import de.nak.ttmg.exceptions.TimeConflictException;
 
@@ -50,7 +47,7 @@ public class TimeValidator {
      * @param event containing the events to test
      * @throws TimeConflictException
      */
-    public void validateTime(HasAvailability object, Event event) throws TimeConflictException {
+    private void validateTime(HasAvailability object, Event event) throws TimeConflictException {
         List<TimeConflict> failures = new ArrayList<>();
             try {
                 validateTime(object, event.getBegin(), event.getEnd(), event);
@@ -71,7 +68,7 @@ public class TimeValidator {
      * @param ignore the event that can be ignored. (if the event is updated) Can be null.
      * @throws TimeConflictException
      */
-    public void validateTime(HasAvailability object, Date start, Date end, Event ignore) throws TimeConflictException {
+    private void validateTime(HasAvailability object, Date start, Date end, Event ignore) throws TimeConflictException {
         Integer changeTime = object.getCustomChangeTime();
         if (ignore != null && ignore.getCourse().getType().getMinChangeTime() > changeTime) {
             changeTime = ignore.getCourse().getType().getMinChangeTime();
@@ -89,10 +86,17 @@ public class TimeValidator {
      * @return true if no conflicts exist, false otherwise
      */
     public boolean hasTime(HasAvailability object, DateRange range) {
+        System.out.println("HAS TIME");
         try {
             validateTime(object,range.getBegin(), range.getEnd(), null);
+            if (object instanceof Room) {
+                System.out.println("Room has time!: " + ((Room) object).getReadableString());
+            }
             return true;
         } catch (TimeConflictException e) {
+            if (object instanceof Room) {
+                System.out.println("Room has NOOO time!: " + ((Room) object).getReadableString());
+            }
             return false;
         }
     }
