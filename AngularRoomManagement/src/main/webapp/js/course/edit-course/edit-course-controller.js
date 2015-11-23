@@ -2,7 +2,9 @@
  * Created by Martin Eckardt on 16.11.2015.
  * Controller to edit a course
  */
-angular.module('ttmg.controllers').controller('editCourseController', ['$scope', '$q', '$routeParams', 'CourseFactory', 'CenturiaFactory', 'TutorFactory', function ($scope, $q, $routeParams, CourseFactory, CenturiaFactory, TutorFactory) {
+angular.module('ttmg.controllers').controller('editCourseController',
+    ['$scope', '$q', '$routeParams', 'CourseFactory', 'CenturiaFactory', 'TutorFactory', 'COURSE_TYPES',
+        function ($scope, $q, $routeParams, CourseFactory, CenturiaFactory, TutorFactory, COURSE_TYPES) {
 
     // Route parameters
     var courseId = $routeParams.id;
@@ -11,7 +13,8 @@ angular.module('ttmg.controllers').controller('editCourseController', ['$scope',
 
     // Set up model
     $scope.model = {
-        tutors: TutorFactory.query()
+        tutors: TutorFactory.query(),
+        courseTypes: COURSE_TYPES
     };
 
     // Wait for the both resources to load
