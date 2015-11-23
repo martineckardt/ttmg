@@ -102,6 +102,11 @@ public class Course implements Serializable {
                 '}';
     }
 
+    public void addEvent(Event event) {
+        event.setCourse(this);
+        getEvents().add(event);
+    }
+
     @Transient
     public Integer getNumberOfStudents() {
         return participants.stream().mapToInt(Centuria::getNbrOfStudents).sum();

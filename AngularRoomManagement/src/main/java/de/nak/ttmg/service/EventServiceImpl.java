@@ -48,7 +48,7 @@ public class EventServiceImpl implements EventService {
         //Load course of the event
         Course course = courseDAO.load(courseId);
         //Set / overwrite the course of the event
-        events.forEach(event1 -> event1.setCourse(course));
+        events.forEach(event1 -> course.addEvent(event1));
 
         //Validate course with the new event
         courseValidator.validateCourse(course, force);
@@ -70,10 +70,6 @@ public class EventServiceImpl implements EventService {
 
             //Load course to validate event
             Course course = oldEvent.getCourse();
-            //Verify if the event still belongs to the same course
-            if (!courseId.equals(course.getId())) {
-                throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
-            }
             if (!force) {
                 timeValidator.validateTime(course);
             }
