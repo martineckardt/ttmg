@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
- * Created by felixb on 28/10/15.
+ * Created by sebastian on 28/10/15.
  * The Data Access Object for Tutors
  */
 public class TutorDAO {

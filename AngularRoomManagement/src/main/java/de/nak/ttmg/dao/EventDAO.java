@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by felixb on 04/11/15.
+ * Created by sebastian on 04/11/15.
  * The Data Access Object for Events
  */
 public class EventDAO {

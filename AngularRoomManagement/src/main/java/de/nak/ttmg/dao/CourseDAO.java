@@ -1,18 +1,15 @@
 package de.nak.ttmg.dao;
 
 import de.nak.ttmg.model.Course;
-import de.nak.ttmg.exceptions.EntityAlreadyExistsException;
 import de.nak.ttmg.exceptions.EntityNotFoundException;
-import de.nak.ttmg.exceptions.InvalidParameterException;
 import de.nak.ttmg.exceptions.ValidationException;
-import org.hibernate.exception.ConstraintViolationException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
- * Created by felixb on 28/10/15.
+ * Created by sebastian on 28/10/15.
  * The Data Access Object for Courses
  */
 public class CourseDAO {
