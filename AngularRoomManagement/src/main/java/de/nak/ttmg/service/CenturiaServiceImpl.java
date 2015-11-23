@@ -18,14 +18,20 @@ public class CenturiaServiceImpl implements CenturiaService {
 
     @Inject
     private CenturiaDAO centuriaDAO;
+
     private final CenturiaValidator centuriaValidator = new CenturiaValidator();
 
     @Override
     public Centuria createCenturia(Centuria centuria) throws ValidationException {
+        if (centuria.getLetter() != null) {
+            //We always want a small letter
+            centuria.setLetter(Character.toLowerCase(centuria.getLetter()));
+        }
+        //Validate if the centuria is ok
         centuriaValidator.validateCenturia(centuria);
-        centuria.setLetter(Character.toLowerCase(centuria.getLetter()));
         if (centuria.getId() == null) {
             try {
+                //Create the centuria in the backend
                 return centuriaDAO.create(centuria);
             } catch (Exception e) {
                 if (e.getCause() instanceof ConstraintViolationException) {
@@ -41,8 +47,10 @@ public class CenturiaServiceImpl implements CenturiaService {
     @Override
     public List<Centuria> listCenturias(Integer year, StudyProgram program) {
         if (year != null) {
+            //Validate the year, if set
             centuriaValidator.validateYear(year);
         }
+        //Find all centurias
         return centuriaDAO.findAll(year, program);
     }
 
@@ -56,9 +64,11 @@ public class CenturiaServiceImpl implements CenturiaService {
         if (centuria == null) {
             throw new EntityNotFoundException("centuria", id);
         }
+        //Check, if the centuria has some courses
         if (!force && centuria.getCourses().size() > 0) {
             throw new IsBusyException(centuria, centuria.getCourses().size());
         }
+        //Delete centuria from DB
         centuriaDAO.delete(centuria);
     }
 }
