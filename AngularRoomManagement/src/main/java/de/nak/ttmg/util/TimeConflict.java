@@ -11,6 +11,11 @@ public class TimeConflict {
     private final Event event;
     private final HasAvailability causer;
 
+    /**
+     * Creates a TimeConflict object containing a conflicting event and a causer with a conflicting event
+     * @param event
+     * @param causer
+     */
     public TimeConflict(Event event, HasAvailability causer) {
         this.event = event;
         this.causer = causer;

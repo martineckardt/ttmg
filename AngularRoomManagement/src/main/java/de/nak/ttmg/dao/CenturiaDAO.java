@@ -24,6 +24,7 @@ public class CenturiaDAO {
     public List<Centuria> findAll(Integer year, StudyProgram program) {
         Session session = entityManager.unwrap(Session.class);
         Criteria criteria = session.createCriteria(Centuria.class);
+        //Filter results to match all criteria
         if (year != null) {
             criteria.add(Restrictions.eq("year", year));
         }

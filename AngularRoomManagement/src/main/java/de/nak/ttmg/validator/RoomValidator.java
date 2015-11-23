@@ -24,6 +24,7 @@ public class RoomValidator {
         if (building == null) {
             throw new InvalidParameterException("building", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
+        //The Building should contain letters only!
         if (!Character.isLetter(building)) {
             throw new InvalidParameterException("building", InvalidParameterException.InvalidParameterType.INVALID_FORMAT);
         }
@@ -33,6 +34,7 @@ public class RoomValidator {
         if (roomNbr == null) {
             throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
+        //Room number should be between 1 and 999
         if (roomNbr < 1 || roomNbr > 999) {
             throw new InvalidParameterException("roomNbr", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }

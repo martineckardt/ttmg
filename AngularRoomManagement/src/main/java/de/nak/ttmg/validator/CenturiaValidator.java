@@ -33,6 +33,7 @@ public class CenturiaValidator {
         if (year == null) {
             throw new InvalidParameterException("year", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
+        //the year should be between 2000 and 2099
         if (year < 2000 || year > 2099) {
             throw new InvalidParameterException("year", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
@@ -55,6 +56,7 @@ public class CenturiaValidator {
         if (students == null) {
             throw new InvalidParameterException("students", InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
+        //Centurias should not have more than 9999 students
         if (students < 0 || students > 9999) {
             throw new InvalidParameterException("students", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
         }
@@ -62,6 +64,7 @@ public class CenturiaValidator {
 
     private void validateChangeTime(Integer changeTime) {
         if (changeTime != null) {
+            //Change Time should not exceed 5 hours
             if (changeTime < 0 || changeTime > 300) {
                 throw new InvalidParameterException("changeTime", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
             }
