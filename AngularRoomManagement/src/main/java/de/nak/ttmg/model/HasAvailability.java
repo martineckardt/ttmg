@@ -7,7 +7,7 @@ import java.util.Set;
  * This interface can be implemented by all objects that have courses that require checking for conflict.
  */
 public interface HasAvailability extends HasReadableString {
-    Integer getCustomChangeTime();
+    int getCustomChangeTime();
 
     Set<Event> getEvents();
 
