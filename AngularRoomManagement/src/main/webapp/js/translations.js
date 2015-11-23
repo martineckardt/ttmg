@@ -62,6 +62,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'BEGIN': 'Begin',
         'END': 'End',
         'REPEAT_FOR_WEEKS': 'Repeat for weeks',
+        'FORCE_CREATE': 'Create anyway',
 
 
         //TODO COURSES
@@ -208,6 +209,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'BEGIN': 'Beginn',
         'END': 'Ende',
         'REPEAT_FOR_WEEKS': 'Wöchentlich wiederholen',
+        'FORCE_CREATE': 'Trotzdem erstellen',
 
         //TODO COURSES
         // === Courses ===

@@ -12,7 +12,6 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             console.log('createCourseEventsController for Course ' + courseId + ' started');
 
             $scope.formState = 1;
-            var eventsResource;
 
             // Set up model
             $scope.model = {
@@ -36,15 +35,13 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                 eventsForRoomSelection: []
             };
 
-            var course = $scope.model.course;
-
-            var baseDate = $scope.formModel.baseDate;
-
             this.proceedToRoomSelection = function () {
                 // Reset room selection
                 var eventsForRoomSelection = [];
 
                 // Construct base dates
+                var baseDate = $scope.formModel.baseDate;
+
                 var baseDateBegin = new Date(baseDate.date);
                 baseDateBegin.setHours(baseDate.begin.hours);
                 baseDateBegin.setMinutes(baseDate.begin.minutes);
@@ -71,7 +68,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                     var currentAvailableRooms = RoomFactory.query({
                         freeStart: currentBeginString,
                         freeEnd: currentEndString,
-                        minSeats: course.numberOfStudents
+                        minSeats: $scope.model.course.numberOfStudents
                     });
 
                     var currentEvent = {
@@ -86,9 +83,32 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                 $scope.formState = 2;
             };
 
+            function createEventsFromFormModel() {
+                var events = [];
+
+                // Add the selected rooms to the events
+                $scope.formModel.eventsForRoomSelection.forEach(function (currentEvent) {
+                    // Filter the selected rooms
+                    var selectedRoomsForCurrentEvent = currentEvent.availableRooms.filter(function selectedFilter(room) {
+                        return room.selected == true;
+                    });
+
+                    var event = {
+                        begin: currentEvent.begin,
+                        end: currentEvent.end,
+                        rooms: selectedRoomsForCurrentEvent
+                    };
+
+                    events.push(event);
+                });
+
+                window.events = events;
+                return events;
+            }
+
             this.tryAddEvents = function () {
-                eventsResource = new EventResourceFactory(createEventsFromFormModel());
-                eventsResource.$bulkCreate({courseId: course.id}, function successCallback(data) {
+                var eventsResource = new EventResourceFactory(createEventsFromFormModel());
+                eventsResource.$bulkCreate({courseId: $scope.model.course.id}, function successCallback(data) {
                     console.log("Events successfully created");
                     console.log(data);
 
@@ -102,14 +122,17 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                     console.log("Failed to create course events");
                     console.log(error);
 
-                    // Check if backend indicates conflicts
-                    if (error.data.ignorable) {
+                    // Check if backend indicates conflicts or
+                    if (error.data.localizableMessage = 'TIME_CONFLICTS') {
+
                         console.log('conflicts detected');
 
                         $scope.conflicts = error.data.conflicts;
 
                         // Go to conflicts page
                         console.log("go to conflicts view");
+                        $scope.formState = 3;
+                    } else if (error.data.localizableMessage = 'INSUFFICIENT_SEATS') {
                         $scope.formState = 3;
                     } else {
                         console.log('error detected');
@@ -124,8 +147,12 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             };
 
             this.forceAddEvents = function () {
+                var eventsResource = new EventResourceFactory(createEventsFromFormModel());
                 console.log('attempting to create events with force');
-                eventsResource.$bulkCreate({courseId: course.id, force: true}, function successCallback(data) {
+                eventsResource.$bulkCreate({
+                    courseId: $scope.model.course.id,
+                    force: true
+                }, function successCallback(data) {
                     console.log("Events successfully created with force");
                     console.log(data);
 
@@ -153,27 +180,6 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             };
 
             // Private functions
-
-            function createEventsFromFormModel() {
-                var events = [];
-
-                // Add the selected rooms to the events
-                $scope.formModel.eventsForRoomSelection.forEach(function (currentEvent) {
-                    // Filter the selected rooms
-                    var selectedRoomsForCurrentEvent = currentEvent.availableRooms.filter(function selectedFilter(room) {
-                        return room.selected == true;
-                    });
-
-                    var event = {
-                        begin: currentEvent.begin,
-                        end: currentEvent.end,
-                        rooms: selectedRoomsForCurrentEvent
-                    };
-                    events.push(event);
-                });
-
-                return events;
-            };
 
         }]);
 
