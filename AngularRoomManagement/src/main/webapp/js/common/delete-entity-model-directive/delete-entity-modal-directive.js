@@ -1,8 +1,10 @@
 /**
  * Created by Martin Eckardt on 18.11.2015.
- * Directive that shows a delete-button for an entity. This button opens a modal that asks the user to confirm his wish to delete the entity or cancel the action.
+ * Directive that shows a delete-button for an entity. This button opens a modal that asks the user to confirm his wish
+ * to delete the entity or cancel the action.
  *
- * If the user confirms the controller tries to delete the entity. On success it switches to the specifies success view. If the deletion fails the message of the backend exception is displayed.
+ * If the user confirms the controller tries to delete the entity. On success it switches to the specifies success view.
+ * If the deletion fails the message of the backend exception is displayed.
  *
  * The cancel button closes the modal.
  */

@@ -7,14 +7,20 @@
         <a href="#/courses/create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> {{ 'ADD_COURSE' | translate }}</a>
     </div>
 
+    <course-filter filter="filter"></course-filter>
+
     <table class="table table-striped">
         <tr>
             <th>{{ 'COURSE_NAME' | translate }}</th>
+            <th>{{ 'TUTOR' | translate }}</th>
             <th>{{ 'COURSE_TYPE' | translate }}</th>
             <th>{{ 'TIMETABLE' | translate }}</th>
         </tr>
-        <tr ng-repeat="course in model.courses | orderBy:'[type, name]'">
+        <tr ng-repeat="course in model.courses | filter:filter | orderBy:'[type, name]'">
             <td>{{course.name}}</td>
+            <td>
+                <a ng-href="#/tutors/{{course.tutor.id}}">{{course.tutor.readableString}}</a>
+            </td>
             <td>{{course.type | translate }}</td>
             <td ng-if="hideButtons != true">
                 <a class="btn btn-default btn-xs" ng-href="#/courses/{{course.id}}">

@@ -141,7 +141,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ENTITY_NOT_FOUND': 'Entity of type {{type}} with id {{id}} was not found.',
         'INSUFFICIENT_SEATS': 'There are {{seats}} seats missing.',
         'OBJECT_HAS_EVENTS': 'Cannot delete {{type}} there are still {{numberEvents}} referenced events!',
-        'TIME_CONFLICTS': 'There are {{number}} conflicting events.',
+        'TIME_CONFLICTS': 'There are {{nbrOfConflicts}} conflicting events.',
         'INVALID_PARAMETER': 'The parameter {{name}} {{description}}',
 
         //Invalid Parameter Exception
@@ -201,7 +201,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'CREATE_EVENT': 'Erstelle neue Veranstaltung',
 
         'EVENT': 'Veranstaltung',
-        'CAUSER': 'Causer',
+        'CAUSER': 'Verursacher',
 
         // create course events
         'DATE': "Datum",
@@ -286,7 +286,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ENTITY_NOT_FOUND': 'Entität des Typs {{type}} mit id {{id}} wurde nicht gefunden.',
         'INSUFFICIENT_SEATS': 'Es fehlen {{seats}} Sitzplätze.',
         'OBJECT_HAS_EVENTS': 'Kann {{type}} ´nicht löschen, es gibt noch {{numberEvents}} referenzierte Kurse!',
-        'TIME_CONFLICTS': 'Es gibt {{number}} in Konflikt stehende Veranstaltungen.',
+        'TIME_CONFLICTS': 'Es gibt {{nbrOfConflicts}} in Konflikt stehende Veranstaltungen.',
         'INVALID_PARAMETER': 'Der Parameter {{name}} {{description}} ist nicht valide.',
 
         //Invalid Parameter Exception

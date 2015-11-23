@@ -1,6 +1,6 @@
 /**
  * Created by Martin Eckardt on 16.11.2015.
- * Controller to create a course
+ * Controller to create a course.
  */
 angular.module('ttmg.controllers').controller('createCourseController',
     ['$scope', 'CourseResourceFactory', 'CenturiaResourceFactory', 'TutorResourceFactory', 'COURSE_TYPES',

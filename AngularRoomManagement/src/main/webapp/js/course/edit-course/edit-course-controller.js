@@ -3,8 +3,8 @@
  * Controller to edit a course
  */
 angular.module('ttmg.controllers').controller('editCourseController',
-    ['$scope', '$q', '$routeParams', 'CourseResourceFactory', 'CenturiaResourceFactory', 'TutorResourceFactory', 'COURSE_TYPES',
-        function ($scope, $q, $routeParams, CourseResourceFactory, CenturiaResourceFactory, TutorResourceFactory, COURSE_TYPES) {
+    ['$scope', '$q', '$location', '$routeParams', 'CourseResourceFactory', 'CenturiaResourceFactory', 'TutorResourceFactory', 'COURSE_TYPES',
+        function ($scope, $q, $location, $routeParams, CourseResourceFactory, CenturiaResourceFactory, TutorResourceFactory, COURSE_TYPES) {
 
     // Route parameters
     var courseId = $routeParams.id;
@@ -64,7 +64,7 @@ angular.module('ttmg.controllers').controller('editCourseController',
             console.log(data);
 
             // Fill messageData with newly created entity
-            $scope.entitySuccesfullyCreated = true;
+            $scope.entitySuccesfullyUpdated = true;
             $scope.messageData = data;
         }, function errorCallback(error) {
             console.log("Failed to update course");
