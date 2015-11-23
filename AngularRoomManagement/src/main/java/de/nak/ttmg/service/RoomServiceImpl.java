@@ -53,11 +53,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room loadRoom(Long id) {
-        Room room = roomDAO.load(id);
-        if (room == null) {
-            throw new EntityNotFoundException("room", id);
-        }
-        return room;
+        return roomDAO.load(id);
     }
 
     @Override

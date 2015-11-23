@@ -83,11 +83,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event loadEvent(Long id) throws ValidationException {
-        Event event= eventDAO.load(id);
-        if (event == null) {
-            throw new EntityNotFoundException("event", id);
-        }
-        return event;
+        return eventDAO.load(id);
     }
 
     @Override

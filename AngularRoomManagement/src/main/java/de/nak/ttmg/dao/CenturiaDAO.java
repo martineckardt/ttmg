@@ -1,5 +1,6 @@
 package de.nak.ttmg.dao;
 
+import de.nak.ttmg.exceptions.EntityNotFoundException;
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.StudyProgram;
 import de.nak.ttmg.exceptions.ValidationException;
@@ -35,7 +36,11 @@ public class CenturiaDAO {
     }
 
     public Centuria load(Long id) {
-        return entityManager.find(Centuria.class, id);
+        Centuria centuria = entityManager.find(Centuria.class, id);
+        if (centuria != null) {
+            return centuria;
+        }
+        throw new EntityNotFoundException("centuria", id);
     }
 
     public Centuria create(Centuria centuria) throws ValidationException{

@@ -65,11 +65,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course loadCourse(Long id) throws ValidationException {
-        Course course = courseDAO.load(id);
-        if (course == null) {
-            throw new EntityNotFoundException("course", id);
-        }
-        return course;
+        return courseDAO.load(id);
     }
 
     @Override

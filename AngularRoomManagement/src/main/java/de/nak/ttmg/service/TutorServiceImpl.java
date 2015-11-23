@@ -37,11 +37,7 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public Tutor loadTutor(Long id) throws ValidationException {
-        Tutor tutor = tutorDAO.load(id);
-        if (tutor == null) {
-            throw new EntityNotFoundException("tutor", id);
-        }
-       return tutor;
+       return tutorDAO.load(id);
     }
 
     @Override

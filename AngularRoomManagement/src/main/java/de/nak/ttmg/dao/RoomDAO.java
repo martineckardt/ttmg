@@ -1,5 +1,6 @@
 package de.nak.ttmg.dao;
 
+import de.nak.ttmg.exceptions.EntityNotFoundException;
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.exceptions.ValidationException;
@@ -44,7 +45,11 @@ public class RoomDAO {
     }
 
     public Room load(Long id) {
-        return entityManager.find(Room.class, id);
+        Room room = entityManager.find(Room.class, id);
+        if (room == null) {
+            throw new EntityNotFoundException("room", id);
+        }
+        return room;
     }
 
     public Room create(Room room) throws ValidationException {

@@ -1,5 +1,6 @@
 package de.nak.ttmg.dao;
 
+import de.nak.ttmg.exceptions.EntityNotFoundException;
 import de.nak.ttmg.model.Tutor;
 import de.nak.ttmg.exceptions.EntityAlreadyExistsException;
 import de.nak.ttmg.exceptions.InvalidParameterException;
@@ -24,7 +25,11 @@ public class TutorDAO {
     }
 
     public Tutor load(Long id) {
-        return entityManager.find(Tutor.class, id);
+        Tutor tutor = entityManager.find(Tutor.class, id);
+        if (tutor == null) {
+            throw new EntityNotFoundException("tutor", id);
+        }
+        return tutor;
     }
 
     public Tutor create(Tutor tutor) throws ValidationException {

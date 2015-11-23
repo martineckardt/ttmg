@@ -48,11 +48,7 @@ public class CenturiaServiceImpl implements CenturiaService {
 
     @Override
     public Centuria loadCenturia(Long id) {
-        Centuria centuria = centuriaDAO.load(id);
-        if (centuria == null) {
-            throw new EntityNotFoundException("centuria", id);
-        }
-        return centuria;
+        return centuriaDAO.load(id);
     }
     @Override
     public void deleteCenturia(Long id, Boolean force) throws ValidationException {
