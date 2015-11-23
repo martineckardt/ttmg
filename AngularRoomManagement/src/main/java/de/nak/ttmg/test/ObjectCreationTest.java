@@ -162,38 +162,6 @@ public class ObjectCreationTest {
         } catch (TimeConflictException e) {
             assertTrue(false);
         }
-
-        Course copy = new Course();
-        List<Event> events = new ArrayList<>(2);
-        Event e1 = new Event();
-        e1.setBegin(futureStart);
-        e1.setEnd(futureEnd);
-        e1.setCourse(courseIAA);
-        Event e2 = new Event();
-        e2.setBegin(futureStart);
-        e2.setEnd(futureEnd);
-        e2.setCourse(courseIAA);
-
-        events.add(e1);
-        events.add(e2);
-        copy.setEvents(events);
-        copy.setType(CourseType.COURSE);
-        copy.setTutor(tutor);
-        Set<Room> rooms = new HashSet<>(2);
-        rooms.add(roomA101);
-        rooms.add(roomA102);
-        e1.setRooms(rooms);
-        e2.setRooms(rooms);
-        Set<Centuria> participants = new HashSet<>(1);
-        participants.add(centuria);
-        copy.setParticipants(participants);
-        copy.setName("Copy");
-        try {
-            validator.validateTime(copy);
-            assertTrue(false);
-        } catch (TimeConflictException e) {
-            System.out.println("e.getConflicts() = " + e.getConflicts());
-        }
     }
 
     @Test
