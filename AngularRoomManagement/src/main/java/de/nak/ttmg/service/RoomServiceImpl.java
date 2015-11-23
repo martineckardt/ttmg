@@ -45,6 +45,8 @@ public class RoomServiceImpl implements RoomService {
                     freeRooms.add(room);
                 }
             }
+        } else {
+            freeRooms = allRooms;
         }
         return freeRooms;
     }
