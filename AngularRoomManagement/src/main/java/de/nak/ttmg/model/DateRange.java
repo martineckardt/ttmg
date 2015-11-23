@@ -31,20 +31,6 @@ public class DateRange implements HasReadableString{
         this.end = end;
     }
 
-    /**
-     * Creates a date range from a date range with an offset of X weeks
-     * @param range that should be moved by X weeks, must not be null
-     * @param weekOffset number of weeks the the range should be moved
-     */
-    public DateRange(DateRange range, Integer weekOffset) throws InvalidParameterException{
-        rangeValidator.validateRepeatCount(weekOffset);
-        if (weekOffset == null) {
-            weekOffset = 0;
-        }
-        this.begin = new Date(range.getBegin().getTime() + weekOffset*7*24*60*60);
-        this.end = new Date(range.getEnd().getTime() + weekOffset*7*24*60*60);
-    }
-
     public Date getBegin() {
         return begin;
     }
@@ -60,6 +46,7 @@ public class DateRange implements HasReadableString{
         String start = dt1.format(getBegin());
         String end;
         if (isSameDay()) {
+            //If the end date is the same, only show the time
             SimpleDateFormat dt2 = new SimpleDateFormat("HH.mm");
             end = dt2.format(getEnd());
         } else {
