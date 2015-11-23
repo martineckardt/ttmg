@@ -1,0 +1,17 @@
+<div class="form-inline filter-toolbar">
+    <div class="form-group filter-group">
+        <select ng-model="filter.tutor.id" placeholder="Choose a building" class="form-control" id="building"
+                name="building">
+            <option value="">{{ 'TUTOR' | translate }}</option>
+            <option ng-repeat="tutor in model.tutors" value="{{ tutor.id }}">{{ tutor.readableString }}</option>
+        </select>
+    </div>
+
+    <div class="form-group filter-group">
+        <select ng-model="filter.type" placeholder="Choose a room type" class="form-control" id="roomType">
+            <option value="">{{ 'COURSE_TYPE' | translate }}</option>
+            <option ng-repeat="courseType in model.courseTypes" value="{{courseType}}">{{ courseType | translate }}
+            </option>
+        </select>
+    </div>
+</div>
