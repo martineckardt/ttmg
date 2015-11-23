@@ -48,13 +48,16 @@ public class EventServiceImpl implements EventService {
         //Load course of the event
         Course course = courseDAO.load(courseId);
         //Set / overwrite the course of the event
-        events.forEach(event1 -> course.addEvent(event1));
+        events.forEach(event1 -> {
+            course.addEvent(event1);
+            //Validate, if the new event causes any
+            if (!force) {
+                timeValidator.validateEvent(event1);
+            }
+        });
 
         //Validate course with the new event
         courseValidator.validateCourse(course, force);
-        if (!force) {
-            timeValidator.validateTime(course);
-        }
         //Create the events in the backend
         return eventDAO.createEvents(events);
     }
@@ -68,10 +71,9 @@ public class EventServiceImpl implements EventService {
             oldEvent.setBegin(event.getBegin());
             oldEvent.setEnd(event.getEnd());
 
-            //Load course to validate event
-            Course course = oldEvent.getCourse();
+            //Check if the new event causes any conflicts
             if (!force) {
-                timeValidator.validateTime(course);
+                timeValidator.validateEvent(oldEvent);
             }
             //Save updates to DB
             return eventDAO.update(oldEvent);
