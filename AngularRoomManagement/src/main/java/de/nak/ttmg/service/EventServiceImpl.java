@@ -37,20 +37,25 @@ public class EventServiceImpl implements EventService {
         } else {
             end = rangeEnd;
         }
+        //Create date range for the filter
         DateRange range = DateRangeFactory.createDateRange(rangeStart, end);
+        //Search for events
         return eventDAO.listEvents(centuriaId, tutorId, roomId, courseId, range);
     }
 
     @Override
     public List<Event> createEvents(List<Event> events, Long courseId, boolean force) throws ValidationException {
+        //Load course of the event
         Course course = courseDAO.load(courseId);
-        for (Event event : events) {
-            event.setCourse(course);
-            courseValidator.validateCourse(course, force);
-            if (!force) {
-                timeValidator.validateTime(course);
-            }
+        //Set / overwrite the course of the event
+        events.forEach(event1 -> event1.setCourse(course));
+
+        //Validate course with the new event
+        courseValidator.validateCourse(course, force);
+        if (!force) {
+            timeValidator.validateTime(course);
         }
+        //Create the events in the backend
         return eventDAO.createEvents(events);
     }
 
@@ -87,10 +92,11 @@ public class EventServiceImpl implements EventService {
     @Override
     public void deleteEvent(Long id) throws ValidationException {
         Event event = loadEvent(id);
-        for (Room room : event.getRooms()) {
-            room.getEvents().remove(event);
-        }
+        //Remove the event from all rooms
+        event.getRooms().forEach(room1 -> room1.getEvents().remove(event));
+        //Remove the event from the course
         event.getCourse().getEvents().remove(event);
+        //Delete the event in the DB
         eventDAO.delete(event);
     }
 }
