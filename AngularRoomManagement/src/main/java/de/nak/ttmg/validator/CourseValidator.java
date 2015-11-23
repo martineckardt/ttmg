@@ -48,7 +48,7 @@ public class CourseValidator {
         Integer capacity = rooms.stream().mapToInt(Room::getSeats).sum();
         Integer required = centurias.stream().mapToInt(Centuria::getNbrOfStudents).sum();
         if (required > capacity && !force) {
-            throw new InsufficientSeatException(capacity-required);
+            throw new InsufficientSeatException(required - capacity);
         }
     }
 

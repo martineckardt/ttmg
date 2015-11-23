@@ -64,18 +64,23 @@ public class EventServiceImpl implements EventService {
             force = false;
         }
         Event oldEvent = loadEvent(id);
-        if (oldEvent == null) {
-            throw new InvalidParameterException("id of event", InvalidParameterException.InvalidParameterType.INCONSISTENT);
-        }
         if (event != null && event.getId() != null && event.getId().equals(id) && oldEvent.getId().equals(id)) {
+            //Update the properties that may have changed
+            oldEvent.setRooms(event.getRooms());
+            oldEvent.setBegin(event.getBegin());
+            oldEvent.setEnd(event.getEnd());
+
+            //Load course to validate event
             Course course = oldEvent.getCourse();
+            //Verify if the event still belongs to the same course
             if (!courseId.equals(course.getId())) {
                 throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
             }
             if (!force) {
                 timeValidator.validateTime(course);
             }
-            return eventDAO.update(event);
+            //Save updates to DB
+            return eventDAO.update(oldEvent);
         } else {
             throw new InvalidParameterException("eventId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
         }
