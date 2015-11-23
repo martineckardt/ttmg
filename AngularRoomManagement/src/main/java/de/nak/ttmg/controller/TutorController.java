@@ -77,7 +77,7 @@ public class TutorController {
      */
     @RequestMapping(value = "/tutors/{id}", method = RequestMethod.DELETE)
     public void deleteCourse(@PathVariable Long id, @RequestParam(required = false, value = "force") Boolean force) {
-        tutorService.deleteTutor(id, force);
+        tutorService.deleteTutor(id, force == null ? false : force);
     }
 }
 

@@ -15,9 +15,9 @@ public interface EventService {
     List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Long courseId, Date rangeStart,
                            Date rangeEnd) throws ValidationException;
 
-    List<Event> createEvents(List<Event> events, Long courseId, Boolean force) throws ValidationException;
+    List<Event> createEvents(List<Event> events, Long courseId, boolean force) throws ValidationException;
 
-    Event updateEvent(Long id, Long courseId, Event event, Boolean force) throws ValidationException;
+    Event updateEvent(Long id, Long courseId, Event event, boolean force) throws ValidationException;
 
     Event loadEvent(Long id) throws ValidationException;
 

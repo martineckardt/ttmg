@@ -65,7 +65,7 @@ public class EventController {
                              @PathVariable Long courseId,
                              @RequestParam(required = false, value = "force") Boolean force) {
         List<Event> eventList = events.values().stream().collect(Collectors.toList());
-        return eventService.createEvents(eventList, courseId, force);
+        return eventService.createEvents(eventList, courseId, force == null ? false : force);
     }
 
     /**
@@ -82,7 +82,7 @@ public class EventController {
                              @PathVariable Long courseId,
                              @RequestBody Event event,
                              @RequestParam(required = false, value = "force") Boolean force) {
-        return eventService.updateEvent(id, courseId, event, force);
+        return eventService.updateEvent(id, courseId, event, force == null ? false : force);
     }
 
     /**

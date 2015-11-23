@@ -1,7 +1,6 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.CourseDAO;
-import de.nak.ttmg.exceptions.EntityNotFoundException;
 import de.nak.ttmg.exceptions.InvalidParameterException;
 import de.nak.ttmg.exceptions.ValidationException;
 import de.nak.ttmg.model.Centuria;
@@ -25,10 +24,7 @@ public class CourseServiceImpl implements CourseService {
     private final CourseValidator courseValidator = new CourseValidator();
 
     @Override
-    public Course createCourse(Course course, Boolean force) throws ValidationException {
-        if (force == null) {
-            force = false;
-        }
+    public Course createCourse(Course course, boolean force) throws ValidationException {
         if (course.getName() != null) {
             //Trim name
             course.setName(course.getName().trim());
@@ -43,10 +39,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Course updateCourse(Long id, Course course, Boolean force) throws ValidationException {
-        if (force == null) {
-            force = false;
-        }
+    public Course updateCourse(Long id, Course course, boolean force) throws ValidationException {
         if (course != null && course.getId() != null && course.getId().equals(id)) {
             //Load old course from backend and update the properties that may have changed.
             Course oldCourse = loadCourse(id);

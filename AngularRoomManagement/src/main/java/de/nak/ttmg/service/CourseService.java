@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface CourseService {
 
-    Course createCourse(Course course, Boolean force) throws ValidationException;
+    Course createCourse(Course course, boolean force) throws ValidationException;
 
-    Course updateCourse(Long id, Course course, Boolean force) throws ValidationException;
+    Course updateCourse(Long id, Course course, boolean force) throws ValidationException;
 
     List<Course> listCourses() throws ValidationException;
 

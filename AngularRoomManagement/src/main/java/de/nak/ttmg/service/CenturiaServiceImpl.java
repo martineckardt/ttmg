@@ -51,12 +51,12 @@ public class CenturiaServiceImpl implements CenturiaService {
         return centuriaDAO.load(id);
     }
     @Override
-    public void deleteCenturia(Long id, Boolean force) throws ValidationException {
+    public void deleteCenturia(Long id, boolean force) throws ValidationException {
         Centuria centuria = loadCenturia(id);
         if (centuria == null) {
             throw new EntityNotFoundException("centuria", id);
         }
-        if ((force == null || !force) && centuria.getCourses().size() > 0) {
+        if (!force && centuria.getCourses().size() > 0) {
             throw new IsBusyException(centuria, centuria.getCourses().size());
         }
         centuriaDAO.delete(centuria);

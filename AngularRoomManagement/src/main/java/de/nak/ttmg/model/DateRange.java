@@ -2,7 +2,6 @@ package de.nak.ttmg.model;
 
 import de.nak.ttmg.exceptions.DateRangeException;
 import de.nak.ttmg.validator.DateRangeValidator;
-import de.nak.ttmg.exceptions.InvalidParameterException;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

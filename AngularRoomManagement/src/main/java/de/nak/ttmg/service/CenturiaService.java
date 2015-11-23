@@ -18,5 +18,5 @@ public interface CenturiaService {
 
     Centuria loadCenturia(Long id) throws ValidationException;
 
-    void deleteCenturia(Long id, Boolean force) throws ValidationException;
+    void deleteCenturia(Long id, boolean force) throws ValidationException;
 }

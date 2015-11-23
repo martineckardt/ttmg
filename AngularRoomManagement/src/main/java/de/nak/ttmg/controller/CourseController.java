@@ -45,7 +45,7 @@ public class CourseController {
     @RequestMapping(value = "/courses", method = RequestMethod.POST)
     public Course createCourse(@RequestBody Course course,
                             @RequestParam(required = false, value = "force") Boolean force) {
-        return courseService.createCourse(course, force);
+        return courseService.createCourse(course, force == null ? false : force);
     }
 
     /**
@@ -59,7 +59,7 @@ public class CourseController {
     public Course saveCourse(@PathVariable Long id,
                           @RequestBody Course course,
                           @RequestParam(required = false, value = "force") Boolean force) {
-        return courseService.updateCourse(id, course, force);
+        return courseService.updateCourse(id, course, force == null ? false : force);
     }
 
     /**
