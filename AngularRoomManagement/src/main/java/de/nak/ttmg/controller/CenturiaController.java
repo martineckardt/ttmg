@@ -2,7 +2,7 @@ package de.nak.ttmg.controller;
 
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.StudyProgram;
-import de.nak.ttmg.pdf.TimeTableCreator;
+import de.nak.ttmg.pdf.PDFCreator;
 import de.nak.ttmg.service.CenturiaService;
 import de.nak.ttmg.exceptions.ValidationException;
 import org.springframework.core.io.InputStreamResource;
@@ -69,7 +69,7 @@ public class CenturiaController {
             } catch (ValidationException e) {
                 centuria = null;
             }
-            return TimeTableCreator.createPDF(centuria, "Centuria", id);
+            return PDFCreator.createPDF(centuria, "Centuria", id);
         } catch (IOException ex) {
             throw new RuntimeException("IOError writing file to output stream: " + ex.getMessage());
         }

@@ -116,7 +116,7 @@ public class Room implements Serializable, HasAvailability {
     @Override
     public String toString() {
         return "Room{" +
-                "roomNumber='" + building + roomNumber + '\'' +
+                "roomNumber='" + getReadableString() + '\'' +
                 ", type=" + type +
                 ", seats=" + seats +
                 ", id=" + id +

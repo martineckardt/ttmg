@@ -29,6 +29,7 @@ public class CenturiaDAO {
         if (program != null) {
             criteria.add(Restrictions.eq("program", program));
         }
+        //We only want each centuria once
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return criteria.list();
     }

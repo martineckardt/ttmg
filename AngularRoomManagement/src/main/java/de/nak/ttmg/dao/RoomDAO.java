@@ -24,6 +24,8 @@ public class RoomDAO {
     public List<Room> findAll(String building, String roomNbr, RoomType type, Integer minSeats) {
         Session session = entityManager.unwrap(Session.class);
         Criteria criteria = session.createCriteria(Room.class);
+
+        //Filter results to match all criteria
         if (building != null) {
             criteria.add(Restrictions.eq("building", building));
         }
@@ -36,6 +38,7 @@ public class RoomDAO {
         if (minSeats != null) {
             criteria.add(Restrictions.ge("seats", minSeats));
         }
+        //We only want each room once
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return criteria.list();
     }

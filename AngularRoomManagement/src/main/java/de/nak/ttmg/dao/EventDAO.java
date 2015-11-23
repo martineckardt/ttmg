@@ -32,6 +32,7 @@ public class EventDAO {
         Criteria criteria = session.createCriteria(Event.class, "event");
         criteria.createAlias("event.course", "course"); // inner join by default
 
+        //Filter results to match all criteria
         if (centuriaId != null) {
             criteria.createAlias("course.participants", "centuria");
             criteria.add(Restrictions.eq("centuria.id", centuriaId));
@@ -52,6 +53,7 @@ public class EventDAO {
             //check if the event STARTS before the rangeEndDate
             criteria.add(Restrictions.lt("begin", range.getEnd()));
         }
+        //We only want each event once
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return criteria.list();
     }
@@ -79,6 +81,12 @@ public class EventDAO {
         }
     }
 
+    /**
+     * Create multiple events at once
+     * @param events to be created
+     * @return list of created events, each with id of the db
+     * @throws ValidationException
+     */
     @Transactional
     public List<Event> createEvents(List<Event> events) throws ValidationException {
         List<Event> newEvents = new ArrayList<>(events.size());
