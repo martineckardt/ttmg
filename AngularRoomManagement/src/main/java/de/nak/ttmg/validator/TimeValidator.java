@@ -96,6 +96,14 @@ public class TimeValidator {
         }
     }
 
+    /**
+     * Checks for conflicts of an event with a time range. This time range includes the change time
+     * @param object to be tested
+     * @param start of the event minus the changetime
+     * @param end of the event plus the changetime
+     * @param ignore event to be excluded from validation
+     * @throws TimeConflictException if a time conflict occurs.
+     */
     private void checkAdjustedTime(HasAvailability object, Date start, Date end, Event ignore) throws TimeConflictException {
         List<TimeConflict> failures = new ArrayList<>();
         object.getEvents().stream().filter(event -> !event.equalsId(ignore)).forEach(e -> {

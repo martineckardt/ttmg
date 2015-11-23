@@ -37,6 +37,13 @@ public class CourseValidator {
         }
     }
 
+    /**
+     * Checks if all the participants fit in all the rooms of an event
+     * @param rooms to check
+     * @param centurias to participate in an event
+     * @param force if validation should be disabled
+     * @throws ValidationException
+     */
     private void validateCapacity(Set<Room> rooms, Set<Centuria> centurias, boolean force) throws ValidationException {
         if (rooms == null) {
             throw new InvalidParameterException("rooms", InvalidParameterException.InvalidParameterType.INVALID_NULL);
@@ -47,6 +54,7 @@ public class CourseValidator {
         }
         Integer capacity = rooms.stream().mapToInt(Room::getSeats).sum();
         Integer required = centurias.stream().mapToInt(Centuria::getNbrOfStudents).sum();
+        //Check, if required seats are available
         if (required > capacity && !force) {
             throw new InsufficientSeatException(required - capacity);
         }
