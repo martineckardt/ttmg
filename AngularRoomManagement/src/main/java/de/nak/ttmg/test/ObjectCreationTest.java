@@ -7,9 +7,7 @@ import de.nak.ttmg.validator.TimeValidator;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -132,7 +130,8 @@ public class ObjectCreationTest {
         }
 
 
-        Set<Event> events = new HashSet<>(2);
+        // Set<Event> events = new HashSet<>(2);
+        List<Event> events = new ArrayList<>(2);
         events.add(past);
         events.add(future);
         courseIAA.setEvents(events);
@@ -165,7 +164,7 @@ public class ObjectCreationTest {
         }
 
         Course copy = new Course();
-        Set<Event> events = new HashSet<>(2);
+        List<Event> events = new ArrayList<>(2);
         Event e1 = new Event();
         e1.setBegin(futureStart);
         e1.setEnd(futureEnd);

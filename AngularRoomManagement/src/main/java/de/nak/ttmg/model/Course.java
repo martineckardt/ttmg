@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -19,7 +21,7 @@ public class Course implements Serializable {
 
     private CourseType type;
 
-    private Set<Event> events = new HashSet<>();
+    private List<Event> events = new ArrayList<>();
 
     private Set<Centuria> participants = new HashSet<>();
 
@@ -51,11 +53,11 @@ public class Course implements Serializable {
     @Column(name = "events")
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "course", orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonBackReference
-    public Set<Event> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(Set<Event> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 

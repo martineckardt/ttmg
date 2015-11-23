@@ -1,11 +1,9 @@
 package de.nak.ttmg.service;
 
+import de.nak.ttmg.dao.EventDAO;
 import de.nak.ttmg.dao.RoomDAO;
 import de.nak.ttmg.exceptions.*;
-import de.nak.ttmg.model.DateRange;
-import de.nak.ttmg.model.DateRangeFactory;
-import de.nak.ttmg.model.Room;
-import de.nak.ttmg.model.RoomType;
+import de.nak.ttmg.model.*;
 import de.nak.ttmg.validator.RoomValidator;
 import de.nak.ttmg.validator.TimeValidator;
 import org.hibernate.exception.ConstraintViolationException;
@@ -23,22 +21,32 @@ public class RoomServiceImpl implements RoomService {
 
     @Inject
     private RoomDAO roomDAO;
+
+    @Inject
+    private EventDAO eventDAO;
+
     private final TimeValidator timeValidator = new TimeValidator();
     private final RoomValidator roomValidator = new RoomValidator();
 
     @Override
-    public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date start, Date end)
+    public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date start, Date end,
+                                Long ignoreEventId)
             throws ValidationException {
+        Event ignore = null;
+        if (ignoreEventId != null) {
+            ignore = eventDAO.load(ignoreEventId);
+        }
         DateRange freeRange = DateRangeFactory.createDateRange(start, end);
         List<Room> allRooms = roomDAO.findAll(building, roomNbr, type, minSeats);
+        List<Room> freeRooms = new ArrayList<>(allRooms.size());
         if (freeRange != null) {
             for (Room room : allRooms) {
-                if (!timeValidator.hasTime(room, freeRange)) {
-                    allRooms.remove(room);
+                if (timeValidator.hasTime(room, freeRange, ignore)) {
+                    freeRooms.add(room);
                 }
             }
         }
-        return allRooms;
+        return freeRooms;
     }
 
     @Override

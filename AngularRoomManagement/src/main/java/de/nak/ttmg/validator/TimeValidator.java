@@ -35,6 +35,7 @@ public class TimeValidator {
                     failures.addAll(e.getConflicts());
                 }
             }
+            objectsToTest.removeAll(event.getRooms());
         });
         if (!failures.isEmpty()) {
             throw new TimeConflictException(failures);
@@ -83,11 +84,12 @@ public class TimeValidator {
      * Instead of throwing an exception it is returning true if no conflicts exist, otherwise false
      * @param object to be validated
      * @param range time range to block
+     * @param ignore to be ignored during validation (because it is the one being updated)
      * @return true if no conflicts exist, false otherwise
      */
-    public boolean hasTime(HasAvailability object, DateRange range) {
+    public boolean hasTime(HasAvailability object, DateRange range, Event ignore) {
         try {
-            validateTime(object,range.getBegin(), range.getEnd(), null);
+            validateTime(object,range.getBegin(), range.getEnd(), ignore);
             if (object instanceof Room) {
                 System.out.println("Room has time!: " + ((Room) object).getReadableString());
             }
@@ -102,14 +104,12 @@ public class TimeValidator {
 
     private void checkAdjustedTime(HasAvailability object, Date start, Date end, Event ignore) throws TimeConflictException {
         List<TimeConflict> failures = new ArrayList<>();
-        System.out.println("\nCheck time: object = " + object + " event count: " + object.getEvents().size());
         object.getEvents().stream().filter(event -> !event.equalsId(ignore)).forEach(e -> {
             if (start.before(e.getEnd()) && end.after(e.getBegin())) {
                 failures.add(new TimeConflict(e, object));
             } else if (e.getBegin().equals(start) || e.getEnd().equals(end)) {
                 failures.add(new TimeConflict(e, object));
             }
-            System.out.println("Object event = " + e + "des. " + object.getReadableString());
         });
         if (!failures.isEmpty()) {
             throw new TimeConflictException(failures);

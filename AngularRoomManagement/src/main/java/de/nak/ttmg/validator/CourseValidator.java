@@ -5,6 +5,7 @@ import de.nak.ttmg.exceptions.InsufficientSeatException;
 import de.nak.ttmg.exceptions.InvalidParameterException;
 import de.nak.ttmg.exceptions.ValidationException;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -26,7 +27,7 @@ public class CourseValidator {
         validateParticipants(course.getParticipants());
     }
 
-    private void validateEvents(Set<Event> events, Set<Centuria> centurias, boolean force) throws ValidationException {
+    private void validateEvents(List<Event> events, Set<Centuria> centurias, boolean force) throws ValidationException {
         if (events != null) {
             boolean validDates = events.stream().allMatch(event -> event.getBegin().before(event.getEnd()));
             if (!validDates) {

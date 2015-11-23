@@ -37,7 +37,7 @@ public class TutorServiceImpl implements TutorService {
         DateRange freeRange = DateRangeFactory.createDateRange(freeStart, freeEnd);
         List<Tutor> allTutors = tutorDAO.findAll();
         if (freeRange != null) {
-            allTutors.stream().filter(tutor -> timeValidator.hasTime(tutor, freeRange));
+            allTutors.stream().filter(tutor -> timeValidator.hasTime(tutor, freeRange, null));
         }
         return allTutors;
     }
