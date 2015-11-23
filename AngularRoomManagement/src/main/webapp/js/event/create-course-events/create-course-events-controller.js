@@ -12,6 +12,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             console.log('createCourseEventsController for Course ' + courseId + ' started');
 
             $scope.formState = 1;
+            var eventsResource;
 
             // Set up model
             $scope.model = {
@@ -36,7 +37,6 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             };
 
             var course = $scope.model.course;
-
 
             var baseDate = $scope.formModel.baseDate;
 
@@ -86,7 +86,75 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                 $scope.formState = 2;
             };
 
-            this.addEvents = function () {
+            this.tryAddEvents = function () {
+                eventsResource = new EventResourceFactory(createEventsFromFormModel());
+                eventsResource.$bulkCreate({courseId: course.id}, function successCallback(data) {
+                    console.log("Events successfully created");
+                    console.log(data);
+
+                    // Fill messageData with newly created entity
+                    $scope.entitySuccessfullyCreated = true;
+                    $scope.messageData = data;
+
+                    // Go to success page
+                    $scope.formState = 4;
+                }, function errorCallback(error) {
+                    console.log("Failed to create course events");
+                    console.log(error);
+
+                    // Check if backend indicates conflicts
+                    if (error.data.ignorable) {
+                        console.log('conflicts detected');
+
+                        $scope.conflicts = error.data.conflicts;
+
+                        // Go to conflicts page
+                        console.log("go to conflicts view");
+                        $scope.formState = 3;
+                    } else {
+                        console.log('error detected');
+                        // Fill messageData with exception message from backend
+                        $scope.entitySuccessfullyCreated = false;
+                        $scope.messageData = error.data;
+
+                        // Go to error page
+                        $scope.formState = 4;
+                    }
+                });
+            };
+
+            this.forceAddEvents = function () {
+                console.log('attempting to create events with force');
+                eventsResource.$bulkCreate({courseId: course.id, force: true}, function successCallback(data) {
+                    console.log("Events successfully created with force");
+                    console.log(data);
+
+                    // Fill messageData with newly created entity
+                    $scope.entitySuccessfullyCreated = true;
+                    $scope.messageData = data;
+                }, function errorCallback(error) {
+                    console.log("Failed to create course events with force");
+                    console.log(error);
+
+                    // Fill messageData with exception message from backend
+                    $scope.entitySuccessfullyCreated = false;
+                    $scope.messageData = error.data;
+                });
+                // Go to error / success page
+                $scope.formState = 4;
+            };
+
+            this.goBackToStep = function (stepId) {
+                $scope.formState = stepId;
+            };
+
+            this.removeEventForRoomSelection = function (index) {
+                eventsForRoomSelection.splice(index, 1);
+            };
+
+            // Private functions
+
+            function createEventsFromFormModel() {
                 var events = [];
 
                 // Add the selected rooms to the events
@@ -104,33 +172,8 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                     events.push(event);
                 });
 
-                var eventsResource = new EventResourceFactory(events);
-                eventsResource.$bulkCreate({courseId: course.id}, function successCallback(data) {
-                    console.log("Events successfully created");
-                    console.log(data);
-
-                    // Fill messageData with newly created entity
-                    $scope.entitySuccesfullyCreated = true;
-                    $scope.messageData = data;
-                }, function errorCallback(error) {
-                    console.log("Failed to create course");
-                    console.log(error);
-
-                    // Fill messageData with exception message from backend
-                    $scope.entitySuccesfullyCreated = false;
-                    $scope.messageData = error.data;
-                });
-
-                $scope.formState = 3;
+                return events;
             };
-
-            this.goBackToStep = function (stepId) {
-                $scope.formState = stepId;
-            };
-
-            this.removeEventForRoomSelection = function (index) {
-                eventsForRoomSelection.splice(index, 1);
-            }
 
         }]);
 

@@ -1,0 +1,33 @@
+<!-- User sees conflicts or  -->
+
+<div class="alert alert-danger" role="alert">
+    <p>{{ 'TIME_CONFLICTS' | translate:'{ nbrOfConflicts: ' + conflicts.length + ' }' }}</p>
+</div>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>{{ 'CAUSER' | translate }}</th>
+        <th>{{ 'COURSE' | translate }}</th>
+        <th>{{ 'EVENT' | translate }}</th>
+    </tr>
+    <tr ng-repeat="conflict in conflicts">
+        <td>{{conflict.causer.readableString}}</td>
+        <td>
+            <a ng-href="#/courses/{{conflict.event.course.id}}">{{conflict.event.course.name}}</a>
+        </td>
+        <td>{{conflict.event.readableString}}</td>
+    </tr>
+</table>
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary" ng-click="createCourseEventsCtrl.forceAddEvents()">{{ 'FORCE_CREATE' | translate
+            }}
+        </button>
+        <button ng-click="createCourseEventsCtrl.goBackToStep(2)" class="btn btn-default">{{ 'BACK' | translate }}
+        </button>
+    </div>
+</div>
+
