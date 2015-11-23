@@ -1,6 +1,7 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.CourseDAO;
+import de.nak.ttmg.exceptions.EntityAlreadyExistsException;
 import de.nak.ttmg.exceptions.InvalidParameterException;
 import de.nak.ttmg.exceptions.ValidationException;
 import de.nak.ttmg.model.Centuria;
@@ -8,6 +9,7 @@ import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.Event;
 import de.nak.ttmg.validator.CourseValidator;
 import de.nak.ttmg.validator.TimeValidator;
+import org.hibernate.exception.ConstraintViolationException;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -35,7 +37,17 @@ public class CourseServiceImpl implements CourseService {
             timeValidator.validateTime(course);
         }
         //Create course in db
-        return courseDAO.create(course);
+        if (course.getId() == null) {
+            try {
+                return courseDAO.create(course);
+            } catch (ConstraintViolationException e) {
+                throw new EntityAlreadyExistsException();
+            } catch (Exception e) {
+                throw new ValidationException(e);
+            }
+        } else {
+            throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
+        }
     }
 
     @Override

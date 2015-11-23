@@ -33,18 +33,8 @@ public class CourseDAO {
     }
 
     public Course create(Course course) throws ValidationException {
-        if (course.getId() == null) {
-            try {
-                entityManager.persist(course);
-            } catch (ConstraintViolationException e) {
-                throw new EntityAlreadyExistsException();
-            } catch (Exception e) {
-                throw new ValidationException(e);
-            }
-            return course;
-        } else {
-            throw new InvalidParameterException("id", InvalidParameterException.InvalidParameterType.INVALID_NOT_NULL);
-        }
+        entityManager.persist(course);
+        return course;
     }
 
     public Course update(Course course) {
