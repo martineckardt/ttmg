@@ -26,6 +26,7 @@ public class RoomServiceImpl implements RoomService {
     private EventDAO eventDAO;
 
     private final TimeValidator timeValidator = new TimeValidator();
+
     private final RoomValidator roomValidator = new RoomValidator();
 
     @Override
@@ -34,6 +35,7 @@ public class RoomServiceImpl implements RoomService {
             throws ValidationException {
         Event ignore = null;
         if (ignoreEventId != null) {
+            //Load the event to be ignored in the validation process (e.g. if it is updated)
             ignore = eventDAO.load(ignoreEventId);
         }
         DateRange freeRange = DateRangeFactory.createDateRange(start, end);
@@ -41,11 +43,13 @@ public class RoomServiceImpl implements RoomService {
         List<Room> freeRooms = new ArrayList<>(allRooms.size());
         if (freeRange != null) {
             for (Room room : allRooms) {
+                //Check if the room is available at the time of the event
                 if (timeValidator.hasTime(room, freeRange, ignore)) {
                     freeRooms.add(room);
                 }
             }
         } else {
+            //If no time given, all rooms will be available
             freeRooms = allRooms;
         }
         return freeRooms;
@@ -58,9 +62,11 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room createRoom(Room room) throws ValidationException {
+        //Validate the created room
         roomValidator.validateRoom(room);
         if (room.getId() == null) {
             try {
+                //Create the room in the DB
                 return roomDAO.create(room);
             } catch (Exception e) {
                 if (e.getCause() instanceof ConstraintViolationException) {
@@ -79,9 +85,11 @@ public class RoomServiceImpl implements RoomService {
         if (room == null) {
             throw new EntityNotFoundException("room", id);
         }
+        //Check if the room is booked by events
         if (!force && room.getEvents().size() > 0) {
             throw new IsBusyException(room, room.getEvents().size());
         }
+        //Delete the room in the DB
         roomDAO.delete(room);
     }
 }

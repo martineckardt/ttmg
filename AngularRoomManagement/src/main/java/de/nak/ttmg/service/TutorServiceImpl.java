@@ -23,6 +23,7 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public Tutor createTutor(Tutor tutor) throws ValidationException {
+        //Trim the title and name properties
         if (tutor.getTitle() != null) {
             tutor.setTitle(tutor.getTitle().trim());
         }
@@ -32,7 +33,9 @@ public class TutorServiceImpl implements TutorService {
         if (tutor.getLastName() != null) {
             tutor.setLastName(tutor.getLastName().trim());
         }
+        //Check if the tutor has valid properties
         tutorValidator.validateTutor(tutor);
+        //Create the tutor in the backend
         return tutorDAO.create(tutor);
     }
 
@@ -52,9 +55,11 @@ public class TutorServiceImpl implements TutorService {
         if (tutor == null) {
             throw new EntityNotFoundException("tutor", id);
         }
+        //Check if the tutor has some courses
         if (!force && tutor.getCourses().size() > 0) {
             throw new IsBusyException(tutor, tutor.getCourses().size());
         }
+        //Delete the tutor in the DB
         tutorDAO.delete(tutor);
     }
 }

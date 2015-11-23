@@ -75,7 +75,15 @@ public class EventController {
         }
         return map;
     }
+/*
+    @RequestMapping(value = "/courses/{courseId}/events", method = RequestMethod.POST)
+    public List<Event> createEvents2(@RequestBody List<Event> events,
+                                           @PathVariable Long courseId,
+                                           @RequestParam(required = false, value = "force") Boolean force) {
 
+        return eventService.createEvents(events, courseId, force == null ? false : force);
+    }
+*/
     /**
      * Updates an event
      * @param id of the event
