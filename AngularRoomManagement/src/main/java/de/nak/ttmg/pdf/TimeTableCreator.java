@@ -37,10 +37,10 @@ public class TimeTableCreator {
             docWriter = PdfWriter.getInstance(doc , stream);
 
             //document header attributes
-            doc.addAuthor("TimeTableCreator Management");
+            doc.addAuthor("Behrendt, Eckardt, Kampe");
             doc.addCreationDate();
             doc.addProducer();
-            doc.addCreator("Behrendt, Eckardt, Kampe");
+            doc.addCreator("TimeTable Management");
             doc.addTitle("Time Table for " + object.getObjectType());
             doc.setPageSize(PageSize.A4);
 
@@ -66,7 +66,7 @@ public class TimeTableCreator {
             insertCell(table, "Events", Element.ALIGN_CENTER, 1, bfBold12);
             table.setHeaderRows(1);
 
-            //just some random data to fill
+            //write events to rows
             for(Event event : object.getEvents()){
                 Course course = event.getCourse();
                 insertCell(table, course.getName(), Element.ALIGN_LEFT, 1, bf12);
@@ -113,10 +113,10 @@ public class TimeTableCreator {
             Font bf12 = new Font(fontFamily, 12);
             docWriter = PdfWriter.getInstance(doc, stream);
 
-            doc.addAuthor("TimeTable Management");
+            doc.addAuthor("Behrendt, Eckardt, Kampe");
             doc.addCreationDate();
             doc.addProducer();
-            doc.addCreator("Behrendt, Eckardt, Kampe");
+            doc.addCreator("TimeTable Management");
             doc.addTitle("Error Report");
             doc.setPageSize(PageSize.A4);
 

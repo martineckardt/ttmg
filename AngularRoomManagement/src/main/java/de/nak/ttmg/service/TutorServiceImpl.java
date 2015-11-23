@@ -24,10 +24,12 @@ public class TutorServiceImpl implements TutorService {
     private TutorDAO tutorDAO;
 
     private final TutorValidator tutorValidator = new TutorValidator();
-    private final TimeValidator timeValidator = new TimeValidator();
 
     @Override
     public Tutor createTutor(Tutor tutor) throws ValidationException {
+        tutor.setTitle(tutor.getTitle().trim());
+        tutor.setLastName(tutor.getLastName().trim());
+        tutor.setFirstName(tutor.getFirstName().trim());
         tutorValidator.validateTutor(tutor);
         return tutorDAO.create(tutor);
     }

@@ -30,7 +30,7 @@ public class CourseServiceImpl implements CourseService {
         if (force == null) {
             force = false;
         }
-        System.out.println("Create Course in CourseServiceImpl");
+        course.setName(course.getName().trim());
         courseValidator.validateCourse(course, force);
         if (!force) {
             timeValidator.validateTime(course);
@@ -43,6 +43,7 @@ public class CourseServiceImpl implements CourseService {
         if (force == null) {
             force = false;
         }
+        course.setName(course.getName().trim());
         if (course != null && course.getId() != null && course.getId().equals(id)) {
             courseValidator.validateCourse(course, force);
             if (!force) {
