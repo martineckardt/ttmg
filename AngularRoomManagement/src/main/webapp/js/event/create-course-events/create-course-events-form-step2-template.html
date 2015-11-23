@@ -44,7 +44,7 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit" class="btn btn-primary" value="Save"/>
+        <input type="submit" class="btn btn-primary" value="Save" ng-disabled="eventForm.$invalid"/>
         <button ng-click="createCourseEventsCtrl.goBackToStep(1)" class="btn btn-default">{{ 'BACK' | translate }}</button>
         <a href="#/courses/{{model.course.id}}" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
     </div>

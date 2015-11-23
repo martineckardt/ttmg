@@ -2,7 +2,8 @@
     <h2>{{ 'CREATE_NEW_EVENT_FOR_COURSE' | translate }} {{model.course.name}}</h2>
     <hr>
 
-    <form class="form-horizontal" role="form" ng-submit="createCourseEventsCtrl.addEvents()" novalidate>
+    <form class="form-horizontal" role="form" ng-submit="createCourseEventsCtrl.addEvents()" name="eventForm"
+          novalidate>
         <div ng-if="formState == 1"
              ng-include="'js/event/create-course-events/create-course-events-form-step1-template.html'"></div>
         <div ng-if="formState == 2"

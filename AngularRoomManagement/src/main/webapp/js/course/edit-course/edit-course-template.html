@@ -10,12 +10,12 @@
         <p>{{messageData}}</p>
     </div>
 
-    <form ng-if="entitySuccesfullyCreated != false" class="form-horizontal" role="form"
+    <form ng-if="entitySuccesfullyCreated != false" class="form-horizontal" role="form" name="courseForm"
           ng-submit="editCourseCtrl.updateCourse()" novalidate>
         <div ng-include="'js/course/course-form-template.html'"></div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <input type="submit" class="btn btn-primary" value="Save"/>
+                <input type="submit" class="btn btn-primary" value="Save" ng-disabled="courseForm.$invalid"/>
                 <a ng-href="#/courses/{{course.id}}" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
             </div>
         </div>
