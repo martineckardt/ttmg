@@ -18,13 +18,13 @@ import java.util.List;
  */
 @RestController
 public class TutorController {
+
+    @Inject
     private TutorService tutorService;
 
     @RequestMapping(value = "/tutors", method = RequestMethod.GET)
-    public List<Tutor> listTutors(@RequestParam(required = false, value = "freeStart") Date freeStart,
-                                  @RequestParam(required = false, value = "freeEnd") Date freeEnd
-                                 ) {
-        return tutorService.listTutors(freeStart, freeEnd);
+    public List<Tutor> listTutors() {
+        return tutorService.listTutors();
     }
 
     @RequestMapping(value = "/tutors/{id}",method = RequestMethod.GET)
@@ -55,11 +55,6 @@ public class TutorController {
     @RequestMapping(value = "/tutors/{id}", method = RequestMethod.DELETE)
     public void deleteCourse(@PathVariable Long id, @RequestParam(required = false, value = "force") Boolean force) {
         tutorService.deleteTutor(id, force);
-    }
-
-    @Inject
-    public void setTutorService(TutorService tutorService) {
-        this.tutorService = tutorService;
     }
 }
 

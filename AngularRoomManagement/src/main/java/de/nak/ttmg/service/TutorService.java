@@ -14,7 +14,7 @@ public interface TutorService {
 
     Tutor createTutor(Tutor tutor) throws ValidationException;
 
-    List<Tutor> listTutors(Date freeStart, Date freeEnd) throws ValidationException;
+    List<Tutor> listTutors() throws ValidationException;
 
     Tutor loadTutor(Long id) throws ValidationException;
 

@@ -33,13 +33,8 @@ public class TutorServiceImpl implements TutorService {
     }
 
     @Override
-    public List<Tutor> listTutors(Date freeStart, Date freeEnd)  throws ValidationException{
-        DateRange freeRange = DateRangeFactory.createDateRange(freeStart, freeEnd);
-        List<Tutor> allTutors = tutorDAO.findAll();
-        if (freeRange != null) {
-            allTutors.stream().filter(tutor -> timeValidator.hasTime(tutor, freeRange, null));
-        }
-        return allTutors;
+    public List<Tutor> listTutors()  throws ValidationException{
+        return tutorDAO.findAll();
     }
 
     @Override
