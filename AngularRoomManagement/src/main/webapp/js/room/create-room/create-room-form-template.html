@@ -2,9 +2,9 @@
     <label for="building" class="col-sm-2 control-label">{{ 'BUILDING' | translate }}</label>
 
     <div class="col-sm-10">
-        <select ng-model="model.room.building" placeholder="Choose a building" class="form-control" id="building"
-                name="building"
-                autofocus>
+        <select ng-model="model.room.building" placeholder="Choose a building" class="form-control"
+                id="building" name="building"
+                autofocus required>
             <option value="" disabled selected>{{ 'SELECT_BUILDING' | translate }}</option>
             <option ng-repeat="building in model.buildings" value="{{ building }}">{{ building }}</option>
         </select>
@@ -19,9 +19,9 @@
         <input type="number" ng-model="model.room.roomNumber"
                class="form-control"
                id="roomNumber" name="roomNumber"
-               min="1" max="999" required/>
-        <span style="color:red" ng-show="form.roomNumber.$dirty && form.roomNumber.$invalid">Error</span>
-        <span ng-show="form.roomNumber.$touched && form.roomNumber.$error.required">Room number is required.</span>
+               min="1" max="999" step="1" required/>
+        <span style="color:red" ng-show="roomForm.roomNumber.$dirty && form.roomNumber.$invalid">Please enter a number between 1 and 999</span>
+        <span ng-show="roomForm.roomNumber.$touched && form.roomNumber.$error.required">Room number is required.</span>
     </div>
 </div>
 <div class="form-group">
@@ -31,14 +31,14 @@
         <input type="number" ng-model="model.room.seats"
                class="form-control"
                id="capacity" name="capacity"
-               min="1" max="999" required/>
+               min="1" max="999" step="1" required/>
     </div>
 </div>
 <div class="form-group">
     <label for="roomType" class="col-sm-2 control-label">{{ 'ROOM_TYPE' | translate }}</label>
 
     <div class="col-sm-10">
-        <select ng-model="model.room.type" placeholder="Choose a room type" class="form-control" id="roomType">
+        <select ng-model="model.room.type" placeholder="Choose a room type" class="form-control" id="roomType" required>
             <option ng-repeat="roomType in model.roomTypes" value="{{roomType}}">{{ roomType | translate }}</option>
         </select>
     </div>

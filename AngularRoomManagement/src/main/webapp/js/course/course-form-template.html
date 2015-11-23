@@ -12,7 +12,7 @@
     <label for="type" class="col-sm-2 control-label">{{ 'COURSE_TYPE' | translate }}</label>
 
     <div class="col-sm-10">
-        <select ng-model="model.course.type" placeholder="Choose a type" class="form-control" id="type">
+        <select ng-model="model.course.type" placeholder="Choose a type" class="form-control" id="type" required>
             <option value="" disabled selected>{{ 'SELECT_COURSE_TYPE' | translate }}</option>
             <option ng-repeat="courseType in model.courseTypes" value="{{courseType}}">{{ courseType | translate }}
             </option>
@@ -26,7 +26,7 @@
 
     <div class="col-sm-10">
         <select ng-model="model.course.tutor" class="form-control" id="tutor"
-                ng-options="tutor.readableString for tutor in model.tutors track by tutor.id">
+                ng-options="tutor.readableString for tutor in model.tutors track by tutor.id" required>
         </select>
     </div>
 </div>

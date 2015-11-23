@@ -7,11 +7,13 @@ angular.module('ttmg.controllers').controller('createTutorController', ['$scope'
     console.log('createTutorController initialized');
 
     // Set up form model
-    $scope.tutor = new TutorFactory();
+    $scope.model = {
+        tutor: new TutorFactory()
+    };
 
     //create a new tutor
     $scope.addTutor = function () {
-        $scope.tutor.$create(
+        $scope.model.tutor.$create(
             function successCallback(data) {
                 // Logging
                 console.log("entity sucessfully created");
@@ -22,7 +24,8 @@ angular.module('ttmg.controllers').controller('createTutorController', ['$scope'
                 $scope.messageData = data;
 
                 // Reset form model
-                $scope.tutor = new TutorFactory();
+                $scope.model.tutor = new TutorFactory();
+                $scope.tutorForm.$setUntouched();
             }, function errorCallback(error) {
                 // Logging
                 console.log("Error creating entity");

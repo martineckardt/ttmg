@@ -38,6 +38,7 @@ angular.module('ttmg.controllers').controller('createCourseController',
 
             // Reset form
             $scope.model.course = new CourseFactory();
+            $scope.courseForm.$setUntouched();
 
             // Fill messageData with newly created entity
             $scope.entitySuccesfullyCreated = true;

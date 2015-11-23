@@ -25,7 +25,8 @@ angular.module('ttmg.controllers').controller('createCenturiaController', ['$sco
                 $scope.messageData = data;
 
                 // Reset form model
-                $scope.centuria = new CenturiaFactory();
+                $scope.model.centuria = new CenturiaFactory();
+                $scope.centuriaForm.$setUntouched();
             }, function errorCallback(error) {
                 // Logging
                 console.log("Error creating entity");

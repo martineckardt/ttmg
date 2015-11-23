@@ -27,6 +27,7 @@ angular.module('ttmg.controllers').controller('createRoomController', ['$scope',
 
                 // Reset form model
                 $scope.model.room = new RoomFactory();
+                $scope.roomForm.$setUntouched();
             }, function errorCallback(error) {
                 // Logging
                 console.log("Error creating entity");
