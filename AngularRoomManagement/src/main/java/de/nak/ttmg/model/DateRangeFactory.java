@@ -20,18 +20,4 @@ public class DateRangeFactory {
         }
         return new DateRange(start, end);
     }
-
-    /**
-     * Creates a date range from a date range with an off set
-     * @param range original date range.
-     * @param offset in weeks
-     * @return new range or null if original range is null
-     */
-    public static DateRange createDateRangeWithOffset(DateRange range, Integer offset) {
-        if (range == null) {
-            return null;
-        }
-        return new DateRange(range, offset);
-    }
-
 }
