@@ -45,7 +45,7 @@ public class CenturiaValidator {
     }
 
     private void validateProgram(StudyProgram program) {
-        if (program != null) {
+        if (program == null) {
             throw new InvalidParameterException("studyProgram",
                     InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }

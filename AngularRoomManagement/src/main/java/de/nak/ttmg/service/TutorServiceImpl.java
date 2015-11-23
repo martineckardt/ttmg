@@ -23,9 +23,15 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public Tutor createTutor(Tutor tutor) throws ValidationException {
-        tutor.setTitle(tutor.getTitle().trim());
-        tutor.setLastName(tutor.getLastName().trim());
-        tutor.setFirstName(tutor.getFirstName().trim());
+        if (tutor.getTitle() != null) {
+            tutor.setTitle(tutor.getTitle().trim());
+        }
+        if (tutor.getFirstName() != null) {
+            tutor.setFirstName(tutor.getFirstName().trim());
+        }
+        if (tutor.getLastName() != null) {
+            tutor.setLastName(tutor.getLastName().trim());
+        }
         tutorValidator.validateTutor(tutor);
         return tutorDAO.create(tutor);
     }
