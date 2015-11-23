@@ -22,6 +22,7 @@ angular.module('ttmg.controllers').controller('createCourseController',
 
 
     this.addCourse = function () {
+        // Convenience access
         var course = $scope.model.course;
 
         // Reset values
