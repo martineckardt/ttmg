@@ -18,10 +18,12 @@ angular.module('ttmg.controllers').controller('createCourseController',
         courseTypes: COURSE_TYPES
     };
 
-    var course = $scope.model.course;
+
 
 
     this.addCourse = function () {
+        var course = $scope.model.course;
+
         // Reset values
         course.participants = {};
 
@@ -32,7 +34,7 @@ angular.module('ttmg.controllers').controller('createCourseController',
             });
         }
 
-        course.$create(function successCallback(data) {
+        course.$create({}, function successCallback(data) {
             console.log("Course successfully created");
             console.log(data);
 
