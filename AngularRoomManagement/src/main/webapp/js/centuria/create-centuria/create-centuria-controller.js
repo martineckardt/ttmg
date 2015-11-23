@@ -1,6 +1,6 @@
 /**
  * Created by Martin Eckardt on 28.10.2015.
- * Controller for creation of entities
+ * Controller for creation of a centuria.
  */
 
 angular.module('ttmg.controllers').controller('createCenturiaController', ['$scope', 'CenturiaFactory', 'STUDY_PROGRAMS', function ($scope, CenturiaFactory, STUDY_PROGRAMS) {

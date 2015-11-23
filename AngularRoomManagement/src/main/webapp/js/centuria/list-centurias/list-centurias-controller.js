@@ -1,5 +1,6 @@
 /**
  * Created by Martin Eckardt on 28.10.2015.
+ * Controller for the list view of all centurias.
  */
 
 angular.module('ttmg.controllers').controller('listCenturiasController', ['$scope', 'CenturiaFactory', function ($scope, CenturiaFactory) {

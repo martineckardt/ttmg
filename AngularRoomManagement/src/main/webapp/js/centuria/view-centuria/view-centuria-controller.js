@@ -1,6 +1,6 @@
 /**
  * Created by Martin Eckardt on 28.10.2015.
- *
+ * Controller for the detail view of one centuria tat displays the properties and the time table.
  */
 
 angular.module('ttmg.controllers').controller('viewCenturiaController', ['$scope', '$routeParams', 'CenturiaFactory', 'EventFactory', function ($scope, $routeParams, CenturiaFactory, EventFactory) {
