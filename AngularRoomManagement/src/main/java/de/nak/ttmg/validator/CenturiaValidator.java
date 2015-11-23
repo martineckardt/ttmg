@@ -3,6 +3,7 @@ package de.nak.ttmg.validator;
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.exceptions.InvalidParameterException;
 import de.nak.ttmg.exceptions.ValidationException;
+import de.nak.ttmg.model.StudyProgram;
 
 /**
  * Created by felixb on 30/10/15.
@@ -18,6 +19,7 @@ public class CenturiaValidator {
     public void validateCenturia(Centuria centuria) throws ValidationException{
         validateYear(centuria.getYear());
         validateLetter(centuria.getLetter());
+        validateProgram(centuria.getProgram());
         validateNbrOfStudents(centuria.getNbrOfStudents());
         validateChangeTime(centuria.getChangeTime());
     }
@@ -39,6 +41,13 @@ public class CenturiaValidator {
     private void validateLetter(Character letter) {
         if (!Character.isLetter(letter)) {
             throw new InvalidParameterException("letter", InvalidParameterException.InvalidParameterType.INVALID_RANGE);
+        }
+    }
+
+    private void validateProgram(StudyProgram program) {
+        if (program != null) {
+            throw new InvalidParameterException("studyProgram",
+                    InvalidParameterException.InvalidParameterType.INVALID_NULL);
         }
     }
 

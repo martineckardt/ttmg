@@ -13,7 +13,7 @@ import java.util.Set;
  * Created by felixb on 29/10/15.
  * This class handles the creation of pdf files, e.g. for time tables
  */
-public class TimeTableCreator {
+class TimeTableCreator {
 
     private static final Font.FontFamily fontFamily = Font.FontFamily.TIMES_ROMAN;
 
@@ -70,8 +70,8 @@ public class TimeTableCreator {
             for(Event event : object.getEvents()){
                 Course course = event.getCourse();
                 insertCell(table, course.getName(), Element.ALIGN_LEFT, 1, bf12);
-                insertCell(table, convertObjectToString(course.getParticipants(), false), Element.ALIGN_LEFT, 1, bf12);
-                insertCell(table, convertObjectToString(event.getRooms(), false), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, convertObjectToString(course.getParticipants()), Element.ALIGN_LEFT, 1, bf12);
+                insertCell(table, convertObjectToString(event.getRooms()), Element.ALIGN_LEFT, 1, bf12);
                 insertCell(table, course.getTutor().getReadableString(), Element.ALIGN_LEFT, 1, bf12);
                 insertCell(table, event.getReadableString(), Element.ALIGN_LEFT, 1, bf12);
             }
@@ -156,16 +156,11 @@ public class TimeTableCreator {
 
     }
 
-    private String convertObjectToString(Set<? extends HasReadableString> objects, boolean newLine) {
+    private String convertObjectToString(Set<? extends HasReadableString> objects) {
         StringBuilder sb = new StringBuilder();
         for (HasReadableString object: objects) {
             sb.append(object.getReadableString());
-            sb.append(",");
-            if (newLine) {
-                sb.append("\n");
-            } else {
-                sb.append(" ");
-            }
+            sb.append(", ");
         }
         String string = sb.toString();
         string = string.substring(0, string.length()-2);

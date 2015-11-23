@@ -7,7 +7,6 @@ import de.nak.ttmg.exceptions.ValidationException;
 import de.nak.ttmg.model.Centuria;
 import de.nak.ttmg.model.Course;
 import de.nak.ttmg.model.Event;
-import de.nak.ttmg.model.Room;
 import de.nak.ttmg.validator.CourseValidator;
 import de.nak.ttmg.validator.TimeValidator;
 
@@ -30,7 +29,9 @@ public class CourseServiceImpl implements CourseService {
         if (force == null) {
             force = false;
         }
-        course.setName(course.getName().trim());
+        if (course.getName() != null) {
+            course.setName(course.getName().trim());
+        }
         courseValidator.validateCourse(course, force);
         if (!force) {
             timeValidator.validateTime(course);
@@ -43,8 +44,10 @@ public class CourseServiceImpl implements CourseService {
         if (force == null) {
             force = false;
         }
-        course.setName(course.getName().trim());
         if (course != null && course.getId() != null && course.getId().equals(id)) {
+            if (course.getName() != null) {
+                course.setName(course.getName().trim());
+            }
             courseValidator.validateCourse(course, force);
             if (!force) {
                 timeValidator.validateTime(course);

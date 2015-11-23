@@ -90,14 +90,8 @@ public class TimeValidator {
     public boolean hasTime(HasAvailability object, DateRange range, Event ignore) {
         try {
             validateTime(object,range.getBegin(), range.getEnd(), ignore);
-            if (object instanceof Room) {
-                System.out.println("Room has time!: " + ((Room) object).getReadableString());
-            }
             return true;
         } catch (TimeConflictException e) {
-            if (object instanceof Room) {
-                System.out.println("Room has NOOO time!: " + ((Room) object).getReadableString());
-            }
             return false;
         }
     }

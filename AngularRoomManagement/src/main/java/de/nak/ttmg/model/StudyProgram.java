@@ -16,10 +16,6 @@ public enum StudyProgram {
         this.letter = letter;
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
     public static StudyProgram programForString(String toParse) {
         if (toParse != null && toParse.length() > 0) {
             Character character = toParse.toUpperCase().charAt(0);
@@ -37,7 +33,7 @@ public enum StudyProgram {
 
     @Override
     public String toString() {
-        return getDisplayName();
+        return displayName;
     }
 
     public String getLetter() {

@@ -16,6 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by felixb on 04/11/15.
@@ -66,7 +67,7 @@ public class EventDAO {
         throw new EntityNotFoundException("event", id);
     }
 
-    public Event create(Event event) throws ValidationException {
+    private Event create(Event event) throws ValidationException {
         if (event.getId() == null) {
             try {
                 entityManager.persist(event);
@@ -90,9 +91,7 @@ public class EventDAO {
     @Transactional
     public List<Event> createEvents(List<Event> events) throws ValidationException {
         List<Event> newEvents = new ArrayList<>(events.size());
-        for (Event event : events) {
-            newEvents.add(create(event));
-        }
+        newEvents.addAll(events.stream().map(this::create).collect(Collectors.toList()));
         return newEvents;
     }
 

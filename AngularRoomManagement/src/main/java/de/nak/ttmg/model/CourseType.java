@@ -20,12 +20,8 @@ public enum CourseType {
         return minChangeTime;
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
     @Override
     public String toString() {
-        return getDisplayName();
+        return displayName;
     }
 }

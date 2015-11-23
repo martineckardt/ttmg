@@ -149,6 +149,7 @@ public class Centuria implements Serializable, HasAvailability {
         return defaultChangeTime;
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -107,6 +107,7 @@ public class Course implements Serializable {
         return participants.stream().mapToInt(Centuria::getNbrOfStudents).sum();
     }
 
+    @SuppressWarnings("SimplifiableIfStatement")
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

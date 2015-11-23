@@ -1,6 +1,5 @@
 package de.nak.ttmg.service;
 
-import de.nak.ttmg.model.Event;
 import de.nak.ttmg.model.Room;
 import de.nak.ttmg.model.RoomType;
 import de.nak.ttmg.exceptions.ValidationException;

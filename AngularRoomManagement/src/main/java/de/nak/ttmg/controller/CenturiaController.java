@@ -25,7 +25,7 @@ public class CenturiaController {
     /**
      * Requests all centuria
      * @param year the year to be filtered to (YYYY) (optional)
-     * @param studyProgram the program to be filtered to (optinal)
+     * @param studyProgram the program to be filtered to (optional)
      * @return List with Centurias
      */
     @RequestMapping(value = "/centurias", method = RequestMethod.GET)

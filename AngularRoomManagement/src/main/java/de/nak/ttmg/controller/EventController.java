@@ -6,10 +6,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by felixb on 04/11/15.
@@ -64,10 +64,7 @@ public class EventController {
     public List<Event> createEvents(@RequestBody Map<Integer,Event> events,
                              @PathVariable Long courseId,
                              @RequestParam(required = false, value = "force") Boolean force) {
-        List<Event> eventList = new ArrayList<>();
-        for (Event event : events.values()) {
-            eventList.add(event);
-        }
+        List<Event> eventList = events.values().stream().collect(Collectors.toList());
         return eventService.createEvents(eventList, courseId, force);
     }
 

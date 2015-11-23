@@ -21,6 +21,7 @@ public class ValidationException extends HibernateException {
         t.printStackTrace();
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Override
     @JsonIgnore //We don't want stack traces in client
     public StackTraceElement[] getStackTrace() {

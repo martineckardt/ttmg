@@ -16,10 +16,6 @@ public enum RoomType {
         this.displayName = displayName;
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
     public Integer getDefaultChangeTime() {
         return defaultChangeTime;
     }
@@ -27,7 +23,7 @@ public enum RoomType {
     public static RoomType typeForString(String toParse) {
         if (toParse != null) {
             for (RoomType t : RoomType.values()) {
-                if (t.getDisplayName().toLowerCase().equals(toParse.toLowerCase())) {
+                if (t.displayName.toLowerCase().equals(toParse.toLowerCase())) {
                     return t;
                 }
             }
@@ -37,6 +33,6 @@ public enum RoomType {
 
     @Override
     public String toString() {
-        return getDisplayName();
+        return displayName;
     }
 }
