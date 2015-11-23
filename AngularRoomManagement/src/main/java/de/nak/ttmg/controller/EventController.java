@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -61,11 +62,18 @@ public class EventController {
      * @return list of created courses with id of the db
      */
     @RequestMapping(value = "/courses/{courseId}/events", method = RequestMethod.POST)
-    public List<Event> createEvents(@RequestBody Map<Integer,Event> events,
+    public Map<Integer,Event> createEvents(@RequestBody Map<Integer,Event> events,
                              @PathVariable Long courseId,
                              @RequestParam(required = false, value = "force") Boolean force) {
         List<Event> eventList = events.values().stream().collect(Collectors.toList());
-        return eventService.createEvents(eventList, courseId, force == null ? false : force);
+
+        List<Event> result = eventService.createEvents(eventList, courseId, force == null ? false : force);
+        Map<Integer, Event> map = new HashMap<>();
+        int i = 0;
+        for (Event event : result) {
+            map.put(i++, event);
+        }
+        return map;
     }
 
     /**
