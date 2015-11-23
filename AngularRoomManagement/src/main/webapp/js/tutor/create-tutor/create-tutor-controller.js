@@ -3,12 +3,12 @@
  * Controller for creation of entities
  */
 
-angular.module('ttmg.controllers').controller('createTutorController', ['$scope', 'TutorFactory', function ($scope, TutorFactory) {
+angular.module('ttmg.controllers').controller('createTutorController', ['$scope', 'TutorResourceFactory', function ($scope, TutorResourceFactory) {
     console.log('createTutorController initialized');
 
     // Set up form model
     $scope.model = {
-        tutor: new TutorFactory()
+        tutor: new TutorResourceFactory()
     };
 
     //create a new tutor
@@ -24,7 +24,7 @@ angular.module('ttmg.controllers').controller('createTutorController', ['$scope'
                 $scope.messageData = data;
 
                 // Reset form model
-                $scope.model.tutor = new TutorFactory();
+                $scope.model.tutor = new TutorResourceFactory();
                 $scope.tutorForm.$setUntouched();
             }, function errorCallback(error) {
                 // Logging

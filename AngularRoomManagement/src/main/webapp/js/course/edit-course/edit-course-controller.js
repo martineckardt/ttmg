@@ -3,8 +3,8 @@
  * Controller to edit a course
  */
 angular.module('ttmg.controllers').controller('editCourseController',
-    ['$scope', '$q', '$routeParams', 'CourseFactory', 'CenturiaFactory', 'TutorFactory', 'COURSE_TYPES',
-        function ($scope, $q, $routeParams, CourseFactory, CenturiaFactory, TutorFactory, COURSE_TYPES) {
+    ['$scope', '$q', '$routeParams', 'CourseResourceFactory', 'CenturiaResourceFactory', 'TutorResourceFactory', 'COURSE_TYPES',
+        function ($scope, $q, $routeParams, CourseResourceFactory, CenturiaResourceFactory, TutorResourceFactory, COURSE_TYPES) {
 
     // Route parameters
     var courseId = $routeParams.id;
@@ -13,18 +13,18 @@ angular.module('ttmg.controllers').controller('editCourseController',
 
     // Set up model
     $scope.model = {
-        tutors: TutorFactory.query(),
+        tutors: TutorResourceFactory.query(),
         courseTypes: COURSE_TYPES
     };
 
     // Wait for the both resources to load
     $q.all([
-        CourseFactory.get({courseId: courseId},
+        CourseResourceFactory.get({courseId: courseId},
             function successCallback(course) {
                 $scope.model.course = course;
             }
         ).$promise,
-        CenturiaFactory.query(
+        CenturiaResourceFactory.query(
             function successCallback(centurias) {
                 $scope.model.centurias = centurias;
             }

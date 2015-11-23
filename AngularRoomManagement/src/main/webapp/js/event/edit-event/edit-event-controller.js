@@ -4,8 +4,8 @@
  */
 
 angular.module('ttmg.controllers').controller('editEventController',
-    ['$scope', '$routeParams', 'EventFactory', 'RoomFactory',
-        function ($scope, $routeParams, EventFactory, RoomFactory) {
+    ['$scope', '$routeParams', 'EventResourceFactory', 'RoomFactory',
+        function ($scope, $routeParams, EventResourceFactory, RoomFactory) {
 
             // Route parameters
             var eventId = $routeParams.id;
@@ -15,7 +15,7 @@ angular.module('ttmg.controllers').controller('editEventController',
 
             // Set up model
             $scope.model = {
-                event: EventFactory.get({eventId: eventId},
+                event: EventResourceFactory.get({eventId: eventId},
                     function successCallback(event) {
                         var beginDate = new Date(event.begin);
                         var endDate = new Date(event.end);

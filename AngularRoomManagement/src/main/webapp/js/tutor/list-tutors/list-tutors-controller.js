@@ -2,7 +2,7 @@
  * Created by Martin Eckardt on 28.10.2015.
  */
 
-angular.module('ttmg.controllers').controller('listTutorsController', ['$scope', 'TutorFactory', function ($scope, TutorFactory) {
+angular.module('ttmg.controllers').controller('listTutorsController', ['$scope', 'TutorResourceFactory', function ($scope, TutorResourceFactory) {
 
     console.log('listTutorsController started');
 
@@ -10,7 +10,7 @@ angular.module('ttmg.controllers').controller('listTutorsController', ['$scope',
     $scope.model = [];
 
     // Load rooms from REST API
-    TutorFactory.query(function successCallback(data) {
+    TutorResourceFactory.query(function successCallback(data) {
         // Logging
         console.log("Successfully queried entities");
         console.log(data);

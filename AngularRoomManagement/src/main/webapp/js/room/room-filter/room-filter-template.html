@@ -1,5 +1,5 @@
 <div class="form-inline filter-toolbar">
-    <div class="form-group">
+    <div class="form-group filter-group">
         <select ng-model="filter.building" placeholder="Choose a building" class="form-control" id="building"
                 name="building">
             <option value="">{{ 'BUILDING' | translate }}</option>
@@ -7,7 +7,7 @@
         </select>
     </div>
 
-    <div class="form-group">
+    <div class="form-group filter-group">
         <select ng-model="filter.type" placeholder="Choose a room type" class="form-control" id="roomType">
             <option value="">{{ 'ROOM_TYPE' | translate }}</option>
             <option ng-repeat="roomType in model.roomTypes" value="{{roomType}}">{{ roomType | translate }}</option>

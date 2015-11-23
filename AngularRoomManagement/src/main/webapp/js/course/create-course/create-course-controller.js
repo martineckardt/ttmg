@@ -3,8 +3,8 @@
  * Controller to create a course
  */
 angular.module('ttmg.controllers').controller('createCourseController',
-    ['$scope', 'CourseFactory', 'CenturiaFactory', 'TutorFactory', 'COURSE_TYPES',
-        function ($scope, CourseFactory, CenturiaFactory, TutorFactory, COURSE_TYPES) {
+    ['$scope', 'CourseResourceFactory', 'CenturiaResourceFactory', 'TutorResourceFactory', 'COURSE_TYPES',
+        function ($scope, CourseResourceFactory, CenturiaResourceFactory, TutorResourceFactory, COURSE_TYPES) {
 
     console.log('createCourseController initialized');
 
@@ -12,9 +12,9 @@ angular.module('ttmg.controllers').controller('createCourseController',
 
     // Set up model
     $scope.model = {
-        course: new CourseFactory(),
-        tutors: TutorFactory.query(),
-        centurias: CenturiaFactory.query(),
+        course: new CourseResourceFactory(),
+        tutors: TutorResourceFactory.query(),
+        centurias: CenturiaResourceFactory.query(),
         courseTypes: COURSE_TYPES
     };
 
@@ -40,7 +40,7 @@ angular.module('ttmg.controllers').controller('createCourseController',
             console.log(data);
 
             // Reset form
-            $scope.model.course = new CourseFactory();
+            $scope.model.course = new CourseResourceFactory();
             $scope.courseForm.$setUntouched();
 
             // Fill messageData with newly created entity

@@ -3,12 +3,12 @@
  * Controller for creation of a centuria.
  */
 
-angular.module('ttmg.controllers').controller('createCenturiaController', ['$scope', 'CenturiaFactory', 'STUDY_PROGRAMS', function ($scope, CenturiaFactory, STUDY_PROGRAMS) {
+angular.module('ttmg.controllers').controller('createCenturiaController', ['$scope', 'CenturiaResourceFactory', 'STUDY_PROGRAMS', function ($scope, CenturiaResourceFactory, STUDY_PROGRAMS) {
     console.log('createCenturiaController initialized');
 
     // Set up form model
     $scope.model = {
-        centuria: new CenturiaFactory(),
+        centuria: new CenturiaResourceFactory(),
         studyPrograms: STUDY_PROGRAMS
     };
 
@@ -25,7 +25,7 @@ angular.module('ttmg.controllers').controller('createCenturiaController', ['$sco
                 $scope.messageData = data;
 
                 // Reset form model
-                $scope.model.centuria = new CenturiaFactory();
+                $scope.model.centuria = new CenturiaResourceFactory();
                 $scope.centuriaForm.$setUntouched();
             }, function errorCallback(error) {
                 // Logging

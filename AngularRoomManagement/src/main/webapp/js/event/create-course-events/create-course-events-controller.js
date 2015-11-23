@@ -4,8 +4,8 @@
  */
 
 angular.module('ttmg.controllers').controller('createCourseEventsController',
-    ['$scope', '$routeParams', 'EventFactory', 'CourseFactory', 'RoomFactory',
-        function ($scope, $routeParams, EventFactory, CourseFactory, RoomFactory) {
+    ['$scope', '$routeParams', 'EventResourceFactory', 'CourseResourceFactory', 'RoomFactory',
+        function ($scope, $routeParams, EventResourceFactory, CourseResourceFactory, RoomFactory) {
 
             // Route parameters
             var courseId = $routeParams.id;
@@ -15,7 +15,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
 
             // Set up model
             $scope.model = {
-                course: CourseFactory.get({courseId: courseId}),
+                course: CourseResourceFactory.get({courseId: courseId}),
                 events: []
             };
 
@@ -104,7 +104,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                     events.push(event);
                 });
 
-                var eventsResource = new EventFactory(events);
+                var eventsResource = new EventResourceFactory(events);
                 eventsResource.$bulkCreate({courseId: course.id}, function successCallback(data) {
                     console.log("Events successfully created");
                     console.log(data);

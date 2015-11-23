@@ -3,7 +3,7 @@
  * Controller for the list view of all centurias.
  */
 
-angular.module('ttmg.controllers').controller('listCenturiasController', ['$scope', 'CenturiaFactory', function ($scope, CenturiaFactory) {
+angular.module('ttmg.controllers').controller('listCenturiasController', ['$scope', 'CenturiaResourceFactory', function ($scope, CenturiaResourceFactory) {
 
     console.log('listCenturiasController started');
 
@@ -13,7 +13,7 @@ angular.module('ttmg.controllers').controller('listCenturiasController', ['$scop
     };
 
     // Load centurias from REST API
-    CenturiaFactory.query(function successCallback(data) {
+    CenturiaResourceFactory.query(function successCallback(data) {
         // Logging
         console.log("Successfully queried entities");
         console.log(data);

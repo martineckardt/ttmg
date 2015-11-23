@@ -3,7 +3,7 @@
  * Factory for querying a specific entitiy, all entities and creating a new entity of the type course.
  */
 
-angular.module('ttmg.provider').factory('CourseFactory', function ($resource) {
+angular.module('ttmg.provider').factory('CourseResourceFactory', function ($resource) {
     return $resource('rest/courses/:courseId', {}, {
         query: {method: 'GET', isArray: true},
         create: {method: 'POST'},

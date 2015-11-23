@@ -2,13 +2,13 @@
  * Created by Martin Eckardt on 28.10.2015.
  */
 
-angular.module('ttmg.controllers').controller('listCoursesController', ['$scope', 'CourseFactory', function ($scope, CourseFactory) {
+angular.module('ttmg.controllers').controller('listCoursesController', ['$scope', 'CourseResourceFactory', function ($scope, CourseResourceFactory) {
 
     console.log('listCoursesController started');
 
     // Setup scope model
     $scope.model = {
-        courses: CourseFactory.query(
+        courses: CourseResourceFactory.query(
             function successCallback(data) {
                 // Logging
                 console.log("Successfully queried entities");

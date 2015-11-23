@@ -3,7 +3,7 @@
  * Controller for the detail view of one centuria tat displays the properties and the time table.
  */
 
-angular.module('ttmg.controllers').controller('viewCenturiaController', ['$scope', '$routeParams', 'CenturiaFactory', 'EventFactory', function ($scope, $routeParams, CenturiaFactory, EventFactory) {
+angular.module('ttmg.controllers').controller('viewCenturiaController', ['$scope', '$routeParams', 'CenturiaResourceFactory', 'EventResourceFactory', function ($scope, $routeParams, CenturiaResourceFactory, EventResourceFactory) {
 
     // Route parameters
     var centuriaId = $routeParams.id;
@@ -11,7 +11,7 @@ angular.module('ttmg.controllers').controller('viewCenturiaController', ['$scope
 
     // Set up scope model
     $scope.model = {
-        centuria: CenturiaFactory.get({centuriaId: centuriaId}),
-        events: EventFactory.query({centuriaId: centuriaId})
+        centuria: CenturiaResourceFactory.get({centuriaId: centuriaId}),
+        events: EventResourceFactory.query({centuriaId: centuriaId})
     };
 }]);

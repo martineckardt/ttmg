@@ -2,7 +2,7 @@
  * Created by Martin Eckardt on 28.10.2015.
  */
 
-angular.module('ttmg.controllers').controller('viewCourseController', ['$scope', '$routeParams', 'CourseFactory', 'EventFactory', function ($scope, $routeParams, CourseFactory, EventFactory) {
+angular.module('ttmg.controllers').controller('viewCourseController', ['$scope', '$routeParams', 'CourseResourceFactory', 'EventResourceFactory', function ($scope, $routeParams, CourseResourceFactory, EventResourceFactory) {
 
     // Route parameters
     var courseId = $routeParams.id;
@@ -10,8 +10,8 @@ angular.module('ttmg.controllers').controller('viewCourseController', ['$scope',
 
     // Set up scope model
     $scope.model = {
-        course: CourseFactory.get({courseId: courseId}),
-        events: EventFactory.query({courseId: courseId})
+        course: CourseResourceFactory.get({courseId: courseId}),
+        events: EventResourceFactory.query({courseId: courseId})
     };
 
 
