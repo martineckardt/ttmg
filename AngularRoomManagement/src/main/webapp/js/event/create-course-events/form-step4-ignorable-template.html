@@ -1,0 +1,14 @@
+<div class="alert alert-danger" role="alert">
+    <p>{{messageData.message}}</p>
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary" ng-click="createCourseEventsCtrl.forceAddEvents()">
+            {{ 'FORCE_CREATE' | translate }}
+        </button>
+        <button ng-click="createCourseEventsCtrl.goBackToStep(2)" class="btn btn-default">{{ 'BACK' | translate }}
+        </button>
+    </div>
+</div>

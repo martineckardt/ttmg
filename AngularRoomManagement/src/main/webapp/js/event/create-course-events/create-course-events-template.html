@@ -10,7 +10,9 @@
              ng-include="'js/event/create-course-events/form-step2-roomSelection-template.html'"></div>
         <div ng-if="formState == 3"
              ng-include="'js/event/create-course-events/form-step3-conflicts-template.html'"></div>
-        <div ng-if="formState == 4" ng-include="'js/event/create-course-events/form-step4-success-template.html'"></div>
+        <div ng-if="formState == 4"
+             ng-include="'js/event/create-course-events/form-step4-ignorable-template.html'"></div>
+        <div ng-if="formState == 5" ng-include="'js/event/create-course-events/form-step5-success-template.html'"></div>
     </form>
 </section>
 
