@@ -17,5 +17,5 @@ public interface TutorService {
 
     Tutor loadTutor(Long id) throws ValidationException;
 
-    void deleteTutor(Long id, Boolean force) throws ValidationException;
+    void deleteTutor(Long id, boolean force) throws ValidationException;
 }

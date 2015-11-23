@@ -130,7 +130,7 @@ public class Room implements Serializable, HasAvailability {
      */
     @Transient
     @Override
-    public Integer getCustomChangeTime() {
+    public int getCustomChangeTime() {
         return type.getDefaultChangeTime();
     }
 

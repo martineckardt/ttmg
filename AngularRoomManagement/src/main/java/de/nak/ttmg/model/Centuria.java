@@ -142,7 +142,7 @@ public class Centuria implements Serializable, HasAvailability {
 
     @Transient
     @Override
-    public Integer getCustomChangeTime() {
+    public int getCustomChangeTime() {
         if (getChangeTime() != null) {
             return getChangeTime();
         }

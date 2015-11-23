@@ -84,6 +84,6 @@ public class CenturiaController {
     @RequestMapping(value = "/centurias/{id}", method = RequestMethod.DELETE)
     public void deleteCenturias(@PathVariable Long id,
                                 @RequestParam(required = false, value = "force") Boolean force) {
-        centuriaService.deleteCenturia(id, force);
+        centuriaService.deleteCenturia(id, force == null ? false : force);
     }
 }

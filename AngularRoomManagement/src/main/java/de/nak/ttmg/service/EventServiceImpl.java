@@ -2,7 +2,6 @@ package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.CourseDAO;
 import de.nak.ttmg.dao.EventDAO;
-import de.nak.ttmg.exceptions.EntityNotFoundException;
 import de.nak.ttmg.exceptions.InvalidParameterException;
 import de.nak.ttmg.exceptions.ValidationException;
 import de.nak.ttmg.model.*;
@@ -43,13 +42,10 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<Event> createEvents(List<Event> events, Long courseId, Boolean force) throws ValidationException {
+    public List<Event> createEvents(List<Event> events, Long courseId, boolean force) throws ValidationException {
         Course course = courseDAO.load(courseId);
         for (Event event : events) {
             event.setCourse(course);
-            if (force == null) {
-                force = false;
-            }
             courseValidator.validateCourse(course, force);
             if (!force) {
                 timeValidator.validateTime(course);
@@ -59,23 +55,25 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event updateEvent(Long id, Long courseId, Event event, Boolean force) throws ValidationException {
-        if (force == null) {
-            force = false;
-        }
+    public Event updateEvent(Long id, Long courseId, Event event, boolean force) throws ValidationException {
         Event oldEvent = loadEvent(id);
-        if (oldEvent == null) {
-            throw new InvalidParameterException("id of event", InvalidParameterException.InvalidParameterType.INCONSISTENT);
-        }
         if (event != null && event.getId() != null && event.getId().equals(id) && oldEvent.getId().equals(id)) {
+            //Update the properties that may have changed
+            oldEvent.setRooms(event.getRooms());
+            oldEvent.setBegin(event.getBegin());
+            oldEvent.setEnd(event.getEnd());
+
+            //Load course to validate event
             Course course = oldEvent.getCourse();
+            //Verify if the event still belongs to the same course
             if (!courseId.equals(course.getId())) {
                 throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
             }
             if (!force) {
                 timeValidator.validateTime(course);
             }
-            return eventDAO.update(event);
+            //Save updates to DB
+            return eventDAO.update(oldEvent);
         } else {
             throw new InvalidParameterException("eventId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
         }

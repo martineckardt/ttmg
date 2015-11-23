@@ -1,7 +1,6 @@
 package de.nak.ttmg.service;
 
 import de.nak.ttmg.dao.CourseDAO;
-import de.nak.ttmg.exceptions.EntityNotFoundException;
 import de.nak.ttmg.exceptions.InvalidParameterException;
 import de.nak.ttmg.exceptions.ValidationException;
 import de.nak.ttmg.model.Centuria;
@@ -25,34 +24,38 @@ public class CourseServiceImpl implements CourseService {
     private final CourseValidator courseValidator = new CourseValidator();
 
     @Override
-    public Course createCourse(Course course, Boolean force) throws ValidationException {
-        if (force == null) {
-            force = false;
-        }
+    public Course createCourse(Course course, boolean force) throws ValidationException {
         if (course.getName() != null) {
+            //Trim name
             course.setName(course.getName().trim());
         }
+        //Validated the course
         courseValidator.validateCourse(course, force);
         if (!force) {
             timeValidator.validateTime(course);
         }
+        //Create course in db
         return courseDAO.create(course);
     }
 
     @Override
-    public Course updateCourse(Long id, Course course, Boolean force) throws ValidationException {
-        if (force == null) {
-            force = false;
-        }
+    public Course updateCourse(Long id, Course course, boolean force) throws ValidationException {
         if (course != null && course.getId() != null && course.getId().equals(id)) {
+            //Load old course from backend and update the properties that may have changed.
+            Course oldCourse = loadCourse(id);
             if (course.getName() != null) {
-                course.setName(course.getName().trim());
+                oldCourse.setName(course.getName().trim());
             }
-            courseValidator.validateCourse(course, force);
+            oldCourse.setTutor(course.getTutor());
+            oldCourse.setParticipants(course.getParticipants());
+            oldCourse.setType(course.getType());
+            //Validate the updated course
+            courseValidator.validateCourse(oldCourse, force);
             if (!force) {
-                timeValidator.validateTime(course);
+                timeValidator.validateTime(oldCourse);
             }
-            return courseDAO.update(course);
+            //Save changes to backend
+            return courseDAO.update(oldCourse);
         } else {
             throw new InvalidParameterException("courseId", InvalidParameterException.InvalidParameterType.INCONSISTENT);
         }
@@ -71,13 +74,17 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void deleteCourse(Long id) throws ValidationException {
         Course course = loadCourse(id);
+        //Remove the course from the centurias
         for (Centuria centuria : course.getParticipants()) {
             centuria.getCourses().remove(course);
         }
+        //Remove the course from the tutor
         course.getTutor().getCourses().remove(course);
+        //Delete all events
         for (Event event : course.getEvents()) {
             event.getRooms().forEach(room -> room.getEvents().remove(event));
         }
+        //Delete course in DB
         courseDAO.delete(course);
     }
 }

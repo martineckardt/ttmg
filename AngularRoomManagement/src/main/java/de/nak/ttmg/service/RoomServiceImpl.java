@@ -74,12 +74,12 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void deleteRoom(Long id, Boolean force) throws ValidationException {
+    public void deleteRoom(Long id, boolean force) throws ValidationException {
         Room room = loadRoom(id);
         if (room == null) {
             throw new EntityNotFoundException("room", id);
         }
-        if ((force == null || !force) && room.getEvents().size() > 0) {
+        if (!force && room.getEvents().size() > 0) {
             throw new IsBusyException(room, room.getEvents().size());
         }
         roomDAO.delete(room);

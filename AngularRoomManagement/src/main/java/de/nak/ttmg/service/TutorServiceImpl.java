@@ -47,12 +47,12 @@ public class TutorServiceImpl implements TutorService {
     }
 
     @Override
-    public void deleteTutor(Long id, Boolean force) throws ValidationException {
+    public void deleteTutor(Long id, boolean force) throws ValidationException {
         Tutor tutor = tutorDAO.load(id);
         if (tutor == null) {
             throw new EntityNotFoundException("tutor", id);
         }
-        if ((force == null || !force) && tutor.getCourses().size() > 0) {
+        if (!force && tutor.getCourses().size() > 0) {
             throw new IsBusyException(tutor, tutor.getCourses().size());
         }
         tutorDAO.delete(tutor);

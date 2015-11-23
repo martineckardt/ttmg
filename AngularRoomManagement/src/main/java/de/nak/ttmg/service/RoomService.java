@@ -20,5 +20,5 @@ public interface RoomService {
 
     Room loadRoom(Long id) throws ValidationException;
 
-    void deleteRoom(Long id, Boolean force) throws ValidationException;
+    void deleteRoom(Long id, boolean force) throws ValidationException;
 }
