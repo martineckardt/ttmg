@@ -54,10 +54,13 @@ angular.module('ttmg.controllers').controller('editEventController',
                 endDate.setMinutes(eventDate.end.minutes);
                 var endDateString = $.format.date(endDate, 'yyyy-MM-dd_HH:mm');
 
+                var event = $scope.model.event;
+
                 $scope.formModel.availableRooms = RoomFactory.query({
                     freeStart: baseDateBeginString,
                     freeEnd: endDateString,
-                    minSeats: $scope.model.event.course.numberOfStudents
+                    minSeats: event.course.numberOfStudents,
+                    ignoreEventId: event.id
                 }, function successCallback(availableRooms) {
                     var eventRooms = $scope.model.event.rooms;
 
@@ -99,8 +102,10 @@ angular.module('ttmg.controllers').controller('editEventController',
 
                     // Fill messageData with exception message from backend
                     $scope.entitySuccesfullyCreated = false;
-                    $scope.messageData = error.data.message;
+                    $scope.messageData = error.data;
                 });
+
+                $scope.formState = 3;
             };
         }]);
 

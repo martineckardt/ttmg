@@ -44,7 +44,7 @@ public class RoomController {
                                     @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeStart,
                                 @RequestParam(required = false, value = "freeEnd")
                                     @DateTimeFormat(pattern="yyyy-MM-dd_HH:mm") Date freeEnd,
-                                @RequestParam(required = false, value = "updatedEventId") Long eventId
+                                @RequestParam(required = false, value = "ignoreEventId") Long eventId
                                 ) {
         RoomType roomType = RoomType.typeForString(roomTypeString);
         return roomService.listRooms(building, roomNbr, roomType, minSeats, freeStart, freeEnd, eventId);
