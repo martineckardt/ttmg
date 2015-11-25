@@ -80,33 +80,72 @@ angular.module('ttmg.controllers').controller('editEventController',
             };
 
 
-            this.updateEvent = function () {
+            this.tryUpdateEvent = function () {
                 var event = $scope.model.event;
-                // Reset values
+
+                // Reset rooms
                 event.rooms = {};
 
+                // Add selected rooms
                 event.rooms = $scope.formModel.availableRooms.filter(function filter(room) {
                     return room.selected == true;
                 });
 
-                event.$update({eventId: event.id, courseId: event.course.id}, function successCallback(data) {
-                    console.log("Event successfully updated");
-                    console.log(data);
-
-                    // Fill messageData with newly created entity
-                    $scope.entitySuccesfullyCreated = true;
-                    $scope.messageData = data;
-                }, function errorCallback(error) {
-                    console.log("Failed to update event");
-                    console.log(error);
-
-                    // Fill messageData with exception message from backend
-                    $scope.entitySuccesfullyCreated = false;
-                    $scope.messageData = error.data;
-                });
-
-                $scope.formState = 3;
+                updateEvent(false);
             };
+
+            this.forceUpdateEvent = function () {
+                updateEvent(true);
+            };
+
+            this.goBackToStep = function (stepId) {
+                $scope.formState = stepId;
+            };
+
+            function updateEvent(force) {
+                console.log('attempting to update event with force = ' + force);
+                var event = $scope.model.event;
+
+                event.$update(
+                    {eventId: event.id, courseId: event.course.id, force: force},
+                    function successCallback(data) {
+                        console.log("Event successfully updated");
+                        console.log(data);
+
+                        // Fill messageData with newly created entity
+                        $scope.entitySuccesfullyUpdate = true;
+                        $scope.messageData = data;
+
+                        $scope.formState = 5;
+                    },
+                    function errorCallback(error) {
+                        console.log("Failed to update course");
+                        console.log(error);
+
+                        $scope.entitySuccesfullyUpdate = false;
+
+                        // Check if backend indicates conflicts or
+                        if (error.data.localizableMessage == 'TIME_CONFLICTS') {
+                            console.log('conflicts detected');
+                            $scope.conflicts = error.data.conflicts;
+
+                            // Go to conflicts page
+                            console.log("go to conflicts view");
+                            $scope.formState = 3;
+                        } else if (error.data.ignorable) {
+                            console.log('ignorable error detected');
+                            $scope.ignorableError = error.data;
+                            $scope.formState = 4;
+                        } else {
+                            $scope.messageData = error.data;
+                            // Go to unexpected error page
+                            $scope.formState = 5;
+                        }
+
+                    }
+                );
+            }
+
         }]);
 
 

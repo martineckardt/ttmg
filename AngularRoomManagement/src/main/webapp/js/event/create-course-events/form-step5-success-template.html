@@ -1,15 +1,18 @@
 <!-- Success or error message -->
-success
 <div ng-if="entitySuccessfullyCreated" class="alert alert-success" role="alert">
-    <p>{{ 'SUCCESS' | translate }}</p>
-</div>
-<div ng-if="entitySuccessfullyCreated == false" class="alert alert-danger" role="alert">
-    <p>{{messageData.message}}</p>
+    <p>{{ 'COURSE_EVENTS_CREATION_SUCCESS' | translate }}</p>
 </div>
 
+<div ng-if="entitySuccessfullyCreated == false" class="alert alert-danger" role="alert">
+    <p>{{ 'COURSE_EVENTS_CREATION_FAILURE' | translate }} {{ messageData.localizableMessage | translate }}</p>
+
+    <p>{{ messageData.message }}</p>
+</div>
+
+
 <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <a href="#/courses/{{model.course.id}}" class="btn btn-default">{{ 'SHOW_COURSES' | translate }}</a>
+    <div class="col-sm-12">
+        <a href="#/courses/{{model.course.id}}" class="btn btn-default">{{ 'BACK_TO_COURSE' | translate }}</a>
     </div>
 </div>
 

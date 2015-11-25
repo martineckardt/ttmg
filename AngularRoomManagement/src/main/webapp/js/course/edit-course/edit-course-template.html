@@ -2,22 +2,10 @@
     <h2>{{ 'EDIT_COURSE' | translate }} {{model.course.name}}</h2>
     <hr>
 
-    <div ng-if="entitySuccesfullyUpdated" class="alert alert-success" role="alert">
-        <p>The course <a ng-href="#/courses/{{messageData.id}}" class="alert-link">{{messageData.name}}</a> was
-            updated.</p>
-    </div>
-    <div ng-if="entitySuccesfullyUpdated == false" class="alert alert-danger" role="alert">
-        <p>{{messageData}}</p>
-    </div>
-
-    <form ng-if="entitySuccesfullyUpdated != true" class="form-horizontal" role="form" name="courseForm"
-          ng-submit="editCourseCtrl.updateCourse()" novalidate>
-        <div ng-include="'js/course/course-form-template.html'"></div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <input type="submit" class="btn btn-primary" value="Save" ng-disabled="courseForm.$invalid"/>
-                <a ng-href="#/courses/{{course.id}}" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
-            </div>
-        </div>
+    <form class="form-horizontal" role="form" name="courseForm" novalidate>
+        <div ng-if="formState == 1" ng-include="'js/course/edit-course/form-step1-editCourse-template.html'"></div>
+        <div ng-if="formState == 2" ng-include="'js/course/edit-course/form-step2-conflicts-template.html'"></div>
+        <div ng-if="formState == 3" ng-include="'js/course/edit-course/form-step3-ignorable-template.html'"></div>
+        <div ng-if="formState == 4" ng-include="'js/course/edit-course/form-step4-success-template.html'"></div>
     </form>
 </section>

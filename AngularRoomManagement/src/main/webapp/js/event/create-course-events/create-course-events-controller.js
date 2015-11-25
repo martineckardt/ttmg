@@ -126,46 +126,47 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             function sendRequest(force) {
                 console.log('attempting to create events with force = ' + force);
                 var eventsResource = new EventResourceFactory(createEventsFromFormModel());
-                eventsResource.$bulkCreate({
-                    courseId: $scope.model.course.id,
-                    force: force
-                }, function successCallback(data) {
-                    console.log("Events successfully created");
-                    console.log(data);
+                eventsResource.$bulkCreate(
+                    {courseId: $scope.model.course.id, force: force},
+                    function successCallback(data) {
+                        console.log("Events successfully created");
+                        console.log(data);
 
-                    // Fill messageData with newly created entity
-                    $scope.entitySuccessfullyCreated = true;
-                    $scope.messageData = data;
+                        // Fill messageData with newly created entity
+                        $scope.entitySuccessfullyCreated = true;
+                        $scope.messageData = data;
 
-                    // Go to success page
-                    $scope.formState = 5;
-                }, function errorCallback(error) {
-                    console.log("Failed to create course events");
-                    console.log(error);
-
-                    // Check if backend indicates conflicts or
-                    if (error.data.localizableMessage == 'TIME_CONFLICTS') {
-                        console.log('conflicts detected');
-                        $scope.conflicts = error.data.conflicts;
-
-                        // Go to conflicts page
-                        console.log("go to conflicts view");
-                        $scope.formState = 3;
-                    } else if (error.data.ignorable) {
-                        console.log('insufficient seats detected');
-                        // Fill messageData with exception message from backend
-                        $scope.entitySuccessfullyCreated = false;
-                        $scope.messageData = error.data;
-
-                        // Go to error page
-                        $scope.formState = 4;
-                    } else {
-                        // Go to error page
+                        // Go to success page
                         $scope.formState = 5;
-                    }
-                });
-            }
+                    },
+                    function errorCallback(error) {
+                        console.log("Failed to create course events");
+                        console.log(error);
 
+                        // Check if backend indicates conflicts or
+                        if (error.data.localizableMessage == 'TIME_CONFLICTS') {
+                            console.log('conflicts detected');
+                            $scope.conflicts = error.data.conflicts;
+
+                            // Go to conflicts page
+                            console.log("go to conflicts view");
+                            $scope.formState = 3;
+                        } else if (error.data.ignorable) {
+                            console.log('insufficient seats detected');
+                            // Fill messageData with exception message from backend
+                            $scope.entitySuccessfullyCreated = false;
+                            $scope.ignorableError = error.data;
+
+                            // Go to ignorable error page
+                            $scope.formState = 4;
+                        } else {
+                            $scope.messageData = error.data;
+                            // Go to unexpected error page
+                            $scope.formState = 5;
+                        }
+                    }
+                );
+            }
         }]);
 
 

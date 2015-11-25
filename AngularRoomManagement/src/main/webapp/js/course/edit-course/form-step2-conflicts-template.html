@@ -1,14 +1,14 @@
-<!-- User sees conflicts -->
+<!-- User sees conflicts or  -->
 
 <div ng-include="'js/event/templates/conflicts-template.html'"></div>
 
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <button class="btn btn-primary" ng-click="createCourseEventsCtrl.forceAddEvents()">
+        <button class="btn btn-primary" ng-click="editCourseCtrl.forceUpdateCourse()">
             {{ 'FORCE_CREATE' | translate }}
         </button>
-        <button ng-click="createCourseEventsCtrl.goBackToStep(2)" class="btn btn-default">
+        <button ng-click="editCourseCtrl.goBackToStep(1)" class="btn btn-default">
             {{ 'BACK' | translate }}
         </button>
     </div>

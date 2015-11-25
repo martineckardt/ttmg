@@ -1,0 +1,16 @@
+<div class="alert alert-danger" role="alert">
+    <p>{{ 'EVENT_UPDATE_FAILURE' | translate }} {{ ignorableError.localizableMessage | translate }}</p>
+
+    <p>{{ messageData.message }}</p>
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-12">
+        <button class="btn btn-primary" ng-click="editEventCtrl.forceUpdateEvent()">
+            {{ 'FORCE_CREATE' | translate }}
+        </button>
+        <button ng-click="editEventCtrl.goBackToStep(2)" class="btn btn-default">{{ 'BACK' | translate }}
+        </button>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<!-- Success or error message -->
+<div ng-if="entitySuccesfullyUpdated" class="alert alert-success" role="alert">
+    <p>{{ 'COURSE_UPDATE_SUCCESS' | translate }}</p>
+</div>
+<div ng-if="entitySuccessfullyUpdated == false" class="alert alert-danger" role="alert">
+    <p>{{ 'COURSE_UPDATE_FAILURE' | translate }} {{messageData.localizableMessage | translate }}</p>
+
+    <p>{{messageData.message}}</p>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-12">
+        <a href="#/courses/{{model.course.id}}" class="btn btn-default">{{ 'BACK_TO_COURSE' | translate }}</a>
+    </div>
+</div>
+

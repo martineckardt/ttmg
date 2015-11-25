@@ -3,17 +3,18 @@
     <hr>
 
 
-    <form class="form-horizontal" role="form" ng-submit="editEventCtrl.updateEvent()" novalidate>
-        <div ng-if="formState == 1"
-             ng-include="'js/event/edit-event/edit-event-form-step1-template.html'"></div>
-        <div ng-if="formState == 2"
-             ng-include="'js/event/edit-event/edit-event-form-step2-template.html'"></div>
-        <div ng-if="formState == 3"
-             ng-include="'js/event/edit-event/edit-event-form-step3-template.html'"></div>
+    <form class="form-horizontal" role="form" novalidate>
+        <div ng-if="formState == 1" ng-include="'js/event/edit-event/form-step1-date-template.html'"></div>
+        <div ng-if="formState == 2" ng-include="'js/event/edit-event/form-step2-roomSelection-template.html'"></div>
+        <div ng-if="formState == 3" ng-include="'js/event/edit-event/form-step3-conflicts-template.html'"></div>
+        <div ng-if="formState == 4" ng-include="'js/event/edit-event/form-step4-ignorable-template.html'"></div>
+        <div ng-if="formState == 5" ng-include="'js/event/edit-event/form-step5-success-template.html'"></div>
     </form>
 </section>
 
+<!--
 <hr>
 <pre>{{model | json }}</pre>
 <hr>
 <pre>{{formModel | json }}</pre>
+-->
