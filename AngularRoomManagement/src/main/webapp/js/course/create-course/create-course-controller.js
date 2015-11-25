@@ -52,7 +52,7 @@ angular.module('ttmg.controllers').controller('createCourseController',
 
             // Fill messageData with exception message from backend
             $scope.entitySuccesfullyCreated = false;
-            $scope.messageData = error.data.message;
+            $scope.messageData = error.data;
         });
 
 

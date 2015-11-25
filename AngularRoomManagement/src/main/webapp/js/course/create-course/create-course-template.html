@@ -3,11 +3,11 @@
     <hr>
 
     <div ng-if="entitySuccesfullyCreated" class="alert alert-success" role="alert">
-        <p>The course <a ng-href="#/courses/{{messageData.id}}" class="alert-link">{{messageData.name}}</a> was
-            created.</p>
+        <p>{{ 'COURSE_CREATION_SUCCESS' | translate }}<a ng-href="#/courses/{{messageData.id}}" class="alert-link">{{messageData.name}}</a></p>
     </div>
     <div ng-if="entitySuccesfullyCreated == false" class="alert alert-danger" role="alert">
-        <p>{{messageData}}</p>
+        <p>{{ 'COURSE_CREATION_FAILURE' | translate }} {{ messageData.localizableMessage | translate }}</p>
+        <p>{{ messageData.message }}</p>
     </div>
 
     <form class="form-horizontal" role="form" ng-submit="createCourseCtrl.addCourse()"
