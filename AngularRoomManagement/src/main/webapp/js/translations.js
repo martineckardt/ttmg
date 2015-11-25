@@ -9,64 +9,86 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
 
     // English translations
     $translateProvider.translations('en', {
-        //General
+        // === General ===
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Welcome to the Time Table Management!',
         'WELCOME_TEXT_BODY': 'Time Table Management is an application that helps you creating Time Tables.',
+
+        // Language
         'GERMAN': 'German',
         'ENGLISH': 'English',
 
-        'TIMETABLE': 'Time table',
+        // COMMON
+
+        // Actions
         'ACTIONS': 'Actions',
         'SHOW': 'Show',
         'DOWNLOAD_PDF': 'Download PDF',
-        'NAME': 'Name',
         'SAVE': 'Save',
         'BACK': 'Back',
         'ADD': 'Add',
         'DELETE': 'Delete',
         'EDIT': 'Edit',
-        'QUESTION_DELETE_ITEM': 'Do you really want to delete the {{value}}',
         'CANCEL': 'Cancel',
-        'SUCCESS': 'Success',
+
         'NEXT': 'Next',
 
         // Properties
+        'TIMETABLE': 'Time table',
+        'NAME': 'Name',
         'CHANGE_TIME': 'Change time',
-        'CHANGE_TIME_OPTIONAL': 'Change Time (optional)',
+        'CHANGE_TIME_OPTIONAL': 'Change Time in minutes (optional)',
         'MINUTES': 'minutes',
 
-        //Centuria
+        // Messages
+        'SUCCESS': 'Success',
+        'QUESTION_DELETE_ITEM': 'Do you really want to delete the {{value}}',
+
+        // === Centuria ===
         'CENTURIAS': 'Centurias',
         'CENTURIA': 'Centuria',
+
+        // Properties
         'NBR_STUDENTS': 'Number of students',
         'PROGRAM': 'Study Program',
         'SELECT_PROGRAM': 'Select a study program',
         'YEAR': 'Year',
         'LETTER': 'Letter',
+
+        // Actions
         'CREATE_NEW_CENTURIA': 'Create new centuria',
         'ADD_CENTURIA': 'Add centuria',
+
+        // Messages
         'CENTURIA_CREATION_SUCCESS': 'The centuria {{value}} has been created successfully',
         'CENTURIA_CREATION_FAILURE': 'The centuria could not be created',
 
-        //Event
-        'CREATE_NEW_EVENT_FOR_COURSE': 'Create new events for the course ',
-        'EDIT_EVENT_OF_COURSE': 'Edit the event of the course',
-        'CREATE_EVENT': 'Create event',
-
+        // === Event ===
         'EVENT': 'Event',
         'CAUSER': 'Causer',
 
-        // create course events
+        // Properties
         'DATE': "Date",
         'BEGIN': 'Begin',
         'END': 'End',
         'REPEAT_FOR_WEEKS': 'Repeat for weeks',
+
+        // Actions
+        'CREATE_NEW_EVENT_FOR_COURSE': 'Create new events for the course ',
+        'EDIT_EVENT_OF_COURSE': 'Edit the event of the course',
+        'CREATE_EVENT': 'Create event',
         'FORCE_CREATE': 'Create anyway',
+        'FORCE_UPDATE': 'Update anyway',
+
+        // Messages
+        'COURSE_EVENTS_CREATION_SUCCESS': 'The events have been created successfully.',
+        'COURSE_EVENTS_CREATION_FAILURE': 'An eror occured creating the events.',
+        'EVENT_UPDATE_SUCCESS': 'The event has been updated successfully.',
+        'EVENT_UPDATE_FAILURE': 'An error occured updating the event:',
 
 
-        //TODO COURSES
         // === Courses ===
+
         // Course types
         'COURSE': 'Course',
         'COURSES': 'Courses',
@@ -74,60 +96,75 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'EXAM': 'Exam',
         'ELECTIVE_MODULE': 'Elective module',
 
-        // Course Properties
+        // Properties
         'COURSE_TYPE': 'Course type',
         'COURSE_NAME': 'Name',
         'SELECT_COURSE_TYPE': 'Select a course type',
         'PARTICIPANTS_OPTIONAL': 'Participants (optional)',
-        'SEMINARS_NO_PARTICIPANTS': 'Seminars do not have participants.',
         'PARTICIPANTS': 'Participants',
+        'SEMINARS_NO_PARTICIPANTS': 'Seminars do not have participants.',
 
         // Actions
         'ADD_EVENTS': 'Add events',
         'EDIT_COURSE': 'Edit course',
         'CREATE_NEW_COURSE': 'Create a new course',
         'ADD_COURSE': 'Add Course',
+        'BACK_TO_COURSE': 'Zurück zum Kurs',
 
-        //Home
-        'LOADING': 'Please wait while the application is loading',
+        // Messages
+        'COURSE_CREATION_SUCCESS': 'The course has been created successfully:',
+        'COURSE_CREATION_FAILURE': 'The course could not be created:',
+        'COURSE_UPDATE_SUCCESS': 'The course has been updated successfully.',
+        'COURSE_UPDATE_FAILURE': 'An error occured updating the course',
 
-        //Room
+        // === Room ===
         'ROOMS': 'Rooms',
         'ROOM': 'Room',
+        'AVAILABLE_ROOMS': 'Available rooms',
+        'FILTER_ROOMS': 'Filter rooms',
+
+        // Room types
+        'AUDIMAX': 'Audimax',
+        'LECTURE': 'Lecture',
+        'LAB': 'Lab',
+        'COMPUTER': 'Computer room',
+
+        // Properties
         'BUILDING': 'building',
         'SELECT_BUILDING': 'Select a building',
         'ROOM_NBR': 'Room number',
         'ROOM_CAPACITY': 'Capacity',
         'ROOM_TYPE': 'Room type',
         'SELECT_ROOM_TYPE': 'Select a room type',
+
+        // Actions
         'CREATE_NEW_ROOM': 'Create new room',
         'ADD_ROOM': 'Add room',
-        'ROOM_CREATION_SUCCESS': 'The room {{value}} has been created successfully',
-        'ROOM_CREATION_FAILURE': 'The room could not be created',
-        'AVAILABLE_ROOMS': 'Available rooms',
-        'NO_SUFF_LARGE_ROOM': 'No sufficiently large rooms are available',
-        'FILTER_ROOMS': 'Filter rooms',
 
         // Messages
+        'ROOM_CREATION_SUCCESS': 'The room {{value}} has been created successfully',
+        'ROOM_CREATION_FAILURE': 'The room could not be created',
+        'NO_SUFF_LARGE_ROOM': 'No sufficiently large rooms are available',
         'ROOM_CREATED': 'The room was successfully created:',
 
-        // Properties
-        'AUDIMAX': 'Audimax',
-        'LECTURE': 'Lecture',
-        'LAB': 'Lab',
-        'COMPUTER': 'Computer room',
+        // === Tutor ===
 
-        //Tutors
         'TUTORS': 'Tutors',
         'TUTOR': 'Tutor',
+
+        // Properties
         'TITLE': 'Title',
         'FIRST_NAME': 'First name',
         'LAST_NAME': 'Last name',
+
+        // Actions
         'CREATE_NEW_TUTOR': 'Create a new tutor',
         'ADD_TUTOR': 'Add tutor',
 
         // Messages
-        'TUTOR_CREATED': 'The tutor has been created successfully:',
+        'TUTOR_CREATED': ':',
+        'TUTOR_CREATION_SUCCESS': 'The tutor has been created successfully:',
+        'TUTOR_CREATION_FAILURE': 'An error occured creating the tutor:',
 
         //INDEX / MENU
         'SHOW_ROOMS': 'Show Rooms',
@@ -140,7 +177,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'DATE_RANGE_ONE_NULL': 'Start- and End-Date have to be set together.',
         'ENTITY_ALREADY_EXISTS': 'Entity does already exist and cannot be recreated.',
         'ENTITY_NOT_FOUND': 'Entity of type {{type}} with id {{id}} was not found.',
-        'INSUFFICIENT_SEATS': 'There are {{seats}} seats missing.',
+        'INSUFFICIENT_SEATS': 'There is not enough capacity in the rooms of the events for all participants of the ' +
+        'course. Please note that if you change the course anyway, that additional time conflicts might appear.',
         'OBJECT_HAS_EVENTS': 'Cannot delete {{type}} there are still {{numberEvents}} referenced events!',
         'TIME_CONFLICTS': 'There are {{nbrOfConflicts}} conflicting events.',
         'INVALID_PARAMETER': 'The parameter {{name}} {{description}}',
@@ -160,120 +198,153 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'APP_NAME': 'Time Table Management',
         'WELCOME_TEXT_HEADER': 'Willkommen zum Time Table Management System!',
         'WELCOME_TEXT_BODY': 'Mit dem Time Table Management System können Sie Räume, Dozenten und Zenturien zu den Stammdaten hinzufügen und Veranstaltungen verwalten.',
+
+        // LANGUAGE
         'GERMAN': 'Deutsch',
         'ENGLISH': 'Englisch',
 
-        'TIMETABLE': 'Stundenplan',
+        // === COMMON ===
+
+        // Actions
         'ACTIONS': 'Aktionen',
         'SHOW': 'Anzeigen',
         'DOWNLOAD_PDF': 'PDF Herunterladen',
-        'NAME': 'Name',
         'SAVE': 'Speichern',
         'BACK': 'Zurück',
         'ADD': 'Hinzufügen',
         'DELETE': 'Löschen',
         'EDIT': 'Bearbeiten',
-        'QUESTION_DELETE_ITEM': 'Möchten Sie {{value}} wirklich löschen?',
         'CANCEL': 'Abbrechen',
-        'SUCCESS': 'Erfolg',
         'NEXT': 'Weiter',
 
         // Properties
+        'TIMETABLE': 'Stundenplan',
+        'NAME': 'Name',
         'CHANGE_TIME': 'Wechselzeit',
-        'CHANGE_TIME_OPTIONAL': 'Wechselzeit (optional)',
+        'CHANGE_TIME_OPTIONAL': 'Wechselzeit in Minuten (optional)',
         'MINUTES': 'Minuten',
 
-        //Centuria
+        // Messages
+        'SUCCESS': 'Erfolg',
+        'QUESTION_DELETE_ITEM': 'Möchten Sie {{value}} wirklich löschen?',
+
+
+        // ==== Centuria ===
         'CENTURIAS': 'Zenturien',
         'CENTURIA': 'Zenturie',
+
+        // Properties
         'NBR_STUDENTS': 'Anzahl der Studenten',
         'PROGRAM': 'Studiengang',
         'SELECT_PROGRAM': 'Wählen Sie einen Studiengang',
         'YEAR': 'Jahrgang',
         'LETTER': 'Buchstabe',
+
+        // Actions
         'CREATE_NEW_CENTURIA': 'Neue Zenturie anlegen',
         'ADD_CENTURIA': 'Zenturie anlegen',
+
+        // Messages
         'CENTURIA_CREATION_SUCCESS': 'Die Zenturie {{value}} wurde erfolgreich angelegt',
         'CENTURIA_CREATION_FAILURE': 'Die Zenturie konnte nicht angelegt werden',
 
         // === Events ===
-        'CREATE_NEW_EVENT_FOR_COURSE': 'Erstelle neue Veranstaltungen für den Kurs ',
-        'EDIT_EVENT_OF_COURSE': 'Bearbeiten der Veranstaltung des Kurses',
-        'CREATE_EVENT': 'Erstelle neue Veranstaltung',
-
         'EVENT': 'Veranstaltung',
         'CAUSER': 'Verursacher',
 
-        // create course events
+        // Properties
         'DATE': "Datum",
         'BEGIN': 'Beginn',
         'END': 'Ende',
         'REPEAT_FOR_WEEKS': 'Wöchentlich wiederholen',
-        'FORCE_CREATE': 'Trotzdem erstellen',
 
-        //TODO COURSES
+        // Actions
+        'CREATE_NEW_EVENT_FOR_COURSE': 'Erstelle neue Veranstaltungen für den Kurs ',
+        'EDIT_EVENT_OF_COURSE': 'Bearbeiten der Veranstaltung des Kurses',
+        'CREATE_EVENT': 'Erstelle neue Veranstaltung',
+        'FORCE_CREATE': 'Trotzdem erstellen',
+        'FORCE_UPDATE': 'Trotzdem ändern',
+
+        // Messages
+        'COURSE_EVENTS_CREATION_SUCCESS': 'Die Veranstaltungen wurden erfolgreich erstellt.',
+        'COURSE_EVENTS_CREATION_FAILURE': 'Es ist ein Fehler bei der Erstellung der Veranstaltungen aufgetreten:',
+        'EVENT_UPDATE_SUCCESS': 'Das Event wurde erfolgreich geändert.',
+        'EVENT_UPDATE_FAILURE': 'Es ist ein Fehler beim Ändern des Events aufgetreten.',
+
         // === Courses ===
+
         'COURSE': 'Kurs',
         'COURSES': 'Kurse',
         'SEMINAR': 'Seminar',
         'EXAM': 'Klausur',
         'ELECTIVE_MODULE': 'WPK',
 
-        // Course Properties
+        // Properties
         'COURSE_TYPE': 'Modulart',
         'COURSE_NAME': 'Name',
         'SELECT_COURSE_TYPE': 'Wählen Sie einen Kurs-Typ',
         'PARTICIPANTS_OPTIONAL': 'Teilnehmer (optional)',
-        'SEMINARS_NO_PARTICIPANTS': 'Seminare haben keine Teilnehmer.',
         'PARTICIPANTS': 'Teilnehmer',
+        'SEMINARS_NO_PARTICIPANTS': 'Seminare haben keine Teilnehmer.',
+
         // Actions
         'ADD_EVENTS': 'Veranstaltungen hinzufügen',
         'EDIT_COURSE': 'Kurs verändern',
         'CREATE_NEW_COURSE': 'Neuen Kurs anlegen',
         'ADD_COURSE': 'Kurs anlegen',
+        'BACK_TO_COURSE': 'Zurück zum Kurs',
 
-        //Home
-        'LOADING': 'Bitte warten...',
+        // Messages
+        'COURSE_CREATION_SUCCESS': 'Der Kurs wurde erfolgreich angelegt. Sie können in der Kursansicht Veranstaltungen für den Kurs hinzufügen:',
+        'COURSE_CREATION_FAILURE': 'Es ist ein Fehler beim Erstellen des Kurses aufgetreten: ',
+        'COURSE_UPDATE_SUCCESS': 'Der Kurs wurde erfolgreich geändert.',
+        'COURSE_UPDATE_FAILURE': 'Es ist ein Fehler beim Ändern des Kurses aufgetreten:',
 
         // === Room ===
         'ROOMS': 'Räume',
         'ROOM': 'Raum',
+        'AVAILABLE_ROOMS': 'Verfügbare Räume',
+        'FILTER_ROOMS': 'Räume filtern',
+
+        // Room types
+        'AUDIMAX': 'Audimax',
+        'LECTURE': 'Hörsaal',
+        'LAB': 'Labor',
+        'COMPUTER': 'Computer-Raum',
+
+        // Properties
         'BUILDING': 'Gebäude',
         'SELECT_BUILDING': 'Gebäude auswählen',
         'ROOM_NBR': 'Raumnummer',
         'ROOM_CAPACITY': 'Kapazität',
         'ROOM_TYPE': 'Raumtyp',
         'SELECT_ROOM_TYPE': 'Raumtyp auswählen',
+
+        // Actions
         'CREATE_NEW_ROOM': 'Neuen Raum anlegen',
         'ADD_ROOM': 'Raum anlegen',
-        'ROOM_CREATION_SUCCESS': 'Der Raum {{value}} wurde erfolgreich angelegt',
-        'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden',
-        'AVAILABLE_ROOMS': 'Verfügbare Räume',
-        'NO_SUFF_LARGE_ROOM': 'Kein ausreichend großer Raum steht zur Verfügung',
-        'FILTER_ROOMS': 'Räume filtern',
-
-        // Room type
-        'AUDIMAX': 'Audimax',
-        'LECTURE': 'Hörsaal',
-        'LAB': 'Labor',
-        'COMPUTER': 'Computer-Raum',
 
         // Messages
+        'ROOM_CREATION_SUCCESS': 'Der Raum {{value}} wurde erfolgreich angelegt',
+        'ROOM_CREATION_FAILURE': 'Der Raum konnte nicht angelegt werden',
+        'NO_SUFF_LARGE_ROOM': 'Kein ausreichend großer Raum steht zur Verfügung',
         'ROOM_CREATED': 'Der Raum wurde erfolgreich erstellt:',
 
-        //Tutors
+        // === Tutor ===
         'TUTORS': 'Dozenten',
         'TUTOR': 'Dozent',
+
+        // Properties
         'TITLE': 'Titel',
         'FIRST_NAME': 'Vorname',
         'LAST_NAME': 'Nachname',
+
+        // Actions
         'CREATE_NEW_TUTOR': 'Neuen Dozenten anlegen',
         'ADD_TUTOR': 'Dozent anlegen',
-        'TUTOR_CREATION_SUCCESS': 'Der Dozent wurde erfolgreich angelegt',
+        'TUTOR_CREATION_SUCCESS': 'Der Dozent wurde erfolgreich angelegt:',
         'TUTOR_CREATION_FAILURE': 'Der Dozent konnte nicht angelegt werden',
 
-        // Messages
-        'TUTOR_CREATED': 'Der Tutor wurde erfolgreich erstellt:',
 
         //INDEX / MENU
         'SHOW_ROOMS': 'Räume anzeigen',
@@ -286,7 +357,9 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'DATE_RANGE_ONE_NULL': 'Start- and End-Datum müssen eingetragen werden',
         'ENTITY_ALREADY_EXISTS': 'Die Entität ist schon im System und konnte nicht angelegt werden.',
         'ENTITY_NOT_FOUND': 'Entität des Typs {{type}} mit id {{id}} wurde nicht gefunden.',
-        'INSUFFICIENT_SEATS': 'Es fehlen {{seats}} Sitzplätze.',
+        'INSUFFICIENT_SEATS': 'Es sind nicht ausreichend Sitzplätze in den Räumen der Veranstaltungen vorhanden, ' +
+        'um alle Teilnehmer aufzunehmen. Bitte beachten Sie, dass zusätzliche Zeitkonflikte auftreten können, wenn ' +
+        'Sie den Kurs dennoch ändern.',
         'OBJECT_HAS_EVENTS': 'Kann {{type}} ´nicht löschen, es gibt noch {{numberEvents}} referenzierte Kurse!',
         'TIME_CONFLICTS': 'Es gibt {{nbrOfConflicts}} in Konflikt stehende Veranstaltungen.',
         'INVALID_PARAMETER': 'Der Parameter {{name}} {{description}} ist nicht valide.',
