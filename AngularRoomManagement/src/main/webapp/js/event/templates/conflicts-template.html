@@ -1,0 +1,18 @@
+<div class="alert alert-danger" role="alert">
+    <p>{{ 'TIME_CONFLICTS' | translate:'{ nbrOfConflicts: ' + conflicts.length + ' }' }}</p>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>{{ 'CAUSER' | translate }}</th>
+        <th>{{ 'COURSE' | translate }}</th>
+        <th>{{ 'EVENT' | translate }}</th>
+    </tr>
+    <tr ng-repeat="conflict in conflicts">
+        <td>{{conflict.causer.readableString}}</td>
+        <td>
+            <a ng-href="#/courses/{{conflict.event.course.id}}">{{conflict.event.course.name}}</a>
+        </td>
+        <td>{{conflict.event.readableString}}</td>
+    </tr>
+</table>
