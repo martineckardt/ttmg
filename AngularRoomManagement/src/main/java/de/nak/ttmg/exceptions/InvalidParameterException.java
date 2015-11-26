@@ -1,6 +1,7 @@
 package de.nak.ttmg.exceptions;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import de.nak.ttmg.util.Constants;
 
 /**
  * Created by felixb on 28/10/15.
@@ -43,5 +44,10 @@ public class InvalidParameterException extends ValidationException {
 
     public InvalidParameterType getType() {
         return type;
+    }
+
+    @Override
+    public String getLocalizableMessage() {
+        return Constants.INVALID_PARAMETER;
     }
 }

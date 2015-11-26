@@ -1,46 +1,63 @@
 <div class="form-group">
-    <label for="building" class="col-sm-2 control-label">{{ 'BUILDING' | translate }}</label>
+    <label for="building" class="col-sm-2 control-label">{{ 'BUILDING' | translate }}*:</label>
 
     <div class="col-sm-10">
-        <select ng-model="model.room.building" placeholder="Choose a building" class="form-control"
+        <select ng-model="model.room.building" class="form-control"
                 id="building" name="building"
                 autofocus required>
             <option value="" disabled selected>{{ 'SELECT_BUILDING' | translate }}</option>
             <option ng-repeat="building in model.buildings" value="{{ building }}">{{ building }}</option>
         </select>
-        <span style="color:red" ng-show="form.building.$dirty && form.building.$invalid">Error</span>
-        <span ng-show="form.building.$error.required">Username is required.</span>
+        <span ng-show="roomForm.building.$touched && roomForm.building.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
     </div>
 </div>
 <div class="form-group">
-    <label for="roomNumber" class="col-sm-2 control-label">{{ 'ROOM_NBR' | translate }}</label>
+    <label for="roomNumber" class="col-sm-2 control-label">{{ 'ROOM_NBR' | translate }}*:</label>
 
     <div class="col-sm-10">
         <input type="number" ng-model="model.room.roomNumber"
                class="form-control"
                id="roomNumber" name="roomNumber"
                min="1" max="999" step="1" required/>
-        <span style="color:red" ng-show="roomForm.roomNumber.$dirty && form.roomNumber.$invalid">Please enter a number between 1 and 999</span>
-        <span ng-show="roomForm.roomNumber.$touched && form.roomNumber.$error.required">Room number is required.</span>
+        <span ng-show="roomForm.roomNumber.$dirty && (roomForm.roomNumber.$error.min || roomForm.roomNumber.$error.max)">
+             {{ 'ERROR_OUT_OF_BOUNDS' | translate:'{min: 1, max: 999}' }}
+        </span>
+        <span ng-show="roomForm.roomNumber.$touched && roomForm.roomNumber.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
     </div>
 </div>
 <div class="form-group">
-    <label for="capacity" class="col-sm-2 control-label">{{ 'ROOM_CAPACITY'| translate }}</label>
+    <label for="capacity" class="col-sm-2 control-label">{{ 'ROOM_CAPACITY'| translate }}*:</label>
 
     <div class="col-sm-10">
         <input type="number" ng-model="model.room.seats"
                class="form-control"
                id="capacity" name="capacity"
                min="1" max="999" step="1" required/>
+        <span ng-show="roomForm.capacity.$dirty && (roomForm.capacity.$error.min || roomForm.capacity.$error.max)">
+             {{ 'ERROR_OUT_OF_BOUNDS' | translate:'{min: "1", max: "999"}' }}
+        </span>
+        <span ng-show="roomForm.capacity.$touched && roomForm.capacity.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
     </div>
 </div>
 <div class="form-group">
-    <label for="roomType" class="col-sm-2 control-label">{{ 'ROOM_TYPE' | translate }}</label>
+    <label for="roomType" class="col-sm-2 control-label">{{ 'ROOM_TYPE' | translate }}*:</label>
 
     <div class="col-sm-10">
-        <select ng-model="model.room.type" placeholder="Choose a room type" class="form-control" id="roomType" required>
+        <select ng-model="model.room.type" placeholder="Choose a room type" class="form-control"
+                id="roomType" name="roomType"
+                required>
+            <option value="" disabled selected>{{ 'SELECT_ROOM_TYPE' | translate }}</option>
             <option ng-repeat="roomType in model.roomTypes" value="{{roomType}}">{{ roomType | translate }}</option>
         </select>
+        <span ng-show="roomForm.roomType.$touched && roomForm.roomType.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
     </div>
 </div>
 <div class="form-group">
@@ -48,6 +65,7 @@
         <input type="submit" class="btn btn-primary" value="Save" ng-disabled="roomForm.$invalid"/>
         <a href="#/rooms" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
     </div>
+
 </div>
 
-<!--pre>{{ model.room | json }}</pre-->
+<pre>{{ roomForm | json }}</pre>
