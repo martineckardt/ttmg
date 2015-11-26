@@ -43,8 +43,18 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         // Messages
         'SUCCESS': 'Success',
         'QUESTION_DELETE_ITEM': 'Do you really want to delete the {{value}}',
+        'FILL_REQUIRED_FIELDS': 'Please fill the required fields.',
+
+        // Error Messages
+        'ERROR_REQUIRED': 'Please fill the required field.',
+        'ERROR_OUT_OF_BOUNDS': 'PLease enter a value between {{min]} and {{max}}.',
+        'ERROR_PATTERN_DEFAULT': 'Only the following characters are permitted: "A-Z", "a-z", ".", Special characters:: "ß, ä, ö, ü", "-", SPACE',
+        'ERROR_PATTERN_NAME': 'Only the following characters are permitted: "A-Z", "a-z", ".", Special characters: "ß, ä, ö, ü", "-", SPACE. ' +
+        'The name has to start with an capital letter.',
+        'ERROR_MAXLENGTH': 'Please do not enter more than 50 characters.',
 
         // === Centuria ===
+
         'CENTURIAS': 'Centurias',
         'CENTURIA': 'Centuria',
 
@@ -227,6 +237,14 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         // Messages
         'SUCCESS': 'Erfolg',
         'QUESTION_DELETE_ITEM': 'Möchten Sie {{value}} wirklich löschen?',
+
+        // Error Messages
+        'ERROR_REQUIRED': 'Bitte füllen Sie das Pflichtfeld aus.',
+        'ERROR_OUT_OF_BOUNDS': 'Bitte tragen Sie einen Wert zwischen {{min}} und {{max}} ein.',
+        'ERROR_PATTERN_DEFAULT': 'Es sind nur folgende Zeichen erlaubt: "A-Z", "a-z", ".", Sonderzeichen: "ß, ä, ö, ü", "-", SPACE',
+        'ERROR_PATTERN_NAME': 'Es sind nur folgende Zeichen erlaubt: "A-Z", "a-z", ".", Sonderzeichen: "ß, ä, ö, ü", "-", SPACE. ' +
+        'Der Name muss mit einem Großbuchstaben anfangen',
+        'ERROR_MAXLENGTH': 'Es sind maximal 50 Zeichen erlaubt',
 
 
         // ==== Centuria ===
