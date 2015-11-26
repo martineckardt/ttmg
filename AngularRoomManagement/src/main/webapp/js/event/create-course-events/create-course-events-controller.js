@@ -19,6 +19,8 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
                 events: []
             };
 
+            // TODO Show error message if no tutors exist
+
             $scope.formModel = {
                 baseDate: {
                     date: new Date(),

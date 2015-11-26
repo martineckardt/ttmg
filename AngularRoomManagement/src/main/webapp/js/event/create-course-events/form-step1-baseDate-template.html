@@ -1,42 +1,50 @@
 <!-- User selectes base date and number of repetitions -->
 
 <div class="form-group">
-    <label for="date" class="col-sm-2 control-label">{{ 'BEGIN' | translate }}</label>
+    <label for="date" class="col-sm-2 control-label">{{ 'DATE' | translate }}:</label>
 
     <div class="col-sm-10">
         <input type="date" ng-model="formModel.baseDate.date" class="form-control" id="date"
-               autofocus>
+               autofocus required>
     </div>
 </div>
 
 <div class="form-group">
-    <label class="col-sm-2 control-label">{{ 'BEGIN' | translate }}</label>
+    <label class="col-sm-2 control-label">{{ 'BEGIN' | translate }}:</label>
 
     <div class="col-sm-10">
-        <input type="number" ng-model="formModel.baseDate.begin.hours" id="beginHours"
+        <input type="number" ng-model="formModel.baseDate.begin.hours" id="beginHours" name="beginHours"
                class="form-control time-input"
-               min="0" max="23"> :
+               min="0" max="23" required> :
         <input type="number" ng-model="formModel.baseDate.begin.minutes" id="beginMinutes"
                class="form-control time-input"
-               min="0" max="59">
+               min="0" max="59" required>
     </div>
 </div>
 
 <div class="form-group">
-    <label class="col-sm-2 control-label">{{ 'END' | translate }}</label>
+    <label class="col-sm-2 control-label">{{ 'END' | translate }}:</label>
 
     <div class="col-sm-10">
-        <input type="number" ng-model="formModel.baseDate.end.hours" id="endHours"
+        <!-- min: has to be greater the the hours of the begin-->
+        <input type="number" ng-model="formModel.baseDate.end.hours" id="endHours" name="endHours"
                class="form-control time-input"
-               min="0" max="23"> :
-        <input type="number" ng-model="formModel.baseDate.end.minutes" id="endMinutes"
+               min="{{ formModel.baseDate.begin.hours }}" max="23" required> :
+        <!-- min: If the hours of the begin time are lower than the hours of the end time the minutes can
+        between 0 and 60. Otherwise they cannot be lower than the minutes of the begin time -->
+        <input type="number" ng-model="formModel.baseDate.end.minutes" id="endMinutes" name="endMinutes"
                class="form-control time-input"
-               min="0" max="59">
+               min="{{ (formModel.baseDate.begin.hours < formModel.baseDate.end.hours) ? 0 : formModel.baseDate.begin.minutes }}"
+               max="59">
+
+        <div ng-if="eventForm.endHours.$invalid || eventForm.endMinutes.$invalid" style="color:red">
+            {{ 'DATE_RANGE_START_AFTER_END' | translate }}
+        </div>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="repetition" class="col-sm-2 control-label">{{ 'REPEAT_FOR_WEEKS' | translate }}</label>
+    <label for="repetition" class="col-sm-2 control-label">{{ 'REPEAT_FOR_WEEKS' | translate }}:</label>
 
     <div class="col-sm-10">
         <input type="number" ng-model="formModel.baseDate.repeatForWeeks" class="form-control"
@@ -47,7 +55,10 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <button ng-click="createCourseEventsCtrl.proceedToRoomSelection()" class="btn btn-primary">{{ 'NEXT' | translate }}</button>
+        <button ng-click="createCourseEventsCtrl.proceedToRoomSelection()" class="btn btn-primary"
+                ng-disabled="eventForm.$invalid">
+            {{ 'NEXT' | translate }}
+        </button>
         <a href="#/courses/{{model.course.id}}" class="btn btn-default">{{ 'CANCEL' | translate }}</a>
     </div>
 </div>

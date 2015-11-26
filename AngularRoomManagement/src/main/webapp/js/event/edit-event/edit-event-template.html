@@ -3,7 +3,7 @@
     <hr>
 
 
-    <form class="form-horizontal" role="form" novalidate>
+    <form class="form-horizontal" role="form" novalidate name="eventForm">
         <div ng-if="formState == 1" ng-include="'js/event/edit-event/form-step1-date-template.html'"></div>
         <div ng-if="formState == 2" ng-include="'js/event/edit-event/form-step2-roomSelection-template.html'"></div>
         <div ng-if="formState == 3" ng-include="'js/event/edit-event/form-step3-conflicts-template.html'"></div>
