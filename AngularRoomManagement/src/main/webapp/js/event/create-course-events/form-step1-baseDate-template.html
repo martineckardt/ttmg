@@ -37,7 +37,7 @@
                min="{{ (formModel.baseDate.begin.hours < formModel.baseDate.end.hours) ? 0 : formModel.baseDate.begin.minutes }}"
                max="59">
 
-        <div ng-if="eventForm.endHours.$invalid || eventForm.endMinutes.$invalid" style="color:red">
+        <div ng-show="eventForm.endHours.$invalid || eventForm.endMinutes.$invalid" style="color:red">
             {{ 'DATE_RANGE_START_AFTER_END' | translate }}
         </div>
     </div>
