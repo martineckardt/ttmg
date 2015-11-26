@@ -3,7 +3,8 @@
     <hr>
 
     <div ng-if="entitySuccesfullyCreated" class="alert alert-success" role="alert">
-        <p>{{ 'COURSE_CREATION_SUCCESS' | translate }}<a ng-href="#/courses/{{messageData.id}}" class="alert-link">{{messageData.name}}</a></p>
+        <p>{{ 'COURSE_CREATION_SUCCESS' | translate }} <a ng-href="#/courses/{{messageData.id}}" class="alert-link">{{messageData.name}}</a>
+        </p>
     </div>
     <div ng-if="entitySuccesfullyCreated == false" class="alert alert-danger" role="alert">
         <p>{{ 'COURSE_CREATION_FAILURE' | translate }} {{ messageData.localizableMessage | translate }}</p>
