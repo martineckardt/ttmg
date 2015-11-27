@@ -1,49 +1,81 @@
 <div class="form-group">
-    <label for="program" class="col-sm-2 control-label">{{ 'PROGRAM' | translate }}</label>
+    <label for="program" class="col-sm-2 control-label">{{ 'PROGRAM' | translate }}:</label>
 
     <div class="col-sm-10">
-        <select ng-model="model.centuria.program" placeholder="Choose a study program" class="form-control" id="program"
+        <select ng-model="model.centuria.program" placeholder="Choose a study program" class="form-control"
+                id="program" name="program"
                 autofocus required>
             <option value="" disabled selected>{{ 'SELECT_PROGRAM' | translate }}</option>
-            <option ng-repeat="studyProgram in model.studyPrograms" value="{{ studyProgram }}">{{ studyProgram }}
+            <option ng-repeat="studyProgram in model.studyPrograms" value="{{ studyProgram }}">
+                {{ studyProgram }}
             </option>
         </select>
+        <span ng-show="centuriaForm.program.$touched && centuriaForm.program.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="year" class="col-sm-2 control-label">{{ 'YEAR' | translate }}</label>
+    <label for="year" class="col-sm-2 control-label">{{ 'YEAR' | translate }}:</label>
 
     <div class="col-sm-10">
-        <input type="number" ng-model="model.centuria.year" class="form-control" id="year"
-               min="2010" max="2100" step="1" value="2015" required/>
+        <input type="number" ng-model="model.centuria.year" class="form-control"
+               id="year" name="year"
+               min="2000" max="2099" step="1" required/>
+        <span ng-show="centuriaForm.year.$touched && centuriaForm.year.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
+
+        <span ng-show="centuriaForm.year.$dirty && (centuriaForm.year.$error.min || centuriaForm.year.$error.max)">
+             {{ 'ERROR_OUT_OF_BOUNDS' | translate:'{min: "2000", max: "2099"}' }}
+        </span>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="lastName" class="col-sm-2 control-label">{{ 'LETTER' | translate }}</label>
+    <label for="letter" class="col-sm-2 control-label">{{ 'LETTER' | translate }}:</label>
 
     <div class="col-sm-10">
-        <input type="text" ng-model="model.centuria.letter" class="form-control" id="lastName"
-               required ng-pattern="/^[A-Za-z]$/"/>
+        <input type="text" ng-model="model.centuria.letter" class="form-control"
+               id="letter" name="letter"
+               pattern="[A-Za-z]" maxlength="1" required/>
+        <span ng-show="centuriaForm.letter.$touched && centuriaForm.letter.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
+        <span ng-show="centuriaForm.letter.$dirty && centuriaForm.letter.$error.pattern">
+            {{ 'ERROR_PATTERN_LETTER' | translate }}
+        </span>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="nbrOfStudents" class="col-sm-2 control-label">{{ 'NBR_STUDENTS' | translate }}</label>
+    <label for="nbrOfStudents" class="col-sm-2 control-label">{{ 'NBR_STUDENTS' | translate }}:</label>
 
     <div class="col-sm-10">
-        <input type="number" ng-model="model.centuria.nbrOfStudents" class="form-control" id="nbrOfStudents"
-               min="1" max="999" step="1" required/>
+        <input type="number" ng-model="model.centuria.nbrOfStudents" class="form-control"
+               id="nbrOfStudents" name="nbrOfStudents"
+               min="1" max="9999" step="1" required/>
+        <span ng-show="centuriaForm.nbrOfStudents.$touched && centuriaForm.nbrOfStudents.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
+
+        <span ng-show="centuriaForm.nbrOfStudents.$dirty && (centuriaForm.nbrOfStudents.$error.min || centuriaForm.nbrOfStudents.$error.max)">
+             {{ 'ERROR_OUT_OF_BOUNDS' | translate:'{min: "1", max: "9999"}' }}
+        </span>
     </div>
 </div>
 
 <div class="form-group">
-    <label for="changeTime" class="col-sm-2 control-label">{{ 'CHANGE_TIME_OPTIONAL' | translate }}</label>
+    <label for="changeTime" class="col-sm-2 control-label">{{ 'CHANGE_TIME_OPTIONAL' | translate }}:</label>
 
     <div class="col-sm-10">
-        <input type="number" ng-model="model.centuria.changeTime" class="form-control" id="changeTime"
-               min="0" max="300"/>
+        <input type="number" ng-model="model.centuria.changeTime" class="form-control"
+               id="changeTime" name="changeTime"
+               min="0" max="300" step="1"/>
+        <span ng-show="centuriaForm.changeTime.$dirty && (centuriaForm.changeTime.$error.min || centuriaForm.changeTime.$error.max)">
+             {{ 'ERROR_OUT_OF_BOUNDS' | translate:'{min: "1", max: "300"}' }}
+        </span>
     </div>
 </div>
 
