@@ -19,7 +19,8 @@ public class TutorServiceImpl implements TutorService {
     @Inject
     private TutorDAO tutorDAO;
 
-    private final TutorValidator tutorValidator = new TutorValidator();
+    @Inject
+    private TutorValidator tutorValidator;
 
     @Override
     public Tutor createTutor(Tutor tutor) throws ValidationException {

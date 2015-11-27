@@ -79,4 +79,17 @@
 
     <bean id="eventService" class="de.nak.ttmg.service.EventServiceImpl"/>
 
+    <!-- Validators -->
+    <bean id="centuriaValidator" class="de.nak.ttmg.validator.CenturiaValidatorImpl"/>
+
+    <bean id="courseValidator" class="de.nak.ttmg.validator.CourseValidatorImpl"/>
+
+    <bean id="dateRangeValidator" class="de.nak.ttmg.validator.DateRangeValidatorImpl"/>
+
+    <bean id="roomValidator" class="de.nak.ttmg.validator.RoomValidatorImpl"/>
+
+    <bean id="timeValidator" class="de.nak.ttmg.validator.TimeValidatorImpl"/>
+
+    <bean id="tutorValidator" class="de.nak.ttmg.validator.TutorValidatorImpl"/>
+
 </beans>

@@ -2,7 +2,9 @@ package de.nak.ttmg.model;
 
 import de.nak.ttmg.exceptions.DateRangeException;
 import de.nak.ttmg.validator.DateRangeValidator;
+import de.nak.ttmg.validator.DateRangeValidatorImpl;
 
+import javax.inject.Inject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,7 +19,7 @@ public class DateRange implements HasReadableString{
 
     private final Date end;
 
-    private static final DateRangeValidator rangeValidator = new DateRangeValidator();
+    private static final DateRangeValidator dateRangeValidator = new DateRangeValidatorImpl();
 
     /**
      * Creates a date range with a begin and an end date.
@@ -25,7 +27,7 @@ public class DateRange implements HasReadableString{
      * @param end date
      */
     public DateRange(Date begin, Date end) throws DateRangeException{
-        rangeValidator.validateRange(begin,end);
+        dateRangeValidator.validateRange(begin, end);
         this.begin = begin;
         this.end = end;
     }

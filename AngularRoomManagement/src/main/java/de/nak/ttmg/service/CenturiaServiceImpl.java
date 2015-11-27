@@ -19,7 +19,8 @@ public class CenturiaServiceImpl implements CenturiaService {
     @Inject
     private CenturiaDAO centuriaDAO;
 
-    private final CenturiaValidator centuriaValidator = new CenturiaValidator();
+    @Inject
+    private CenturiaValidator centuriaValidator;
 
     @Override
     public Centuria createCenturia(Centuria centuria) throws ValidationException {

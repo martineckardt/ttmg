@@ -25,9 +25,11 @@ public class RoomServiceImpl implements RoomService {
     @Inject
     private EventDAO eventDAO;
 
-    private final TimeValidator timeValidator = new TimeValidator();
+    @Inject
+    private TimeValidator timeValidator;
 
-    private final RoomValidator roomValidator = new RoomValidator();
+    @Inject
+    private RoomValidator roomValidator;
 
     @Override
     public List<Room> listRooms(String building, String roomNbr, RoomType type, Integer minSeats, Date start, Date end,

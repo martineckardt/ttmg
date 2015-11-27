@@ -4,9 +4,11 @@ import de.nak.ttmg.model.*;
 import de.nak.ttmg.exceptions.DateRangeException;
 import de.nak.ttmg.exceptions.TimeConflictException;
 import de.nak.ttmg.validator.TimeValidator;
+import de.nak.ttmg.validator.TimeValidatorImpl;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.inject.Inject;
 import java.util.*;
 
 import static org.junit.Assert.*;
@@ -39,7 +41,7 @@ public class ObjectCreationTest {
     private Event past;
     private Event future;
 
-    private final TimeValidator validator = new TimeValidator();
+    private TimeValidator timeValidator = new TimeValidatorImpl();
 
     @Before
     public void setUp() {
@@ -158,7 +160,7 @@ public class ObjectCreationTest {
         assertTrue(tutor.getCourses().size() > 0);
 
         try {
-            validator.validateTime(courseIAA);
+            timeValidator.validateTime(courseIAA);
         } catch (TimeConflictException e) {
             assertTrue(false);
         }

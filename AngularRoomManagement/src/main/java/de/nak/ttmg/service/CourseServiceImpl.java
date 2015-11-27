@@ -22,8 +22,12 @@ public class CourseServiceImpl implements CourseService {
 
     @Inject
     private CourseDAO courseDAO;
-    private final TimeValidator timeValidator = new TimeValidator();
-    private final CourseValidator courseValidator = new CourseValidator();
+
+    @Inject
+    private TimeValidator timeValidator;
+
+    @Inject
+    private CourseValidator courseValidator;
 
     @Override
     public Course createCourse(Course course, boolean force) throws ValidationException {

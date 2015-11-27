@@ -24,9 +24,11 @@ public class EventServiceImpl implements EventService {
     @Inject
     private CourseDAO courseDAO;
 
-    private final TimeValidator timeValidator = new TimeValidator();
+    @Inject
+    private TimeValidator timeValidator;
 
-    private final CourseValidator courseValidator = new CourseValidator();
+    @Inject
+    private CourseValidator courseValidator;
 
     @Override
     public List<Event> listEvents(Long centuriaId, Long tutorId, Long roomId, Long courseId, Date rangeStart, Date rangeEnd) throws ValidationException {
