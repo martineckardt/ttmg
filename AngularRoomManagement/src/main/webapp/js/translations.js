@@ -50,7 +50,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ERROR_OUT_OF_BOUNDS': 'PLease enter a value between {{min]} and {{max}}.',
         'ERROR_PATTERN_DEFAULT': 'Only the following characters are permitted: "A-Z", "a-z", ".", Special characters:: "ß, ä, ö, ü", "-", SPACE',
         'ERROR_PATTERN_NAME': 'Only the following characters are permitted: "A-Z", "a-z", ".", Special characters: "ß, ä, ö, ü", "-", SPACE. ' +
-        'The name has to start with an capital letter.',
+        'The value has to start with an capital letter.',
         'ERROR_MAXLENGTH': 'Please do not enter more than 50 characters.',
 
         // === Centuria ===
@@ -243,7 +243,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ERROR_OUT_OF_BOUNDS': 'Bitte tragen Sie einen Wert zwischen {{min}} und {{max}} ein.',
         'ERROR_PATTERN_DEFAULT': 'Es sind nur folgende Zeichen erlaubt: "A-Z", "a-z", ".", Sonderzeichen: "ß, ä, ö, ü", "-", SPACE',
         'ERROR_PATTERN_NAME': 'Es sind nur folgende Zeichen erlaubt: "A-Z", "a-z", ".", Sonderzeichen: "ß, ä, ö, ü", "-", SPACE. ' +
-        'Der Name muss mit einem Großbuchstaben anfangen',
+        'Der Wert muss mit einem Großbuchstaben anfangen.',
         'ERROR_MAXLENGTH': 'Es sind maximal 50 Zeichen erlaubt',
 
 
