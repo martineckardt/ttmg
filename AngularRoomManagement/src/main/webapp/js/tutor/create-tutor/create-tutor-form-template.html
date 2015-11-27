@@ -2,7 +2,12 @@
     <label for="title" class="col-sm-2 control-label">{{ 'TITLE' | translate}}</label>
 
     <div class="col-sm-10">
-        <input type="text" ng-model="model.tutor.title" class="form-control" id="title" autofocus/>
+        <input type="text" ng-model="model.tutor.title" class="form-control"
+               id="title" name="title"
+               pattern="^$|[A-Z][. 'a-zA-Z0-9öäüÖÄÜ-]*" autofocus/>
+        <span ng-show="tutorForm.title.$dirty && tutorForm.title.$error.pattern">
+            {{ 'ERROR_PATTERN_NAME' | translate }}
+        </span>
     </div>
 </div>
 
@@ -10,7 +15,15 @@
     <label for="firstName" class="col-sm-2 control-label">{{ 'FIRST_NAME' | translate}}</label>
 
     <div class="col-sm-10">
-        <input type="text" ng-model="model.tutor.firstName" class="form-control" id="firstName" required/>
+        <input type="text" ng-model="model.tutor.firstName" class="form-control"
+               id="firstName" name="firstName"
+               pattern="[A-Z][. 'a-zA-Z0-9öäüÖÄÜ-]*" required/>
+        <span ng-show="tutorForm.firstName.$touched && tutorForm.firstName.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
+        <span ng-show="tutorForm.firstName.$dirty && tutorForm.firstName.$error.pattern">
+            {{ 'ERROR_PATTERN_NAME' | translate }}
+        </span>
     </div>
 </div>
 
@@ -18,7 +31,16 @@
     <label for="lastName" class="col-sm-2 control-label">{{ 'LAST_NAME' | translate}}</label>
 
     <div class="col-sm-10">
-        <input type="text" ng-model="model.tutor.lastName" class="form-control" id="lastName" required/>
+        <input type="text" ng-model="model.tutor.lastName" class="form-control"
+               id="lastName" name="lastName"
+               pattern="[A-Z][. 'a-zA-Z0-9öäüÖÄÜ-]*" required/>
+        <span ng-show="tutorForm.lastName.$touched && tutorForm.lastName.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
+        <span ng-show="tutorForm.lastName.$dirty && tutorForm.lastName.$error.pattern">
+            {{ 'ERROR_PATTERN_NAME' | translate }}
+        </span>
+
     </div>
 </div>
 
@@ -27,8 +49,12 @@
     <label for="changeTime" class="col-sm-2 control-label">{{ 'CHANGE_TIME' | translate}}</label>
 
     <div class="col-sm-10">
-        <input type="number" ng-model="model.tutor.changeTime" class="form-control" id="changeTime"
+        <input type="number" ng-model="model.tutor.changeTime" class="form-control"
+               id="changeTime" name="changeTime"
                min="0" max="300" step="1"/>
+        <span ng-show="tutorForm.changeTime.$dirty && (tutorForm.changeTime.$error.min || tutorForm.changeTime.$error.max)">
+			 {{ 'ERROR_OUT_OF_BOUNDS' | translate:'{min: "1", max: "300"}' }}
+		</span>
     </div>
 </div>
 
