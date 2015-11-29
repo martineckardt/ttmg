@@ -12,11 +12,11 @@
     <event-table events="model.events"></event-table>
 
     <!-- Only show if there are no events -->
-    <!--ng-if="model.events.length == 0"-->
     <delete-entity-modal
-                         entity-ressource="model.room" entity-type="room" entity-name="{{model.room.readableString}}"
-                         success-view="rooms"
-                         button-type="button">
+            ng-if="model.events.length == 0"
+            entity-ressource="model.room" entity-type="room" entity-name="{{model.room.readableString}}"
+            success-view="rooms"
+            button-type="button">
     </delete-entity-modal>
 
 </section>

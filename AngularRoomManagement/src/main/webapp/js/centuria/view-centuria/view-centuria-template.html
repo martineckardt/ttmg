@@ -15,12 +15,12 @@
     <event-table events="model.events"></event-table>
 
     <!-- Only show if there are no events -->
-    <!--ng-if="model.events.length == 0"-->
     <delete-entity-modal
-                         entity-ressource="model.centuria" entity-type="centuria"
-                         entity-name="{{model.centuria.readableString}}"
-                         success-view="centurias"
-                         button-type="button">
+            ng-if="model.events.length == 0"
+            entity-ressource="model.centuria" entity-type="centuria"
+            entity-name="{{model.centuria.readableString}}"
+            success-view="centurias"
+            button-type="button">
     </delete-entity-modal>
 
 </section>
