@@ -3,7 +3,15 @@
     <label for="name" class="col-sm-2 control-label">{{ 'COURSE_NAME' | translate }}</label>
 
     <div class="col-sm-10">
-        <input type="text" ng-model="model.course.name" class="form-control" id="name" required autofocus/>
+        <input type="text" ng-model="model.course.name" class="form-control"
+               id="name" name="name"
+               pattern="[a-zA-Z0-9öäüÖÄÜ][. 'a-zA-Z0-9öäüÖÄÜ-]*" maxlength="50" required autofocus/>
+        <span ng-show="courseForm.name.$touched && courseForm.name.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
+        <span ng-show="courseForm.name.$dirty && courseForm.name.$error.pattern">
+            {{ 'ERROR_PATTERN_COURSE' | translate }}
+        </span>
     </div>
 </div>
 
@@ -12,39 +20,46 @@
     <label for="type" class="col-sm-2 control-label">{{ 'COURSE_TYPE' | translate }}</label>
 
     <div class="col-sm-10">
-        <select ng-model="model.course.type" placeholder="Choose a type" class="form-control" id="type" required>
+        <select ng-model="model.course.type" class="form-control"
+                id="type" name="type"
+                required>
             <option value="" disabled selected>{{ 'SELECT_COURSE_TYPE' | translate }}</option>
             <option ng-repeat="courseType in model.courseTypes" value="{{courseType}}">{{ courseType | translate }}
             </option>
         </select>
+        <span ng-show="courseForm.type.$touched && courseForm.type.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
     </div>
 </div>
-{{  }}
+
 <!-- TUTOR -->
 <div class="form-group">
     <label for="tutor" class="col-sm-2 control-label">{{ 'TUTOR' | translate }}</label>
 
     <div class="col-sm-10">
-        <select ng-model="model.course.tutor" class="form-control" id="tutor"
-                ng-options="tutor.readableString for tutor in model.tutors track by tutor.id" required>
+        <select ng-model="model.course.tutor" class="form-control"
+                id="tutor" name="tutor"
+                ng-options="tutor.readableString for tutor in model.tutors track by tutor.id"
+                required>
         </select>
+        <span ng-show="courseForm.tutor.$touched && courseForm.tutor.$error.required">
+            {{ 'ERROR_REQUIRED' | translate }}
+        </span>
     </div>
 </div>
 
-<div class="form-group"><!-- Only show if course type not seminar -->
+
+<!-- Participants -->
+<div class="form-group">
     <label class="col-sm-2 control-label">{{ 'PARTICIPANTS_OPTIONAL' | translate }}</label>
 
     <div class="col-sm-10">
+        <!-- Show message, if the course is a seminar -->
         <div ng-if="model.course.type == 'SEMINAR'"><p>{{ 'SEMINARS_NO_PARTICIPANTS' | translate }}</p></div>
-        <div ng-if="model.course.type != 'SEMINAR'" class="btn-toolbar">
-            <label for="{{centuria.readableString}}"
-                   class="btn btn-default"
-                   ng-repeat="centuria in model.centurias | orderBy:'[-year, -programm, letter]'"
-                    >
-                <input
-                        type="checkbox" ng-model="centuria.selected" id="{{centuria.readableString}}"
-                        ng-disabled="model.course.type == 'SEMINAR'"> {{centuria.readableString}}
-            </label>
-        </div>
+
+        <!-- Only show if course type not seminar -->
+        <centuria-tree ng-if="model.course.type != 'SEMINAR'"
+                       centurias-promise="model.centurias.$promise"></centuria-tree>
     </div>
 </div>

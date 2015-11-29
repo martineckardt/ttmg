@@ -50,6 +50,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ERROR_OUT_OF_BOUNDS': 'PLease enter an integer between {{min]} and {{max}}.',
         'ERROR_PATTERN_DEFAULT': 'Only the following characters are permitted: "A-Z", "a-z", ".", Special characters:: "ß, ä, ö, ü", "-", SPACE',
         'ERROR_PATTERN_LETTER': 'PLease enter only one character from a to z.',
+        'ERROR_PATTERN_COURSE': 'Only the following characters are permitted: "A-Z", "a-z", ".", Special characters: "ß, ä, ö, ü", "-", SPACE. ' +
+        'The course name cannot start with a "." or a SPACE.',
         'ERROR_PATTERN_NAME': 'Only the following characters are permitted: "A-Z", "a-z", ".", Special characters: "ß, ä, ö, ü", "-", SPACE. ' +
         'The value has to start with an capital letter.',
         'ERROR_MAXLENGTH': 'Please do not enter more than 50 characters.',
@@ -245,6 +247,8 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ERROR_OUT_OF_BOUNDS': 'Bitte tragen Sie eine ganze Zahl zwischen {{min}} und {{max}} ein.',
         'ERROR_PATTERN_DEFAULT': 'Es sind nur folgende Zeichen erlaubt: "A-Z", "a-z", ".", Sonderzeichen: "ß, ä, ö, ü", "-", SPACE',
         'ERROR_PATTERN_LETTER': 'Bitte tragen Sie nur einen Buchstaben von a bis z ein.',
+        'ERROR_PATTERN_COURSE': 'Es sind nur folgende Zeichen erlaubt: "A-Z", "a-z", ".", Sonderzeichen: "ß, ä, ö, ü", "-", SPACE. ' +
+        'Der Kurs-Name darf nicht mit einem Punkt oder einen Leerzeichen beginnen.',
         'ERROR_PATTERN_NAME': 'Es sind nur folgende Zeichen erlaubt: "A-Z", "a-z", ".", Sonderzeichen: "ß, ä, ö, ü", "-", SPACE. ' +
         'Der Wert muss mit einem Großbuchstaben anfangen.',
         'ERROR_MAXLENGTH': 'Es sind maximal 50 Zeichen erlaubt',

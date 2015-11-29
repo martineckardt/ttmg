@@ -17,21 +17,15 @@ angular.module('ttmg.controllers').controller('editCourseController',
             // Set up model
             $scope.model = {
                 tutors: TutorResourceFactory.query(),
-                courseTypes: COURSE_TYPES
+                courseTypes: COURSE_TYPES,
+                course: CourseResourceFactory.get({courseId: courseId}),
+                centurias: CenturiaResourceFactory.query()
             };
 
             // Wait for the both resources to load
             $q.all([
-                CourseResourceFactory.get({courseId: courseId},
-                    function successCallback(course) {
-                        $scope.model.course = course;
-                    }
-                ).$promise,
-                CenturiaResourceFactory.query(
-                    function successCallback(centurias) {
-                        $scope.model.centurias = centurias;
-                    }
-                ).$promise
+                $scope.model.course.$promise,
+                $scope.model.centurias.$promise
             ]).then(function () {
                 var participants = $scope.model.course.participants;
                 var centurias = $scope.model.centurias;
