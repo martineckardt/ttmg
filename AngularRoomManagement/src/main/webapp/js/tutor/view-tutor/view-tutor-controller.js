@@ -1,5 +1,6 @@
 /**
  * Created by Martin Eckardt on 28.10.2015.
+ * Controller to view a single tutor
  */
 
 angular.module('ttmg.controllers').controller('viewTutorController', ['$scope', '$routeParams', 'TutorResourceFactory', 'EventResourceFactory', function ($scope, $routeParams, TutorResourceFactory, EventResourceFactory) {
