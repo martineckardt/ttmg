@@ -123,6 +123,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'BACK_TO_COURSE': 'Zurück zum Kurs',
 
         // Messages
+        'TUTOR_REQUIRED': 'Please create at least one tutor before creating an course.',
         'COURSE_CREATION_SUCCESS': 'The course has been created successfully:',
         'COURSE_CREATION_FAILURE': 'The course could not be created:',
         'COURSE_UPDATE_SUCCESS': 'The course has been updated successfully.',
@@ -315,6 +316,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'BACK_TO_COURSE': 'Zurück zum Kurs',
 
         // Messages
+        'TUTOR_REQUIRED': 'Bitte erstellen Sie zuerst einen Dozenten, bevor Sie einen Kurs anlegen.',
         'COURSE_CREATION_SUCCESS': 'Der Kurs wurde erfolgreich angelegt. Sie können in der Kursansicht Veranstaltungen für den Kurs hinzufügen:',
         'COURSE_CREATION_FAILURE': 'Es ist ein Fehler beim Erstellen des Kurses aufgetreten: ',
         'COURSE_UPDATE_SUCCESS': 'Der Kurs wurde erfolgreich geändert.',

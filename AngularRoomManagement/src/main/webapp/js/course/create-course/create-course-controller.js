@@ -6,57 +6,51 @@ angular.module('ttmg.controllers').controller('createCourseController',
     ['$scope', 'CourseResourceFactory', 'CenturiaResourceFactory', 'TutorResourceFactory', 'COURSE_TYPES',
         function ($scope, CourseResourceFactory, CenturiaResourceFactory, TutorResourceFactory, COURSE_TYPES) {
 
-    console.log('createCourseController initialized');
+            console.log('createCourseController initialized');
 
-            console.log('course types: ' + COURSE_TYPES)
+            // Set up model
+            $scope.model = {
+                course: new CourseResourceFactory(),
+                tutors: TutorResourceFactory.query(),
+                centurias: CenturiaResourceFactory.query(),
+                courseTypes: COURSE_TYPES
+            };
 
-    // Set up model
-    $scope.model = {
-        course: new CourseResourceFactory(),
-        tutors: TutorResourceFactory.query(),
-        centurias: CenturiaResourceFactory.query(),
-        courseTypes: COURSE_TYPES
-    };
+            // Commit the entered data to backend
+            this.addCourse = function () {
+                // Convenience access
+                var course = $scope.model.course;
 
+                // Reset values
+                course.participants = {};
 
+                if (course.type != 'SEMINAR') { // if the course is not a seminar
+                    // Add selected centurias to course
+                    course.participants = $scope.model.centurias.filter(function filter(participant) {
+                        return participant.selected == true;
+                    });
+                }
 
+                course.$create({}, function successCallback(data) {
+                    console.log("Course successfully created");
+                    console.log(data);
 
-    this.addCourse = function () {
-        // Convenience access
-        var course = $scope.model.course;
+                    // Reset form
+                    $scope.model.course = new CourseResourceFactory();
+                    $scope.courseForm.$setUntouched();
 
-        // Reset values
-        course.participants = {};
+                    // Fill messageData with newly created entity
+                    $scope.entitySuccesfullyCreated = true;
+                    $scope.messageData = data;
+                }, function errorCallback(error) {
+                    console.log("Failed to create course");
+                    console.log(error);
 
-        if (course.type != 'SEMINAR') { // if the course is not a seminar
-            // Add selected centruias to course
-            course.participants = $scope.model.centurias.filter(function filter(participant) {
-                return participant.selected == true;
-            });
-        }
-
-        course.$create({}, function successCallback(data) {
-            console.log("Course successfully created");
-            console.log(data);
-
-            // Reset form
-            $scope.model.course = new CourseResourceFactory();
-            $scope.courseForm.$setUntouched();
-
-            // Fill messageData with newly created entity
-            $scope.entitySuccesfullyCreated = true;
-            $scope.messageData = data;
-        }, function errorCallback(error) {
-            console.log("Failed to create course");
-            console.log(error);
-
-            // Fill messageData with exception message from backend
-            $scope.entitySuccesfullyCreated = false;
-            $scope.messageData = error.data;
-        });
-
-
-    };
-}]);
+                    // Fill messageData with exception message from backend
+                    $scope.entitySuccesfullyCreated = false;
+                    $scope.messageData = error.data;
+                });
+            };
+        }]);
 
 
