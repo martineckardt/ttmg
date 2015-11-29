@@ -11,7 +11,15 @@ angular.module('ttmg.controllers').controller('viewCenturiaController', ['$scope
 
     // Set up scope model
     $scope.model = {
-        centuria: CenturiaResourceFactory.get({centuriaId: centuriaId}),
+        centuria: CenturiaResourceFactory.get({centuriaId: centuriaId},
+            function successCallback() {
+                $scope.entityFound = true;
+            },
+            function errorCallback(error) {
+                $scope.entityFound = false;
+                $scope.error = error.data;
+            }
+        ),
         events: EventResourceFactory.query({centuriaId: centuriaId})
     };
 }]);

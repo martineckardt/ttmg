@@ -1,4 +1,4 @@
-<section>
+<section ng-if="entityFound == true">
     <h2>{{model.tutor.readableString}}</h2>
     <hr>
 
@@ -22,3 +22,9 @@
             button-type="button">
     </delete-entity-modal>
 </section>
+
+<div ng-if="entityFound == false" class="alert alert-danger" role="alert">
+    <p>{{ error.localizableMessage | translate }}</p>
+
+    <p>{{ error.message }}</p>
+</div>

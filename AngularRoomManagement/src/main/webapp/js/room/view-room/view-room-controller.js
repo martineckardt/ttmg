@@ -8,10 +8,19 @@ angular.module('ttmg.controllers').controller('viewRoomController', ['$scope', '
     // Route parameters
     var roomId = $routeParams.id;
     console.log('viewRoomController for Room ' + roomId + ' started');
+    console.log('tesst');
 
     // Set up scope model
     $scope.model = {
-        room: RoomFactory.get({roomId: roomId}),
+        room: RoomFactory.get({roomId: roomId},
+            function successCallback() {
+                $scope.entityFound = true;
+            },
+            function errorCallback(error) {
+                $scope.entityFound = false;
+                $scope.error = error.data;
+            }
+        ),
         events: EventResourceFactory.query({roomId: roomId})
     };
 }]);

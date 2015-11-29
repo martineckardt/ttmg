@@ -1,4 +1,4 @@
-<section>
+<section ng-if="entityFound == true">
     <h2>{{model.course.name}}</h2>
     <hr>
     <p>{{ 'COURSE_TYPE' | translate }}: {{model.course.type | translate}}</p>
@@ -27,5 +27,10 @@
     <delete-entity-modal entity-ressource="model.course" entity-type="course" entity-name="{{model.course.name}}"
                          success-view="courses" button-type="button"></delete-entity-modal>
 
-
 </section>
+
+<div ng-if="entityFound == false" class="alert alert-danger" role="alert">
+    <p>{{ error.localizableMessage | translate }}</p>
+
+    <p>{{ error.message }}</p>
+</div>

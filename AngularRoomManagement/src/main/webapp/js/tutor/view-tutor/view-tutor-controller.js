@@ -9,7 +9,15 @@ angular.module('ttmg.controllers').controller('viewTutorController', ['$scope', 
     console.log('viewTutorController for Tutor ' + tutorId + ' started');
 
     $scope.model = {
-        tutor: TutorResourceFactory.get({tutorId: tutorId}),
+        tutor: TutorResourceFactory.get({tutorId: tutorId},
+            function successCallback() {
+                $scope.entityFound = true;
+            },
+            function errorCallback(error) {
+                $scope.entityFound = false;
+                $scope.error = error.data;
+            }
+        ),
         events: EventResourceFactory.query({tutorId: tutorId})
     };
 }]);

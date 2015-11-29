@@ -376,7 +376,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'DATE_RANGE_START_AFTER_END': 'Das End Datum muss nach dem Start Datum liegen.',
         'DATE_RANGE_ONE_NULL': 'Start- and End-Datum müssen eingetragen werden',
         'ENTITY_ALREADY_EXISTS': 'Die Entität ist schon im System und konnte nicht angelegt werden.',
-        'ENTITY_NOT_FOUND': 'Entität des Typs {{type}} mit id {{id}} wurde nicht gefunden.',
+        'ENTITY_NOT_FOUND': 'Die Entität wurde nicht gefunden.',
         'INSUFFICIENT_SEATS': 'Es sind nicht ausreichend Sitzplätze in den Räumen der Veranstaltungen vorhanden, ' +
         'um alle Teilnehmer aufzunehmen. Bitte beachten Sie, dass zusätzliche Zeitkonflikte auftreten können, wenn ' +
         'Sie den Kurs dennoch ändern.',

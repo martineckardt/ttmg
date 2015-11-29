@@ -10,7 +10,15 @@ angular.module('ttmg.controllers').controller('viewCourseController', ['$scope',
 
     // Set up scope model
     $scope.model = {
-        course: CourseResourceFactory.get({courseId: courseId}),
+        course: CourseResourceFactory.get({courseId: courseId},
+            function successCallback() {
+                $scope.entityFound = true;
+            },
+            function errorCallback(error) {
+                $scope.entityFound = false;
+                $scope.error = error.data;
+            }
+        ),
         events: EventResourceFactory.query({courseId: courseId})
     };
 

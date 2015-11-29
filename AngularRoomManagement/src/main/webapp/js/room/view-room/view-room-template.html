@@ -1,4 +1,4 @@
-<section>
+<section ng-if="entityFound == true">
     <h2>{{model.room.readableString}}</h2>
     <hr>
 
@@ -20,3 +20,9 @@
     </delete-entity-modal>
 
 </section>
+
+<div ng-if="entityFound == false" class="alert alert-danger" role="alert">
+    <p>{{ error.localizableMessage | translate }}</p>
+
+    <p>{{ error.message }}</p>
+</div>
