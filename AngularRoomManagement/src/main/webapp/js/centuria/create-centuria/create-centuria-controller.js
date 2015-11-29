@@ -34,7 +34,7 @@ angular.module('ttmg.controllers').controller('createCenturiaController', ['$sco
 
                 // Fill messageData with exception messagefrom backend
                 $scope.entitySuccesfullyCreated = false;
-                $scope.messageData = error.data.message;
+                $scope.messageData = error.data;
             }
         );
     };

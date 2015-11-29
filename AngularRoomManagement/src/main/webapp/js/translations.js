@@ -265,7 +265,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
         'ADD_CENTURIA': 'Zenturie anlegen',
 
         // Messages
-        'CENTURIA_CREATION_SUCCESS': 'Die Zenturie {{value}} wurde erfolgreich angelegt',
+        'CENTURIA_CREATION_SUCCESS': 'Die Zenturie wurde erfolgreich angelegt:',
         'CENTURIA_CREATION_FAILURE': 'Die Zenturie konnte nicht angelegt werden',
 
         // === Events ===

@@ -3,13 +3,16 @@
     <hr>
 
     <div ng-if="entitySuccesfullyCreated" class="alert alert-success" role="alert">
-        <p>The centuria <a ng-href="#/centurias/{{messageData.id}}"
-                           class="alert-link">{{messageData.readableString}}</a>
-            was
-            created.</p>
+        <p>{{ 'CENTURIA_CREATION_SUCCESS' | translate }}
+            <a ng-href="#/centurias/{{messageData.id}}" class="alert-link">{{messageData.readableString}}</a>
+        </p>
     </div>
     <div ng-if="entitySuccesfullyCreated == false" class="alert alert-danger" role="alert">
-        <p>{{messageData}}</p>
+        <p>{{ 'CENTURIA_CREATION_FAILURE' | translate }}</p>
+
+        <p>{{ messageData.localizableMessage | translate }}</p>
+
+        <p>{{ messageData.message }}</p>
     </div>
 
     <form class="form-horizontal" role="form" ng-submit="addCenturia()" novalidate name="centuriaForm">
