@@ -26,16 +26,18 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Do you really want to delete the event
+                            <h4 class="modal-title" id="myModalLabel">{{ 'QUESTION_DELETE_ITEM' | translate }}
                                 <strong>{{event.readableString}}</strong>?</h4>
                         </div>
                         <div class="modal-body" ng-if="deleteEntityErrorMessage">
                             <p>{{deleteEntityErrorMessage}}</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'CANCEL' | translate
+                                }}
+                            </button>
                             <button type="button" class="btn btn-danger" ng-click="eventTableCtrl.deleteEvent(event);">
-                                Delete
+                                {{ 'DELETE' | translate }}
                             </button>
                         </div>
                     </div>
@@ -43,7 +45,7 @@
             </div>
 
             <a ng-href="#/events/{{event.id}}/edit">
-                <span class="glyphicon glyphicon-pencil" style="color: black"></span>
+                <span class="glyphicon glyphicon-pencil"></span>
             </a>
         </td>
     </tr>

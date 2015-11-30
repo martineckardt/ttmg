@@ -1,4 +1,4 @@
-<section>
+<section ng-if="entityFound == true">
     <h2>{{ 'EDIT_COURSE' | translate }} {{model.course.name}}</h2>
     <hr>
 
@@ -9,3 +9,10 @@
         <div ng-if="formState == 4" ng-include="'js/course/edit-course/form-step4-success-template.html'"></div>
     </form>
 </section>
+
+<!-- Show error message, if entity was not found -->
+<div ng-if="entityFound == false && model.course.$resolved" class="alert alert-danger" role="alert">
+    <p>{{ error.localizableMessage | translate }}</p>
+
+    <p>{{ error.message }}</p>
+</div>

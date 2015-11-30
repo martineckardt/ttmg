@@ -35,8 +35,14 @@ angular.module('ttmg').directive('deleteEntityModal', function () {
                         // Hide the modal
                         $('#deleteEntityModal').modal('hide');
 
-                        // Redirecting to successHref
-                        $location.path($scope.successView);
+                        // Wait for modal to hide
+                        $("#deleteEntityModal").on('hidden.bs.modal', function () {
+                            // Redirecting to successHref
+                            $location.path($scope.successView);
+                            $scope.$apply();
+                        });
+
+
                     }, function errorCallback(error) {
                         console.log("failed to delete entity");
                         console.log(error);

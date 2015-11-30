@@ -42,7 +42,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
 
         // Messages
         'SUCCESS': 'Success',
-        'QUESTION_DELETE_ITEM': 'Do you really want to delete the {{value}}',
+        'QUESTION_DELETE_ITEM': 'Do you really want to delete the ',
         'FILL_REQUIRED_FIELDS': 'Please fill the required fields.',
 
         // Error Messages
@@ -240,7 +240,7 @@ angular.module('ttmg').config(['$translateProvider', function ($translateProvide
 
         // Messages
         'SUCCESS': 'Erfolg',
-        'QUESTION_DELETE_ITEM': 'Möchten Sie {{value}} wirklich löschen?',
+        'QUESTION_DELETE_ITEM': 'Sind Sie sich sicher, dass Sie diese Entität löschen wollen:',
 
         // Error Messages
         'ERROR_REQUIRED': 'Bitte füllen Sie das Pflichtfeld aus.',

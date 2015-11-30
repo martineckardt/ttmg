@@ -16,9 +16,16 @@ angular.module('ttmg.controllers').controller('editCourseController',
 
             // Set up model
             $scope.model = {
+                course: CourseResourceFactory.get({courseId: courseId},
+                    function successCallback() {
+                        $scope.entityFound = true;
+                    },
+                    function errorCallback(error) {
+                        $scope.entityFound = false;
+                        $scope.error = error.data;
+                    }),
                 tutors: TutorResourceFactory.query(),
                 courseTypes: COURSE_TYPES,
-                course: CourseResourceFactory.get({courseId: courseId}),
                 centurias: CenturiaResourceFactory.query()
             };
 

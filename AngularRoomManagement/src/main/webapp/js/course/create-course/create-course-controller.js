@@ -35,13 +35,14 @@ angular.module('ttmg.controllers').controller('createCourseController',
                     console.log("Course successfully created");
                     console.log(data);
 
-                    // Reset form
-                    $scope.model.course = new CourseResourceFactory();
-                    $scope.courseForm.$setUntouched();
-
                     // Fill messageData with newly created entity
                     $scope.entitySuccesfullyCreated = true;
                     $scope.messageData = data;
+
+                    // Reset form
+                    $scope.model.course = new CourseResourceFactory();
+                    // Set untouched in ng-click, since here it throws a weird error
+                    //$scope.courseForm.$setUntouched();
                 }, function errorCallback(error) {
                     console.log("Failed to create course");
                     console.log(error);

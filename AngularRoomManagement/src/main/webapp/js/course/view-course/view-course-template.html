@@ -29,7 +29,7 @@
 
 </section>
 
-<div ng-if="entityFound == false" class="alert alert-danger" role="alert">
+<div ng-if="entityFound == false && model.course.$resolved" class="alert alert-danger" role="alert">
     <p>{{ error.localizableMessage | translate }}</p>
 
     <p>{{ error.message }}</p>
