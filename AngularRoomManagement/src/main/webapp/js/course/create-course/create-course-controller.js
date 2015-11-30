@@ -22,7 +22,7 @@ angular.module('ttmg.controllers').controller('createCourseController',
                 var course = $scope.model.course;
 
                 // Reset values
-                course.participants = {};
+                course.participants = [];
 
                 if (course.type != 'SEMINAR') { // if the course is not a seminar
                     // Add selected centurias to course

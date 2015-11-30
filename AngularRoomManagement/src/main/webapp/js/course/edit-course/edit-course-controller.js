@@ -54,7 +54,7 @@ angular.module('ttmg.controllers').controller('editCourseController',
                 var course = $scope.model.course;
 
                 // Reset participants
-                course.participants = {};
+                course.participants = [];
 
                 if (course.type != 'SEMINAR') { // if the course is not a seminar
 
@@ -96,7 +96,7 @@ angular.module('ttmg.controllers').controller('editCourseController',
                     function errorCallback(error) {
                         console.log("Failed to update course");
                         console.log(error);
-                        $scope.entitySuccesfullyUpdated = false;
+                        $scope.entitySuccessfullyUpdated = false;
 
                         // Check if backend indicates conflicts or
                         if (error.data.localizableMessage == 'TIME_CONFLICTS') {
@@ -109,7 +109,6 @@ angular.module('ttmg.controllers').controller('editCourseController',
                         } else if (error.data.ignorable) {
                             console.log('insufficient seats detected');
                             // Fill messageData with exception message from backend
-                            $scope.entitySuccesfullyUpdated = false;
                             $scope.ignorableError = error.data;
                             console.log($scope.ignorableError);
 
