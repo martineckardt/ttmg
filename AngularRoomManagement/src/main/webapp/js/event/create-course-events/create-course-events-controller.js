@@ -121,7 +121,7 @@ angular.module('ttmg.controllers').controller('createCourseEventsController',
             };
 
             this.removeEventForRoomSelection = function (index) {
-                eventsForRoomSelection.splice(index, 1);
+                $scope.formModel.eventsForRoomSelection.splice(index, 1);
             };
 
             // Private functions
