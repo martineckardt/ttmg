@@ -4,26 +4,28 @@
         <h3 class="panel-title">
             <input type="checkbox" ng-model="yearSelects[year]"
                    ng-click="centuriaTreeCtrl.setCenturiasWithYear(year, yearSelects[year])">
-            {{ year }}
+            <a data-toggle="collapse" data-target="#collapse{{ year }}">{{ year }}</a>
         </h3>
     </div>
-    <div class="panel-body">
-        <!-- Sort centurias by program -->
-        <div ng-repeat="program in programs | orderBy:'+'" class="row">
-            <div class="col-sm-3">
-                <h4>
-                    <input type="checkbox" ng-model="yearProgramSelects[year][program]"
-                           ng-click="centuriaTreeCtrl.setCohort(year, program, yearProgramSelects[year][program])">
-                    {{ program }}
-                </h4>
-            </div>
-            <div class="btn-toolbar col-sm-9">
-                <label for="{{centuria.readableString}}"
-                       class="btn btn-default"
-                       ng-repeat="centuria in centuriasPromise.$$state.value | filter:{ year: year, program: program } | orderBy:'letter'">
-                    <input type="checkbox" ng-model="centuria.selected" id="{{centuria.readableString}}">
-                    {{centuria.readableString}}
-                </label>
+    <div id="collapse{{ year }}" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <!-- Sort centurias by program -->
+            <div ng-repeat="program in programs | orderBy:'+'" class="row">
+                <div class="col-sm-3">
+                    <h4>
+                        <input type="checkbox" ng-model="yearProgramSelects[year][program]"
+                               ng-click="centuriaTreeCtrl.setCohort(year, program, yearProgramSelects[year][program])">
+                        {{ program }}
+                    </h4>
+                </div>
+                <div class="btn-toolbar col-sm-9">
+                    <label for="{{centuria.readableString}}"
+                           class="btn btn-default"
+                           ng-repeat="centuria in centuriasPromise.$$state.value | filter:{ year: year, program: program } | orderBy:'letter'">
+                        <input type="checkbox" ng-model="centuria.selected" id="{{centuria.readableString}}">
+                        {{centuria.readableString}}
+                    </label>
+                </div>
             </div>
         </div>
     </div>
